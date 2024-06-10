@@ -1,15 +1,18 @@
-import 'package:cupid_mentor/core/constants/gemini_api_key.dart';
 import 'package:cupid_mentor/di.dart';
 import 'package:flutter/material.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeConfigs();
 
-  runApp(App.init());
+  runApp(ProviderScope(
+    child: App.init(),
+  ));
 }
-Future<void >initializeConfigs() async {
+
+Future<void> initializeConfigs() async {
   await setupLocator();
 }
