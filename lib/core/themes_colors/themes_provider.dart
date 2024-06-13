@@ -3,7 +3,6 @@ import 'package:cupid_mentor/core/themes_colors/theme_state.dart';
 import 'package:cupid_mentor/core/themes_colors/themes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -16,7 +15,7 @@ const String themeKey = "theme";
 class ThemeNotifier extends _$ThemeNotifier {
   @override
   ThemeState build() {
-    return ThemeState(currentTheme: ThemeMode.light, currentAppColor: AppColors.lightColor);
+    return ThemeState(currentTheme: ThemeMode.light, currentAppColor: AppColors.light);
   }
 
   Future<void> checkInitialTheme() async {
@@ -25,40 +24,34 @@ class ThemeNotifier extends _$ThemeNotifier {
     String? theme = sharedPreference.getString(themeKey);
     if (theme == null) {
       if (PlatformDispatcher.instance.platformBrightness == Brightness.dark) {
-        setDarkTheme();
+        _setTheme(ThemeEnum.dark);
       } else {
-        setLightTheme();
+        _setTheme(ThemeEnum.light);
       }
     } else {
       if (ThemeEnum.parse(theme) == ThemeEnum.dark) {
-        setDarkTheme();
+        _setTheme(ThemeEnum.dark);
       } else {
-        setLightTheme();
+        _setTheme(ThemeEnum.light);
       }
     }
-  }
-
-  Future<void> setDarkTheme() async {
-    SharedPreferences sharedPreference = GetIt.I<SharedPreferences>();
-    await sharedPreference.setString(themeKey, ThemeEnum.dark.value);
-    state = state.copyWith(currentTheme: ThemeMode.dark, currentAppColor: AppColors.darkColor);
-    debugPrint("set dark theme");
-  }
-
-  Future<void> setLightTheme() async {
-    SharedPreferences sharedPreference = GetIt.I<SharedPreferences>();
-    await sharedPreference.setString(themeKey, ThemeEnum.light.value);
-    state = state.copyWith(currentTheme: ThemeMode.light, currentAppColor: AppColors.lightColor);
-    debugPrint("set light theme");
   }
 
   Future<void> switchTheme() async {
     SharedPreferences sharedPreference = GetIt.I<SharedPreferences>();
     bool isDarkMode = sharedPreference.getString(themeKey) == ThemeEnum.dark.value;
     if (isDarkMode) {
-      await setLightTheme();
+      await _setTheme(ThemeEnum.light);
     } else {
-      await setDarkTheme();
+      await _setTheme(ThemeEnum.dark);
     }
+  }
+
+  Future<void> _setTheme(ThemeEnum theme) async {
+    SharedPreferences sharedPreference = GetIt.I<SharedPreferences>();
+    await sharedPreference.setString(themeKey, theme.value);
+    state = state.copyWith(
+        currentTheme: theme == ThemeEnum.dark ? ThemeMode.dark : ThemeMode.light,
+        currentAppColor: theme == ThemeEnum.dark ? AppColors.dark : AppColors.light);
   }
 }

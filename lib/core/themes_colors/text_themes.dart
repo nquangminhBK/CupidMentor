@@ -3,25 +3,25 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TextThemes {
   static TextStyle thin() {
-    return GoogleFonts.cabin(
+    return GoogleFonts.poppins(
       fontWeight: FontWeight.w300,
     );
   }
 
   static TextStyle light() {
-    return GoogleFonts.cabin(
+    return GoogleFonts.poppins(
       fontWeight: FontWeight.w400,
     );
   }
 
   static TextStyle medium() {
-    return GoogleFonts.cabin(
+    return GoogleFonts.poppins(
       fontWeight: FontWeight.w600,
     );
   }
 
   static TextStyle bold() {
-    return GoogleFonts.cabin(fontWeight: FontWeight.w700);
+    return GoogleFonts.poppins(fontWeight: FontWeight.w700);
   }
 
   static TextTheme textTheme(context) => Theme.of(context).textTheme.copyWith(

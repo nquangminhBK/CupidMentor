@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 class MyTheme {
   static ThemeData lightTheme(context) => ThemeData.light(useMaterial3: false).copyWith(
         brightness: Brightness.light,
-        primaryColor: AppColors.darkColor.primaryColor,
+        primaryColor: AppColors.dark.primaryColor,
+        scaffoldBackgroundColor: AppColors.dark.screenBackgroundColor,
         // hintColor: AppColors.darkColor.hintColor,
         // cardColor: AppColors.darkColor.itemListBackgroundColor,
         iconTheme: const IconThemeData(
@@ -16,7 +17,8 @@ class MyTheme {
 
   static ThemeData darkTheme(context) => ThemeData.dark(useMaterial3: false).copyWith(
         brightness: Brightness.dark,
-        primaryColor: AppColors.lightColor.primaryColor,
+        primaryColor: AppColors.light.primaryColor,
+        scaffoldBackgroundColor: AppColors.light.screenBackgroundColor,
         // hintColor: Colors.grey,
         // cardColor: AppColors.lightColor.itemListBackgroundColor,
         iconTheme: const IconThemeData(
