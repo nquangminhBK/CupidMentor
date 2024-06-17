@@ -23,5 +23,6 @@ class Hobbies {
     "🏌🏻 Golf",
     "⚽ Soccer",
     "Other",
+    //TODO: need to add an option to input if user choose "Other"
   ];
 }
