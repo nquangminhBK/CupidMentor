@@ -6,12 +6,14 @@ class AppColors {
   final Color screenBackgroundColor;
   final Color buttonBackgroundColor;
   final Color textColor;
+  final Gradient mainGradient;
 
   const AppColors(
       {required this.primaryColor,
       required this.secondaryColor,
       required this.screenBackgroundColor,
       required this.buttonBackgroundColor,
+      required this.mainGradient,
       required this.textColor});
 
   static AppColors dark = AppColors(
@@ -20,6 +22,12 @@ class AppColors {
     screenBackgroundColor: const Color(0xff1A1A1A),
     buttonBackgroundColor: Colors.white.withOpacity(0.08),
     textColor: const Color(0xffF9FAFB),
+    mainGradient: const LinearGradient(
+      colors: [
+        Color(0xff642ca9),
+        Color(0xffff36ab),
+      ],
+    ),
   );
   static AppColors light = AppColors(
     primaryColor: const Color(0xff642CA9),
@@ -27,5 +35,11 @@ class AppColors {
     screenBackgroundColor: const Color(0xff1A1A1A),
     buttonBackgroundColor: Colors.white.withOpacity(0.08),
     textColor: const Color(0xffF9FAFB),
+    mainGradient: const LinearGradient(
+      colors: [
+        Color(0xff642ca9),
+        Color(0xffff36ab),
+      ],
+    ),
   );
 }

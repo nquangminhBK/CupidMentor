@@ -49,15 +49,8 @@ class _SelectDateWidgetState extends ConsumerState<SelectDateWidget> {
         decoration: BoxDecoration(
             color: ref.currentAppColor.buttonBackgroundColor,
             borderRadius: BorderRadius.circular(8),
-            border: isSelected
-                ? const GradientBoxBorder(
-                    gradient: LinearGradient(
-                    colors: [
-                      Color(0xff642ca9),
-                      Color(0xffff36ab),
-                    ],
-                  ))
-                : null),
+            border:
+                isSelected ? GradientBoxBorder(gradient: ref.currentAppColor.mainGradient) : null),
         padding: const EdgeInsets.symmetric(horizontal: 14),
         child: Align(
           alignment: Alignment.centerLeft,

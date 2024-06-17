@@ -95,13 +95,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   border: isFocus
-                      ? const GradientBoxBorder(
-                          gradient: LinearGradient(
-                          colors: [
-                            Color(0xff642ca9),
-                            Color(0xffff36ab),
-                          ],
-                        ))
+                      ? GradientBoxBorder(gradient: ref.currentAppColor.mainGradient)
                       : Border.all(color: Colors.transparent),
                   color: ref.currentAppColor.buttonBackgroundColor),
             ),

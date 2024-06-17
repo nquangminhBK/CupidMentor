@@ -3,12 +3,8 @@ import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/progress_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_name_page.dart';
-import 'package:cupid_mentor/features/showcase/presentation/pages/dating_delights_page.dart';
-import 'package:cupid_mentor/features/showcase/presentation/pages/profile_prowess_page.dart';
-import 'package:cupid_mentor/features/showcase/presentation/pages/self_enhancement_page.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_personalities_page.dart';
 import 'package:cupid_mentor/core/widgets/navigate_button.dart';
-import 'package:cupid_mentor/core/widgets/page_indicator.dart';
-import 'package:cupid_mentor/features/showcase/presentation/widgets/skip_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -56,6 +52,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 child: PageView(
                   children: [
                     InputNamePage(),
+                    InputPersonalitiesPage(),
                   ],
                   onPageChanged: (index) {
                     setState(() {
