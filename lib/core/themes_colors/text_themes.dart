@@ -34,7 +34,7 @@ class TextThemes {
         titleMedium: TextThemes.medium().copyWith(fontSize: 15),
         titleSmall: TextThemes.medium(),
         bodyLarge: TextThemes.thin(),
-        labelLarge: TextThemes.bold(),
-        bodySmall: TextThemes.bold(),
+        labelLarge: TextThemes.thin(),
+        bodySmall: TextThemes.thin(),
       );
 }

@@ -6,4 +6,6 @@ extension BuildContextExtension on BuildContext {
   Size get screenSize => MediaQuery.of(this).size;
 
   TextTheme get textTheme => Theme.of(this).textTheme;
+
+  ThemeData get theme => Theme.of(this);
 }

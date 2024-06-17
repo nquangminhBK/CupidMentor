@@ -1,5 +1,7 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +9,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class NavigateButton extends ConsumerWidget {
   const NavigateButton({
+    required this.onPressBack,
+    required this.onPressNext,
+    required this.onPressLastButton,
+    required this.lastButtonTitle,
     super.key,
     this.showBackButton,
     this.showLastButton,
@@ -14,12 +20,16 @@ class NavigateButton extends ConsumerWidget {
 
   final bool? showBackButton;
   final bool? showLastButton;
+  final String lastButtonTitle;
+  final Function onPressBack;
+  final Function onPressNext;
+  final Function onPressLastButton;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (showLastButton ?? false) {
       return AnimatedButton(
-          onPress: () {},
+          onPress: onPressLastButton,
           borderRadius: BorderRadius.circular(8),
           child: Container(
             decoration: BoxDecoration(
@@ -32,8 +42,7 @@ class NavigateButton extends ConsumerWidget {
             child: Center(
               child: Text(
                 "All right, let's get started!",
-                    style: context.textTheme.titleMedium,
-
+                style: context.textTheme.titleMedium,
               ),
             ),
           ));
@@ -43,7 +52,7 @@ class NavigateButton extends ConsumerWidget {
         const HorizontalSpace(size: 24),
         if (showBackButton ?? false)
           AnimatedButton(
-              onPress: () {},
+              onPress: onPressBack,
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
@@ -57,7 +66,7 @@ class NavigateButton extends ConsumerWidget {
               )),
         const Spacer(),
         AnimatedButton(
-            onPress: () {},
+            onPress: onPressNext,
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),

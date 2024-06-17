@@ -12,54 +12,52 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
-class $AssetsIconsGen {
-  const $AssetsIconsGen();
+class $AssetsPngGen {
+  const $AssetsPngGen();
 
-  /// File path: assets/icons/icon_valentine.svg
-  SvgGenImage get iconValentine => const SvgGenImage('assets/icons/icon_valentine.svg');
+  /// File path: assets/png/dating_delight_image.png
+  AssetGenImage get datingDelightImage => const AssetGenImage('assets/png/dating_delight_image.png');
 
-  /// List of all assets
-  List<SvgGenImage> get values => [iconValentine];
-}
+  /// File path: assets/png/profile_prowess_image.png
+  AssetGenImage get profileProwessImage => const AssetGenImage('assets/png/profile_prowess_image.png');
 
-class $AssetsPngImagesGen {
-  const $AssetsPngImagesGen();
-
-  /// File path: assets/png_images/dating_delight_image.png
-  AssetGenImage get datingDelightImage => const AssetGenImage('assets/png_images/dating_delight_image.png');
-
-  /// File path: assets/png_images/profile_prowess_image.png
-  AssetGenImage get profileProwessImage => const AssetGenImage('assets/png_images/profile_prowess_image.png');
-
-  /// File path: assets/png_images/self_enhancement_image.png
-  AssetGenImage get selfEnhancementImage => const AssetGenImage('assets/png_images/self_enhancement_image.png');
+  /// File path: assets/png/self_enhancement_image.png
+  AssetGenImage get selfEnhancementImage => const AssetGenImage('assets/png/self_enhancement_image.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [datingDelightImage, profileProwessImage, selfEnhancementImage];
 }
 
-class $AssetsSvgImagesGen {
-  const $AssetsSvgImagesGen();
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
 
-  /// File path: assets/svg_images/dating_delight_bg_text.svg
-  SvgGenImage get datingDelightBgText => const SvgGenImage('assets/svg_images/dating_delight_bg_text.svg');
+  /// File path: assets/svg/apple_icon.svg
+  SvgGenImage get appleIcon => const SvgGenImage('assets/svg/apple_icon.svg');
 
-  /// File path: assets/svg_images/profile_prowess_bg_text.svg
-  SvgGenImage get profileProwessBgText => const SvgGenImage('assets/svg_images/profile_prowess_bg_text.svg');
+  /// File path: assets/svg/dating_delight_bg_text.svg
+  SvgGenImage get datingDelightBgText => const SvgGenImage('assets/svg/dating_delight_bg_text.svg');
 
-  /// File path: assets/svg_images/self_enhancement_bg_text.svg
-  SvgGenImage get selfEnhancementBgText => const SvgGenImage('assets/svg_images/self_enhancement_bg_text.svg');
+  /// File path: assets/svg/google_icon.svg
+  SvgGenImage get googleIcon => const SvgGenImage('assets/svg/google_icon.svg');
+
+  /// File path: assets/svg/icon_valentine.svg
+  SvgGenImage get iconValentine => const SvgGenImage('assets/svg/icon_valentine.svg');
+
+  /// File path: assets/svg/profile_prowess_bg_text.svg
+  SvgGenImage get profileProwessBgText => const SvgGenImage('assets/svg/profile_prowess_bg_text.svg');
+
+  /// File path: assets/svg/self_enhancement_bg_text.svg
+  SvgGenImage get selfEnhancementBgText => const SvgGenImage('assets/svg/self_enhancement_bg_text.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [datingDelightBgText, profileProwessBgText, selfEnhancementBgText];
+  List<SvgGenImage> get values => [appleIcon, datingDelightBgText, googleIcon, iconValentine, profileProwessBgText, selfEnhancementBgText];
 }
 
 class Assets {
   Assets._();
 
-  static const $AssetsIconsGen icons = $AssetsIconsGen();
-  static const $AssetsPngImagesGen pngImages = $AssetsPngImagesGen();
-  static const $AssetsSvgImagesGen svgImages = $AssetsSvgImagesGen();
+  static const $AssetsPngGen png = $AssetsPngGen();
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
 class AssetGenImage {

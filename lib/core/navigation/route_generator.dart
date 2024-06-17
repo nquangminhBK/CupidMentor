@@ -3,6 +3,8 @@ import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
 import 'package:cupid_mentor/core/widgets/adaptive_screen.dart';
+import 'package:cupid_mentor/features/auth/presentation/pages/login_screen.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/showcase_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,6 +24,18 @@ Route<Object>? generateRoute(RouteSettings settings) {
         settings: settings,
         screen: ShowcaseScreen(),
         screenName: 'Showcase Page',
+      );
+    case AppRoutes.login:
+      return _buildRoute(
+        settings: settings,
+        screen: LoginScreen(),
+        screenName: 'Login Page',
+      );
+    case AppRoutes.onboarding:
+      return _buildRoute(
+        settings: settings,
+        screen: OnboardingScreen(),
+        screenName: 'Onboarding Page',
       );
     default:
       return _errorRoute();

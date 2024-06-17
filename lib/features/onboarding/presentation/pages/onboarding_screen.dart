@@ -1,6 +1,8 @@
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
-import 'package:cupid_mentor/core/navigation/routes.dart';
+import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
+import 'package:cupid_mentor/core/widgets/progress_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_name_page.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/dating_delights_page.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/profile_prowess_page.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/self_enhancement_page.dart';
@@ -10,14 +12,14 @@ import 'package:cupid_mentor/features/showcase/presentation/widgets/skip_button.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ShowcaseScreen extends ConsumerStatefulWidget {
-  const ShowcaseScreen({super.key});
+class OnboardingScreen extends ConsumerStatefulWidget {
+  const OnboardingScreen({super.key});
 
   @override
-  ConsumerState<ShowcaseScreen> createState() => _ShowcasePageState();
+  ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
+class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   int currentIndex = 0;
 
   @override
@@ -29,15 +31,31 @@ class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
           height: double.infinity,
           child: Column(
             children: [
-              SkipButton(
-                visible: currentIndex != 2,
+              Row(
+                children: [
+                  const HorizontalSpace(size: 30),
+                  Expanded(
+                    child: ProgressBar(
+                      totalStep: 6,
+                      currentStep: currentIndex,
+                      width: context.screenSize.width - 100,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 70,
+                    child: Center(
+                      child: Text(
+                        "5/7",
+                        style: context.textTheme.titleSmall,
+                      ),
+                    ),
+                  )
+                ],
               ),
               Expanded(
                 child: PageView(
                   children: [
-                    ProfileProwessPage(),
-                    SelfEnhancementPage(),
-                    DatingDelightPage(),
+                    InputNamePage(),
                   ],
                   onPageChanged: (index) {
                     setState(() {
@@ -47,19 +65,16 @@ class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
                 ),
               ),
               const VerticalSpace(size: 17),
-              PageIndicator(
-                totalCount: 3,
-                currentIndex: currentIndex,
-              ),
-              const VerticalSpace(size: 22),
               NavigateButton(
                 showBackButton: currentIndex != 0,
                 showLastButton: currentIndex == 2,
                 onPressBack: () {},
-                onPressNext: () {},
-                onPressLastButton: () {
-                  NavigationService.instance.push(AppRoutes.login);
+                onPressNext: () {
+                  setState(() {
+                    currentIndex = currentIndex + 1;
+                  });
                 },
+                onPressLastButton: () {},
                 lastButtonTitle: '',
               ),
               const VerticalSpace(size: 10),
