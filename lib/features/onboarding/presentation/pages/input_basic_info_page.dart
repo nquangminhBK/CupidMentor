@@ -8,14 +8,14 @@ import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_gen
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InputNamePage extends ConsumerStatefulWidget {
-  const InputNamePage({super.key});
+class InputBasicInfoPage extends ConsumerStatefulWidget {
+  const InputBasicInfoPage({super.key});
 
   @override
-  ConsumerState<InputNamePage> createState() => _InputNamePageState();
+  ConsumerState<InputBasicInfoPage> createState() => _InputNamePageState();
 }
 
-class _InputNamePageState extends ConsumerState<InputNamePage> {
+class _InputNamePageState extends ConsumerState<InputBasicInfoPage> {
   DateTime? selectedDate;
 
   @override
@@ -64,7 +64,7 @@ class _InputNamePageState extends ConsumerState<InputNamePage> {
         SelectGenderDropdown(),
         const VerticalSpace(size: 24),
         Text(
-          "And your birthday is",
+          "Your birthday is",
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
@@ -75,6 +75,50 @@ class _InputNamePageState extends ConsumerState<InputNamePage> {
             });
           },
           selectedDate: selectedDate,
+        ),
+        const VerticalSpace(size: 24),
+        Text(
+          "And your job is",
+          style: context.textTheme.titleLarge,
+        ),
+        const VerticalSpace(size: 6),
+        SizedBox(
+          height: 50,
+          child: TextField(
+            autofocus: false,
+            textInputAction: TextInputAction.done,
+            onChanged: (text) {},
+            style: context.textTheme.bodyLarge!
+                .copyWith(color: ref.currentAppColor.textColor, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.left,
+            cursorColor: Colors.white,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 14),
+              fillColor: ref.currentAppColor.buttonBackgroundColor,
+              filled: true,
+              hintText: "Input your jobs",
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(color: Colors.transparent),
+              ),
+              focusedBorder: GradientOutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  gradient: ref.currentAppColor.mainGradient),
+            ),
+          ),
+        ),
+        const VerticalSpace(size: 24),
+        Row(
+          children: [
+            Icon(
+              Icons.lock_outline_rounded,
+              color: ref.currentAppColor.textColor,
+            ),
+            Text(
+              "Your information will be safe with us.",
+              style: context.textTheme.bodyLarge,
+            )
+          ],
         ),
       ],
     );

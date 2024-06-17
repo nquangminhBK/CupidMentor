@@ -15,22 +15,24 @@ class PageSkeletonWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox.expand(
       child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: context.textTheme.titleLarge!.copyWith(fontSize: 30),
-            ),
-            const VerticalSpace(size: 24),
-            Text(
-              description,
-              style: context.textTheme.bodyLarge,
-            ),
-            const VerticalSpace(size: 24),
-            ...children,
-          ],
+        padding: const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 10),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: context.textTheme.titleLarge!.copyWith(fontSize: 30),
+              ),
+              const VerticalSpace(size: 24),
+              Text(
+                description,
+                style: context.textTheme.bodyLarge,
+              ),
+              const VerticalSpace(size: 24),
+              ...children,
+            ],
+          ),
         ),
       ),
     );

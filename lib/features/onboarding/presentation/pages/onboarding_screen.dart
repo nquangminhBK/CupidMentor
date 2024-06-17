@@ -2,7 +2,8 @@ import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/progress_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_name_page.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_hobbies_page.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_basic_info_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_personalities_page.dart';
 import 'package:cupid_mentor/core/widgets/navigate_button.dart';
 import 'package:flutter/material.dart';
@@ -51,8 +52,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               Expanded(
                 child: PageView(
                   children: [
-                    InputNamePage(),
+                    InputBasicInfoPage(),
                     InputPersonalitiesPage(),
+                    InputHobbiesPage(),
                   ],
                   onPageChanged: (index) {
                     setState(() {
@@ -61,10 +63,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   },
                 ),
               ),
-              const VerticalSpace(size: 17),
               NavigateButton(
                 showBackButton: currentIndex != 0,
-                showLastButton: currentIndex == 2,
+                showLastButton: currentIndex == 10,
                 onPressBack: () {},
                 onPressNext: () {
                   setState(() {
@@ -74,7 +75,6 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 onPressLastButton: () {},
                 lastButtonTitle: '',
               ),
-              const VerticalSpace(size: 10),
             ],
           ),
         ),
