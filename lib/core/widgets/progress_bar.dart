@@ -2,11 +2,13 @@ import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 
 class ProgressBar extends StatelessWidget {
-  const ProgressBar({required this.totalStep, required this.currentStep, this.width, super.key});
+  const ProgressBar(
+      {required this.totalStep, required this.currentStep, this.width, super.key, this.color});
 
   final int totalStep;
   final int currentStep;
   final double? width;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class ProgressBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(
               6,
             ),
-            color: context.theme.primaryColor,
+            color: color ?? context.theme.primaryColor,
           ),
         ),
       ],

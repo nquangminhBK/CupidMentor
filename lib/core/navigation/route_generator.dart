@@ -1,11 +1,17 @@
-import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
 import 'package:cupid_mentor/core/widgets/adaptive_screen.dart';
 import 'package:cupid_mentor/features/auth/presentation/pages/login_screen.dart';
+import 'package:cupid_mentor/features/home/presentation/pages/home_screen.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/onboarding_screen.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/welcome_screen.dart';
+import 'package:cupid_mentor/features/setting/presentation/pages/setting_screen.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/showcase_screen.dart';
+import 'package:cupid_mentor/features/tip_date_spots/presentation/pages/tips_date_spot_screen.dart';
+import 'package:cupid_mentor/features/tips_gift/presentation/pages/tips_gift_screen.dart';
+import 'package:cupid_mentor/features/tips_replying/presentation/pages/tips_replying_screen.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/presentation/pages/tips_self_improvement_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,25 +23,56 @@ Route<Object>? generateRoute(RouteSettings settings) {
       return _buildRoute(
         settings: settings,
         screen: SplashText(),
-        screenName: 'Splash Page',
       );
     case AppRoutes.showcase:
       return _buildRoute(
         settings: settings,
         screen: ShowcaseScreen(),
-        screenName: 'Showcase Page',
       );
     case AppRoutes.login:
       return _buildRoute(
         settings: settings,
         screen: LoginScreen(),
-        screenName: 'Login Page',
       );
     case AppRoutes.onboarding:
       return _buildRoute(
         settings: settings,
         screen: OnboardingScreen(),
-        screenName: 'Onboarding Page',
+      );
+    case AppRoutes.welcome:
+      return _buildRoute(
+        settings: settings,
+        screen: WelcomeScreen(),
+      );
+    case AppRoutes.home:
+      return _buildRoute(
+        settings: settings,
+        screen: HomeScreen(),
+      );
+    case AppRoutes.tipGift:
+      return _buildRoute(
+        settings: settings,
+        screen: TipsGiftsScreen(),
+      );
+    case AppRoutes.tipDateSpot:
+      return _buildRoute(
+        settings: settings,
+        screen: TipsDateSpotScreen(),
+      );
+    case AppRoutes.tipSelfImprovement:
+      return _buildRoute(
+        settings: settings,
+        screen: TipsSelfImprovementScreen(),
+      );
+    case AppRoutes.tipReplying:
+      return _buildRoute(
+        settings: settings,
+        screen: TipsReplyingMessageScreen(),
+      );
+    case AppRoutes.setting:
+      return _buildRoute(
+        settings: settings,
+        screen: SettingScreen(),
       );
     default:
       return _errorRoute();
@@ -62,7 +99,6 @@ Route<Object>? _errorRoute() {
 Route<T>? _buildRoute<T extends Object>({
   required RouteSettings settings,
   required Widget screen,
-  required String screenName,
 }) {
   return MaterialPageRoute<T>(
     settings: settings,

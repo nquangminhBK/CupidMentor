@@ -1,6 +1,8 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/gradient_outline_input_border.dart';
+import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
+import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/page_skeleton_widget.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_date_widget.dart';
@@ -30,30 +32,11 @@ class _InputNamePageState extends ConsumerState<InputBasicInfoPage> {
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
-        SizedBox(
-          height: 50,
-          child: TextField(
-            autofocus: false,
-            textInputAction: TextInputAction.done,
-            onChanged: (text) {},
-            style: context.textTheme.bodyLarge!
-                .copyWith(color: ref.currentAppColor.textColor, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.left,
-            cursorColor: Colors.white,
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 14),
-              fillColor: ref.currentAppColor.buttonBackgroundColor,
-              filled: true,
-              hintText: "Enter your name",
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: Colors.transparent),
-              ),
-              focusedBorder: GradientOutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  gradient: ref.currentAppColor.mainGradient),
-            ),
-          ),
+        MyTextField(
+          onChanged: (text) {
+            debugPrint(text);
+          },
+          hintText: "Enter your name",
         ),
         const VerticalSpace(size: 24),
         Text(
@@ -82,38 +65,20 @@ class _InputNamePageState extends ConsumerState<InputBasicInfoPage> {
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
-        SizedBox(
-          height: 50,
-          child: TextField(
-            autofocus: false,
-            textInputAction: TextInputAction.done,
-            onChanged: (text) {},
-            style: context.textTheme.bodyLarge!
-                .copyWith(color: ref.currentAppColor.textColor, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.left,
-            cursorColor: Colors.white,
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 14),
-              fillColor: ref.currentAppColor.buttonBackgroundColor,
-              filled: true,
-              hintText: "Input your jobs",
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: Colors.transparent),
-              ),
-              focusedBorder: GradientOutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  gradient: ref.currentAppColor.mainGradient),
-            ),
-          ),
+        MyTextField(
+          onChanged: (text) {
+            debugPrint(text);
+          },
+          hintText: "Input your jobs",
         ),
         const VerticalSpace(size: 24),
         Row(
           children: [
             Icon(
-              Icons.lock_outline_rounded,
+              Icons.privacy_tip_outlined,
               color: ref.currentAppColor.textColor,
             ),
+            const HorizontalSpace(size: 6),
             Text(
               "Your information will be safe with us.",
               style: context.textTheme.bodyLarge,

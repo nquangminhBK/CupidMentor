@@ -9,6 +9,7 @@ class MyTheme {
         scaffoldBackgroundColor: AppColors.dark.screenBackgroundColor,
         // hintColor: AppColors.darkColor.hintColor,
         // cardColor: AppColors.darkColor.itemListBackgroundColor,
+
         iconTheme: const IconThemeData(
           color: Colors.black,
         ),

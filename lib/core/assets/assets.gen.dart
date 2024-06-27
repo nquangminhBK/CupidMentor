@@ -15,8 +15,26 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/anniversary_image.png
+  AssetGenImage get anniversaryImage => const AssetGenImage('assets/png/anniversary_image.png');
+
+  /// File path: assets/png/birthday_image.png
+  AssetGenImage get birthdayImage => const AssetGenImage('assets/png/birthday_image.png');
+
+  /// File path: assets/png/casual_image.png
+  AssetGenImage get casualImage => const AssetGenImage('assets/png/casual_image.png');
+
+  /// File path: assets/png/christmas_image.png
+  AssetGenImage get christmasImage => const AssetGenImage('assets/png/christmas_image.png');
+
   /// File path: assets/png/dating_delight_image.png
   AssetGenImage get datingDelightImage => const AssetGenImage('assets/png/dating_delight_image.png');
+
+  /// File path: assets/png/gift_menu_image.png
+  AssetGenImage get giftMenuImage => const AssetGenImage('assets/png/gift_menu_image.png');
+
+  /// File path: assets/png/mens_day_image.png
+  AssetGenImage get mensDayImage => const AssetGenImage('assets/png/mens_day_image.png');
 
   /// File path: assets/png/profile_prowess_image.png
   AssetGenImage get profileProwessImage => const AssetGenImage('assets/png/profile_prowess_image.png');
@@ -24,8 +42,38 @@ class $AssetsPngGen {
   /// File path: assets/png/self_enhancement_image.png
   AssetGenImage get selfEnhancementImage => const AssetGenImage('assets/png/self_enhancement_image.png');
 
+  /// File path: assets/png/spot_menu_image.png
+  AssetGenImage get spotMenuImage => const AssetGenImage('assets/png/spot_menu_image.png');
+
+  /// File path: assets/png/thanksgiving_image.png
+  AssetGenImage get thanksgivingImage => const AssetGenImage('assets/png/thanksgiving_image.png');
+
+  /// File path: assets/png/tip_menu_image.png
+  AssetGenImage get tipMenuImage => const AssetGenImage('assets/png/tip_menu_image.png');
+
+  /// File path: assets/png/valentine_image.png
+  AssetGenImage get valentineImage => const AssetGenImage('assets/png/valentine_image.png');
+
+  /// File path: assets/png/womens_day_images.png
+  AssetGenImage get womensDayImages => const AssetGenImage('assets/png/womens_day_images.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [datingDelightImage, profileProwessImage, selfEnhancementImage];
+  List<AssetGenImage> get values => [
+        anniversaryImage,
+        birthdayImage,
+        casualImage,
+        christmasImage,
+        datingDelightImage,
+        giftMenuImage,
+        mensDayImage,
+        profileProwessImage,
+        selfEnhancementImage,
+        spotMenuImage,
+        thanksgivingImage,
+        tipMenuImage,
+        valentineImage,
+        womensDayImages
+      ];
 }
 
 class $AssetsSvgGen {
@@ -33,6 +81,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/apple_icon.svg
   SvgGenImage get appleIcon => const SvgGenImage('assets/svg/apple_icon.svg');
+
+  /// File path: assets/svg/background_chat_now.svg
+  SvgGenImage get backgroundChatNow => const SvgGenImage('assets/svg/background_chat_now.svg');
 
   /// File path: assets/svg/dating_delight_bg_text.svg
   SvgGenImage get datingDelightBgText => const SvgGenImage('assets/svg/dating_delight_bg_text.svg');
@@ -50,7 +101,7 @@ class $AssetsSvgGen {
   SvgGenImage get selfEnhancementBgText => const SvgGenImage('assets/svg/self_enhancement_bg_text.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [appleIcon, datingDelightBgText, googleIcon, iconValentine, profileProwessBgText, selfEnhancementBgText];
+  List<SvgGenImage> get values => [appleIcon, backgroundChatNow, datingDelightBgText, googleIcon, iconValentine, profileProwessBgText, selfEnhancementBgText];
 }
 
 class Assets {
