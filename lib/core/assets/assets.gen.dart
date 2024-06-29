@@ -18,6 +18,9 @@ class $AssetsPngGen {
   /// File path: assets/png/anniversary_image.png
   AssetGenImage get anniversaryImage => const AssetGenImage('assets/png/anniversary_image.png');
 
+  /// File path: assets/png/app_icon.png
+  AssetGenImage get appIcon => const AssetGenImage('assets/png/app_icon.png');
+
   /// File path: assets/png/birthday_image.png
   AssetGenImage get birthdayImage => const AssetGenImage('assets/png/birthday_image.png');
 
@@ -60,6 +63,7 @@ class $AssetsPngGen {
   /// List of all assets
   List<AssetGenImage> get values => [
         anniversaryImage,
+        appIcon,
         birthdayImage,
         casualImage,
         christmasImage,

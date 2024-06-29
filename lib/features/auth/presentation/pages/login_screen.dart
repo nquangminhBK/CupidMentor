@@ -46,30 +46,32 @@ class LoginScreen extends ConsumerWidget {
                   const VerticalSpace(size: 20),
                   AnimatedButton(
                       onPress: () async {
-                        if (kIsWeb) {
-                          GoogleAuthProvider authProvider = GoogleAuthProvider();
-                          final UserCredential userCredential =
-                              await FirebaseAuth.instance.signInWithPopup(authProvider);
-                          final user = userCredential.user;
-                          print("minh check $userCredential");
-                        } else {
-                          GoogleSignIn().signIn().then((googleUser) async {
-                            final GoogleSignInAuthentication? googleAuth =
-                                await googleUser?.authentication;
-                            if (googleAuth != null) {
-                              final credential = GoogleAuthProvider.credential(
-                                accessToken: googleAuth?.accessToken,
-                                idToken: googleAuth?.idToken,
-                              );
-                              await FirebaseAuth.instance
-                                  .signInWithCredential(credential)
-                                  .then((userCredential) async {
-                                print("minh check 2 ${userCredential.user}");
-                              });
-                            }
-                          });
+                        print("minh check 1 ${FirebaseAuth.instance.currentUser}");
+                        if (FirebaseAuth.instance.currentUser == null) {
+                          if (kIsWeb) {
+                            GoogleAuthProvider authProvider = GoogleAuthProvider();
+                            final UserCredential userCredential =
+                                await FirebaseAuth.instance.signInWithPopup(authProvider);
+                            final user = userCredential.user;
+                            print("minh check $userCredential");
+                          } else {
+                            GoogleSignIn().signIn().then((googleUser) async {
+                              final GoogleSignInAuthentication? googleAuth =
+                                  await googleUser?.authentication;
+                              if (googleAuth != null) {
+                                final credential = GoogleAuthProvider.credential(
+                                  accessToken: googleAuth?.accessToken,
+                                  idToken: googleAuth?.idToken,
+                                );
+                                await FirebaseAuth.instance
+                                    .signInWithCredential(credential)
+                                    .then((userCredential) async {
+                                  print("minh check 2 ${userCredential.user}");
+                                });
+                              }
+                            });
+                          }
                         }
-                        ;
                       },
                       child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 24),
