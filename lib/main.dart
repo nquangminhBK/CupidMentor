@@ -1,4 +1,6 @@
 import 'package:cupid_mentor/di.dart';
+import 'package:cupid_mentor/firebase_options/prod_firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,6 +8,9 @@ import 'app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await initializeConfigs();
 
   runApp(ProviderScope(

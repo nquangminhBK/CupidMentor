@@ -1,5 +1,6 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
@@ -28,7 +29,8 @@ class HomeScreen extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
                   "Good morning Mia 🌤",
-                  style: context.textTheme.titleLarge!.copyWith(fontSize: 20),
+                  style: context.textTheme.titleLarge!
+                      .copyWith(fontSize: 20, color: ref.currentAppColor.textColor),
                 ),
               ),
             ),
@@ -42,7 +44,7 @@ class HomeScreen extends ConsumerWidget {
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.grey.withOpacity(0.5)),
                         padding: const EdgeInsets.all(4),
-                        child: Icon(
+                        child: const Icon(
                           Icons.person_outline_rounded,
                           color: Colors.grey,
                         ))),
@@ -57,9 +59,9 @@ class HomeScreen extends ConsumerWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  ProfileWidget(),
+                  const ProfileWidget(),
                   const VerticalSpace(size: 16),
-                  ChatNowWidget(),
+                  const ChatNowWidget(),
                   const VerticalSpace(size: 16),
                   MenuWidget(
                     isLeftToRight: true,

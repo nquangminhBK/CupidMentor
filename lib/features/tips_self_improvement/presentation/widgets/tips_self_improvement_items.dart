@@ -22,7 +22,7 @@ class TipsSelfImprovementItem extends ConsumerWidget {
             Expanded(
               child: Text(
                 item.title,
-                style: context.textTheme.labelLarge,
+                style: context.textTheme.labelLarge!.copyWith(color: ref.currentAppColor.textColor),
               ),
             ),
             const HorizontalSpace(size: 8),

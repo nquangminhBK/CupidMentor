@@ -29,7 +29,7 @@ class MyDateTimePicker extends ConsumerStatefulWidget {
               height: 330,
               margin: const EdgeInsets.only(left: 10, right: 10, bottom: 24),
               decoration: BoxDecoration(
-                color: ref.currentAppColor.screenBackgroundColor,
+                color: ref.currentAppColor.cardColorWithoutOpacity,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: MyDateTimePicker(
@@ -88,7 +88,8 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
                     child: Center(
                         child: Text(
                       'Save',
-                      style: context.textTheme.bodyLarge,
+                      style: context.textTheme.bodyLarge!
+                          .copyWith(color: ref.currentAppColor.textColor),
                     )),
                   ),
                 ),

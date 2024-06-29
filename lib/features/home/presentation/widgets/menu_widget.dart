@@ -44,12 +44,14 @@ class MenuWidget extends ConsumerWidget {
                     children: [
                       Text(
                         title,
-                        style: context.textTheme.labelLarge!.copyWith(fontSize: 16),
+                        style: context.textTheme.labelLarge!
+                            .copyWith(fontSize: 16, color: ref.currentAppColor.textColor),
                         textAlign: TextAlign.start,
                       ),
                       Text(
                         description,
-                        style: context.textTheme.labelLarge!.copyWith(fontSize: 12),
+                        style: context.textTheme.labelLarge!
+                            .copyWith(fontSize: 12, color: ref.currentAppColor.textColor),
                         textAlign: TextAlign.start,
                       ),
                       const VerticalSpace(size: 12),
@@ -68,7 +70,8 @@ class MenuWidget extends ConsumerWidget {
                                   child: Text(
                                     buttonText,
                                     textAlign: TextAlign.center,
-                                    style: context.textTheme.titleMedium,
+                                    style: context.textTheme.titleMedium!
+                                        .copyWith(color: ref.currentAppColor.textColor),
                                   ),
                                 ))),
                       ),
@@ -86,12 +89,14 @@ class MenuWidget extends ConsumerWidget {
                     children: [
                       Text(
                         title,
-                        style: context.textTheme.labelLarge!.copyWith(fontSize: 16),
+                        style: context.textTheme.labelLarge!
+                            .copyWith(fontSize: 16, color: ref.currentAppColor.textColor),
                         textAlign: TextAlign.end,
                       ),
                       Text(
                         description,
-                        style: context.textTheme.labelLarge!.copyWith(fontSize: 12),
+                        style: context.textTheme.labelLarge!
+                            .copyWith(fontSize: 12, color: ref.currentAppColor.textColor),
                         textAlign: TextAlign.end,
                       ),
                       const VerticalSpace(size: 12),
@@ -110,7 +115,8 @@ class MenuWidget extends ConsumerWidget {
                                   child: Text(
                                     buttonText,
                                     textAlign: TextAlign.center,
-                                    style: context.textTheme.titleMedium,
+                                    style: context.textTheme.titleMedium!
+                                        .copyWith(color: ref.currentAppColor.textColor),
                                   ),
                                 ))),
                       ),

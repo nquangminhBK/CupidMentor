@@ -33,7 +33,7 @@ class _AppState extends ConsumerState<App> {
       darkTheme: MyTheme.darkTheme(context),
       themeMode: ref.read(themeNotifierProvider).currentTheme,
       onGenerateRoute: generateRoute,
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.login,
     );
   }
 }

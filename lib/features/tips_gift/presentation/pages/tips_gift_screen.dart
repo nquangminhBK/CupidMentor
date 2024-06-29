@@ -1,5 +1,6 @@
 import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,8 @@ class TipsGiftsScreen extends ConsumerWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 "The Ideal Gifts  🎁",
-                style: context.textTheme.titleLarge!.copyWith(fontSize: 20),
+                style: context.textTheme.titleLarge!
+                    .copyWith(fontSize: 20, color: ref.currentAppColor.textColor),
               ),
             ),
             backgroundColor: context.theme.scaffoldBackgroundColor,
@@ -60,7 +62,8 @@ class TipsGiftsScreen extends ConsumerWidget {
                         const VerticalSpace(size: 24),
                         Text(
                           SpecialOccasion.specialOccasions[index].title,
-                          style: context.textTheme.titleSmall!.copyWith(fontSize: 18),
+                          style: context.textTheme.titleSmall!
+                              .copyWith(fontSize: 18, color: ref.currentAppColor.textColor),
                         )
                       ],
                     ),

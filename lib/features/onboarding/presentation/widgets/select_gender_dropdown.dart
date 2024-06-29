@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/gradient_box_border.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SelectGenderDropdown extends ConsumerStatefulWidget {
-  SelectGenderDropdown({super.key});
+  const SelectGenderDropdown({super.key});
 
   @override
   ConsumerState<SelectGenderDropdown> createState() => _SelectGenderDropdownState();
@@ -15,13 +16,7 @@ class SelectGenderDropdown extends ConsumerStatefulWidget {
 
 class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
     with SingleTickerProviderStateMixin {
-  final List<String> items = [
-    'Male',
-    'Female',
-    'Other',
-  ];
-
-  String? selectedValue;
+  Gender? selectedValue;
   bool isFocus = false;
   late AnimationController controller;
   late Animation<double> animation;
@@ -47,7 +42,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
     return SizedBox(
       width: context.screenSize.width,
       child: DropdownButtonHideUnderline(
-        child: DropdownButton2<String>(
+        child: DropdownButton2<Gender>(
             onMenuStateChange: (isOpen) {
               setState(() {
                 isFocus = isOpen;
@@ -64,20 +59,22 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
                 Expanded(
                   child: Text(
                     'Choose your gender',
-                    style: context.textTheme.bodyLarge,
+                    style:
+                        context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],
             ),
-            items: items
-                .map((String item) => DropdownMenuItem<String>(
+            items: Gender.genders()
+                .map((Gender item) => DropdownMenuItem<Gender>(
                     value: item,
                     child: Row(
                       children: [
                         Text(
-                          item,
-                          style: context.textTheme.bodyLarge,
+                          item.value,
+                          style: context.textTheme.bodyLarge!
+                              .copyWith(color: ref.currentAppColor.textColor),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],
@@ -113,6 +110,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
               width: context.screenSize.width - 48,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
+                color: ref.currentAppColor.cardColorWithoutOpacity,
               ),
               offset: const Offset(0, -6),
             ),

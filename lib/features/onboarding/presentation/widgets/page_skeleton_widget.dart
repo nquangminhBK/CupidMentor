@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,12 +23,13 @@ class PageSkeletonWidget extends ConsumerWidget {
             children: [
               Text(
                 title,
-                style: context.textTheme.titleLarge!.copyWith(fontSize: 30),
+                style: context.textTheme.titleLarge!
+                    .copyWith(fontSize: 30, color: ref.currentAppColor.textColor),
               ),
               const VerticalSpace(size: 24),
               Text(
                 description,
-                style: context.textTheme.bodyLarge,
+                style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
               ),
               const VerticalSpace(size: 24),
               ...children,

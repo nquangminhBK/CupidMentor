@@ -12,7 +12,28 @@
           "package_name": "com.quangminh.cupid_mentor"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "979013705313-nic6fdbqj0imd2tu3sviofc2c4a3845b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quangminh.cupid_mentor",
+            "certificate_hash": "0e80faeffd8eb49b5d1d77de701d52d9e1578d17"
+          }
+        },
+        {
+          "client_id": "979013705313-q2bcigt7f1imb1i80mpqrb53h0fkfi9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quangminh.cupid_mentor",
+            "certificate_hash": "710d91c9cb09816bd81f42517b1702f2bb566797"
+          }
+        },
+        {
+          "client_id": "979013705313-jljburu4tp0aor6gfiqls1711esfb8vg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB3lajwWT5evrpQXrVDF7D7Mqq9xl7jrBo"
@@ -20,7 +41,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979013705313-gm11nj8td84pmscf3r5odjgopq4craj8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "979013705313-tjg14o4tms1lvm3los2umkhl07k0hip0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.quangminh.cupidMentor"
+              }
+            }
+          ]
         }
       }
     }

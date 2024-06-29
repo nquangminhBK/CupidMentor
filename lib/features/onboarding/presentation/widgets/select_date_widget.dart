@@ -58,7 +58,7 @@ class _SelectDateWidgetState extends ConsumerState<SelectDateWidget> {
             widget.selectedDate == null
                 ? "Select your birthday"
                 : DateFormat.yMMMd().format(widget.selectedDate!),
-            style: context.textTheme.bodyLarge,
+            style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
           ),
         ),
       ),

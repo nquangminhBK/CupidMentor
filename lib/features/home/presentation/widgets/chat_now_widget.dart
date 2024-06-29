@@ -15,11 +15,11 @@ class ChatNowWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
-      decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
+      decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
       child: Stack(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
             child: Container(
                 color: Colors.red,
                 width: double.infinity,
@@ -39,7 +39,8 @@ class ChatNowWidget extends ConsumerWidget {
                         padding: const EdgeInsets.only(left: 12, top: 12),
                         child: Text(
                           "Struggling to craft the perfect responses? Don’t worry, we’re here for you!!!",
-                          style: context.textTheme.labelLarge!.copyWith(fontSize: 14),
+                          style: context.textTheme.labelLarge!
+                              .copyWith(fontSize: 14, color: ref.currentAppColor.textColor),
                         ),
                       ),
                     ),
@@ -66,7 +67,8 @@ class ChatNowWidget extends ConsumerWidget {
                                     Text(
                                       "Chat now",
                                       textAlign: TextAlign.center,
-                                      style: context.textTheme.titleMedium,
+                                      style: context.textTheme.titleMedium!
+                                          .copyWith(color: ref.currentAppColor.textColor),
                                     ),
                                     const HorizontalSpace(size: 8),
                                     Icon(
