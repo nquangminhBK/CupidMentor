@@ -6,6 +6,7 @@ import 'package:cupid_mentor/features/auth/data/repositories/authentication_repo
 import 'package:cupid_mentor/features/auth/domain/repositories/authentication_repository.dart';
 import 'package:cupid_mentor/features/auth/domain/use_cases/signin.dart';
 import 'package:cupid_mentor/features/auth/domain/use_cases/signout.dart';
+import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_user.dart';
 import 'package:cupid_mentor/features/splash_screen/data/data_sources/splash_datasources.dart';
 import 'package:cupid_mentor/features/splash_screen/data/repositories/splash_repositories.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/repositories/splash_repositories.dart';
@@ -61,6 +62,7 @@ void _registerUseCases() {
   get.registerLazySingleton(() => CheckNeedLogin(repository: get()));
   get.registerLazySingleton(() => LoginUseCase(repository: get()));
   get.registerLazySingleton(() => LogoutUseCase(repository: get()));
+  get.registerLazySingleton(() => GetCurrentUser(repository: get()));
 }
 
 Future<void> setupLocator() async {

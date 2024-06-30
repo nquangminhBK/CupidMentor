@@ -1,47 +1,40 @@
-// ignore_for_file: annotate_overrides, overridden_fields
 import 'package:cupid_mentor/core/constants/gender.dart';
+import 'package:cupid_mentor/core/utils/datetime_utils.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'user_info_model.g.dart';
+part 'user_info_model.freezed.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
-class LoggedInUserInfoModel extends LoggedInUserInfo {
-  @JsonKey(name: 'gender')
-  final String genderRaw;
-  final String name;
-  final String avatar;
-  @JsonKey(name: 'birthday')
-  final String birthdayRaw;
-  final String job;
-  final List<String> personalities;
-  final List<String> hobbies;
-  final List<String> loveLanguages;
+@freezed
+class LoggedInUserInfoModel with _$LoggedInUserInfoModel {
+  const LoggedInUserInfoModel._();
 
-  LoggedInUserInfoModel(
-      {required this.genderRaw,
-      required this.name,
-      required this.avatar,
-      required this.birthdayRaw,
-      required this.job,
-      required this.personalities,
-      required this.hobbies,
-      required this.loveLanguages})
-      : super(
-          gender: Gender.tryParse(genderRaw) ?? Gender.male,
-          name: name,
-          avatar: avatar,
-          birthday: DateFormat.yMd().parse(birthdayRaw),
-          job: job,
-          personalities: personalities,
-          hobbies: hobbies,
-          loveLanguages: loveLanguages,
-        );
+  const factory LoggedInUserInfoModel({
+    @JsonKey(name: 'gender') required String genderRaw,
+    required String name,
+    required String avatar,
+    @JsonKey(name: 'birthday') required String birthdayRaw,
+    required String job,
+    required List<String> personalities,
+    required List<String> hobbies,
+    required List<String> loveLanguages,
+  }) = _LoggedInUserInfoModel;
 
   factory LoggedInUserInfoModel.fromJson(Map<String, dynamic> json) =>
       _$LoggedInUserInfoModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoggedInUserInfoModelToJson(this);
+  LoggedInUserInfo get toEntity {
+    return LoggedInUserInfo(
+        gender: Gender.tryParse(genderRaw) ?? Gender.other,
+        name: name,
+        avatar: avatar,
+        birthday: DateTimeUtils.convertToDateTime(birthdayRaw),
+        job: job,
+        personalities: personalities,
+        hobbies: hobbies,
+        loveLanguages: loveLanguages);
+  }
 }

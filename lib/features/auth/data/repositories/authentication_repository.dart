@@ -32,7 +32,7 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
 
   @override
   Future<Either<Failure, LoggedInUserInfo?>> getUserInfo() async {
-    return Left(Failure("No User Info"));
+    return const Left(Failure("No User Info"));
   }
 
   @override
@@ -78,5 +78,12 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
     final user = remoteDatasource.getCurrentUser();
     if (user == null) return const Right(true);
     return const Right(false);
+  }
+
+  @override
+  Either<Failure, User> getCurrentUser() {
+    final user = remoteDatasource.getCurrentUser();
+    if (user != null) return Right(user);
+    return const Left(Failure("Not found"));
   }
 }

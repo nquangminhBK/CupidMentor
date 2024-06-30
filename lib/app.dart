@@ -28,6 +28,7 @@ class _AppState extends ConsumerState<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "Cupid Mentor",
       debugShowCheckedModeBanner: false,
       navigatorKey: NavigationService.instance.globalNavigatorKey,
       theme: MyTheme.lightTheme(context),

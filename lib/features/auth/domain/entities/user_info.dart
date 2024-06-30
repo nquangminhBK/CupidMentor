@@ -1,27 +1,42 @@
+import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
-import 'package:equatable/equatable.dart';
+import 'package:cupid_mentor/core/utils/datetime_utils.dart';
+import 'package:cupid_mentor/features/auth/data/models/user_info_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class LoggedInUserInfo extends Equatable {
-  final Gender gender;
-  final String name;
-  final String avatar;
-  final DateTime birthday;
-  final String job;
-  final List<String> personalities;
-  final List<String> hobbies;
-  final List<String> loveLanguages;
+part 'user_info.freezed.dart';
 
-  const LoggedInUserInfo(
-      {required this.gender,
-      required this.name,
-      required this.avatar,
-      required this.birthday,
-      required this.job,
-      required this.personalities,
-      required this.hobbies,
-      required this.loveLanguages});
+@freezed
+class LoggedInUserInfo with _$LoggedInUserInfo {
+  const factory LoggedInUserInfo(
+      {required Gender gender,
+      required String name,
+      required String avatar,
+      required DateTime birthday,
+      required String job,
+      required List<String> personalities,
+      required List<String> hobbies,
+      required List<String> loveLanguages}) = _LoggedInUserInfo;
 
-  @override
-  List<Object?> get props =>
-      [gender, name, birthday, job, avatar, personalities, hobbies, loveLanguages];
+  factory LoggedInUserInfo.empty() => LoggedInUserInfo(
+      gender: Gender.other,
+      name: '',
+      avatar: '',
+      birthday: DateTimeConst.empty(),
+      job: '',
+      personalities: [],
+      hobbies: [],
+      loveLanguages: []);
+
+  LoggedInUserInfoModel get toModel {
+    return LoggedInUserInfoModel(
+        genderRaw: gender.value,
+        name: name,
+        avatar: avatar,
+        birthdayRaw: DateTimeUtils.convertToString(birthday),
+        job: job,
+        personalities: personalities,
+        hobbies: hobbies,
+        loveLanguages: loveLanguages);
+  }
 }
