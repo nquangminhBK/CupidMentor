@@ -21,6 +21,7 @@ class OnboardingScreen extends ConsumerStatefulWidget {
 
 class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   int currentIndex = 0;
+  PageController pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       totalStep: 10,
                       currentStep: currentIndex,
                       width: context.screenSize.width - 100,
-                      color: currentIndex > 4 ? ref.currentAppColor.secondaryColor : ref.currentAppColor.primaryColor,
+                      color: currentIndex > 4
+                          ? ref.currentAppColor.secondaryColor
+                          : ref.currentAppColor.primaryColor,
                     ),
                   ),
                   SizedBox(
@@ -55,6 +58,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
               Expanded(
                 child: PageView(
+                  controller: pageController,
                   children: [
                     InputBasicInfoPage(),
                     InputPersonalitiesPage(),
@@ -72,8 +76,16 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               NavigateButton(
                 showBackButton: currentIndex != 0,
                 showLastButton: currentIndex == 10,
-                onPressBack: () {},
+                onPressBack: () {
+                  pageController.animateToPage(currentIndex - 1,
+                      duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+                  setState(() {
+                    currentIndex = currentIndex - 1;
+                  });
+                },
                 onPressNext: () {
+                  pageController.animateToPage(currentIndex + 1,
+                      duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
                   setState(() {
                     currentIndex = currentIndex + 1;
                   });
@@ -81,6 +93,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 onPressLastButton: () {},
                 lastButtonTitle: '',
               ),
+              const VerticalSpace(size: 10),
             ],
           ),
         ),

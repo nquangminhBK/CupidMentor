@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cupid_mentor/features/auth/data/models/user_info_model.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
+import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class AuthenticationRemoteDatasource {
@@ -12,7 +15,7 @@ abstract class AuthenticationRemoteDatasource {
 
   User? getCurrentUser();
 
-  Future<UserInfo> getUserInfo(String userId);
+  Future<LoggedInUserInfoModel?> getUserInfo(String userId);
 
   Future<CrushInfo> getCrushInfo();
 }
@@ -41,13 +44,17 @@ class AuthenticationRemoteDatasourceImpl implements AuthenticationRemoteDatasour
   }
 
   @override
-  Future<UserInfo> getUserInfo(String userId) async {
-    // final result = await firestore.collection("listUsers").doc(userId).get();
-    // if (result.data() != null) {
-    //   return UserInfoData.fromJson(result.data());
-    // }
-    // return null;
-    throw UnimplementedError();
+  Future<LoggedInUserInfoModel?> getUserInfo(String userId) async {
+    final result = await firestore.collection("users_info").doc(userId).get();
+    if (result.data() != null) {
+      try {
+        return LoggedInUserInfoModel.fromJson(result.data()!);
+      } catch (e) {
+        debugPrint("[AuthenticationRemoteDatasource] getUserInfo $userId error: $e");
+        return null;
+      }
+    }
+    return null;
   }
 
   @override

@@ -5,17 +5,17 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 
-final loginUseCaseProvider = Provider<LoginUseCase>((ref) {
-  return GetIt.I<LoginUseCase>();
+final checkNeedLoginUseCaseProvider = Provider<CheckNeedLogin>((ref) {
+  return GetIt.I<CheckNeedLogin>();
 });
 
-class LoginUseCase implements UseCase<bool, NoParams> {
+class CheckNeedLogin implements UseCase<bool, NoParams> {
   final AuthenticationRepository repository;
 
-  const LoginUseCase({required this.repository});
+  const CheckNeedLogin({required this.repository});
 
   @override
   Future<Either<Failure, bool>> call(NoParams params) async {
-    return await repository.signIn();
+    return repository.needLogin();
   }
 }

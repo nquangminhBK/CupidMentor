@@ -21,6 +21,7 @@ class PageIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("minh check 2 $currentIndex");
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [for (var i = 0; i < totalCount; i++) i]

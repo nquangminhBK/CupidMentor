@@ -1,18 +1,20 @@
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:equatable/equatable.dart';
 
-class UserInfo extends Equatable {
+class LoggedInUserInfo extends Equatable {
   final Gender gender;
   final String name;
+  final String avatar;
   final DateTime birthday;
   final String job;
   final List<String> personalities;
   final List<String> hobbies;
   final List<String> loveLanguages;
 
-  const UserInfo(
+  const LoggedInUserInfo(
       {required this.gender,
       required this.name,
+      required this.avatar,
       required this.birthday,
       required this.job,
       required this.personalities,
@@ -20,5 +22,6 @@ class UserInfo extends Equatable {
       required this.loveLanguages});
 
   @override
-  List<Object?> get props => [gender, name, birthday, job, personalities, hobbies, loveLanguages];
+  List<Object?> get props =>
+      [gender, name, birthday, job, avatar, personalities, hobbies, loveLanguages];
 }

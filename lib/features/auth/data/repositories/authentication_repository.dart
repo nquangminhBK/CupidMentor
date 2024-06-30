@@ -4,9 +4,11 @@ import 'package:cupid_mentor/core/utils/mixin/connectivity_mixin.dart';
 import 'package:cupid_mentor/features/auth/data/datasources/authentication_local_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/datasources/authentication_remote_datasource.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
+import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/auth/domain/repositories/authentication_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticationRepositoryImpl with ConnectivityMixin implements AuthenticationRepository {
@@ -29,9 +31,8 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
   }
 
   @override
-  Future<Either<Failure, UserInfo>> getUserInfo() {
-// TODO: implement getUserInfo
-    throw UnimplementedError();
+  Future<Either<Failure, LoggedInUserInfo?>> getUserInfo() async {
+    return Left(Failure("No User Info"));
   }
 
   @override
@@ -40,7 +41,7 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
     if (currentUser != null) return const Right(true);
     if (await isInConnection()) {
       try {
-        final user = await remoteDatasource.signIn();
+        final user = kIsWeb ? await remoteDatasource.webSignIn() : await remoteDatasource.signIn();
         if (user != null) {
           return const Right(true);
         } else {
@@ -70,5 +71,12 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
       }
     }
     return const Left(NoConnection());
+  }
+
+  @override
+  Either<Failure, bool> needLogin() {
+    final user = remoteDatasource.getCurrentUser();
+    if (user == null) return const Right(true);
+    return const Right(false);
   }
 }

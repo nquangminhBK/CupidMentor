@@ -22,6 +22,7 @@ mixin _$SplashState {
     required TResult Function() goToLogin,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
+    required TResult Function() goToHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$SplashState {
     TResult? Function()? goToLogin,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
+    TResult? Function()? goToHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$SplashState {
     TResult Function()? goToLogin,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
+    TResult Function()? goToHome,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$SplashState {
     required TResult Function(SplashGoToLoginState value) goToLogin,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
+    required TResult Function(SplashGoToHomeState value) goToHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$SplashState {
     TResult? Function(SplashGoToLoginState value)? goToLogin,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult? Function(SplashGoToHomeState value)? goToHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$SplashState {
     TResult Function(SplashGoToLoginState value)? goToLogin,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult Function(SplashGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,6 +137,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
     required TResult Function() goToLogin,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
+    required TResult Function() goToHome,
   }) {
     return initialized();
   }
@@ -142,6 +149,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
     TResult? Function()? goToLogin,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
+    TResult? Function()? goToHome,
   }) {
     return initialized?.call();
   }
@@ -153,6 +161,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
     TResult Function()? goToLogin,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
+    TResult Function()? goToHome,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -168,6 +177,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
     required TResult Function(SplashGoToLoginState value) goToLogin,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
+    required TResult Function(SplashGoToHomeState value) goToHome,
   }) {
     return initialized(this);
   }
@@ -179,6 +189,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
     TResult? Function(SplashGoToLoginState value)? goToLogin,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult? Function(SplashGoToHomeState value)? goToHome,
   }) {
     return initialized?.call(this);
   }
@@ -190,6 +201,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
     TResult Function(SplashGoToLoginState value)? goToLogin,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult Function(SplashGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -246,6 +258,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
     required TResult Function() goToLogin,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
+    required TResult Function() goToHome,
   }) {
     return goToLogin();
   }
@@ -257,6 +270,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
     TResult? Function()? goToLogin,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
+    TResult? Function()? goToHome,
   }) {
     return goToLogin?.call();
   }
@@ -268,6 +282,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
     TResult Function()? goToLogin,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
+    TResult Function()? goToHome,
     required TResult orElse(),
   }) {
     if (goToLogin != null) {
@@ -283,6 +298,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
     required TResult Function(SplashGoToLoginState value) goToLogin,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
+    required TResult Function(SplashGoToHomeState value) goToHome,
   }) {
     return goToLogin(this);
   }
@@ -294,6 +310,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
     TResult? Function(SplashGoToLoginState value)? goToLogin,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult? Function(SplashGoToHomeState value)? goToHome,
   }) {
     return goToLogin?.call(this);
   }
@@ -305,6 +322,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
     TResult Function(SplashGoToLoginState value)? goToLogin,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult Function(SplashGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) {
     if (goToLogin != null) {
@@ -363,6 +381,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
     required TResult Function() goToLogin,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
+    required TResult Function() goToHome,
   }) {
     return goToOnboarding();
   }
@@ -374,6 +393,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
     TResult? Function()? goToLogin,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
+    TResult? Function()? goToHome,
   }) {
     return goToOnboarding?.call();
   }
@@ -385,6 +405,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
     TResult Function()? goToLogin,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
+    TResult Function()? goToHome,
     required TResult orElse(),
   }) {
     if (goToOnboarding != null) {
@@ -400,6 +421,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
     required TResult Function(SplashGoToLoginState value) goToLogin,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
+    required TResult Function(SplashGoToHomeState value) goToHome,
   }) {
     return goToOnboarding(this);
   }
@@ -411,6 +433,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
     TResult? Function(SplashGoToLoginState value)? goToLogin,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult? Function(SplashGoToHomeState value)? goToHome,
   }) {
     return goToOnboarding?.call(this);
   }
@@ -422,6 +445,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
     TResult Function(SplashGoToLoginState value)? goToLogin,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult Function(SplashGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) {
     if (goToOnboarding != null) {
@@ -480,6 +504,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
     required TResult Function() goToLogin,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
+    required TResult Function() goToHome,
   }) {
     return goToShowCase();
   }
@@ -491,6 +516,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
     TResult? Function()? goToLogin,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
+    TResult? Function()? goToHome,
   }) {
     return goToShowCase?.call();
   }
@@ -502,6 +528,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
     TResult Function()? goToLogin,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
+    TResult Function()? goToHome,
     required TResult orElse(),
   }) {
     if (goToShowCase != null) {
@@ -517,6 +544,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
     required TResult Function(SplashGoToLoginState value) goToLogin,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
+    required TResult Function(SplashGoToHomeState value) goToHome,
   }) {
     return goToShowCase(this);
   }
@@ -528,6 +556,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
     TResult? Function(SplashGoToLoginState value)? goToLogin,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult? Function(SplashGoToHomeState value)? goToHome,
   }) {
     return goToShowCase?.call(this);
   }
@@ -539,6 +568,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
     TResult Function(SplashGoToLoginState value)? goToLogin,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult Function(SplashGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) {
     if (goToShowCase != null) {
@@ -550,4 +580,125 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
 
 abstract class SplashGoToShowCaseState implements SplashState {
   const factory SplashGoToShowCaseState() = _$SplashGoToShowCaseStateImpl;
+}
+
+/// @nodoc
+abstract class _$$SplashGoToHomeStateImplCopyWith<$Res> {
+  factory _$$SplashGoToHomeStateImplCopyWith(_$SplashGoToHomeStateImpl value,
+          $Res Function(_$SplashGoToHomeStateImpl) then) =
+      __$$SplashGoToHomeStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SplashGoToHomeStateImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$SplashGoToHomeStateImpl>
+    implements _$$SplashGoToHomeStateImplCopyWith<$Res> {
+  __$$SplashGoToHomeStateImplCopyWithImpl(_$SplashGoToHomeStateImpl _value,
+      $Res Function(_$SplashGoToHomeStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SplashGoToHomeStateImpl implements SplashGoToHomeState {
+  const _$SplashGoToHomeStateImpl();
+
+  @override
+  String toString() {
+    return 'SplashState.goToHome()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SplashGoToHomeStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() goToLogin,
+    required TResult Function() goToOnboarding,
+    required TResult Function() goToShowCase,
+    required TResult Function() goToHome,
+  }) {
+    return goToHome();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? goToLogin,
+    TResult? Function()? goToOnboarding,
+    TResult? Function()? goToShowCase,
+    TResult? Function()? goToHome,
+  }) {
+    return goToHome?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? goToLogin,
+    TResult Function()? goToOnboarding,
+    TResult Function()? goToShowCase,
+    TResult Function()? goToHome,
+    required TResult orElse(),
+  }) {
+    if (goToHome != null) {
+      return goToHome();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SplashInitializedState value) initialized,
+    required TResult Function(SplashGoToLoginState value) goToLogin,
+    required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
+    required TResult Function(SplashGoToShowCaseState value) goToShowCase,
+    required TResult Function(SplashGoToHomeState value) goToHome,
+  }) {
+    return goToHome(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SplashInitializedState value)? initialized,
+    TResult? Function(SplashGoToLoginState value)? goToLogin,
+    TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
+    TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult? Function(SplashGoToHomeState value)? goToHome,
+  }) {
+    return goToHome?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SplashInitializedState value)? initialized,
+    TResult Function(SplashGoToLoginState value)? goToLogin,
+    TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
+    TResult Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult Function(SplashGoToHomeState value)? goToHome,
+    required TResult orElse(),
+  }) {
+    if (goToHome != null) {
+      return goToHome(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SplashGoToHomeState implements SplashState {
+  const factory SplashGoToHomeState() = _$SplashGoToHomeStateImpl;
 }

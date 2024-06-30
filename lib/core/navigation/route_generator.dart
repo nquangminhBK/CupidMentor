@@ -8,6 +8,7 @@ import 'package:cupid_mentor/features/onboarding/presentation/pages/onboarding_s
 import 'package:cupid_mentor/features/onboarding/presentation/pages/welcome_screen.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/setting_screen.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/showcase_screen.dart';
+import 'package:cupid_mentor/features/splash_screen/presentation/pages/splash_screen.dart';
 import 'package:cupid_mentor/features/tip_date_spots/presentation/pages/tips_date_spot_screen.dart';
 import 'package:cupid_mentor/features/tips_gift/presentation/pages/tips_gift_screen.dart';
 import 'package:cupid_mentor/features/tips_replying/presentation/pages/tips_replying_screen.dart';
@@ -22,7 +23,7 @@ Route<Object>? generateRoute(RouteSettings settings) {
     case AppRoutes.splash:
       return _buildRoute(
         settings: settings,
-        screen: SplashText(),
+        screen: SplashScreen(),
       );
     case AppRoutes.showcase:
       return _buildRoute(
@@ -155,24 +156,6 @@ class FadePageRoute<T> extends PageRoute<T> {
     return FadeTransition(
       opacity: animation,
       child: child,
-    );
-  }
-}
-
-class SplashText extends ConsumerWidget {
-  const SplashText({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Material(
-      child: InkWell(
-        onTap: () {
-          ref.read(themeNotifierProvider.notifier).switchTheme();
-        },
-        child: Container(
-          color: ref.currentAppColor.screenBackgroundColor,
-        ),
-      ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/themes_colors/themes.dart';
 import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class App extends ConsumerStatefulWidget {
@@ -33,7 +34,11 @@ class _AppState extends ConsumerState<App> {
       darkTheme: MyTheme.darkTheme(context),
       themeMode: ref.read(themeNotifierProvider).currentTheme,
       onGenerateRoute: generateRoute,
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.splash,
+      builder: (context, myWidget) {
+        myWidget = EasyLoading.init()(context, myWidget);
+        return myWidget;
+      },
     );
   }
 }
