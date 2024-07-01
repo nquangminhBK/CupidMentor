@@ -1,10 +1,9 @@
 import 'package:cupid_mentor/core/constants/personalities.dart';
-import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';
-import 'package:cupid_mentor/core/widgets/gradient_outline_input_border.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/page_skeleton_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,10 +16,9 @@ class InputPersonalitiesPage extends ConsumerStatefulWidget {
 }
 
 class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage> {
-  DateTime? selectedDate;
-
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(onboardingNotifierProvider);
     return PageSkeletonWidget(
       title: "Describe yourself in a few words that we can know the real you 🙄",
       description:
@@ -41,7 +39,15 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
           spacing: 12,
           runSpacing: 12,
           children: Personalities.personalities
-              .map((e) => CustomTag(title: e, isSelected: false, onTap: () {}))
+              .map((e) => CustomTag(
+                  title: e,
+                  isSelected: state.userInfo.personalities.contains(e),
+                  onTap: () {
+                    ref.read(onboardingNotifierProvider.notifier).updatePersonalities(
+                          e,
+                          state.userInfo.personalities.contains(e),
+                        );
+                  }))
               .toList(),
         ),
       ],

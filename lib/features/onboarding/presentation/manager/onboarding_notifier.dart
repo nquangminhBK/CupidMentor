@@ -1,5 +1,6 @@
 import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
+import 'package:cupid_mentor/core/constants/personalities.dart';
 import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
@@ -84,5 +85,17 @@ class OnboardingNotifier extends _$OnboardingNotifier {
             gender: gender ?? currentUserInfo.gender),
         errorMessage: "",
         canGoNext: false);
+  }
+
+  void updatePersonalities(String personality, bool isRemove) {
+    final currentUserInfo = state.userInfo;
+    List<String> personalities = List<String>.from(currentUserInfo.personalities);
+    if (isRemove) {
+      personalities.remove(personality);
+    } else {
+      personalities.add(personality);
+    }
+    state = state.copyWith(
+        userInfo: currentUserInfo.copyWith(personalities: personalities), errorMessage: "");
   }
 }
