@@ -56,7 +56,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
           return;
         }
       case 2:
-        if (state.userInfo.personalities.isEmpty) {
+        if (state.userInfo.hobbies.isEmpty) {
           state = state.copyWith(
               canGoNext: false,
               errorMessage:
@@ -97,5 +97,16 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     }
     state = state.copyWith(
         userInfo: currentUserInfo.copyWith(personalities: personalities), errorMessage: "");
+  }
+
+  void updateHobbies(String hobby, bool isRemove) {
+    final currentUserInfo = state.userInfo;
+    List<String> hobbies = List<String>.from(currentUserInfo.hobbies);
+    if (isRemove) {
+      hobbies.remove(hobby);
+    } else {
+      hobbies.add(hobby);
+    }
+    state = state.copyWith(userInfo: currentUserInfo.copyWith(hobbies: hobbies), errorMessage: "");
   }
 }

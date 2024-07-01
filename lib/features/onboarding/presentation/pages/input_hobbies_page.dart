@@ -6,6 +6,7 @@ import 'package:cupid_mentor/core/widgets/custom_tag.dart';
 import 'package:cupid_mentor/core/widgets/gradient_outline_input_border.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/page_skeleton_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,8 +19,25 @@ class InputHobbiesPage extends ConsumerStatefulWidget {
 }
 
 class _InputHobbiesPageState extends ConsumerState<InputHobbiesPage> {
+  List<String> searchedList = [];
+  List<String> unSearchedList = Hobbies.hobbies;
+
+  void _executeSearch(String searchKey) {
+    if (searchKey.isNotEmpty) {
+      searchedList = Hobbies.hobbies
+          .where((element) => element.toLowerCase().contains(searchKey.toLowerCase()))
+          .toList();
+      unSearchedList = Hobbies.hobbies
+          .where((element) => !element.toLowerCase().contains(searchKey.toLowerCase()))
+          .toList();
+    } else {
+      searchedList = [];
+      unSearchedList = Hobbies.hobbies;
+    }
+  }
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(onboardingNotifierProvider);
     return PageSkeletonWidget(
       title: "We’re excited to discover your unique interests & passions 🤩",
       description:
@@ -27,7 +45,9 @@ class _InputHobbiesPageState extends ConsumerState<InputHobbiesPage> {
       children: [
         MyTextField(
           onChanged: (text) {
-            debugPrint(text);
+            setState(() {
+              _executeSearch(text);
+            });
           },
           hintText: "Search your hobbies",
           suffixIcon: Icon(
@@ -36,11 +56,41 @@ class _InputHobbiesPageState extends ConsumerState<InputHobbiesPage> {
           ),
         ),
         const VerticalSpace(size: 16),
+        if (searchedList.isNotEmpty) Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: searchedList
+              .map((e) => CustomTag(
+              title: e,
+              isSelected: state.userInfo.hobbies.contains(e),
+              onTap: () {
+                ref.read(onboardingNotifierProvider.notifier).updateHobbies(
+                  e,
+                  state.userInfo.hobbies.contains(e),
+                );
+              }))
+              .toList(),
+        ),
+        if (searchedList.isNotEmpty) const VerticalSpace(size: 16),
+        if (searchedList.isNotEmpty) Container(
+          color: Colors.white,
+          width: double.infinity,
+          height: 2,
+        ),
+        if (searchedList.isNotEmpty) const VerticalSpace(size: 16),
         Wrap(
           spacing: 12,
           runSpacing: 12,
-          children: Hobbies.hobbies
-              .map((e) => CustomTag(title: e, isSelected: true, onTap: () {}))
+          children: unSearchedList
+              .map((e) => CustomTag(
+                  title: e,
+                  isSelected: state.userInfo.hobbies.contains(e),
+                  onTap: () {
+                    ref.read(onboardingNotifierProvider.notifier).updateHobbies(
+                          e,
+                          state.userInfo.hobbies.contains(e),
+                        );
+                  }))
               .toList(),
         ),
       ],

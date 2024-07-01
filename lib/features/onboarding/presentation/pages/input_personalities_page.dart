@@ -16,16 +16,10 @@ class InputPersonalitiesPage extends ConsumerStatefulWidget {
 }
 
 class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage> {
-  String searchKey = "";
   List<String> searchedList = [];
   List<String> unSearchedList = Personalities.personalities;
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  void _executeSearch() {
+  void _executeSearch(String searchKey) {
     if (searchKey.isNotEmpty) {
       searchedList = Personalities.personalities
           .where((element) => element.toLowerCase().contains(searchKey.toLowerCase()))
@@ -49,9 +43,8 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
       children: [
         MyTextField(
           onChanged: (text) {
-            searchKey = text;
             setState(() {
-              _executeSearch();
+              _executeSearch(text);
             });
           },
           hintText: "Search your personalities",
@@ -61,27 +54,29 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
           ),
         ),
         const VerticalSpace(size: 16),
-        if (searchedList.isNotEmpty) Wrap(
-          spacing: 12,
-          runSpacing: 12,
-          children: searchedList
-              .map((e) => CustomTag(
-                  title: e,
-                  isSelected: state.userInfo.personalities.contains(e),
-                  onTap: () {
-                    ref.read(onboardingNotifierProvider.notifier).updatePersonalities(
-                          e,
-                          state.userInfo.personalities.contains(e),
-                        );
-                  }))
-              .toList(),
-        ),
+        if (searchedList.isNotEmpty)
+          Wrap(
+            spacing: 12,
+            runSpacing: 12,
+            children: searchedList
+                .map((e) => CustomTag(
+                    title: e,
+                    isSelected: state.userInfo.personalities.contains(e),
+                    onTap: () {
+                      ref.read(onboardingNotifierProvider.notifier).updatePersonalities(
+                            e,
+                            state.userInfo.personalities.contains(e),
+                          );
+                    }))
+                .toList(),
+          ),
         if (searchedList.isNotEmpty) const VerticalSpace(size: 16),
-        if (searchedList.isNotEmpty) Container(
-          color: Colors.white,
-          width: double.infinity,
-          height: 2,
-        ),
+        if (searchedList.isNotEmpty)
+          Container(
+            color: Colors.white,
+            width: double.infinity,
+            height: 2,
+          ),
         if (searchedList.isNotEmpty) const VerticalSpace(size: 16),
         Wrap(
           spacing: 12,
