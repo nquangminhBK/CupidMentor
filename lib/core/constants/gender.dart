@@ -3,7 +3,8 @@ import 'package:collection/collection.dart';
 enum Gender {
   male("Male"),
   female("Female"),
-  other("Other");
+  other("Other"),
+  none("none");
 
   final String value;
 

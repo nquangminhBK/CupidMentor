@@ -2,7 +2,7 @@ import 'package:cupid_mentor/core/widgets/loading_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-class LoadingUtil {
+class LoadingUtils {
   static void configLoading() {
     EasyLoading.instance
     // ..displayDuration = const Duration(milliseconds: 2000)

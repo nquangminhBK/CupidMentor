@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_info_model.freezed.dart';
+part 'user_info_model.g.dart';
 
 @freezed
 class LoggedInUserInfoModel with _$LoggedInUserInfoModel {
@@ -28,7 +29,7 @@ class LoggedInUserInfoModel with _$LoggedInUserInfoModel {
 
   LoggedInUserInfo get toEntity {
     return LoggedInUserInfo(
-        gender: Gender.tryParse(genderRaw) ?? Gender.other,
+        gender: Gender.tryParse(genderRaw) ?? Gender.none,
         name: name,
         avatar: avatar,
         birthday: DateTimeUtils.convertToDateTime(birthdayRaw),

@@ -8,6 +8,7 @@ part 'user_info.freezed.dart';
 
 @freezed
 class LoggedInUserInfo with _$LoggedInUserInfo {
+  const LoggedInUserInfo._();
   const factory LoggedInUserInfo(
       {required Gender gender,
       required String name,
@@ -19,7 +20,7 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
       required List<String> loveLanguages}) = _LoggedInUserInfo;
 
   factory LoggedInUserInfo.empty() => LoggedInUserInfo(
-      gender: Gender.other,
+      gender: Gender.none,
       name: '',
       avatar: '',
       birthday: DateTimeConst.empty(),

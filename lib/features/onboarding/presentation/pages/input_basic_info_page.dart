@@ -1,27 +1,23 @@
+import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/widgets/gradient_outline_input_border.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/page_skeleton_widget.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_date_widget.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_gender_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InputBasicInfoPage extends ConsumerStatefulWidget {
+class InputBasicInfoPage extends ConsumerWidget {
   const InputBasicInfoPage({super.key});
 
   @override
-  ConsumerState<InputBasicInfoPage> createState() => _InputNamePageState();
-}
-
-class _InputNamePageState extends ConsumerState<InputBasicInfoPage> {
-  DateTime? selectedDate;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(onboardingNotifierProvider);
     return PageSkeletonWidget(
       title: "We're thrilled to have you here. What should we call you? 👋",
       description:
@@ -33,8 +29,10 @@ class _InputNamePageState extends ConsumerState<InputBasicInfoPage> {
         ),
         const VerticalSpace(size: 6),
         MyTextField(
+          key: const ValueKey("name"),
+          initialText: ref.read(onboardingNotifierProvider).userInfo.name,
           onChanged: (text) {
-            debugPrint(text);
+            ref.read(onboardingNotifierProvider.notifier).updateBasicInfo(name: text);
           },
           hintText: "Enter your name",
         ),
@@ -44,7 +42,7 @@ class _InputNamePageState extends ConsumerState<InputBasicInfoPage> {
           style: context.textTheme.titleLarge!.copyWith(color: ref.currentAppColor.textColor),
         ),
         const VerticalSpace(size: 6),
-        SelectGenderDropdown(),
+        const SelectGenderDropdown(),
         const VerticalSpace(size: 24),
         Text(
           "Your birthday is",
@@ -53,11 +51,11 @@ class _InputNamePageState extends ConsumerState<InputBasicInfoPage> {
         const VerticalSpace(size: 6),
         SelectDateWidget(
           onDateSelected: (selectedDate) {
-            setState(() {
-              this.selectedDate = selectedDate;
-            });
+            ref.read(onboardingNotifierProvider.notifier).updateBasicInfo(birthDay: selectedDate);
           },
-          selectedDate: selectedDate,
+          selectedDate: state.userInfo.birthday.isSameDate(DateTimeConst.empty())
+              ? null
+              : state.userInfo.birthday,
         ),
         const VerticalSpace(size: 24),
         Text(
@@ -66,8 +64,9 @@ class _InputNamePageState extends ConsumerState<InputBasicInfoPage> {
         ),
         const VerticalSpace(size: 6),
         MyTextField(
+          key: const ValueKey("jobs"),
           onChanged: (text) {
-            debugPrint(text);
+            ref.read(onboardingNotifierProvider.notifier).updateBasicInfo(job: text);
           },
           hintText: "Input your jobs",
         ),

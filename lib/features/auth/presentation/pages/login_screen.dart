@@ -22,9 +22,9 @@ class LoginScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(authNotifierProvider, (previous, next) {
       if (next is AuthLoadingState) {
-        LoadingUtil.showLoading(message: "Logging in...");
+        LoadingUtils.showLoading(message: "Logging in...");
       } else {
-        LoadingUtil.hideLoading();
+        LoadingUtils.hideLoading();
       }
       if (previous is! AuthGoToOnboardingState && next is AuthGoToOnboardingState) {
         NavigationService.instance.push(AppRoutes.onboarding, replace: true);

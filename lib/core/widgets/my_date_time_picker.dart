@@ -52,9 +52,8 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
     return CupertinoTheme(
         data: CupertinoThemeData(
           textTheme: CupertinoTextThemeData(
-              dateTimePickerTextStyle: context.textTheme.bodyLarge!.copyWith(
-                  fontSize: 18,
-                  color: ref.currentTheme == ThemeMode.dark ? Colors.white : Colors.black)),
+              dateTimePickerTextStyle: context.textTheme.bodyLarge!
+                  .copyWith(fontSize: 18, color: ref.currentAppColor.textColor)),
           brightness: ref.currentTheme == ThemeMode.light ? Brightness.light : Brightness.dark,
         ),
         child: Column(
@@ -68,8 +67,8 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
                   size: 24,
                 ),
                 Text(widget.title,
-                    style: context.textTheme.bodyLarge!.copyWith(
-                        color: ref.currentTheme == ThemeMode.dark ? Colors.white : Colors.black)),
+                    style: context.textTheme.bodyLarge!
+                        .copyWith(color: ref.currentAppColor.textColor)),
                 const Spacer(),
                 AnimatedButton(
                   scaleSize: 0.9,

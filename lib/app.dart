@@ -3,6 +3,7 @@ import 'package:cupid_mentor/core/navigation/route_generator.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/themes_colors/themes.dart';
 import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,6 +30,14 @@ class _AppState extends ConsumerState<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Cupid Mentor",
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.unknown
+        },
+      ),
       debugShowCheckedModeBanner: false,
       navigatorKey: NavigationService.instance.globalNavigatorKey,
       theme: MyTheme.lightTheme(context),

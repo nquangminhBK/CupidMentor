@@ -7,8 +7,15 @@ part 'onboarding_state.freezed.dart';
 
 @freezed
 abstract class OnboardingState with _$OnboardingState {
-  const factory OnboardingState.initialized() = OnboardingInitializedState;
+  const OnboardingState._();
 
-  const factory OnboardingState.infoUpdated(
-      {required LoggedInUserInfo userInfo, CrushInfo? crushInfo}) = OnboardingInfoUpdatedState;
+  const factory OnboardingState({
+    required LoggedInUserInfo userInfo,
+    CrushInfo? crushInfo,
+    required bool canGoNext,
+    required String errorMessage,
+  }) = _OnboardingState;
+
+  factory OnboardingState.initial() =>
+      OnboardingState(userInfo: LoggedInUserInfo.empty(), canGoNext: false, errorMessage: '');
 }

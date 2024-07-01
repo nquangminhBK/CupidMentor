@@ -3,6 +3,7 @@ import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/gradient_box_border.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,6 +40,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(onboardingNotifierProvider);
     return SizedBox(
       width: context.screenSize.width,
       child: DropdownButtonHideUnderline(
@@ -58,7 +60,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
               children: [
                 Expanded(
                   child: Text(
-                    'Choose your gender',
+                    (state.userInfo.gender == Gender.none) ? 'Choose your gender' : state.userInfo.gender.name,
                     style:
                         context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
                     overflow: TextOverflow.ellipsis,
@@ -85,6 +87,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
               setState(() {
                 selectedValue = value;
               });
+              ref.read(onboardingNotifierProvider.notifier).updateBasicInfo(gender: value);
             },
             buttonStyleData: ButtonStyleData(
               height: 50,

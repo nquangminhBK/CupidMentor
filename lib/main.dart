@@ -9,7 +9,7 @@ import 'app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  LoadingUtil.configLoading();
+  LoadingUtils.configLoading();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

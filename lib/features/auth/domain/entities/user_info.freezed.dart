@@ -184,7 +184,7 @@ class __$$LoggedInUserInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoggedInUserInfoImpl implements _LoggedInUserInfo {
+class _$LoggedInUserInfoImpl extends _LoggedInUserInfo {
   const _$LoggedInUserInfoImpl(
       {required this.gender,
       required this.name,
@@ -196,7 +196,8 @@ class _$LoggedInUserInfoImpl implements _LoggedInUserInfo {
       required final List<String> loveLanguages})
       : _personalities = personalities,
         _hobbies = hobbies,
-        _loveLanguages = loveLanguages;
+        _loveLanguages = loveLanguages,
+        super._();
 
   @override
   final Gender gender;
@@ -275,7 +276,7 @@ class _$LoggedInUserInfoImpl implements _LoggedInUserInfo {
           this, _$identity);
 }
 
-abstract class _LoggedInUserInfo implements LoggedInUserInfo {
+abstract class _LoggedInUserInfo extends LoggedInUserInfo {
   const factory _LoggedInUserInfo(
       {required final Gender gender,
       required final String name,
@@ -285,6 +286,7 @@ abstract class _LoggedInUserInfo implements LoggedInUserInfo {
       required final List<String> personalities,
       required final List<String> hobbies,
       required final List<String> loveLanguages}) = _$LoggedInUserInfoImpl;
+  const _LoggedInUserInfo._() : super._();
 
   @override
   Gender get gender;

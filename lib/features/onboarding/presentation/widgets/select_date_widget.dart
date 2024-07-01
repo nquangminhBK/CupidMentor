@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 
@@ -34,7 +35,7 @@ class _SelectDateWidgetState extends ConsumerState<SelectDateWidget> {
             context: context,
             ref: ref,
             title: "Select your birthday",
-            initialDate: widget.selectedDate ?? DateTime(1980, 1, 1),
+            initialDate: widget.selectedDate,
             updateDateTime: (selectedDate) {
               widget.onDateSelected(selectedDate);
             }).then((_) {
