@@ -110,4 +110,28 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     }
     state = state.copyWith(userInfo: currentUserInfo.copyWith(hobbies: hobbies), errorMessage: "");
   }
+
+  void updateLoveLanguages(String loveLanguage, bool isRemove) {
+    final currentUserInfo = state.userInfo;
+    List<String> loveLanguages = List<String>.from(currentUserInfo.loveLanguages);
+    if (isRemove) {
+      loveLanguages.remove(loveLanguage);
+    } else {
+      loveLanguages.add(loveLanguage);
+    }
+    state = state.copyWith(
+        userInfo: currentUserInfo.copyWith(loveLanguages: loveLanguages), errorMessage: "");
+  }
+
+  void reorderLoveLanguages(int oldIndex, int newIndex) {
+    final currentUserInfo = state.userInfo;
+    List<String> loveLanguages = List<String>.from(currentUserInfo.loveLanguages);
+    if (oldIndex < newIndex) {
+      newIndex--;
+    }
+    final String item = loveLanguages.removeAt(oldIndex);
+    loveLanguages.insert(newIndex, item);
+    state = state.copyWith(
+        userInfo: currentUserInfo.copyWith(loveLanguages: loveLanguages), errorMessage: "");
+  }
 }

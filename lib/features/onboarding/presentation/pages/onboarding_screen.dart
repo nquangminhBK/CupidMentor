@@ -70,8 +70,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     width: 70,
                     child: Center(
                       child: Text(
-                        "5/7",
-                        style: context.textTheme.titleSmall,
+                        "${currentPage + 1}/5",
+                        style: context.textTheme.titleSmall!.copyWith(color: ref.currentAppColor.textColor),
                       ),
                     ),
                   )
