@@ -31,6 +31,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
   }
 
   void goNextPage(int currentPage) async {
+    state = state.copyWith(errorMessage: "", canGoNext: false);
     switch (currentPage) {
       case 0:
         if (state.userInfo.name.isEmpty) {

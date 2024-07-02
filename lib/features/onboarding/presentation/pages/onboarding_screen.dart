@@ -11,7 +11,6 @@ import 'package:cupid_mentor/features/onboarding/presentation/pages/input_love_l
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_personalities_page.dart';
 import 'package:cupid_mentor/core/widgets/navigate_button.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_relationship_status_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -80,6 +79,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
               Expanded(
                 child: PageView(
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: pageController,
                   children: const [
                     InputBasicInfoPage(),
@@ -89,7 +89,6 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     InputRelationshipStatusPage()
                   ],
                   onPageChanged: (index) {
-                    print("minh check $index");
                     setState(() {
                       currentPage = index;
                     });
