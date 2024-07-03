@@ -5,13 +5,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyTextField extends ConsumerStatefulWidget {
+class MyTextField extends ConsumerWidget {
   const MyTextField(
       {super.key,
       required this.onChanged,
       required this.hintText,
       this.initialText,
       this.prefixIcon,
+      this.controller,
+      this.focusNode,
       this.suffixIcon});
 
   final Function(String) onChanged;
@@ -19,40 +21,31 @@ class MyTextField extends ConsumerStatefulWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final String? initialText;
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
 
   @override
-  ConsumerState<MyTextField> createState() => _MyTextFieldState();
-}
-
-class _MyTextFieldState extends ConsumerState<MyTextField> {
-  TextEditingController controller = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     if (kIsWeb) {
       return SizedBox(
         height: 50,
         child: TextFormField(
-          initialValue: widget.initialText,
+          focusNode: focusNode,
+          controller: controller,
           autofocus: false,
           textInputAction: TextInputAction.done,
-          onChanged: widget.onChanged,
+          onChanged: onChanged,
           style: context.textTheme.bodyLarge!
               .copyWith(color: ref.currentAppColor.textColor, fontWeight: FontWeight.bold),
           textAlign: TextAlign.left,
           cursorColor: Colors.white,
           decoration: InputDecoration(
-            suffixIcon: widget.suffixIcon,
-            prefixIcon: widget.prefixIcon,
+            suffixIcon: suffixIcon,
+            prefixIcon: prefixIcon,
             contentPadding: const EdgeInsets.symmetric(horizontal: 14),
             fillColor: ref.currentAppColor.buttonBackgroundColor,
             filled: true,
-            hintText: widget.hintText,
+            hintText: hintText,
             hintStyle: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
@@ -64,27 +57,25 @@ class _MyTextFieldState extends ConsumerState<MyTextField> {
         ),
       );
     }
-    if (widget.initialText?.isNotEmpty ?? false) {
-      controller.value = TextEditingValue(text: widget.initialText ?? "");
-    }
+
     return SizedBox(
       height: 50,
       child: TextFormField(
         controller: controller,
         autofocus: false,
         textInputAction: TextInputAction.done,
-        onChanged: widget.onChanged,
+        onChanged: onChanged,
         style: context.textTheme.bodyLarge!
             .copyWith(color: ref.currentAppColor.textColor, fontWeight: FontWeight.bold),
         textAlign: TextAlign.left,
         cursorColor: Colors.white,
         decoration: InputDecoration(
-          suffixIcon: widget.suffixIcon,
-          prefixIcon: widget.prefixIcon,
+          suffixIcon: suffixIcon,
+          prefixIcon: prefixIcon,
           contentPadding: const EdgeInsets.symmetric(horizontal: 14),
           fillColor: ref.currentAppColor.buttonBackgroundColor,
           filled: true,
-          hintText: widget.hintText,
+          hintText: hintText,
           hintStyle: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),

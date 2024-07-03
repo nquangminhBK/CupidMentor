@@ -9,15 +9,48 @@ import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/page_skeleton_widget.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_date_widget.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_gender_dropdown.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InputBasicInfoPage extends ConsumerWidget {
+class InputBasicInfoPage extends ConsumerStatefulWidget {
   const InputBasicInfoPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<InputBasicInfoPage> createState() => _InputBasicInfoPageState();
+}
+
+class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController jobController = TextEditingController();
+  final FocusNode nameFocusNode = FocusNode();
+  final FocusNode jobFocusNode = FocusNode();
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(onboardingNotifierProvider);
+    if(kIsWeb) {
+      nameController.value = nameController.value.copyWith(
+        text: state.userInfo.name,
+        selection: TextSelection.collapsed(
+          offset: state.userInfo.name.length,
+        ),
+      );
+      jobController.value = jobController.value.copyWith(
+        text: state.userInfo.job,
+        selection: TextSelection.collapsed(
+          offset: state.userInfo.job.length,
+        ),
+      );
+      /*TODO: the reason why we need this is because of this bug
+              https://github.com/flutter/flutter/issues/137659
+              need to check and update in the future
+      */
+
+    } else {
+      nameController.text = state.userInfo.name;
+      jobController.text = state.userInfo.job;
+    }
+
     return PageSkeletonWidget(
       title: "We're thrilled to have you here. What should we call you? 👋",
       description:
@@ -29,6 +62,8 @@ class InputBasicInfoPage extends ConsumerWidget {
         ),
         const VerticalSpace(size: 6),
         MyTextField(
+          controller: nameController,
+          focusNode: nameFocusNode,
           key: const ValueKey("name"),
           initialText: ref.read(onboardingNotifierProvider).userInfo.name,
           onChanged: (text) {
@@ -64,6 +99,8 @@ class InputBasicInfoPage extends ConsumerWidget {
         ),
         const VerticalSpace(size: 6),
         MyTextField(
+          controller: jobController,
+          focusNode: jobFocusNode,
           key: const ValueKey("jobs"),
           onChanged: (text) {
             ref.read(onboardingNotifierProvider.notifier).updateBasicInfo(job: text);
