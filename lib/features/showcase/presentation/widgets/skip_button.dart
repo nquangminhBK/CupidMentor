@@ -24,7 +24,7 @@ class SkipButton extends ConsumerWidget {
             child: visible
                 ? Center(
                     child: Text(
-                      "Skip",
+                      'Skip',
                       style: context.textTheme.titleMedium!
                           .copyWith(color: ref.currentAppColor.textColor),
                     ),

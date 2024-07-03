@@ -1,13 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:cupid_mentor/features/auth/data/datasources/authentication_local_datasource.dart';
-import 'package:cupid_mentor/features/auth/data/datasources/authentication_remote_datasource.dart';
+import 'package:cupid_mentor/features/auth/data/data_sources/authentication_local_datasource.dart';
+import 'package:cupid_mentor/features/auth/data/data_sources/authentication_remote_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/repositories/authentication_repository.dart';
 import 'package:cupid_mentor/features/auth/domain/repositories/authentication_repository.dart';
 import 'package:cupid_mentor/features/auth/domain/use_cases/signin.dart';
 import 'package:cupid_mentor/features/auth/domain/use_cases/signout.dart';
+import 'package:cupid_mentor/features/onboarding/data/data_sources/onboarding_datasource.dart';
+import 'package:cupid_mentor/features/onboarding/data/repository/onboarding_repository.dart';
+import 'package:cupid_mentor/features/onboarding/domain/repository/onboarding_repository.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_user.dart';
-import 'package:cupid_mentor/features/splash_screen/data/data_sources/splash_datasources.dart';
+import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
+import 'package:cupid_mentor/features/splash_screen/data/data_sources/splash_datasource.dart';
 import 'package:cupid_mentor/features/splash_screen/data/repositories/splash_repositories.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/repositories/splash_repositories.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_is_logged_in.dart';
@@ -27,7 +31,8 @@ Future<void> _registerCore() async {
   // get.registerFactoryParam<OAuthCredential, String, String>((accessToken, idToken) =>
   //     GoogleAuthProvider.credential(accessToken: accessToken, idToken: idToken));
   get.registerLazySingleton<GoogleSignIn>(
-      () => kIsWeb ? GoogleSignIn(clientId: "") : GoogleSignIn());
+    () => kIsWeb ? GoogleSignIn(clientId: '') : GoogleSignIn(),
+  );
   get.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
   get.registerLazySingleton<FirebaseFirestore>(() => FirebaseFirestore.instance);
 
@@ -40,20 +45,43 @@ Future<void> _registerCore() async {
 }
 
 void _registerDataSources() {
-  get.registerLazySingleton<AuthenticationRemoteDatasource>(() =>
-      AuthenticationRemoteDatasourceImpl(
-          googleSignIn: get(), firebaseAuth: get(), googleAuthProvider: get(), firestore: get()));
+  get.registerLazySingleton<AuthenticationRemoteDatasource>(
+    () => AuthenticationRemoteDatasourceImpl(
+      googleSignIn: get(),
+      firebaseAuth: get(),
+      googleAuthProvider: get(),
+      firestore: get(),
+    ),
+  );
   get.registerLazySingleton<AuthenticationLocalDatasource>(
-      () => AuthenticationLocalDatasourceImpl());
+    () => AuthenticationLocalDatasourceImpl(),
+  );
 
   get.registerLazySingleton<SplashDatasource>(() => SplashDatasourceImpl(sharedPreferences: get()));
+  get.registerLazySingleton<OnboardingDatasource>(
+    () => OnboardingDatasourceImpl(
+      googleSignIn: get(),
+      firebaseAuth: get(),
+      googleAuthProvider: get(),
+      firestore: get(),
+    ),
+  );
 }
 
 void _registerRepositories() {
   get.registerLazySingleton<SplashRepositories>(
-      () => SplashRepositoriesImpl(splashDatasource: get(), authenticationRemoteDatasource: get()));
-  get.registerLazySingleton<AuthenticationRepository>(() => AuthenticationRepositoryImpl(
-      remoteDatasource: get(), localDatasource: get(), connectivity: get()));
+    () => SplashRepositoriesImpl(splashDatasource: get(), authenticationRemoteDatasource: get()),
+  );
+  get.registerLazySingleton<AuthenticationRepository>(
+    () => AuthenticationRepositoryImpl(
+      remoteDatasource: get(),
+      localDatasource: get(),
+      connectivity: get(),
+    ),
+  );
+  get.registerLazySingleton<OnboardingRepository>(
+    () => OnboardingRepositoryImpl(datasource: get(), connectivity: get()),
+  );
 }
 
 void _registerUseCases() {
@@ -63,6 +91,7 @@ void _registerUseCases() {
   get.registerLazySingleton(() => LoginUseCase(repository: get()));
   get.registerLazySingleton(() => LogoutUseCase(repository: get()));
   get.registerLazySingleton(() => GetCurrentUser(repository: get()));
+  get.registerLazySingleton(() => SaveUserInfo(repository: get()));
 }
 
 Future<void> setupLocator() async {

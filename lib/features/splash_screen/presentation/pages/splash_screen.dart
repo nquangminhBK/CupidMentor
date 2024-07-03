@@ -20,22 +20,23 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     ref.read(splashNotifierProvider.notifier).checkInitialCondition();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     ref.listen(splashNotifierProvider, (previous, next) {
-      if(previous is! SplashGoToShowCaseState && next is SplashGoToShowCaseState) {
+      if (previous is! SplashGoToShowCaseState && next is SplashGoToShowCaseState) {
         NavigationService.instance.push(AppRoutes.showcase, replace: true);
       }
 
-      if(previous is! SplashGoToLoginState && next is SplashGoToLoginState) {
+      if (previous is! SplashGoToLoginState && next is SplashGoToLoginState) {
         NavigationService.instance.push(AppRoutes.login, replace: true);
       }
 
-      if(previous is! SplashGoToOnboardingState && next is SplashGoToOnboardingState) {
+      if (previous is! SplashGoToOnboardingState && next is SplashGoToOnboardingState) {
         NavigationService.instance.push(AppRoutes.onboarding, replace: true);
       }
 
-      if(previous is! SplashGoToHomeState && next is SplashGoToHomeState) {
+      if (previous is! SplashGoToHomeState && next is SplashGoToHomeState) {
         NavigationService.instance.push(AppRoutes.home, replace: true);
       }
     });

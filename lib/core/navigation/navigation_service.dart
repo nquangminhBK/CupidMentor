@@ -9,7 +9,7 @@ class NavigationService {
   static NavigationService get instance => overrideService ?? navigation;
 
   GlobalKey<NavigatorState> globalNavigatorKey =
-  GlobalKey<NavigatorState>(debugLabel: 'global_key');
+      GlobalKey<NavigatorState>(debugLabel: 'global_key');
 
   /// Returns value from pop if exists.
   /// [clean] is true to remove all back stacks after pushing
@@ -26,23 +26,21 @@ class NavigationService {
   /// NavigationService.push(Routes.home, replace: true, clean: true);
   ///
   Future<T?>? push<T extends Object>(
-      String route, {
-        dynamic arguments,
-        bool replace = false,
-        bool clean = false,
-      }) async {
+    String route, {
+    dynamic arguments,
+    bool replace = false,
+    bool clean = false,
+  }) async {
     if (clean) {
-      return Navigator.of(getNavigatorKey()!.currentContext!)
-          .pushNamedAndRemoveUntil<T>(
+      return Navigator.of(getNavigatorKey()!.currentContext!).pushNamedAndRemoveUntil<T>(
         route,
-            (_) => false,
+        (_) => false,
         arguments: arguments,
       );
     }
 
     if (replace) {
-      return Navigator.of(getNavigatorKey()!.currentContext!)
-          .pushReplacementNamed(
+      return Navigator.of(getNavigatorKey()!.currentContext!).pushReplacementNamed(
         route,
         arguments: arguments,
       );
@@ -54,23 +52,20 @@ class NavigationService {
   }
 
   Future<T?>? pushNamedAndRemoveUntil<T extends Object>(
-      String route, {
-        required String oldRoute,
-        dynamic arguments,
-      }) {
-    return Navigator.of(getNavigatorKey()!.currentContext!)
-        .pushNamedAndRemoveUntil(
-      route,
-          (old) => old.settings.name == oldRoute,
-      arguments: arguments,
-    );
-  }
+    String route, {
+    required String oldRoute,
+    dynamic arguments,
+  }) =>
+      Navigator.of(getNavigatorKey()!.currentContext!).pushNamedAndRemoveUntil(
+        route,
+        (old) => old.settings.name == oldRoute,
+        arguments: arguments,
+      );
 
-  void popUntil<T extends Object>(String route) {
-    return Navigator.of(getNavigatorKey()!.currentContext!).popUntil(
-          (r) => r.settings.name == route,
-    );
-  }
+  void popUntil<T extends Object>(String route) =>
+      Navigator.of(getNavigatorKey()!.currentContext!).popUntil(
+        (r) => r.settings.name == route,
+      );
 
   void pop({dynamic data}) {
     if (getNavigatorKey()!.currentState!.canPop()) {
@@ -78,9 +73,7 @@ class NavigationService {
     }
   }
 
-  GlobalKey<NavigatorState>? getNavigatorKey() {
-    return globalNavigatorKey;
-  }
+  GlobalKey<NavigatorState>? getNavigatorKey() => globalNavigatorKey;
 
   void popWithGlobalKey({dynamic data}) {
     if (globalNavigatorKey.currentState!.canPop()) {
@@ -88,37 +81,36 @@ class NavigationService {
     }
   }
 
-  bool get isContextExisted =>
-      globalNavigatorKey.currentState?.overlay?.context != null;
+  bool get isContextExisted => globalNavigatorKey.currentState?.overlay?.context != null;
 
-  // Future<bool> showPermissionDeniedDialog({String? title, String? desc}) async {
-  //   final context = globalNavigatorKey.currentState?.overlay?.context;
-  //   if (!isContextExisted) {
-  //     return false;
-  //   }
-  //   return await showDialog(
-  //     context: context!,
-  //     builder: (context) {
-  //       return AlertDialog(
-  //         title: title != null ? Text(title) : null,
-  //         content: desc != null ? Text(desc) : null,
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () {
-  //               Navigator.pop(context, true);
-  //               openAppSettings();
-  //             },
-  //             child: const Text('Open Settings'),
-  //           ),
-  //           TextButton(
-  //             onPressed: () {
-  //               Navigator.pop(context, true);
-  //             },
-  //             child: const Text('Maybe later'),
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
+// Future<bool> showPermissionDeniedDialog({String? title, String? desc}) async {
+//   final context = globalNavigatorKey.currentState?.overlay?.context;
+//   if (!isContextExisted) {
+//     return false;
+//   }
+//   return await showDialog(
+//     context: context!,
+//     builder: (context) {
+//       return AlertDialog(
+//         title: title != null ? Text(title) : null,
+//         content: desc != null ? Text(desc) : null,
+//         actions: [
+//           TextButton(
+//             onPressed: () {
+//               Navigator.pop(context, true);
+//               openAppSettings();
+//             },
+//             child: const Text('Open Settings'),
+//           ),
+//           TextButton(
+//             onPressed: () {
+//               Navigator.pop(context, true);
+//             },
+//             child: const Text('Maybe later'),
+//           ),
+//         ],
+//       );
+//     },
+//   );
+// }
 }

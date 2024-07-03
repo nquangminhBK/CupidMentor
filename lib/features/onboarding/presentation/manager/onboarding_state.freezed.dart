@@ -39,6 +39,7 @@ abstract class $OnboardingStateCopyWith<$Res> {
       String errorMessage});
 
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
+  $CrushInfoCopyWith<$Res>? get crushInfo;
 }
 
 /// @nodoc
@@ -86,6 +87,18 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
       return _then(_value.copyWith(userInfo: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CrushInfoCopyWith<$Res>? get crushInfo {
+    if (_value.crushInfo == null) {
+      return null;
+    }
+
+    return $CrushInfoCopyWith<$Res>(_value.crushInfo!, (value) {
+      return _then(_value.copyWith(crushInfo: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -104,6 +117,8 @@ abstract class _$$OnboardingStateImplCopyWith<$Res>
 
   @override
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
+  @override
+  $CrushInfoCopyWith<$Res>? get crushInfo;
 }
 
 /// @nodoc

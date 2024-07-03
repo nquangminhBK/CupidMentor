@@ -6,21 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyTextField extends ConsumerWidget {
-  const MyTextField(
-      {super.key,
-      required this.onChanged,
-      required this.hintText,
-      this.initialText,
-      this.prefixIcon,
-      this.controller,
-      this.focusNode,
-      this.suffixIcon});
+  const MyTextField({
+    super.key,
+    required this.onChanged,
+    required this.hintText,
+    this.prefixIcon,
+    this.controller,
+    this.focusNode,
+    this.suffixIcon,
+  });
 
   final Function(String) onChanged;
   final String hintText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
-  final String? initialText;
   final TextEditingController? controller;
   final FocusNode? focusNode;
 
@@ -52,7 +51,9 @@ class MyTextField extends ConsumerWidget {
               borderSide: const BorderSide(color: Colors.transparent),
             ),
             focusedBorder: GradientOutlineInputBorder(
-                borderRadius: BorderRadius.circular(8), gradient: ref.currentAppColor.mainGradient),
+              borderRadius: BorderRadius.circular(8),
+              gradient: ref.currentAppColor.mainGradient,
+            ),
           ),
         ),
       );
@@ -82,7 +83,9 @@ class MyTextField extends ConsumerWidget {
             borderSide: const BorderSide(color: Colors.transparent),
           ),
           focusedBorder: GradientOutlineInputBorder(
-              borderRadius: BorderRadius.circular(8), gradient: ref.currentAppColor.mainGradient),
+            borderRadius: BorderRadius.circular(8),
+            gradient: ref.currentAppColor.mainGradient,
+          ),
         ),
       ),
     );

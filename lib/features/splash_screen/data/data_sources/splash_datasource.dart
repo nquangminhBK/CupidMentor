@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-const firstTimeKey = "firstTime";
+const firstTimeKey = 'firstTime';
 
 abstract class SplashDatasource {
   bool isFirstTime();
@@ -15,7 +15,7 @@ class SplashDatasourceImpl implements SplashDatasource {
 
   @override
   bool isFirstTime() {
-    bool? isFirstTime = sharedPreferences.getBool(firstTimeKey);
+    final isFirstTime = sharedPreferences.getBool(firstTimeKey);
     return isFirstTime ?? true;
   }
 

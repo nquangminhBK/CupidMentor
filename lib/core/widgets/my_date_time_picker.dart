@@ -9,36 +9,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyDateTimePicker extends ConsumerStatefulWidget {
-  const MyDateTimePicker(
-      {required this.title, required this.updateDateTime, this.initialDate, super.key});
+  const MyDateTimePicker({
+    required this.title,
+    required this.updateDateTime,
+    this.initialDate,
+    super.key,
+  });
 
   final String title;
   final Function updateDateTime;
   final DateTime? initialDate;
 
-  static Future<void> showDatePicker(
-      {required BuildContext context,
-      required WidgetRef ref,
-      required String title,
-      required Function updateDateTime,
-      DateTime? initialDate,
-      CupertinoDatePickerMode? mode}) {
-    return showCupertinoModalPopup<void>(
+  static Future<void> showDatePicker({
+    required BuildContext context,
+    required WidgetRef ref,
+    required String title,
+    required Function updateDateTime,
+    DateTime? initialDate,
+    CupertinoDatePickerMode? mode,
+  }) =>
+      showCupertinoModalPopup<void>(
         context: context,
         builder: (BuildContext context) => Container(
-              height: 330,
-              margin: const EdgeInsets.only(left: 10, right: 10, bottom: 24),
-              decoration: BoxDecoration(
-                color: ref.currentAppColor.cardColorWithoutOpacity,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: MyDateTimePicker(
-                initialDate: initialDate,
-                title: title,
-                updateDateTime: updateDateTime,
-              ),
-            ));
-  }
+          height: 330,
+          margin: const EdgeInsets.only(left: 10, right: 10, bottom: 24),
+          decoration: BoxDecoration(
+            color: ref.currentAppColor.cardColorWithoutOpacity,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: MyDateTimePicker(
+            initialDate: initialDate,
+            title: title,
+            updateDateTime: updateDateTime,
+          ),
+        ),
+      );
 
   @override
   ConsumerState<MyDateTimePicker> createState() => _MyDateTimePickerState();
@@ -48,12 +53,12 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
   DateTime selectedDateTime = DateTime.now();
 
   @override
-  Widget build(BuildContext context) {
-    return CupertinoTheme(
+  Widget build(BuildContext context) => CupertinoTheme(
         data: CupertinoThemeData(
           textTheme: CupertinoTextThemeData(
-              dateTimePickerTextStyle: context.textTheme.bodyLarge!
-                  .copyWith(fontSize: 18, color: ref.currentAppColor.textColor)),
+            dateTimePickerTextStyle: context.textTheme.bodyLarge!
+                .copyWith(fontSize: 18, color: ref.currentAppColor.textColor),
+          ),
           brightness: ref.currentTheme == ThemeMode.light ? Brightness.light : Brightness.dark,
         ),
         child: Column(
@@ -66,9 +71,11 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
                 const HorizontalSpace(
                   size: 24,
                 ),
-                Text(widget.title,
-                    style: context.textTheme.bodyLarge!
-                        .copyWith(color: ref.currentAppColor.textColor)),
+                Text(
+                  widget.title,
+                  style:
+                      context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+                ),
                 const Spacer(),
                 AnimatedButton(
                   scaleSize: 0.9,
@@ -85,11 +92,12 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
                       color: ref.currentAppColor.buttonBackgroundColor,
                     ),
                     child: Center(
-                        child: Text(
-                      'Save',
-                      style: context.textTheme.bodyLarge!
-                          .copyWith(color: ref.currentAppColor.textColor),
-                    )),
+                      child: Text(
+                        'Save',
+                        style: context.textTheme.bodyLarge!
+                            .copyWith(color: ref.currentAppColor.textColor),
+                      ),
+                    ),
                   ),
                 ),
                 const HorizontalSpace(
@@ -109,6 +117,6 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
               ),
             ),
           ],
-        ));
-  }
+        ),
+      );
 }

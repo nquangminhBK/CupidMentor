@@ -1,4 +1,3 @@
-import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 
@@ -32,13 +31,14 @@ class _SelectDateWidgetState extends ConsumerState<SelectDateWidget> {
           isSelected = true;
         });
         MyDateTimePicker.showDatePicker(
-            context: context,
-            ref: ref,
-            title: "Select your birthday",
-            initialDate: widget.selectedDate,
-            updateDateTime: (selectedDate) {
-              widget.onDateSelected(selectedDate);
-            }).then((_) {
+          context: context,
+          ref: ref,
+          title: 'Select your birthday',
+          initialDate: widget.selectedDate,
+          updateDateTime: (selectedDate) {
+            widget.onDateSelected(selectedDate);
+          },
+        ).then((_) {
           setState(() {
             isSelected = false;
           });
@@ -48,16 +48,16 @@ class _SelectDateWidgetState extends ConsumerState<SelectDateWidget> {
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            color: ref.currentAppColor.buttonBackgroundColor,
-            borderRadius: BorderRadius.circular(8),
-            border:
-                isSelected ? GradientBoxBorder(gradient: ref.currentAppColor.mainGradient) : null),
+          color: ref.currentAppColor.buttonBackgroundColor,
+          borderRadius: BorderRadius.circular(8),
+          border: isSelected ? GradientBoxBorder(gradient: ref.currentAppColor.mainGradient) : null,
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 14),
         child: Align(
           alignment: Alignment.centerLeft,
           child: Text(
             widget.selectedDate == null
-                ? "Select your birthday"
+                ? 'Select your birthday'
                 : DateFormat.yMMMd().format(widget.selectedDate!),
             style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
           ),

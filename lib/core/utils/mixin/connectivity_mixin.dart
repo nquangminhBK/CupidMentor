@@ -4,7 +4,7 @@ mixin ConnectivityMixin {
   Connectivity get connectivity;
 
   Future<bool> isInConnection() async {
-    var connectivityResult = await connectivity.checkConnectivity();
+    final connectivityResult = await connectivity.checkConnectivity();
     return !connectivityResult.contains(ConnectivityResult.none);
   }
 }

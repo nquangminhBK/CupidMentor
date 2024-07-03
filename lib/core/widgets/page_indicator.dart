@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PageIndicator extends StatelessWidget {
-  const PageIndicator(
-      {super.key,
-      this.dotSize,
-      this.currentDotSize,
-      required this.totalCount,
-      required this.currentIndex,
-      this.dotColor,
-      this.currentDotColor});
+  const PageIndicator({
+    super.key,
+    this.dotSize,
+    this.currentDotSize,
+    required this.totalCount,
+    required this.currentIndex,
+    this.dotColor,
+    this.currentDotColor,
+  });
 
   final Size? dotSize;
   final Size? currentDotSize;
@@ -20,31 +21,31 @@ class PageIndicator extends StatelessWidget {
   final int currentIndex;
 
   @override
-  Widget build(BuildContext context) {
-    print("minh check 2 $currentIndex");
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [for (var i = 0; i < totalCount; i++) i]
-          .map((e) => Dot(
+  Widget build(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [for (var i = 0; i < totalCount; i++) i]
+            .map(
+              (e) => Dot(
                 isCurrent: e == currentIndex,
                 dotColor: dotColor,
                 dotSize: dotSize,
                 currentDotColor: currentDotColor,
                 currentDotSize: currentDotSize,
-              ))
-          .toList(),
-    );
-  }
+              ),
+            )
+            .toList(),
+      );
 }
 
 class Dot extends ConsumerWidget {
-  const Dot(
-      {super.key,
-      required this.isCurrent,
-      this.dotSize,
-      this.currentDotSize,
-      this.dotColor,
-      this.currentDotColor});
+  const Dot({
+    super.key,
+    required this.isCurrent,
+    this.dotSize,
+    this.currentDotSize,
+    this.dotColor,
+    this.currentDotColor,
+  });
 
   final bool isCurrent;
   final Size? dotSize;
@@ -53,19 +54,18 @@ class Dot extends ConsumerWidget {
   final Color? currentDotColor;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return AnimatedContainer(
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      width: isCurrent ? (currentDotSize?.width ?? 40) : (dotSize?.width ?? 10),
-      height: isCurrent ? (currentDotSize?.height ?? 10) : (dotSize?.height ?? 10),
-      decoration: BoxDecoration(
+  Widget build(BuildContext context, WidgetRef ref) => AnimatedContainer(
+        margin: const EdgeInsets.symmetric(horizontal: 5),
+        width: isCurrent ? (currentDotSize?.width ?? 40) : (dotSize?.width ?? 10),
+        height: isCurrent ? (currentDotSize?.height ?? 10) : (dotSize?.height ?? 10),
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
             isCurrent ? (currentDotSize?.width ?? 40) / 2 : (dotSize?.width ?? 10) / 2,
           ),
           color: isCurrent
               ? currentDotColor ?? ref.currentAppColor.primaryColor
-              : dotColor ?? ref.currentAppColor.buttonBackgroundColor),
-      duration: const Duration(milliseconds: 200),
-    );
-  }
+              : dotColor ?? ref.currentAppColor.buttonBackgroundColor,
+        ),
+        duration: const Duration(milliseconds: 200),
+      );
 }

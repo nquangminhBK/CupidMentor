@@ -30,15 +30,13 @@ class MyTheme {
 }
 
 enum ThemeEnum {
-  light("light"),
-  dark("dark");
+  light('light'),
+  dark('dark');
 
   final String value;
 
   const ThemeEnum(this.value);
 
-  static ThemeEnum parse(String theme) {
-    return ThemeEnum.values
-        .firstWhere((element) => element.value == theme, orElse: () => ThemeEnum.light);
-  }
+  static ThemeEnum parse(String theme) => ThemeEnum.values
+      .firstWhere((element) => element.value == theme, orElse: () => ThemeEnum.light);
 }

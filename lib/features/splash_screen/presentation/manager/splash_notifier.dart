@@ -22,17 +22,17 @@ class SplashNotifier extends _$SplashNotifier {
 
   Future<void> checkInitialCondition() async {
     final needShowCaseResult = await checkNeedShowCase(NoParams());
-    needShowCaseResult.fold((failed) => null, (needShowCase) async {
+    await needShowCaseResult.fold((failed) => null, (needShowCase) async {
       if (needShowCase) {
         state = const SplashState.goToShowCase();
       } else {
         final needLoginResult = await checkNeedLogin(NoParams());
-        needLoginResult.fold((failed) => null, (needLogin) async {
+        await needLoginResult.fold((failed) => null, (needLogin) async {
           if (needLogin) {
             state = const SplashState.goToLogin();
           } else {
             final needOnboarding = await checkNeedOnboarding(NoParams());
-            needOnboarding.fold((failed) => null, (needOnboarding) async {
+            await needOnboarding.fold((failed) => null, (needOnboarding) async {
               if (needOnboarding) {
                 state = const SplashState.goToOnboarding();
               } else {

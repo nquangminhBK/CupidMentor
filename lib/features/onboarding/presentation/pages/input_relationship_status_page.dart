@@ -18,40 +18,42 @@ class InputRelationshipStatusPage extends ConsumerStatefulWidget {
 class _InputRelationshipStatusPageState extends ConsumerState<InputRelationshipStatusPage> {
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(onboardingNotifierProvider);
+    final hasCrush = ref.watch(onboardingNotifierProvider).userInfo.hasCrush;
+    final crushType = ref.watch(onboardingNotifierProvider).userInfo.crushType;
+    final notifier = ref.read(onboardingNotifierProvider.notifier);
     return PageSkeletonWidget(
-        title: "Have you found your perfect match? 😘",
-        description: "Let us know if there's someone special in your life.",
-        children: [
-          ToggleButtonOnboarding(
-            isSelected: state.userInfo.hasCrush,
-            onChange: () =>
-                ref.read(onboardingNotifierProvider.notifier).updateRelationshipStatus(true),
-            title: 'Already have',
+      title: 'Have you found your perfect match? 😘',
+      description: "Let us know if there's someone special in your life.",
+      children: [
+        ToggleButtonOnboarding(
+          isSelected: hasCrush,
+          onChange: () => notifier.updateRelationshipStatus(true),
+          title: 'Already have',
+        ),
+        const VerticalSpace(size: 16),
+        ToggleButtonOnboarding(
+          isSelected: !hasCrush,
+          onChange: () => notifier.updateRelationshipStatus(false),
+          title: 'Not have yet',
+        ),
+        const VerticalSpace(size: 32),
+        if (hasCrush) ...[
+          Text(
+            "Wow that's wonderful! Congratulations! So what's your relationship with that special someone?",
+            style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
           ),
-          const VerticalSpace(size: 16),
-          ToggleButtonOnboarding(
-            isSelected: !state.userInfo.hasCrush,
-            onChange: () =>
-                ref.read(onboardingNotifierProvider.notifier).updateRelationshipStatus(false),
-            title: 'Not have yet',
-          ),
-          const VerticalSpace(size: 32),
-          if (state.userInfo.hasCrush) ...[
-            Text(
-              "Wow that's wonderful! Congratulations! So what's your relationship with that special someone?",
-              style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+          ...RelationshipType.relationshipTypes().map(
+            (e) => Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: ToggleButtonOnboarding(
+                isSelected: e.value == crushType,
+                onChange: () => notifier.updateCrushType(e),
+                title: e.value,
+              ),
             ),
-            ...RelationshipType.relationshipTypes().map((e) => Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: ToggleButtonOnboarding(
-                    isSelected: e.value == state.userInfo.crushType,
-                    onChange: () =>
-                        ref.read(onboardingNotifierProvider.notifier).updateCrushType(e),
-                    title: e.value,
-                  ),
-                )),
-          ]
-        ]);
+          ),
+        ],
+      ],
+    );
   }
 }

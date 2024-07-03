@@ -8,27 +8,32 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: context.theme.scaffoldBackgroundColor,
-        child: SafeArea(
-            child: Scaffold(
-                appBar: AppBar(
-          titleSpacing: 0,
-          title: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Setting screen",
-              style: context.textTheme.titleLarge!.copyWith(fontSize: 20),
+      color: context.theme.scaffoldBackgroundColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            titleSpacing: 0,
+            title: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Setting screen',
+                style: context.textTheme.titleLarge!.copyWith(fontSize: 20),
+              ),
             ),
-          ),
-          backgroundColor: context.theme.scaffoldBackgroundColor,
-          elevation: 0,
-          actions: [
-            AnimatedButton(
+            backgroundColor: context.theme.scaffoldBackgroundColor,
+            elevation: 0,
+            actions: [
+              AnimatedButton(
                 onPress: () {},
                 child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: Icon(Icons.info_outline_rounded)))
-          ],
-        ))));
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: Icon(Icons.info_outline_rounded),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

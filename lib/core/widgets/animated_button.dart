@@ -1,4 +1,3 @@
-import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -40,7 +39,9 @@ class AnimatedButtonState extends ConsumerState<AnimatedButton>
   @override
   void initState() {
     _controller = AnimationController(
-        duration: widget.duration ?? const Duration(milliseconds: 100), vsync: this);
+      duration: widget.duration ?? const Duration(milliseconds: 100),
+      vsync: this,
+    );
     _animation = Tween<double>(begin: 1, end: widget.scaleSize ?? 0.97).animate(_controller);
     super.initState();
   }
@@ -52,11 +53,10 @@ class AnimatedButtonState extends ConsumerState<AnimatedButton>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: _animation,
-      child: GestureDetector(
-        child: Container(
+  Widget build(BuildContext context) => ScaleTransition(
+        scale: _animation,
+        child: GestureDetector(
+          child: Container(
             padding: widget.padding ?? EdgeInsets.zero,
             decoration: BoxDecoration(
               border: widget.borderSize != null
@@ -66,26 +66,26 @@ class AnimatedButtonState extends ConsumerState<AnimatedButton>
                   BorderRadius.circular(
                     10,
                   ),
-              color: widget.color ?? Colors.transparent
+              color: widget.color ?? Colors.transparent,
             ),
             child: Center(
               child: widget.child,
-            )),
-        onTap: () {
-          _controller.forward().whenComplete(() {
-            _controller.reverse().whenComplete(() {
-              try {
-                widget.onPress();
-              } catch (e) {
-                debugPrint("error when click animated clickable widget: $e");
-              }
+            ),
+          ),
+          onTap: () {
+            _controller.forward().whenComplete(() {
+              _controller.reverse().whenComplete(() {
+                try {
+                  widget.onPress();
+                } catch (e) {
+                  debugPrint('error when click animated clickable widget: $e');
+                }
+              });
             });
-          });
-        },
-        onLongPress: () {
-          widget.onLongPress?.call();
-        },
-      ),
-    );
-  }
+          },
+          onLongPress: () {
+            widget.onLongPress?.call();
+          },
+        ),
+      );
 }

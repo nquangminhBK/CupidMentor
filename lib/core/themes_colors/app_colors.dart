@@ -9,14 +9,15 @@ class AppColors {
   final Color cardColorWithoutOpacity;
   final Gradient mainGradient;
 
-  const AppColors(
-      {required this.primaryColor,
-      required this.secondaryColor,
-      required this.screenBackgroundColor,
-      required this.buttonBackgroundColor,
-      required this.cardColorWithoutOpacity,
-      required this.mainGradient,
-      required this.textColor});
+  const AppColors({
+    required this.primaryColor,
+    required this.secondaryColor,
+    required this.screenBackgroundColor,
+    required this.buttonBackgroundColor,
+    required this.cardColorWithoutOpacity,
+    required this.mainGradient,
+    required this.textColor,
+  });
 
   static AppColors dark = AppColors(
     primaryColor: const Color(0xff642CA9),

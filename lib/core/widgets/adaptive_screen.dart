@@ -6,9 +6,7 @@ class AdaptiveScreen extends StatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: child,
-    );
-  }
+  Widget build(BuildContext context) => Container(
+        child: child,
+      );
 }

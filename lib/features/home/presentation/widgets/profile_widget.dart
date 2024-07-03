@@ -13,12 +13,11 @@ class ProfileWidget extends ConsumerWidget {
   const ProfileWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Row(
-      children: [
-        const HorizontalSpace(size: 24),
-        Expanded(
-          child: AnimatedButton(
+  Widget build(BuildContext context, WidgetRef ref) => Row(
+        children: [
+          const HorizontalSpace(size: 24),
+          Expanded(
+            child: AnimatedButton(
               onPress: () {
                 NavigationService.instance.push(AppRoutes.onboarding);
               },
@@ -26,21 +25,23 @@ class ProfileWidget extends ConsumerWidget {
                 width: double.infinity,
                 height: 44,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: ref.currentAppColor.buttonBackgroundColor),
+                  borderRadius: BorderRadius.circular(8),
+                  color: ref.currentAppColor.buttonBackgroundColor,
+                ),
                 child: Center(
                   child: Text(
-                    "Your info 😊",
+                    'Your info 😊',
                     textAlign: TextAlign.center,
                     style: context.textTheme.titleMedium!
                         .copyWith(color: ref.currentAppColor.textColor),
                   ),
                 ),
-              )),
-        ),
-        const HorizontalSpace(size: 16),
-        Expanded(
-          child: AnimatedButton(
+              ),
+            ),
+          ),
+          const HorizontalSpace(size: 16),
+          Expanded(
+            child: AnimatedButton(
               onPress: () {
                 NavigationService.instance.push(AppRoutes.onboarding);
               },
@@ -48,8 +49,9 @@ class ProfileWidget extends ConsumerWidget {
                 width: double.infinity,
                 height: 44,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: ref.currentAppColor.buttonBackgroundColor),
+                  borderRadius: BorderRadius.circular(8),
+                  color: ref.currentAppColor.buttonBackgroundColor,
+                ),
                 child: Center(
                   child: Text(
                     "Partner's Info 💜",
@@ -58,10 +60,10 @@ class ProfileWidget extends ConsumerWidget {
                         .copyWith(color: ref.currentAppColor.textColor),
                   ),
                 ),
-              )),
-        ),
-        const HorizontalSpace(size: 24),
-      ],
-    );
-  }
+              ),
+            ),
+          ),
+          const HorizontalSpace(size: 24),
+        ],
+      );
 }

@@ -2,27 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextThemes {
-  static TextStyle thin() {
-    return GoogleFonts.poppins(
-      fontWeight: FontWeight.w300,
-    );
-  }
+  static TextStyle thin() => GoogleFonts.poppins(
+        fontWeight: FontWeight.w300,
+      );
 
-  static TextStyle light() {
-    return GoogleFonts.poppins(
-      fontWeight: FontWeight.w400,
-    );
-  }
+  static TextStyle light() => GoogleFonts.poppins(
+        fontWeight: FontWeight.w400,
+      );
 
-  static TextStyle medium() {
-    return GoogleFonts.poppins(
-      fontWeight: FontWeight.w600,
-    );
-  }
+  static TextStyle medium() => GoogleFonts.poppins(
+        fontWeight: FontWeight.w600,
+      );
 
-  static TextStyle bold() {
-    return GoogleFonts.poppins(fontWeight: FontWeight.w700);
-  }
+  static TextStyle bold() => GoogleFonts.poppins(fontWeight: FontWeight.w700);
 
   static TextTheme textTheme(context) => Theme.of(context).textTheme.copyWith(
         displayLarge: TextThemes.bold().copyWith(fontSize: 60),

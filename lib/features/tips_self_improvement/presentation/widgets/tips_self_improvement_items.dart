@@ -13,25 +13,28 @@ class TipsSelfImprovementItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-        margin: const EdgeInsets.only(left: 24, right: 24, top: 12),
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8), color: Colors.white.withOpacity(0.09)),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                item.title,
-                style: context.textTheme.labelLarge!.copyWith(color: ref.currentAppColor.textColor),
-              ),
+      margin: const EdgeInsets.only(left: 24, right: 24, top: 12),
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.white.withOpacity(0.09),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              item.title,
+              style: context.textTheme.labelLarge!.copyWith(color: ref.currentAppColor.textColor),
             ),
-            const HorizontalSpace(size: 8),
-            Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: ref.currentAppColor.textColor,
-              size: 16,
-            )
-          ],
-        ));
+          ),
+          const HorizontalSpace(size: 8),
+          Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: ref.currentAppColor.textColor,
+            size: 16,
+          ),
+        ],
+      ),
+    );
   }
 }

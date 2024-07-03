@@ -21,17 +21,17 @@ class GradientBoxBorder extends BoxBorder {
 
   @override
   void paint(
-      Canvas canvas,
-      Rect rect, {
-        TextDirection? textDirection,
-        BoxShape shape = BoxShape.rectangle,
-        BorderRadius? borderRadius,
-      }) {
+    Canvas canvas,
+    Rect rect, {
+    TextDirection? textDirection,
+    BoxShape shape = BoxShape.rectangle,
+    BorderRadius? borderRadius,
+  }) {
     switch (shape) {
       case BoxShape.circle:
         assert(
-        borderRadius == null,
-        'A borderRadius can only be given for rectangular boxes.',
+          borderRadius == null,
+          'A borderRadius can only be given for rectangular boxes.',
         );
         _paintCircle(canvas, rect);
         break;
@@ -61,14 +61,10 @@ class GradientBoxBorder extends BoxBorder {
   }
 
   @override
-  ShapeBorder scale(double t) {
-    return this;
-  }
+  ShapeBorder scale(double t) => this;
 
-  Paint _getPaint(Rect rect) {
-    return Paint()
-      ..strokeWidth = width
-      ..shader = gradient.createShader(rect)
-      ..style = PaintingStyle.stroke;
-  }
+  Paint _getPaint(Rect rect) => Paint()
+    ..strokeWidth = width
+    ..shader = gradient.createShader(rect)
+    ..style = PaintingStyle.stroke;
 }

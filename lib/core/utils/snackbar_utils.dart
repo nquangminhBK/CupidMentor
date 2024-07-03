@@ -5,16 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SnackBarUtils {
-  static SnackBar _snackBarContent(
-      {required BuildContext context,
-      required String message,
-      required Color color,
-      IconData? icon}) {
-    return SnackBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      duration: const Duration(seconds: 2),
-      content: Container(
+  static SnackBar _snackBarContent({
+    required BuildContext context,
+    required String message,
+    required Color color,
+    IconData? icon,
+  }) =>
+      SnackBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        duration: const Duration(seconds: 2),
+        content: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: color),
           child: Row(
@@ -34,29 +35,36 @@ class SnackBarUtils {
                 ),
               ),
             ],
-          )),
-    );
-  }
+          ),
+        ),
+      );
 
-  static void showErrorSnackBar(
-      {required String message, IconData? icon, required BuildContext context}) {
-    ScaffoldMessenger.of(context).showSnackBar(
-        _snackBarContent(context: context, message: message, icon: icon, color: Colors.redAccent));
-  }
+  static void showErrorSnackBar({
+    required String message,
+    IconData? icon,
+    required BuildContext context,
+  }) =>
+      ScaffoldMessenger.of(context).showSnackBar(
+        _snackBarContent(context: context, message: message, icon: icon, color: Colors.redAccent),
+      );
 
-  static showSuccessSnackBar(
-      {required String message, IconData? icon, required BuildContext context}) {
-    ScaffoldMessenger.of(context).showSnackBar(_snackBarContent(
-        context: context,
-        message: message,
-        icon: icon,
-        color: ProviderScope.containerOf(context)
-            .read(themeNotifierProvider)
-            .currentAppColor
-            .primaryColor));
-  }
+  static void showSuccessSnackBar({
+    required String message,
+    IconData? icon,
+    required BuildContext context,
+  }) =>
+      ScaffoldMessenger.of(context).showSnackBar(
+        _snackBarContent(
+          context: context,
+          message: message,
+          icon: icon,
+          color: ProviderScope.containerOf(context)
+              .read(themeNotifierProvider)
+              .currentAppColor
+              .primaryColor,
+        ),
+      );
 
-  static removeSnackBar(BuildContext context) {
-    ScaffoldMessenger.of(context).removeCurrentSnackBar();
-  }
+  static void removeSnackBar(BuildContext context) =>
+      ScaffoldMessenger.of(context).removeCurrentSnackBar();
 }

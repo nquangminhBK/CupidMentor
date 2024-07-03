@@ -7,10 +7,8 @@ class ThemeState {
 
   ThemeState({required this.currentTheme, required this.currentAppColor});
 
-  ThemeState copyWith({ThemeMode? currentTheme, AppColors? currentAppColor}) {
-    return ThemeState(
-      currentTheme: currentTheme ?? this.currentTheme,
-      currentAppColor: currentAppColor ?? this.currentAppColor,
-    );
-  }
+  ThemeState copyWith({ThemeMode? currentTheme, AppColors? currentAppColor}) => ThemeState(
+        currentTheme: currentTheme ?? this.currentTheme,
+        currentAppColor: currentAppColor ?? this.currentAppColor,
+      );
 }

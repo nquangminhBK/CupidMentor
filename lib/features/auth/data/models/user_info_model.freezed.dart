@@ -33,6 +33,8 @@ mixin _$LoggedInUserInfoModel {
   List<String> get loveLanguages => throw _privateConstructorUsedError;
   bool get hasCrush => throw _privateConstructorUsedError;
   String get crushType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'crush')
+  CrushInfoModel? get crushInfoModel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +58,10 @@ abstract class $LoggedInUserInfoModelCopyWith<$Res> {
       List<String> hobbies,
       List<String> loveLanguages,
       bool hasCrush,
-      String crushType});
+      String crushType,
+      @JsonKey(name: 'crush') CrushInfoModel? crushInfoModel});
+
+  $CrushInfoModelCopyWith<$Res>? get crushInfoModel;
 }
 
 /// @nodoc
@@ -83,6 +88,7 @@ class _$LoggedInUserInfoModelCopyWithImpl<$Res,
     Object? loveLanguages = null,
     Object? hasCrush = null,
     Object? crushType = null,
+    Object? crushInfoModel = freezed,
   }) {
     return _then(_value.copyWith(
       genderRaw: null == genderRaw
@@ -125,7 +131,23 @@ class _$LoggedInUserInfoModelCopyWithImpl<$Res,
           ? _value.crushType
           : crushType // ignore: cast_nullable_to_non_nullable
               as String,
+      crushInfoModel: freezed == crushInfoModel
+          ? _value.crushInfoModel
+          : crushInfoModel // ignore: cast_nullable_to_non_nullable
+              as CrushInfoModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CrushInfoModelCopyWith<$Res>? get crushInfoModel {
+    if (_value.crushInfoModel == null) {
+      return null;
+    }
+
+    return $CrushInfoModelCopyWith<$Res>(_value.crushInfoModel!, (value) {
+      return _then(_value.copyWith(crushInfoModel: value) as $Val);
+    });
   }
 }
 
@@ -148,7 +170,11 @@ abstract class _$$LoggedInUserInfoModelImplCopyWith<$Res>
       List<String> hobbies,
       List<String> loveLanguages,
       bool hasCrush,
-      String crushType});
+      String crushType,
+      @JsonKey(name: 'crush') CrushInfoModel? crushInfoModel});
+
+  @override
+  $CrushInfoModelCopyWith<$Res>? get crushInfoModel;
 }
 
 /// @nodoc
@@ -173,6 +199,7 @@ class __$$LoggedInUserInfoModelImplCopyWithImpl<$Res>
     Object? loveLanguages = null,
     Object? hasCrush = null,
     Object? crushType = null,
+    Object? crushInfoModel = freezed,
   }) {
     return _then(_$LoggedInUserInfoModelImpl(
       genderRaw: null == genderRaw
@@ -215,12 +242,17 @@ class __$$LoggedInUserInfoModelImplCopyWithImpl<$Res>
           ? _value.crushType
           : crushType // ignore: cast_nullable_to_non_nullable
               as String,
+      crushInfoModel: freezed == crushInfoModel
+          ? _value.crushInfoModel
+          : crushInfoModel // ignore: cast_nullable_to_non_nullable
+              as CrushInfoModel?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
   const _$LoggedInUserInfoModelImpl(
       {@JsonKey(name: 'gender') required this.genderRaw,
@@ -232,7 +264,8 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
       required final List<String> hobbies,
       required final List<String> loveLanguages,
       required this.hasCrush,
-      required this.crushType})
+      required this.crushType,
+      @JsonKey(name: 'crush') required this.crushInfoModel})
       : _personalities = personalities,
         _hobbies = hobbies,
         _loveLanguages = loveLanguages,
@@ -281,10 +314,13 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
   final bool hasCrush;
   @override
   final String crushType;
+  @override
+  @JsonKey(name: 'crush')
+  final CrushInfoModel? crushInfoModel;
 
   @override
   String toString() {
-    return 'LoggedInUserInfoModel(genderRaw: $genderRaw, name: $name, avatar: $avatar, birthdayRaw: $birthdayRaw, job: $job, personalities: $personalities, hobbies: $hobbies, loveLanguages: $loveLanguages, hasCrush: $hasCrush, crushType: $crushType)';
+    return 'LoggedInUserInfoModel(genderRaw: $genderRaw, name: $name, avatar: $avatar, birthdayRaw: $birthdayRaw, job: $job, personalities: $personalities, hobbies: $hobbies, loveLanguages: $loveLanguages, hasCrush: $hasCrush, crushType: $crushType, crushInfoModel: $crushInfoModel)';
   }
 
   @override
@@ -307,7 +343,9 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
             (identical(other.hasCrush, hasCrush) ||
                 other.hasCrush == hasCrush) &&
             (identical(other.crushType, crushType) ||
-                other.crushType == crushType));
+                other.crushType == crushType) &&
+            (identical(other.crushInfoModel, crushInfoModel) ||
+                other.crushInfoModel == crushInfoModel));
   }
 
   @JsonKey(ignore: true)
@@ -323,7 +361,8 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
       const DeepCollectionEquality().hash(_hobbies),
       const DeepCollectionEquality().hash(_loveLanguages),
       hasCrush,
-      crushType);
+      crushType,
+      crushInfoModel);
 
   @JsonKey(ignore: true)
   @override
@@ -342,16 +381,19 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
 
 abstract class _LoggedInUserInfoModel extends LoggedInUserInfoModel {
   const factory _LoggedInUserInfoModel(
-      {@JsonKey(name: 'gender') required final String genderRaw,
-      required final String name,
-      required final String avatar,
-      @JsonKey(name: 'birthday') required final String birthdayRaw,
-      required final String job,
-      required final List<String> personalities,
-      required final List<String> hobbies,
-      required final List<String> loveLanguages,
-      required final bool hasCrush,
-      required final String crushType}) = _$LoggedInUserInfoModelImpl;
+          {@JsonKey(name: 'gender') required final String genderRaw,
+          required final String name,
+          required final String avatar,
+          @JsonKey(name: 'birthday') required final String birthdayRaw,
+          required final String job,
+          required final List<String> personalities,
+          required final List<String> hobbies,
+          required final List<String> loveLanguages,
+          required final bool hasCrush,
+          required final String crushType,
+          @JsonKey(name: 'crush')
+          required final CrushInfoModel? crushInfoModel}) =
+      _$LoggedInUserInfoModelImpl;
   const _LoggedInUserInfoModel._() : super._();
 
   factory _LoggedInUserInfoModel.fromJson(Map<String, dynamic> json) =
@@ -379,6 +421,9 @@ abstract class _LoggedInUserInfoModel extends LoggedInUserInfoModel {
   bool get hasCrush;
   @override
   String get crushType;
+  @override
+  @JsonKey(name: 'crush')
+  CrushInfoModel? get crushInfoModel;
   @override
   @JsonKey(ignore: true)
   _$$LoggedInUserInfoModelImplCopyWith<_$LoggedInUserInfoModelImpl>

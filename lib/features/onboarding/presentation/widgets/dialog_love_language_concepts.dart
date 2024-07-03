@@ -13,70 +13,74 @@ class DialogLoveLanguageConcept extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
       child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: ref.currentAppColor.screenBackgroundColor,
-          ),
-          padding: const EdgeInsets.all(16),
-          width: double.infinity,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    "What is the \"Love language\"",
-                    style: context.textTheme.titleSmall!
-                        .copyWith(color: ref.currentAppColor.textColor, fontSize: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: ref.currentAppColor.screenBackgroundColor,
+        ),
+        padding: const EdgeInsets.all(16),
+        width: double.infinity,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  'What is the "Love language"',
+                  style: context.textTheme.titleSmall!
+                      .copyWith(color: ref.currentAppColor.textColor, fontSize: 20),
+                ),
+                const Spacer(),
+                IconCloseButton(
+                  onPress: () {
+                    NavigationService.instance.pop();
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Text(
+              LoveLanguage.overallInfo,
+              style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ...LoveLanguage.loveLanguages.keys.map(
+              (key) => Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 10),
+                child: RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '$key: ',
+                        style: context.textTheme.titleSmall!
+                            .copyWith(color: ref.currentAppColor.textColor),
+                      ),
+                      TextSpan(
+                        text: '${LoveLanguage.loveLanguages[key]}',
+                        style: context.textTheme.bodyLarge!
+                            .copyWith(color: ref.currentAppColor.textColor),
+                      ),
+                    ],
                   ),
-                  const Spacer(),
-                  IconCloseButton(
-                    onPress: () {
-                      NavigationService.instance.pop();
-                    },
-                  ),
-                ],
+                ),
               ),
-              const SizedBox(
-                height: 16,
-              ),
-              Text(
-                LoveLanguage.overallInfo,
-                style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              ...LoveLanguage.loveLanguages.keys.map((key) => Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: RichText(
-                        text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: '$key: ',
-                          style: context.textTheme.titleSmall!
-                              .copyWith(color: ref.currentAppColor.textColor),
-                        ),
-                        TextSpan(
-                          text: '${LoveLanguage.loveLanguages[key]}',
-                          style: context.textTheme.bodyLarge!
-                              .copyWith(color: ref.currentAppColor.textColor),
-                        ),
-                      ],
-                    )),
-                  )),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                LoveLanguage.reasonOfConcept,
-                style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
-              ),
-            ],
-          )),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              LoveLanguage.reasonOfConcept,
+              style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'app.dart';
+import 'package:cupid_mentor/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,9 +15,11 @@ void main() async {
   );
   await initializeConfigs();
 
-  runApp(ProviderScope(
-    child: App.init(),
-  ));
+  runApp(
+    ProviderScope(
+      child: App.init(),
+    ),
+  );
 }
 
 Future<void> initializeConfigs() async {

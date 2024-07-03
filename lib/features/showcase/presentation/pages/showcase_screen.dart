@@ -48,8 +48,11 @@ class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
               SkipButton(
                 visible: currentIndex != 2,
                 onPress: () {
-                  pageController.animateToPage(2,
-                      duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+                  pageController.animateToPage(
+                    2,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
                   setState(() {
                     currentIndex = 2;
                   });
@@ -80,15 +83,21 @@ class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
                 showBackButton: currentIndex != 0,
                 showLastButton: currentIndex == 2,
                 onPressBack: () {
-                  pageController.animateToPage(currentIndex - 1,
-                      duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+                  pageController.animateToPage(
+                    currentIndex - 1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
                   setState(() {
                     currentIndex = currentIndex - 1;
                   });
                 },
                 onPressNext: () {
-                  pageController.animateToPage(currentIndex + 1,
-                      duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+                  pageController.animateToPage(
+                    currentIndex + 1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
                   setState(() {
                     currentIndex = currentIndex + 1;
                   });

@@ -1,4 +1,3 @@
-import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

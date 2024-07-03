@@ -1,3 +1,1 @@
-class Menu {
-
-}
+class Menu {}

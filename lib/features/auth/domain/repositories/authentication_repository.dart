@@ -16,5 +16,4 @@ abstract class AuthenticationRepository {
   Either<Failure, bool> needLogin();
 
   Either<Failure, User> getCurrentUser();
-
 }

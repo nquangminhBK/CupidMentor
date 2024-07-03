@@ -20,7 +20,7 @@ class AuthNotifier extends _$AuthNotifier {
   Future<void> login() async {
     state = const AuthState.loading();
     final loginResult = await loginUseCase(NoParams());
-    loginResult.fold((failed) {
+    await loginResult.fold((failed) {
       state = const AuthState.loginFailed();
     }, (result) async {
       if (result) {

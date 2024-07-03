@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cupid_mentor/features/auth/data/models/user_info_model.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -26,11 +25,12 @@ class AuthenticationRemoteDatasourceImpl implements AuthenticationRemoteDatasour
   final GoogleAuthProvider googleAuthProvider;
   final FirebaseFirestore firestore;
 
-  const AuthenticationRemoteDatasourceImpl(
-      {required this.googleSignIn,
-      required this.firebaseAuth,
-      required this.googleAuthProvider,
-      required this.firestore});
+  const AuthenticationRemoteDatasourceImpl({
+    required this.googleSignIn,
+    required this.firebaseAuth,
+    required this.googleAuthProvider,
+    required this.firestore,
+  });
 
   @override
   Future<CrushInfo> getCrushInfo() {
@@ -45,12 +45,12 @@ class AuthenticationRemoteDatasourceImpl implements AuthenticationRemoteDatasour
 
   @override
   Future<LoggedInUserInfoModel?> getUserInfo(String userId) async {
-    final result = await firestore.collection("users_info").doc(userId).get();
+    final result = await firestore.collection('users_info').doc(userId).get();
     if (result.data() != null) {
       try {
         return LoggedInUserInfoModel.fromJson(result.data()!);
       } catch (e) {
-        debugPrint("[AuthenticationRemoteDatasource] getUserInfo $userId error: $e");
+        debugPrint('[AuthenticationRemoteDatasource] getUserInfo $userId error: $e');
         return null;
       }
     }
@@ -61,7 +61,7 @@ class AuthenticationRemoteDatasourceImpl implements AuthenticationRemoteDatasour
   Future<User?> signIn() async {
     try {
       final googleSignInAccount = await googleSignIn.signIn();
-      final GoogleSignInAuthentication? googleAuth = await googleSignInAccount?.authentication;
+      final googleAuth = await googleSignInAccount?.authentication;
       if (googleAuth == null) return null;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
@@ -87,7 +87,7 @@ class AuthenticationRemoteDatasourceImpl implements AuthenticationRemoteDatasour
   @override
   Future<User?> webSignIn() async {
     try {
-      final UserCredential userCredential = await firebaseAuth.signInWithPopup(googleAuthProvider);
+      final userCredential = await firebaseAuth.signInWithPopup(googleAuthProvider);
       return userCredential.user;
     } catch (e) {
       rethrow;

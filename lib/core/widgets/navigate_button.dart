@@ -27,56 +27,60 @@ class NavigateButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     if (showLastButton ?? false) {
       return AnimatedButton(
-          onPress: onPressLastButton,
-          borderRadius: BorderRadius.circular(8),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: ref.currentAppColor.primaryColor,
+        onPress: onPressLastButton,
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: ref.currentAppColor.primaryColor,
+          ),
+          margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+          width: double.infinity,
+          height: 48,
+          child: Center(
+            child: Text(
+              "All right, let's get started!",
+              style: context.textTheme.titleMedium!.copyWith(color: ref.currentAppColor.textColor),
             ),
-            margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-            width: double.infinity,
-            height: 48,
-            child: Center(
-              child: Text(
-                "All right, let's get started!",
-                style:
-                    context.textTheme.titleMedium!.copyWith(color: ref.currentAppColor.textColor),
-              ),
-            ),
-          ));
+          ),
+        ),
+      );
     }
     return Row(
       children: [
         const HorizontalSpace(size: 24),
         if (showBackButton ?? false)
           AnimatedButton(
-              onPress: onPressBack,
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: ref.currentAppColor.buttonBackgroundColor),
-                width: 56,
-                height: 56,
-                child: Icon(
-                  Icons.arrow_back_rounded,
-                  color: ref.currentAppColor.textColor,
-                ),
-              )),
-        const Spacer(),
-        AnimatedButton(
-            onPress: onPressNext,
+            onPress: onPressBack,
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: ref.currentAppColor.buttonBackgroundColor),
+                borderRadius: BorderRadius.circular(30),
+                color: ref.currentAppColor.buttonBackgroundColor,
+              ),
               width: 56,
               height: 56,
               child: Icon(
-                Icons.arrow_forward_rounded,
+                Icons.arrow_back_rounded,
                 color: ref.currentAppColor.textColor,
               ),
-            )),
+            ),
+          ),
+        const Spacer(),
+        AnimatedButton(
+          onPress: onPressNext,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: ref.currentAppColor.buttonBackgroundColor,
+            ),
+            width: 56,
+            height: 56,
+            child: Icon(
+              Icons.arrow_forward_rounded,
+              color: ref.currentAppColor.textColor,
+            ),
+          ),
+        ),
         const HorizontalSpace(size: 24),
       ],
     );

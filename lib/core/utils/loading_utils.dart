@@ -5,12 +5,12 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 class LoadingUtils {
   static void configLoading() {
     EasyLoading.instance
-    // ..displayDuration = const Duration(milliseconds: 2000)
+      // ..displayDuration = const Duration(milliseconds: 2000)
       ..boxShadow = <BoxShadow>[]
       ..indicatorType = EasyLoadingIndicatorType.ring
       ..loadingStyle = EasyLoadingStyle.custom
       ..indicatorSize = 50.0
-    // ..radius = 10.0
+      // ..radius = 10.0
       ..progressColor = Colors.yellow
       ..backgroundColor = Colors.transparent
       ..indicatorColor = const Color(0xFFFFFFFF)

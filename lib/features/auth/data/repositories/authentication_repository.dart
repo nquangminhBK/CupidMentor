@@ -1,15 +1,15 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:cupid_mentor/core/errors/failure.dart';
 import 'package:cupid_mentor/core/utils/mixin/connectivity_mixin.dart';
-import 'package:cupid_mentor/features/auth/data/datasources/authentication_local_datasource.dart';
-import 'package:cupid_mentor/features/auth/data/datasources/authentication_remote_datasource.dart';
+import 'package:cupid_mentor/features/auth/data/data_sources/authentication_local_datasource.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/auth/domain/repositories/authentication_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+
+import 'package:cupid_mentor/features/auth/data/data_sources/authentication_remote_datasource.dart';
 
 class AuthenticationRepositoryImpl with ConnectivityMixin implements AuthenticationRepository {
   final AuthenticationRemoteDatasource remoteDatasource;
@@ -32,7 +32,7 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
 
   @override
   Future<Either<Failure, LoggedInUserInfo?>> getUserInfo() async {
-    return const Left(Failure("No User Info"));
+    return const Left(Failure('No User Info'));
   }
 
   @override
@@ -84,6 +84,6 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
   Either<Failure, User> getCurrentUser() {
     final user = remoteDatasource.getCurrentUser();
     if (user != null) return Right(user);
-    return const Left(Failure("Not found"));
+    return const Left(Failure('Not found'));
   }
 }

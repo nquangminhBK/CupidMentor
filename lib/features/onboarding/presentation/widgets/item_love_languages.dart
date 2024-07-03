@@ -1,14 +1,16 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ItemLoveLanguage extends ConsumerWidget {
-  const ItemLoveLanguage(
-      {super.key, required this.title, required this.index, required this.onTap});
+  const ItemLoveLanguage({
+    super.key,
+    required this.title,
+    required this.index,
+    required this.onTap,
+  });
 
   final String title;
   final int index;

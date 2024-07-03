@@ -1,10 +1,14 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/snackbar_utils.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/progress_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_basic_info_page.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_hobbies_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_hobbies_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_basic_info_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_love_languages_page.dart';
@@ -36,16 +40,24 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     ref.listen(onboardingNotifierProvider, (previous, next) {
       if (next.errorMessage.isNotEmpty) {
         SnackBarUtils.showErrorSnackBar(
-            message: next.errorMessage, context: context, icon: Icons.warning_amber_rounded);
+          message: next.errorMessage,
+          context: context,
+          icon: Icons.warning_amber_rounded,
+        );
       }
       if (!(previous?.canGoNext ?? false) && next.canGoNext) {
-        pageController.animateToPage(currentPage + 1,
-            duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+        pageController.animateToPage(
+          currentPage + 1,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        );
         setState(() {
           currentPage = currentPage + 1;
         });
       }
     });
+    final state = ref.watch(onboardingNotifierProvider);
+    final totalStep = state.userInfo.hasCrush ? 7 : 5;
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -58,7 +70,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   const HorizontalSpace(size: 30),
                   Expanded(
                     child: ProgressBar(
-                      totalStep: 10,
+                      totalStep: totalStep,
                       currentStep: currentPage,
                       width: context.screenSize.width - 100,
                       color: currentPage > 4
@@ -70,23 +82,28 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     width: 70,
                     child: Center(
                       child: Text(
-                        "${currentPage + 1}/5",
-                        style: context.textTheme.titleSmall!.copyWith(color: ref.currentAppColor.textColor),
+                        '${currentPage + 1}/$totalStep',
+                        style: context.textTheme.titleSmall!
+                            .copyWith(color: ref.currentAppColor.textColor),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               Expanded(
                 child: PageView(
                   physics: const NeverScrollableScrollPhysics(),
                   controller: pageController,
-                  children: const [
-                    InputBasicInfoPage(),
-                    InputPersonalitiesPage(),
-                    InputHobbiesPage(),
-                    InputLoveLanguagesPage(),
-                    InputRelationshipStatusPage()
+                  children: [
+                    const InputBasicInfoPage(),
+                    const InputPersonalitiesPage(),
+                    const InputHobbiesPage(),
+                    const InputLoveLanguagesPage(),
+                    const InputRelationshipStatusPage(),
+                    if (state.userInfo.hasCrush) ...[
+                      const InputCrushBasicInfoPage(),
+                      const InputCrushHobbiesPage(),
+                    ],
                   ],
                   onPageChanged: (index) {
                     setState(() {
@@ -99,14 +116,31 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 showBackButton: currentPage != 0,
                 showLastButton: currentPage == 10,
                 onPressBack: () {
-                  pageController.animateToPage(currentPage - 1,
-                      duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+                  pageController.animateToPage(
+                    currentPage - 1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
                   setState(() {
                     currentPage = currentPage - 1;
                   });
                 },
-                onPressNext: () {
-                  ref.read(onboardingNotifierProvider.notifier).goNextPage(currentPage);
+                onPressNext: () async {
+                  if (currentPage == totalStep - 1) {
+                    final result = await ref.read(onboardingNotifierProvider.notifier).saveUser();
+                    if (result) {
+                      await NavigationService.instance.push(AppRoutes.welcome, replace: true);
+                    } else {
+                      if (context.mounted) {
+                        SnackBarUtils.showErrorSnackBar(
+                          message: 'Cannot save information, please try again later!',
+                          context: context,
+                        );
+                      }
+                    }
+                  } else {
+                    await ref.read(onboardingNotifierProvider.notifier).goNextPage(currentPage);
+                  }
                 },
                 onPressLastButton: () {},
                 lastButtonTitle: '',

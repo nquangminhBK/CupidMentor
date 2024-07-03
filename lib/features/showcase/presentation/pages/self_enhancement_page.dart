@@ -10,9 +10,9 @@ class SelfEnhancementPage extends StatelessWidget {
     return PageGeneralWidget(
       image: Assets.png.selfEnhancementImage.image(),
       textBg: Assets.svg.selfEnhancementBgText.svg(fit: BoxFit.fitWidth, width: double.infinity),
-      title: "Self-Enhancement Insights",
+      title: 'Self-Enhancement Insights',
       description:
-          "Elevate your dating journey with personalized tips. From self-care to communication, empower yourself for success in dating.",
+          'Elevate your dating journey with personalized tips. From self-care to communication, empower yourself for success in dating.',
     );
   }
 }

@@ -35,11 +35,12 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(onboardingNotifierProvider);
+    final personalities = ref.watch(onboardingNotifierProvider).userInfo.personalities;
+    final notifier = ref.read(onboardingNotifierProvider.notifier);
     return PageSkeletonWidget(
-      title: "Describe yourself in a few words that we can know the real you 🙄",
+      title: 'Describe yourself in a few words that we can know the real you 🙄',
       description:
-          "Choose some words that best describe your personality. This enables us to enhance your unique and memorable dating experience.",
+          'Choose some words that best describe your personality. This enables us to enhance your unique and memorable dating experience.',
       children: [
         MyTextField(
           onChanged: (text) {
@@ -47,7 +48,7 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
               _executeSearch(text);
             });
           },
-          hintText: "Search your personalities",
+          hintText: 'Search your personalities',
           suffixIcon: Icon(
             Icons.search_rounded,
             color: ref.currentAppColor.textColor,
@@ -59,15 +60,18 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
             spacing: 12,
             runSpacing: 12,
             children: searchedList
-                .map((e) => CustomTag(
+                .map(
+                  (e) => CustomTag(
                     title: e,
-                    isSelected: state.userInfo.personalities.contains(e),
+                    isSelected: personalities.contains(e),
                     onTap: () {
-                      ref.read(onboardingNotifierProvider.notifier).updatePersonalities(
-                            e,
-                            state.userInfo.personalities.contains(e),
-                          );
-                    }))
+                      notifier.updatePersonalities(
+                        e,
+                        personalities.contains(e),
+                      );
+                    },
+                  ),
+                )
                 .toList(),
           ),
         if (searchedList.isNotEmpty) const VerticalSpace(size: 16),
@@ -82,15 +86,18 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
           spacing: 12,
           runSpacing: 12,
           children: unSearchedList
-              .map((e) => CustomTag(
+              .map(
+                (e) => CustomTag(
                   title: e,
-                  isSelected: state.userInfo.personalities.contains(e),
+                  isSelected: personalities.contains(e),
                   onTap: () {
-                    ref.read(onboardingNotifierProvider.notifier).updatePersonalities(
-                          e,
-                          state.userInfo.personalities.contains(e),
-                        );
-                  }))
+                    notifier.updatePersonalities(
+                      e,
+                      personalities.contains(e),
+                    );
+                  },
+                ),
+              )
               .toList(),
         ),
       ],

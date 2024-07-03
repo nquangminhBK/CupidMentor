@@ -5,8 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PageSkeletonWidget extends ConsumerWidget {
-  const PageSkeletonWidget(
-      {super.key, required this.title, required this.description, required this.children});
+  const PageSkeletonWidget({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.children,
+  });
 
   final String title;
   final String description;

@@ -12,15 +12,15 @@ class TipsSelfImprovementScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-        color: context.theme.scaffoldBackgroundColor,
-        child: SafeArea(
-            child: Scaffold(
+      color: context.theme.scaffoldBackgroundColor,
+      child: SafeArea(
+        child: Scaffold(
           appBar: AppBar(
             titleSpacing: 0,
             title: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Some Tips For You  💡",
+                'Some Tips For You  💡',
                 style: context.textTheme.titleLarge!
                     .copyWith(fontSize: 20, color: ref.currentAppColor.textColor),
               ),
@@ -29,10 +29,12 @@ class TipsSelfImprovementScreen extends ConsumerWidget {
             elevation: 0,
             actions: [
               AnimatedButton(
-                  onPress: () {},
-                  child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
-                      child: Icon(Icons.info_outline_rounded)))
+                onPress: () {},
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: Icon(Icons.info_outline_rounded),
+                ),
+              ),
             ],
           ),
           body: ListView.builder(
@@ -41,6 +43,8 @@ class TipsSelfImprovementScreen extends ConsumerWidget {
             },
             itemCount: SelfImprovement.selfImprovements.length,
           ),
-        )));
+        ),
+      ),
+    );
   }
 }

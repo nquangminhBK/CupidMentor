@@ -1,37 +1,120 @@
 # This file configures the analyzer, which statically analyzes Dart code to
 # check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
-
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
   exclude:
+    - "**/*.gr.dart"
     - "**/*.g.dart"
     - "**/*.freezed.dart"
   errors:
     invalid_annotation_target: ignore
 
 linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at https://dart.dev/lints.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
   rules:
+    - always_declare_return_types
+    - always_require_non_null_named_parameters
+    - annotate_overrides
+    - avoid_empty_else
+    - avoid_init_to_null
+    - avoid_null_checks_in_equality_operators
+    - avoid_relative_lib_imports
+    - avoid_return_types_on_setters
+    - avoid_shadowing_type_parameters
+    - avoid_types_as_parameter_names
+    - camel_case_extensions
+    - curly_braces_in_flow_control_structures
+    - empty_catches
+    - empty_constructor_bodies
+    - library_names
+    - library_prefixes
+    - no_duplicate_case_values
+    - null_closures
+    - omit_local_variable_types
+    - prefer_adjacent_string_concatenation
+    - prefer_collection_literals
+    - prefer_conditional_assignment
+    - prefer_contains
+    - prefer_equal_for_default_values
+    - prefer_final_fields
+    - prefer_for_elements_to_map_fromIterable
+    - prefer_generic_function_type_aliases
+    - prefer_if_null_operators
+    - prefer_is_empty
+    - prefer_is_not_empty
+    - prefer_iterable_whereType
+    - prefer_single_quotes
+    - prefer_spread_collections
+    - recursive_getters
+    - slash_for_doc_comments
+    - type_init_formals
+    - unawaited_futures
+    - unnecessary_const
+    - unnecessary_new
+    - unnecessary_null_in_if_null_operators
+    - unnecessary_this
+    - unrelated_type_equality_checks
+    - use_function_type_syntax_for_parameters
+    - use_rethrow_when_possible
+    - valid_regexps
+    - prefer_const_constructors
+    - use_build_context_synchronously
+    - always_use_package_imports
+    - use_key_in_widget_constructors
+    - avoid_unnecessary_containers
+    - avoid_unused_constructor_parameters
+    - avoid_void_async
+    - await_only_futures
+    - camel_case_types
+    - constant_identifier_names
+    - file_names
+    - implementation_imports
+    - prefer_final_in_for_each
+    - prefer_final_locals
+    - avoid_multiple_declarations_per_line
+    - require_trailing_commas
+    - non_constant_identifier_names
 
-
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+dart_code_metrics:
+  # extends:
+  #   - package:dart_code_metrics_presets/all.yaml
+  anti-patterns:
+    - long-method
+    - long-parameter-list
+  metrics:
+    cyclomatic-complexity: 30
+    maximum-nesting-level: 6
+    number-of-parameters: 20
+    source-lines-of-code: 65
+  rules:
+    - avoid-dynamic:
+        exclude:
+          - "**/*_state.dart"
+          - "**/*_datasource.dart"
+          - "**/*_model.dart"
+    - newline-before-return
+    - no-boolean-literal-compare
+    # - no-empty-block
+    - prefer-trailing-comma
+    - prefer-conditional-expressions
+    - no-equal-then-else
+    - avoid-shrink-wrap-in-lists
+    - avoid-unnecessary-setstate
+    - always-remove-listener
+    - avoid-expanded-as-spacer
+    - avoid-top-level-members-in-tests
+    - avoid-returning-widgets
+    - avoid-unused-parameters
+    - binary-expression-operand-order
+    - no-object-declaration
+    - prefer-immediate-return
+    - prefer-last
+    - avoid-substring
+    - prefer-first
+    - avoid-wrapping-in-padding
+    - avoid-unnecessary-conditionals
+    - avoid-redundant-async
+    - check-for-equals-in-render-object-setters
+    - consistent-update-render-object
+    - use-setstate-synchronously
+    - prefer-conditional-expressions

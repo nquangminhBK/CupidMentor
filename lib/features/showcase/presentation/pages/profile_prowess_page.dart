@@ -9,11 +9,10 @@ class ProfileProwessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageGeneralWidget(
       image: Assets.png.profileProwessImage.image(),
-      textBg:
-          Assets.svg.profileProwessBgText.svg(fit: BoxFit.fitWidth, width: double.infinity),
-      title: "Profile Prowess",
+      textBg: Assets.svg.profileProwessBgText.svg(fit: BoxFit.fitWidth, width: double.infinity),
+      title: 'Profile Prowess',
       description:
-          "Create a captivating bio to attract matches. Let us guide you in showcasing your personality for better matches.",
+          'Create a captivating bio to attract matches. Let us guide you in showcasing your personality for better matches.',
     );
   }
 }

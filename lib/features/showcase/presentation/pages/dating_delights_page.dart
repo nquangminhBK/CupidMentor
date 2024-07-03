@@ -9,11 +9,10 @@ class DatingDelightPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageGeneralWidget(
       image: Assets.png.profileProwessImage.image(),
-      textBg:
-          Assets.svg.datingDelightBgText.svg(fit: BoxFit.fitWidth, width: double.infinity),
-      title: "Dating Delights",
+      textBg: Assets.svg.datingDelightBgText.svg(fit: BoxFit.fitWidth, width: double.infinity),
+      title: 'Dating Delights',
       description:
-          "Explore ideal gifts, date spots, and messaging tips for memorable interactions. Let our expert suggestions enhance your joyful dating experience.",
+          'Explore ideal gifts, date spots, and messaging tips for memorable interactions. Let our expert suggestions enhance your joyful dating experience.',
     );
   }
 }

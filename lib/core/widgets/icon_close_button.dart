@@ -11,29 +11,27 @@ class IconCloseButton extends ConsumerWidget {
   final Color? color;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      width: 40,
-      height: 40,
-      child: AnimatedButton(
-        scaleSize: 0.9,
-        color: Colors.transparent,
-        onPress: () {
-          onPress();
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: color ?? ref.currentAppColor.buttonBackgroundColor,
-          ),
-          child: Center(
-            child: Icon(
-              icon ?? Icons.close_rounded,
-              color: Colors.white,
+  Widget build(BuildContext context, WidgetRef ref) => SizedBox(
+        width: 40,
+        height: 40,
+        child: AnimatedButton(
+          scaleSize: 0.9,
+          color: Colors.transparent,
+          onPress: () {
+            onPress();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: color ?? ref.currentAppColor.buttonBackgroundColor,
+            ),
+            child: Center(
+              child: Icon(
+                icon ?? Icons.close_rounded,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }

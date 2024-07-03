@@ -1,21 +1,38 @@
+import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
-import 'package:equatable/equatable.dart';
+import 'package:cupid_mentor/core/utils/datetime_utils.dart';
+import 'package:cupid_mentor/features/auth/data/models/crush_info_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class CrushInfo extends Equatable {
-  final Gender gender;
-  final String name;
-  final DateTime birthday;
-  final String job;
-  final List<String> hobbies;
+part 'crush_info.freezed.dart';
 
-  const CrushInfo({
-    required this.gender,
-    required this.name,
-    required this.birthday,
-    required this.job,
-    required this.hobbies,
-  });
+@freezed
+class CrushInfo with _$CrushInfo {
+  const CrushInfo._();
 
-  @override
-  List<Object?> get props => [gender, name, birthday, job, hobbies];
+  const factory CrushInfo({
+    required Gender gender,
+    required String name,
+    required DateTime birthday,
+    required String job,
+    required List<String> hobbies,
+  }) = _CrushInfo;
+
+  factory CrushInfo.empty() => CrushInfo(
+        gender: Gender.none,
+        name: '',
+        birthday: DateTimeConst.empty(),
+        job: '',
+        hobbies: [],
+      );
+
+  CrushInfoModel get toModel {
+    return CrushInfoModel(
+      genderRaw: gender.value,
+      name: name,
+      birthdayRaw: DateTimeUtils.convertToString(birthday),
+      job: job,
+      hobbies: hobbies,
+    );
+  }
 }

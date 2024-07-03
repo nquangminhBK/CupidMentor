@@ -1,23 +1,20 @@
-import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
-import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MenuWidget extends ConsumerWidget {
-  const MenuWidget(
-      {super.key,
-      required this.isLeftToRight,
-      required this.image,
-      required this.title,
-      required this.description,
-      required this.buttonText,
-      required this.onTap});
+  const MenuWidget({
+    super.key,
+    required this.isLeftToRight,
+    required this.image,
+    required this.title,
+    required this.description,
+    required this.buttonText,
+    required this.onTap,
+  });
 
   final bool isLeftToRight;
   final Widget image;
@@ -30,7 +27,9 @@ class MenuWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8), color: Colors.white.withOpacity(0.05)),
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.white.withOpacity(0.05),
+      ),
       margin: const EdgeInsets.symmetric(horizontal: 24),
       padding: const EdgeInsets.all(12),
       width: double.infinity,
@@ -59,21 +58,23 @@ class MenuWidget extends ConsumerWidget {
                         margin: const EdgeInsets.only(right: 45),
                         height: 44,
                         child: AnimatedButton(
-                            onPress: onTap,
-                            child: Container(
-                                height: 44,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.white.withOpacity(0.20),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    buttonText,
-                                    textAlign: TextAlign.center,
-                                    style: context.textTheme.titleMedium!
-                                        .copyWith(color: ref.currentAppColor.textColor),
-                                  ),
-                                ))),
+                          onPress: onTap,
+                          child: Container(
+                            height: 44,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.white.withOpacity(0.20),
+                            ),
+                            child: Center(
+                              child: Text(
+                                buttonText,
+                                textAlign: TextAlign.center,
+                                style: context.textTheme.titleMedium!
+                                    .copyWith(color: ref.currentAppColor.textColor),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -104,25 +105,27 @@ class MenuWidget extends ConsumerWidget {
                         margin: const EdgeInsets.only(left: 45),
                         height: 44,
                         child: AnimatedButton(
-                            onPress: onTap,
-                            child: Container(
-                                height: 44,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.white.withOpacity(0.20),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    buttonText,
-                                    textAlign: TextAlign.center,
-                                    style: context.textTheme.titleMedium!
-                                        .copyWith(color: ref.currentAppColor.textColor),
-                                  ),
-                                ))),
+                          onPress: onTap,
+                          child: Container(
+                            height: 44,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.white.withOpacity(0.20),
+                            ),
+                            child: Center(
+                              child: Text(
+                                buttonText,
+                                textAlign: TextAlign.center,
+                                style: context.textTheme.titleMedium!
+                                    .copyWith(color: ref.currentAppColor.textColor),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                )
+                ),
               ],
       ),
     );

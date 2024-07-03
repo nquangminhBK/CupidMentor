@@ -1,6 +1,4 @@
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
-import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
 import 'package:cupid_mentor/core/widgets/adaptive_screen.dart';
 import 'package:cupid_mentor/features/auth/presentation/pages/login_screen.dart';
 import 'package:cupid_mentor/features/home/presentation/pages/home_screen.dart';
@@ -14,76 +12,73 @@ import 'package:cupid_mentor/features/tips_gift/presentation/pages/tips_gift_scr
 import 'package:cupid_mentor/features/tips_replying/presentation/pages/tips_replying_screen.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/pages/tips_self_improvement_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Route<Object>? generateRoute(RouteSettings settings) {
   debugPrint('\n=============== >> Navigating to: ${settings.name}\n');
-  final args = settings.arguments;
+  //final args = settings.arguments;
   switch (settings.name) {
     case AppRoutes.splash:
       return _buildRoute(
         settings: settings,
-        screen: SplashScreen(),
+        screen: const SplashScreen(),
       );
     case AppRoutes.showcase:
       return _buildRoute(
         settings: settings,
-        screen: ShowcaseScreen(),
+        screen: const ShowcaseScreen(),
       );
     case AppRoutes.login:
       return _buildRoute(
         settings: settings,
-        screen: LoginScreen(),
+        screen: const LoginScreen(),
       );
     case AppRoutes.onboarding:
       return _buildRoute(
         settings: settings,
-        screen: OnboardingScreen(),
+        screen: const OnboardingScreen(),
       );
     case AppRoutes.welcome:
       return _buildRoute(
         settings: settings,
-        screen: WelcomeScreen(),
+        screen: const WelcomeScreen(),
       );
     case AppRoutes.home:
       return _buildRoute(
         settings: settings,
-        screen: HomeScreen(),
+        screen: const HomeScreen(),
       );
     case AppRoutes.tipGift:
       return _buildRoute(
         settings: settings,
-        screen: TipsGiftsScreen(),
+        screen: const TipsGiftsScreen(),
       );
     case AppRoutes.tipDateSpot:
       return _buildRoute(
         settings: settings,
-        screen: TipsDateSpotScreen(),
+        screen: const TipsDateSpotScreen(),
       );
     case AppRoutes.tipSelfImprovement:
       return _buildRoute(
         settings: settings,
-        screen: TipsSelfImprovementScreen(),
+        screen: const TipsSelfImprovementScreen(),
       );
     case AppRoutes.tipReplying:
       return _buildRoute(
         settings: settings,
-        screen: TipsReplyingMessageScreen(),
+        screen: const TipsReplyingMessageScreen(),
       );
     case AppRoutes.setting:
       return _buildRoute(
         settings: settings,
-        screen: SettingScreen(),
+        screen: const SettingScreen(),
       );
     default:
       return _errorRoute();
   }
 }
 
-Route<Object>? _errorRoute() {
-  return MaterialPageRoute(
-    builder: (_) {
-      return AdaptiveScreen(
+Route<Object>? _errorRoute() => MaterialPageRoute(
+      builder: (_) => AdaptiveScreen(
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Error'),
@@ -92,24 +87,19 @@ Route<Object>? _errorRoute() {
             child: Text('ERROR'),
           ),
         ),
-      );
-    },
-  );
-}
+      ),
+    );
 
 Route<T>? _buildRoute<T extends Object>({
   required RouteSettings settings,
   required Widget screen,
-}) {
-  return MaterialPageRoute<T>(
-    settings: settings,
-    builder: (context) {
-      return AdaptiveScreen(
+}) =>
+    MaterialPageRoute<T>(
+      settings: settings,
+      builder: (context) => AdaptiveScreen(
         child: screen,
-      );
-    },
-  );
-}
+      ),
+    );
 
 class NoAnimationMaterialPageRoute<T> extends MaterialPageRoute<T> {
   NoAnimationMaterialPageRoute({
@@ -125,9 +115,8 @@ class NoAnimationMaterialPageRoute<T> extends MaterialPageRoute<T> {
     Animation<double> animation,
     Animation<double> secondaryAnimation,
     Widget child,
-  ) {
-    return child;
-  }
+  ) =>
+      child;
 }
 
 class FadePageRoute<T> extends PageRoute<T> {
@@ -152,10 +141,9 @@ class FadePageRoute<T> extends PageRoute<T> {
     BuildContext context,
     Animation<double> animation,
     Animation<double> secondaryAnimation,
-  ) {
-    return FadeTransition(
-      opacity: animation,
-      child: child,
-    );
-  }
+  ) =>
+      FadeTransition(
+        opacity: animation,
+        child: child,
+      );
 }
