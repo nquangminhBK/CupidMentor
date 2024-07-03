@@ -22,6 +22,8 @@ _$LoggedInUserInfoModelImpl _$$LoggedInUserInfoModelImplFromJson(
       loveLanguages: (json['loveLanguages'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      hasCrush: json['hasCrush'] as bool,
+      crushType: json['crushType'] as String,
     );
 
 Map<String, dynamic> _$$LoggedInUserInfoModelImplToJson(
@@ -35,4 +37,6 @@ Map<String, dynamic> _$$LoggedInUserInfoModelImplToJson(
       'personalities': instance.personalities,
       'hobbies': instance.hobbies,
       'loveLanguages': instance.loveLanguages,
+      'hasCrush': instance.hasCrush,
+      'crushType': instance.crushType,
     };

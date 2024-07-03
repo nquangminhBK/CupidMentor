@@ -51,6 +51,53 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
         description:
             "Uncover your unique love languages and prioritize them. Let's rank your heart's desires for having more fulfilling connections in the future!",
         children: [
+          if (loveLanguages.length < LoveLanguage.loveLanguages.length)
+            RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text:
+                      'First, tap the items below to select, you can arrange the order after selecting, ',
+                      style:
+                      context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+                    ),
+                    TextSpan(
+                      text: 'click here',
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        color: ref.currentAppColor.secondaryColor,
+                        decoration: TextDecoration.underline,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          showDialog(context: context, builder: (_) => const DialogLoveLanguageConcept());
+                        },
+                    ),
+                    TextSpan(
+                      text: ' to read more about the concept love language.',
+                      style:
+                      context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+                    ),
+                  ],
+                )),
+          const VerticalSpace(size: 16),
+          Wrap(
+            spacing: 12,
+            runSpacing: 12,
+            children: LoveLanguage.loveLanguages.keys
+                .where((element) => !loveLanguages.contains(element))
+                .map((e) => CustomTag(
+                title: e,
+                isSelected: false,
+                onTap: () {
+                  ref.read(onboardingNotifierProvider.notifier).updateLoveLanguages(
+                    e,
+                    false,
+                  );
+                }))
+                .toList(),
+          ),
+          if (loveLanguages.length < LoveLanguage.loveLanguages.length)
+            const VerticalSpace(size: 24),
           Row(
             children: [
               Column(
@@ -86,53 +133,6 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
                     ]),
               )
             ],
-          ),
-          if (loveLanguages.length == LoveLanguage.loveLanguages.length)
-            const VerticalSpace(size: 16),
-          if (loveLanguages.length < LoveLanguage.loveLanguages.length)
-            RichText(
-                text: TextSpan(
-              children: [
-                TextSpan(
-                  text:
-                      'First, tap the items below to select, you can arrange the order after selecting, ',
-                  style:
-                      context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
-                ),
-                TextSpan(
-                  text: 'click here',
-                  style: context.textTheme.bodyLarge!.copyWith(
-                    color: ref.currentAppColor.secondaryColor,
-                    decoration: TextDecoration.underline,
-                  ),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () {
-                        showDialog(context: context, builder: (_) => const DialogLoveLanguageConcept());
-                    },
-                ),
-                TextSpan(
-                  text: ' to read more about the concept love language.',
-                  style:
-                      context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
-                ),
-              ],
-            )),
-          const VerticalSpace(size: 16),
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: LoveLanguage.loveLanguages.keys
-                .where((element) => !loveLanguages.contains(element))
-                .map((e) => CustomTag(
-                    title: e,
-                    isSelected: false,
-                    onTap: () {
-                      ref.read(onboardingNotifierProvider.notifier).updateLoveLanguages(
-                            e,
-                            false,
-                          );
-                    }))
-                .toList(),
           ),
         ]);
   }

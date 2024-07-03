@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_info_model.freezed.dart';
+
 part 'user_info_model.g.dart';
 
 @freezed
@@ -22,6 +23,8 @@ class LoggedInUserInfoModel with _$LoggedInUserInfoModel {
     required List<String> personalities,
     required List<String> hobbies,
     required List<String> loveLanguages,
+    required bool hasCrush,
+    required String crushType,
   }) = _LoggedInUserInfoModel;
 
   factory LoggedInUserInfoModel.fromJson(Map<String, dynamic> json) =>
@@ -36,6 +39,8 @@ class LoggedInUserInfoModel with _$LoggedInUserInfoModel {
         job: job,
         personalities: personalities,
         hobbies: hobbies,
-        loveLanguages: loveLanguages);
+        loveLanguages: loveLanguages,
+        crushType: crushType,
+        hasCrush: hasCrush);
   }
 }

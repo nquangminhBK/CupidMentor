@@ -31,6 +31,8 @@ mixin _$LoggedInUserInfoModel {
   List<String> get personalities => throw _privateConstructorUsedError;
   List<String> get hobbies => throw _privateConstructorUsedError;
   List<String> get loveLanguages => throw _privateConstructorUsedError;
+  bool get hasCrush => throw _privateConstructorUsedError;
+  String get crushType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +54,9 @@ abstract class $LoggedInUserInfoModelCopyWith<$Res> {
       String job,
       List<String> personalities,
       List<String> hobbies,
-      List<String> loveLanguages});
+      List<String> loveLanguages,
+      bool hasCrush,
+      String crushType});
 }
 
 /// @nodoc
@@ -77,6 +81,8 @@ class _$LoggedInUserInfoModelCopyWithImpl<$Res,
     Object? personalities = null,
     Object? hobbies = null,
     Object? loveLanguages = null,
+    Object? hasCrush = null,
+    Object? crushType = null,
   }) {
     return _then(_value.copyWith(
       genderRaw: null == genderRaw
@@ -111,6 +117,14 @@ class _$LoggedInUserInfoModelCopyWithImpl<$Res,
           ? _value.loveLanguages
           : loveLanguages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      hasCrush: null == hasCrush
+          ? _value.hasCrush
+          : hasCrush // ignore: cast_nullable_to_non_nullable
+              as bool,
+      crushType: null == crushType
+          ? _value.crushType
+          : crushType // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -132,7 +146,9 @@ abstract class _$$LoggedInUserInfoModelImplCopyWith<$Res>
       String job,
       List<String> personalities,
       List<String> hobbies,
-      List<String> loveLanguages});
+      List<String> loveLanguages,
+      bool hasCrush,
+      String crushType});
 }
 
 /// @nodoc
@@ -155,6 +171,8 @@ class __$$LoggedInUserInfoModelImplCopyWithImpl<$Res>
     Object? personalities = null,
     Object? hobbies = null,
     Object? loveLanguages = null,
+    Object? hasCrush = null,
+    Object? crushType = null,
   }) {
     return _then(_$LoggedInUserInfoModelImpl(
       genderRaw: null == genderRaw
@@ -189,6 +207,14 @@ class __$$LoggedInUserInfoModelImplCopyWithImpl<$Res>
           ? _value._loveLanguages
           : loveLanguages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      hasCrush: null == hasCrush
+          ? _value.hasCrush
+          : hasCrush // ignore: cast_nullable_to_non_nullable
+              as bool,
+      crushType: null == crushType
+          ? _value.crushType
+          : crushType // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -204,7 +230,9 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
       required this.job,
       required final List<String> personalities,
       required final List<String> hobbies,
-      required final List<String> loveLanguages})
+      required final List<String> loveLanguages,
+      required this.hasCrush,
+      required this.crushType})
       : _personalities = personalities,
         _hobbies = hobbies,
         _loveLanguages = loveLanguages,
@@ -250,8 +278,13 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
   }
 
   @override
+  final bool hasCrush;
+  @override
+  final String crushType;
+
+  @override
   String toString() {
-    return 'LoggedInUserInfoModel(genderRaw: $genderRaw, name: $name, avatar: $avatar, birthdayRaw: $birthdayRaw, job: $job, personalities: $personalities, hobbies: $hobbies, loveLanguages: $loveLanguages)';
+    return 'LoggedInUserInfoModel(genderRaw: $genderRaw, name: $name, avatar: $avatar, birthdayRaw: $birthdayRaw, job: $job, personalities: $personalities, hobbies: $hobbies, loveLanguages: $loveLanguages, hasCrush: $hasCrush, crushType: $crushType)';
   }
 
   @override
@@ -270,7 +303,11 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
                 .equals(other._personalities, _personalities) &&
             const DeepCollectionEquality().equals(other._hobbies, _hobbies) &&
             const DeepCollectionEquality()
-                .equals(other._loveLanguages, _loveLanguages));
+                .equals(other._loveLanguages, _loveLanguages) &&
+            (identical(other.hasCrush, hasCrush) ||
+                other.hasCrush == hasCrush) &&
+            (identical(other.crushType, crushType) ||
+                other.crushType == crushType));
   }
 
   @JsonKey(ignore: true)
@@ -284,7 +321,9 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
       job,
       const DeepCollectionEquality().hash(_personalities),
       const DeepCollectionEquality().hash(_hobbies),
-      const DeepCollectionEquality().hash(_loveLanguages));
+      const DeepCollectionEquality().hash(_loveLanguages),
+      hasCrush,
+      crushType);
 
   @JsonKey(ignore: true)
   @override
@@ -310,7 +349,9 @@ abstract class _LoggedInUserInfoModel extends LoggedInUserInfoModel {
       required final String job,
       required final List<String> personalities,
       required final List<String> hobbies,
-      required final List<String> loveLanguages}) = _$LoggedInUserInfoModelImpl;
+      required final List<String> loveLanguages,
+      required final bool hasCrush,
+      required final String crushType}) = _$LoggedInUserInfoModelImpl;
   const _LoggedInUserInfoModel._() : super._();
 
   factory _LoggedInUserInfoModel.fromJson(Map<String, dynamic> json) =
@@ -334,6 +375,10 @@ abstract class _LoggedInUserInfoModel extends LoggedInUserInfoModel {
   List<String> get hobbies;
   @override
   List<String> get loveLanguages;
+  @override
+  bool get hasCrush;
+  @override
+  String get crushType;
   @override
   @JsonKey(ignore: true)
   _$$LoggedInUserInfoModelImplCopyWith<_$LoggedInUserInfoModelImpl>

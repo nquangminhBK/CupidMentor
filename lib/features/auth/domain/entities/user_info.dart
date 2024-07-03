@@ -9,15 +9,19 @@ part 'user_info.freezed.dart';
 @freezed
 class LoggedInUserInfo with _$LoggedInUserInfo {
   const LoggedInUserInfo._();
-  const factory LoggedInUserInfo(
-      {required Gender gender,
-      required String name,
-      required String avatar,
-      required DateTime birthday,
-      required String job,
-      required List<String> personalities,
-      required List<String> hobbies,
-      required List<String> loveLanguages}) = _LoggedInUserInfo;
+
+  const factory LoggedInUserInfo({
+    required Gender gender,
+    required String name,
+    required String avatar,
+    required DateTime birthday,
+    required String job,
+    required List<String> personalities,
+    required List<String> hobbies,
+    required List<String> loveLanguages,
+    required bool hasCrush,
+    required String crushType,
+  }) = _LoggedInUserInfo;
 
   factory LoggedInUserInfo.empty() => LoggedInUserInfo(
       gender: Gender.none,
@@ -27,7 +31,9 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
       job: '',
       personalities: [],
       hobbies: [],
-      loveLanguages: []);
+      loveLanguages: [],
+      crushType: '',
+      hasCrush: false);
 
   LoggedInUserInfoModel get toModel {
     return LoggedInUserInfoModel(
@@ -38,6 +44,8 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
         job: job,
         personalities: personalities,
         hobbies: hobbies,
-        loveLanguages: loveLanguages);
+        loveLanguages: loveLanguages,
+        crushType: crushType,
+        hasCrush: hasCrush);
   }
 }

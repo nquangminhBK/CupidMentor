@@ -1,6 +1,7 @@
 import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/constants/personalities.dart';
+import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
@@ -133,5 +134,23 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     loveLanguages.insert(newIndex, item);
     state = state.copyWith(
         userInfo: currentUserInfo.copyWith(loveLanguages: loveLanguages), errorMessage: "");
+  }
+
+  void updateRelationshipStatus(bool status) {
+    final currentUserInfo = state.userInfo;
+    if (!status) {
+      state = state.copyWith(
+          userInfo: currentUserInfo.copyWith(hasCrush: status, crushType: ""), errorMessage: "");
+    } else {
+      state =
+          state.copyWith(userInfo: currentUserInfo.copyWith(hasCrush: status), errorMessage: "");
+    }
+  }
+
+  void updateCrushType(RelationshipType type) {
+    final currentUserInfo = state.userInfo;
+
+    state =
+        state.copyWith(userInfo: currentUserInfo.copyWith(crushType: type.value), errorMessage: "");
   }
 }

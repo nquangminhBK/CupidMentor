@@ -10,13 +10,20 @@ class ToggleButtonOnboarding extends ConsumerWidget {
       {super.key, required this.isSelected, required this.onChange, required this.title});
 
   final bool isSelected;
-  final Function onChange;
+  final Function() onChange;
   final String title;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return AnimatedButton(
-        onPress: () {},
+    return InkWell(
+        customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        hoverColor: Colors.transparent,
+        focusColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        onTap: onChange,
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
@@ -38,7 +45,9 @@ class ToggleButtonOnboarding extends ConsumerWidget {
               const HorizontalSpace(size: 8),
               Text(
                 title,
-                style: context.textTheme.bodyLarge,
+                style: context.textTheme.bodyLarge!.copyWith(
+                  color: ref.currentAppColor.textColor,
+                ),
               )
             ],
           ),
