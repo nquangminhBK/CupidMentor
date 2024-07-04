@@ -1,11 +1,11 @@
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
+import 'package:cupid_mentor/core/widgets/navigate_button.dart';
+import 'package:cupid_mentor/core/widgets/page_indicator.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/dating_delights_page.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/profile_prowess_page.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/self_enhancement_page.dart';
-import 'package:cupid_mentor/core/widgets/navigate_button.dart';
-import 'package:cupid_mentor/core/widgets/page_indicator.dart';
 import 'package:cupid_mentor/features/showcase/presentation/widgets/skip_button.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_notifier.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_state.dart';

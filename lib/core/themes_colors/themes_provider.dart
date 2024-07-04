@@ -4,8 +4,8 @@ import 'package:cupid_mentor/core/themes_colors/themes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'themes_provider.g.dart';
 
@@ -21,7 +21,7 @@ class ThemeNotifier extends _$ThemeNotifier {
     final sharedPreference = GetIt.I<SharedPreferences>();
     final theme = sharedPreference.getString(themeKey);
     if (theme == null) {
-      if (PlatformDispatcher.instance.platformBrightness == Brightness.dark) {
+      if (PlatformDispatcher.instance.platformBrightness == Brightness.dark || kIsWeb) {
         await _setTheme(ThemeEnum.dark);
       } else {
         await _setTheme(ThemeEnum.light);

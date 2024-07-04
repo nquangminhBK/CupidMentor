@@ -1,5 +1,4 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -40,8 +39,9 @@ class PageGeneralWidget extends ConsumerWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
                     title,
-                    style: context.textTheme.titleLarge
-                        ?.copyWith(fontSize: 24, color: ref.currentAppColor.textColor),
+                    style: context.textTheme.titleLarge?.copyWith(
+                      fontSize: 24,
+                    ),
                   ),
                 ),
               ),
@@ -52,7 +52,7 @@ class PageGeneralWidget extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
           child: Text(
             description,
-            style: context.textTheme.bodyLarge?.copyWith(color: ref.currentAppColor.textColor),
+            style: context.textTheme.bodyLarge,
           ),
         ),
       ],

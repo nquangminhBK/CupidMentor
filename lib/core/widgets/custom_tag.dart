@@ -32,8 +32,7 @@ class CustomTag extends ConsumerWidget {
           duration: const Duration(milliseconds: 200),
           child: Text(
             title,
-            style: context.textTheme.bodyLarge!
-                .copyWith(fontWeight: FontWeight.w600, color: ref.currentAppColor.textColor),
+            style: context.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w600),
           ),
         ),
       );

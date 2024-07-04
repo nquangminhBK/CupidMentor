@@ -4,7 +4,6 @@ import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'crush_info_model.freezed.dart';
-
 part 'crush_info_model.g.dart';
 
 @freezed

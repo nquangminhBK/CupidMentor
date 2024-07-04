@@ -28,8 +28,7 @@ class DialogLoveLanguageConcept extends ConsumerWidget {
               children: [
                 Text(
                   'What is the "Love language"',
-                  style: context.textTheme.titleSmall!
-                      .copyWith(color: ref.currentAppColor.textColor, fontSize: 20),
+                  style: context.textTheme.titleSmall!.copyWith(fontSize: 20),
                 ),
                 const Spacer(),
                 IconCloseButton(
@@ -44,7 +43,7 @@ class DialogLoveLanguageConcept extends ConsumerWidget {
             ),
             Text(
               LoveLanguage.overallInfo,
-              style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+              style: context.textTheme.bodyLarge,
             ),
             const SizedBox(
               height: 10,
@@ -58,13 +57,11 @@ class DialogLoveLanguageConcept extends ConsumerWidget {
                     children: [
                       TextSpan(
                         text: '$key: ',
-                        style: context.textTheme.titleSmall!
-                            .copyWith(color: ref.currentAppColor.textColor),
+                        style: context.textTheme.titleSmall,
                       ),
                       TextSpan(
                         text: '${LoveLanguage.loveLanguages[key]}',
-                        style: context.textTheme.bodyLarge!
-                            .copyWith(color: ref.currentAppColor.textColor),
+                        style: context.textTheme.bodyLarge,
                       ),
                     ],
                   ),
@@ -76,7 +73,7 @@ class DialogLoveLanguageConcept extends ConsumerWidget {
             ),
             Text(
               LoveLanguage.reasonOfConcept,
-              style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+              style: context.textTheme.bodyLarge,
             ),
           ],
         ),

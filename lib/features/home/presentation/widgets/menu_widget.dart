@@ -1,5 +1,4 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
@@ -43,14 +42,16 @@ class MenuWidget extends ConsumerWidget {
                     children: [
                       Text(
                         title,
-                        style: context.textTheme.labelLarge!
-                            .copyWith(fontSize: 16, color: ref.currentAppColor.textColor),
+                        style: context.textTheme.labelLarge!.copyWith(
+                          fontSize: 16,
+                        ),
                         textAlign: TextAlign.start,
                       ),
                       Text(
                         description,
-                        style: context.textTheme.labelLarge!
-                            .copyWith(fontSize: 12, color: ref.currentAppColor.textColor),
+                        style: context.textTheme.labelLarge!.copyWith(
+                          fontSize: 12,
+                        ),
                         textAlign: TextAlign.start,
                       ),
                       const VerticalSpace(size: 12),
@@ -69,8 +70,7 @@ class MenuWidget extends ConsumerWidget {
                               child: Text(
                                 buttonText,
                                 textAlign: TextAlign.center,
-                                style: context.textTheme.titleMedium!
-                                    .copyWith(color: ref.currentAppColor.textColor),
+                                style: context.textTheme.titleMedium,
                               ),
                             ),
                           ),
@@ -90,14 +90,16 @@ class MenuWidget extends ConsumerWidget {
                     children: [
                       Text(
                         title,
-                        style: context.textTheme.labelLarge!
-                            .copyWith(fontSize: 16, color: ref.currentAppColor.textColor),
+                        style: context.textTheme.labelLarge!.copyWith(
+                          fontSize: 16,
+                        ),
                         textAlign: TextAlign.end,
                       ),
                       Text(
                         description,
-                        style: context.textTheme.labelLarge!
-                            .copyWith(fontSize: 12, color: ref.currentAppColor.textColor),
+                        style: context.textTheme.labelLarge!.copyWith(
+                          fontSize: 12,
+                        ),
                         textAlign: TextAlign.end,
                       ),
                       const VerticalSpace(size: 12),
@@ -116,8 +118,7 @@ class MenuWidget extends ConsumerWidget {
                               child: Text(
                                 buttonText,
                                 textAlign: TextAlign.center,
-                                style: context.textTheme.titleMedium!
-                                    .copyWith(color: ref.currentAppColor.textColor),
+                                style: context.textTheme.titleMedium,
                               ),
                             ),
                           ),

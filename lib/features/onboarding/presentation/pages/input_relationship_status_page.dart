@@ -1,6 +1,5 @@
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/page_skeleton_widget.dart';
@@ -40,7 +39,7 @@ class _InputRelationshipStatusPageState extends ConsumerState<InputRelationshipS
         if (hasCrush) ...[
           Text(
             "Wow that's wonderful! Congratulations! So what's your relationship with that special someone?",
-            style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+            style: context.textTheme.bodyLarge,
           ),
           ...RelationshipType.relationshipTypes().map(
             (e) => Padding(

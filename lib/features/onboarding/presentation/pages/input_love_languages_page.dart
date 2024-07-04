@@ -58,8 +58,7 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
                 TextSpan(
                   text:
                       'First, tap the items below to select, you can arrange the order after selecting, ',
-                  style:
-                      context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+                  style: context.textTheme.bodyLarge,
                 ),
                 TextSpan(
                   text: 'click here',
@@ -77,8 +76,7 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
                 ),
                 TextSpan(
                   text: ' to read more about the concept love language.',
-                  style:
-                      context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+                  style: context.textTheme.bodyLarge,
                 ),
               ],
             ),

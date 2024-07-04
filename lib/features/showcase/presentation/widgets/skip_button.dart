@@ -1,5 +1,4 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +24,7 @@ class SkipButton extends ConsumerWidget {
                 ? Center(
                     child: Text(
                       'Skip',
-                      style: context.textTheme.titleMedium!
-                          .copyWith(color: ref.currentAppColor.textColor),
+                      style: context.textTheme.titleMedium,
                     ),
                   )
                 : const SizedBox(),

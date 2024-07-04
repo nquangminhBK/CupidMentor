@@ -40,7 +40,7 @@ class NavigateButton extends ConsumerWidget {
           child: Center(
             child: Text(
               "All right, let's get started!",
-              style: context.textTheme.titleMedium!.copyWith(color: ref.currentAppColor.textColor),
+              style: context.textTheme.titleMedium,
             ),
           ),
         ),

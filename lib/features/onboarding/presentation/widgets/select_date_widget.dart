@@ -1,6 +1,5 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-
 import 'package:cupid_mentor/core/widgets/gradient_box_border.dart';
 import 'package:cupid_mentor/core/widgets/my_date_time_picker.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +58,7 @@ class _SelectDateWidgetState extends ConsumerState<SelectDateWidget> {
             widget.selectedDate == null
                 ? 'Select your birthday'
                 : DateFormat.yMMMd().format(widget.selectedDate!),
-            style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+            style: context.textTheme.bodyLarge,
           ),
         ),
       ),

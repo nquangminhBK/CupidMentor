@@ -34,8 +34,7 @@ class MyTextField extends ConsumerWidget {
           autofocus: false,
           textInputAction: TextInputAction.done,
           onChanged: onChanged,
-          style: context.textTheme.bodyLarge!
-              .copyWith(color: ref.currentAppColor.textColor, fontWeight: FontWeight.bold),
+          style: context.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
           textAlign: TextAlign.left,
           cursorColor: Colors.white,
           decoration: InputDecoration(
@@ -45,7 +44,7 @@ class MyTextField extends ConsumerWidget {
             fillColor: ref.currentAppColor.buttonBackgroundColor,
             filled: true,
             hintText: hintText,
-            hintStyle: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+            hintStyle: context.textTheme.bodyLarge,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(color: Colors.transparent),
@@ -66,8 +65,7 @@ class MyTextField extends ConsumerWidget {
         autofocus: false,
         textInputAction: TextInputAction.done,
         onChanged: onChanged,
-        style: context.textTheme.bodyLarge!
-            .copyWith(color: ref.currentAppColor.textColor, fontWeight: FontWeight.bold),
+        style: context.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
         textAlign: TextAlign.left,
         cursorColor: Colors.white,
         decoration: InputDecoration(
@@ -77,7 +75,7 @@ class MyTextField extends ConsumerWidget {
           fillColor: ref.currentAppColor.buttonBackgroundColor,
           filled: true,
           hintText: hintText,
-          hintStyle: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+          hintStyle: context.textTheme.bodyLarge,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: Colors.transparent),

@@ -2,14 +2,13 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:cupid_mentor/core/errors/failure.dart';
 import 'package:cupid_mentor/core/utils/mixin/connectivity_mixin.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_local_datasource.dart';
+import 'package:cupid_mentor/features/auth/data/data_sources/authentication_remote_datasource.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/auth/domain/repositories/authentication_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-
-import 'package:cupid_mentor/features/auth/data/data_sources/authentication_remote_datasource.dart';
 
 class AuthenticationRepositoryImpl with ConnectivityMixin implements AuthenticationRepository {
   final AuthenticationRemoteDatasource remoteDatasource;

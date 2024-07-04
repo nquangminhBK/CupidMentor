@@ -32,7 +32,6 @@ class LoadingAnimation extends ConsumerWidget {
                     textStyle: context.textTheme.titleMedium!.copyWith(
                       fontWeight: FontWeight.w900,
                       fontSize: 15,
-                      color: ref.currentAppColor.textColor,
                       height: 1.2,
                     ),
                   ),

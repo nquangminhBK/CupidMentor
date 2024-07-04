@@ -49,9 +49,7 @@ class ToggleButtonOnboarding extends ConsumerWidget {
             const HorizontalSpace(size: 8),
             Text(
               title,
-              style: context.textTheme.bodyLarge!.copyWith(
-                color: ref.currentAppColor.textColor,
-              ),
+              style: context.textTheme.bodyLarge!.copyWith(),
             ),
           ],
         ),

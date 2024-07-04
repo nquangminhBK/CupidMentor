@@ -23,8 +23,9 @@ class WelcomeScreen extends ConsumerWidget {
               Expanded(child: Assets.png.welcomeDark.image()),
               Text(
                 'Welcome, ${userInfo.name}',
-                style: context.textTheme.titleLarge!
-                    .copyWith(fontSize: 30, color: ref.currentAppColor.textColor),
+                style: context.textTheme.titleLarge!.copyWith(
+                  fontSize: 30,
+                ),
                 textAlign: TextAlign.center,
               ),
               const VerticalSpace(size: 16),
@@ -32,8 +33,9 @@ class WelcomeScreen extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Text(
                   'Get ready with us to discover all the amazing features we have in store for you!',
-                  style: context.textTheme.bodyLarge!
-                      .copyWith(fontSize: 20, color: ref.currentAppColor.textColor),
+                  style: context.textTheme.bodyLarge!.copyWith(
+                    fontSize: 20,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -55,8 +57,7 @@ class WelcomeScreen extends ConsumerWidget {
                   child: Center(
                     child: Text(
                       "Okay, let's start",
-                      style: context.textTheme.titleMedium!
-                          .copyWith(color: ref.currentAppColor.textColor),
+                      style: context.textTheme.titleMedium,
                     ),
                   ),
                 ),

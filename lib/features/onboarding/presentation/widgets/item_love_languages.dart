@@ -36,8 +36,9 @@ class ItemLoveLanguage extends ConsumerWidget {
             ),
             Text(
               title,
-              style: context.textTheme.bodyLarge!
-                  .copyWith(fontWeight: FontWeight.w600, color: ref.currentAppColor.textColor),
+              style: context.textTheme.bodyLarge!.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
             ),
             const Spacer(),
             ReorderableDragStartListener(

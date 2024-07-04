@@ -68,8 +68,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
                   (widget.selectedGender == Gender.none)
                       ? 'Choose your gender'
                       : widget.selectedGender.value,
-                  style:
-                      context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+                  style: context.textTheme.bodyLarge,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -83,8 +82,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
                     children: [
                       Text(
                         item.value,
-                        style: context.textTheme.bodyLarge!
-                            .copyWith(color: ref.currentAppColor.textColor),
+                        style: context.textTheme.bodyLarge,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ],

@@ -32,8 +32,7 @@ class ProfileWidget extends ConsumerWidget {
                   child: Text(
                     'Your info 😊',
                     textAlign: TextAlign.center,
-                    style: context.textTheme.titleMedium!
-                        .copyWith(color: ref.currentAppColor.textColor),
+                    style: context.textTheme.titleMedium,
                   ),
                 ),
               ),
@@ -56,8 +55,7 @@ class ProfileWidget extends ConsumerWidget {
                   child: Text(
                     "Partner's Info 💜",
                     textAlign: TextAlign.center,
-                    style: context.textTheme.titleMedium!
-                        .copyWith(color: ref.currentAppColor.textColor),
+                    style: context.textTheme.titleMedium,
                   ),
                 ),
               ),

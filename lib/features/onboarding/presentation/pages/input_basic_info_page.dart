@@ -60,7 +60,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
       children: [
         Text(
           'Your name is',
-          style: context.textTheme.titleLarge!.copyWith(color: ref.currentAppColor.textColor),
+          style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         MyTextField(
@@ -75,7 +75,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
         const VerticalSpace(size: 24),
         Text(
           'Your gender is',
-          style: context.textTheme.titleLarge!.copyWith(color: ref.currentAppColor.textColor),
+          style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         SelectGenderDropdown(
@@ -85,7 +85,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
         const VerticalSpace(size: 24),
         Text(
           'Your birthday is',
-          style: context.textTheme.titleLarge!.copyWith(color: ref.currentAppColor.textColor),
+          style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         SelectDateWidget(
@@ -98,7 +98,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
         const VerticalSpace(size: 24),
         Text(
           'And your job is',
-          style: context.textTheme.titleLarge!.copyWith(color: ref.currentAppColor.textColor),
+          style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         MyTextField(
@@ -120,7 +120,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
             const HorizontalSpace(size: 6),
             Text(
               'Your information will be safe with us.',
-              style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+              style: context.textTheme.bodyLarge,
             ),
           ],
         ),

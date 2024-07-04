@@ -13,19 +13,19 @@ class MyTheme {
         iconTheme: const IconThemeData(
           color: Colors.black,
         ),
-        textTheme: TextThemes.textTheme(context),
+        textTheme: TextThemes.textTheme(context)
+            .apply(displayColor: AppColors.light.textColor, bodyColor: AppColors.light.textColor),
       );
 
   static ThemeData darkTheme(context) => ThemeData.dark(useMaterial3: false).copyWith(
         brightness: Brightness.dark,
         primaryColor: AppColors.light.primaryColor,
         scaffoldBackgroundColor: AppColors.light.screenBackgroundColor,
-        // hintColor: Colors.grey,
-        // cardColor: AppColors.lightColor.itemListBackgroundColor,
         iconTheme: const IconThemeData(
           color: Colors.black,
         ),
-        textTheme: TextThemes.textTheme(context),
+        textTheme: TextThemes.textTheme(context)
+            .apply(displayColor: AppColors.dark.textColor, bodyColor: AppColors.dark.textColor),
       );
 }
 

@@ -73,8 +73,7 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
                 ),
                 Text(
                   widget.title,
-                  style:
-                      context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+                  style: context.textTheme.bodyLarge,
                 ),
                 const Spacer(),
                 AnimatedButton(
@@ -94,8 +93,7 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
                     child: Center(
                       child: Text(
                         'Save',
-                        style: context.textTheme.bodyLarge!
-                            .copyWith(color: ref.currentAppColor.textColor),
+                        style: context.textTheme.bodyLarge,
                       ),
                     ),
                   ),

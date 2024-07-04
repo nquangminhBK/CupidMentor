@@ -65,7 +65,7 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
           gender == Gender.none
               ? 'Her/his name is'
               : (gender == Gender.male ? 'His name is' : 'Her name is'),
-          style: context.textTheme.titleLarge!.copyWith(color: ref.currentAppColor.textColor),
+          style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         MyTextField(
@@ -82,7 +82,7 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
           gender == Gender.none
               ? 'Her/his gender is'
               : (gender == Gender.male ? 'His gender is' : 'Her gender is'),
-          style: context.textTheme.titleLarge!.copyWith(color: ref.currentAppColor.textColor),
+          style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         SelectGenderDropdown(
@@ -95,7 +95,7 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
           gender == Gender.none
               ? 'Her/his birthday is'
               : (gender == Gender.male ? 'His birthday is' : 'Her birthday is'),
-          style: context.textTheme.titleLarge!.copyWith(color: ref.currentAppColor.textColor),
+          style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         SelectDateWidget(
@@ -111,7 +111,7 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
           gender == Gender.none
               ? 'Her/his job is'
               : (gender == Gender.male ? 'His job is' : 'Her job is'),
-          style: context.textTheme.titleLarge!.copyWith(color: ref.currentAppColor.textColor),
+          style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         MyTextField(
@@ -133,7 +133,7 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
             const HorizontalSpace(size: 6),
             Text(
               'Your information will be safe with us.',
-              style: context.textTheme.bodyLarge!.copyWith(color: ref.currentAppColor.textColor),
+              style: context.textTheme.bodyLarge,
             ),
           ],
         ),

@@ -4,16 +4,16 @@ import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/snackbar_utils.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
+import 'package:cupid_mentor/core/widgets/navigate_button.dart';
 import 'package:cupid_mentor/core/widgets/progress_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_basic_info_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_basic_info_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_hobbies_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_hobbies_page.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_basic_info_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_love_languages_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_personalities_page.dart';
-import 'package:cupid_mentor/core/widgets/navigate_button.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_relationship_status_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -83,8 +83,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     child: Center(
                       child: Text(
                         '${currentPage + 1}/$totalStep',
-                        style: context.textTheme.titleSmall!
-                            .copyWith(color: ref.currentAppColor.textColor),
+                        style: context.textTheme.titleSmall,
                       ),
                     ),
                   ),

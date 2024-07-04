@@ -1,5 +1,4 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,7 +15,7 @@ class RankWidget extends ConsumerWidget {
       child: Center(
         child: Text(
           title,
-          style: context.textTheme.titleSmall!.copyWith(color: ref.currentAppColor.textColor),
+          style: context.textTheme.titleSmall,
         ),
       ),
     );

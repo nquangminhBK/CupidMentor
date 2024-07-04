@@ -9,7 +9,6 @@ import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/auth/presentation/manager/auth_notifier.dart';
 import 'package:cupid_mentor/features/auth/presentation/manager/auth_state.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -52,8 +51,7 @@ class LoginScreen extends ConsumerWidget {
                     child: Text(
                       "Hi there, Welcome to Cupid mentor, To start your journey, let's",
                       textAlign: TextAlign.center,
-                      style: context.textTheme.bodyLarge!
-                          .copyWith(color: ref.currentAppColor.textColor),
+                      style: context.textTheme.bodyLarge,
                     ),
                   ),
                   const VerticalSpace(size: 20),
@@ -77,8 +75,7 @@ class LoginScreen extends ConsumerWidget {
                           Text(
                             'Continue with Google',
                             textAlign: TextAlign.center,
-                            style: context.textTheme.titleMedium!
-                                .copyWith(color: ref.currentAppColor.textColor),
+                            style: context.textTheme.titleMedium,
                           ),
                         ],
                       ),
@@ -103,8 +100,7 @@ class LoginScreen extends ConsumerWidget {
                           Text(
                             'Continue with Apple',
                             textAlign: TextAlign.center,
-                            style: context.textTheme.titleMedium!
-                                .copyWith(color: ref.currentAppColor.textColor),
+                            style: context.textTheme.titleMedium,
                           ),
                         ],
                       ),
@@ -116,8 +112,7 @@ class LoginScreen extends ConsumerWidget {
                     child: Text(
                       'By logging in, you agree to our Terms of Conditions. LEarn how we use your data in our Privacy Policy',
                       textAlign: TextAlign.center,
-                      style: context.textTheme.bodyLarge!
-                          .copyWith(color: ref.currentAppColor.textColor),
+                      style: context.textTheme.bodyLarge,
                     ),
                   ),
                   const VerticalSpace(size: 10),
