@@ -59,9 +59,8 @@ class NavigateButton extends ConsumerWidget {
               ),
               width: 56,
               height: 56,
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back_rounded,
-                color: ref.currentAppColor.textColor,
               ),
             ),
           ),
@@ -75,9 +74,8 @@ class NavigateButton extends ConsumerWidget {
             ),
             width: 56,
             height: 56,
-            child: Icon(
+            child: const Icon(
               Icons.arrow_forward_rounded,
-              color: ref.currentAppColor.textColor,
             ),
           ),
         ),

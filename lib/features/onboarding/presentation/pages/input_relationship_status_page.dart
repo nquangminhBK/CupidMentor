@@ -25,15 +25,15 @@ class _InputRelationshipStatusPageState extends ConsumerState<InputRelationshipS
       description: "Let us know if there's someone special in your life.",
       children: [
         ToggleButtonOnboarding(
-          isSelected: hasCrush,
-          onChange: () => notifier.updateRelationshipStatus(true),
-          title: 'Already have',
-        ),
-        const VerticalSpace(size: 16),
-        ToggleButtonOnboarding(
           isSelected: !hasCrush,
           onChange: () => notifier.updateRelationshipStatus(false),
           title: 'Not have yet',
+        ),
+        const VerticalSpace(size: 16),
+        ToggleButtonOnboarding(
+          isSelected: hasCrush,
+          onChange: () => notifier.updateRelationshipStatus(true),
+          title: 'Already have',
         ),
         const VerticalSpace(size: 32),
         if (hasCrush) ...[

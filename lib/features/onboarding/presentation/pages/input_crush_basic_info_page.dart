@@ -2,7 +2,6 @@ import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
@@ -126,9 +125,8 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
         const VerticalSpace(size: 24),
         Row(
           children: [
-            Icon(
+            const Icon(
               Icons.privacy_tip_outlined,
-              color: ref.currentAppColor.textColor,
             ),
             const HorizontalSpace(size: 6),
             Text(

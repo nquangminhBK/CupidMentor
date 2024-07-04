@@ -1,6 +1,5 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
@@ -71,9 +70,8 @@ class ChatNowWidget extends ConsumerWidget {
                                 style: context.textTheme.titleMedium,
                               ),
                               const HorizontalSpace(size: 8),
-                              Icon(
+                              const Icon(
                                 Icons.chat_outlined,
-                                color: ref.currentAppColor.textColor,
                                 size: 15,
                               ),
                             ],

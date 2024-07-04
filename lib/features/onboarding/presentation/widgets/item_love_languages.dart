@@ -19,7 +19,13 @@ class ItemLoveLanguage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
+      customBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      hoverColor: Colors.transparent,
+      focusColor: Colors.transparent,
       splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 16),
@@ -43,11 +49,10 @@ class ItemLoveLanguage extends ConsumerWidget {
             const Spacer(),
             ReorderableDragStartListener(
               index: index,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 12, top: 10, bottom: 10),
+              child: const Padding(
+                padding: EdgeInsets.only(right: 12, top: 10, bottom: 10),
                 child: Icon(
                   Icons.reorder_rounded,
-                  color: ref.currentAppColor.textColor,
                 ),
               ),
             ),

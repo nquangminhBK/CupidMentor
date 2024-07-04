@@ -1,6 +1,5 @@
 import 'package:cupid_mentor/core/constants/self_improvement.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -28,9 +27,8 @@ class TipsSelfImprovementItem extends ConsumerWidget {
             ),
           ),
           const HorizontalSpace(size: 8),
-          Icon(
+          const Icon(
             Icons.arrow_forward_ios_rounded,
-            color: ref.currentAppColor.textColor,
             size: 16,
           ),
         ],

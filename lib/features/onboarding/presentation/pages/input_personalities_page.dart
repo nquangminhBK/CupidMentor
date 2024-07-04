@@ -1,5 +1,4 @@
 import 'package:cupid_mentor/core/constants/personalities.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
@@ -49,9 +48,8 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
             });
           },
           hintText: 'Search your personalities',
-          suffixIcon: Icon(
+          suffixIcon: const Icon(
             Icons.search_rounded,
-            color: ref.currentAppColor.textColor,
           ),
         ),
         const VerticalSpace(size: 16),
