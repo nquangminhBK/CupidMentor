@@ -28,7 +28,7 @@ class MenuWidget extends ConsumerWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: Colors.white.withOpacity(0.05),
+        color: ref.currentAppColor.homeMenuColor,
       ),
       margin: const EdgeInsets.symmetric(horizontal: 24),
       padding: const EdgeInsets.all(12),

@@ -1,10 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
-import 'package:cupid_mentor/features/auth/data/models/user_info_model.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class TipsSelfImproveDatasource {
   Future<String?> generateResponseTipsSelfImprove({

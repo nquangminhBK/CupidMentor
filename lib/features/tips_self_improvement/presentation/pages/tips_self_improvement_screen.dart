@@ -1,6 +1,5 @@
 import 'package:cupid_mentor/core/constants/self_improvement.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/widgets/tips_self_improvement_items.dart';
 import 'package:flutter/material.dart';

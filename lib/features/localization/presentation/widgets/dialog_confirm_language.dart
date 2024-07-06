@@ -17,14 +17,13 @@ class DialogConfirm extends ConsumerWidget {
   final String? titleNegativeButton;
 
   const DialogConfirm(
-      {Key? key,
+      {super.key,
       this.onNegativeButtonExecute,
       required this.onPositiveButtonExecute,
       required this.message,
       this.title,
       required this.titlePositiveButton,
-      this.titleNegativeButton,})
-      : super(key: key);
+      this.titleNegativeButton,});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -1,4 +1,3 @@
-import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/widgets/image_network.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';

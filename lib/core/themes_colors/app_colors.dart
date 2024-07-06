@@ -9,6 +9,7 @@ class AppColors {
   final Color cardColorWithoutOpacity;
   final Gradient mainGradient;
   final Gradient buttonBackgroundColorInGradient;
+  final Color homeMenuColor;
 
   const AppColors({
     required this.primaryColor,
@@ -19,6 +20,7 @@ class AppColors {
     required this.mainGradient,
     required this.textColor,
     required this.buttonBackgroundColorInGradient,
+    required this.homeMenuColor,
   });
 
   static AppColors dark = AppColors(
@@ -28,6 +30,7 @@ class AppColors {
     buttonBackgroundColor: Colors.white.withOpacity(0.08),
     cardColorWithoutOpacity: const Color(0xff282828),
     textColor: const Color(0xffF9FAFB),
+    homeMenuColor: Colors.white.withOpacity(0.05),
     mainGradient: const LinearGradient(
       colors: [
         Color(0xff642ca9),
@@ -41,20 +44,21 @@ class AppColors {
       ],
     ),
   );
-  static AppColors light = const AppColors(
-    primaryColor: Color(0xff642CA9),
-    secondaryColor: Color(0xffFF36AB),
+  static AppColors light = AppColors(
+    primaryColor: const Color(0xff642CA9),
+    secondaryColor: const Color(0xffFF36AB),
     screenBackgroundColor: Colors.white,
     cardColorWithoutOpacity: Colors.white,
-    buttonBackgroundColor: Color(0xfff1f1f1),
-    textColor: Color(0xff101828),
-    mainGradient: LinearGradient(
+    homeMenuColor: Colors.grey.withOpacity(0.08),
+    buttonBackgroundColor: const Color(0xfff1f1f1),
+    textColor: const Color(0xff101828),
+    mainGradient: const LinearGradient(
       colors: [
         Color(0xff642ca9),
         Color(0xffff36ab),
       ],
     ),
-    buttonBackgroundColorInGradient: LinearGradient(
+    buttonBackgroundColorInGradient: const LinearGradient(
       colors: [
         Color(0xfff1f1f1),
         Color(0xfff1f1f1),
