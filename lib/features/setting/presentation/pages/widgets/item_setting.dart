@@ -3,9 +3,16 @@ import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:flutter/material.dart';
 
 class ItemSetting extends StatelessWidget {
-  const ItemSetting({super.key, required this.icon, required this.title, required this.onTap});
+  const ItemSetting({
+    super.key,
+    required this.leftIcon,
+    this.rightWidget,
+    required this.title,
+    required this.onTap,
+  });
 
-  final IconData icon;
+  final IconData leftIcon;
+  final Widget? rightWidget;
   final String title;
   final Function() onTap;
 
@@ -19,17 +26,18 @@ class ItemSetting extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(icon),
+            Icon(leftIcon),
             const HorizontalSpace(size: 12),
             Text(
               title,
               style: context.textTheme.titleMedium,
             ),
             const Spacer(),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 16,
-            ),
+            rightWidget ??
+                const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 16,
+                ),
           ],
         ),
       ),

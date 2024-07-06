@@ -27,6 +27,15 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
   final FocusNode jobFocusNode = FocusNode();
 
   @override
+  void dispose() {
+    nameController.dispose();
+    jobController.dispose();
+    nameFocusNode.dispose();
+    jobFocusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final onboardingNotifier = ref.read(onboardingNotifierProvider.notifier);
     final userInfo = ref.watch(onboardingNotifierProvider).userInfo;

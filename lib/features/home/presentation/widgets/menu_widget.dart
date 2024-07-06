@@ -37,13 +37,14 @@ class MenuWidget extends ConsumerWidget {
         children: isLeftToRight
             ? [
                 Expanded(
+                  flex: 3,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         title,
-                        style: context.textTheme.labelLarge!.copyWith(
+                        style: context.textTheme.titleSmall!.copyWith(
                           fontSize: 16,
                         ),
                         textAlign: TextAlign.start,
@@ -80,18 +81,22 @@ class MenuWidget extends ConsumerWidget {
                     ],
                   ),
                 ),
-                Expanded(child: image),
+                Expanded(flex: 2, child: image),
               ]
             : [
-                Expanded(child: image),
                 Expanded(
+                  flex: 2,
+                  child: image,
+                ),
+                Expanded(
+                  flex: 3,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         title,
-                        style: context.textTheme.labelLarge!.copyWith(
+                        style: context.textTheme.titleSmall!.copyWith(
                           fontSize: 16,
                         ),
                         textAlign: TextAlign.end,

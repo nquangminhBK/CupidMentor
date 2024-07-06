@@ -16,7 +16,7 @@ class MyAppBar {
         titleSpacing: 0,
         iconTheme: IconThemeData(
           color: ref.currentAppColor.textColor,
-          size: 16,
+          size: 18,
         ),
         title: Align(
           alignment: Alignment.centerLeft,

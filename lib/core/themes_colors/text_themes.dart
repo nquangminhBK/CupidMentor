@@ -6,9 +6,7 @@ class TextThemes {
         fontWeight: FontWeight.w300,
       );
 
-  static TextStyle light() => GoogleFonts.poppins(
-        fontWeight: FontWeight.w400,
-      );
+  static TextStyle light() => GoogleFonts.poppins();
 
   static TextStyle medium() => GoogleFonts.poppins(
         fontWeight: FontWeight.w600,

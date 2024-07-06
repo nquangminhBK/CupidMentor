@@ -27,6 +27,15 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
   final FocusNode jobFocusNode = FocusNode();
 
   @override
+  void dispose() {
+    nameController.dispose();
+    jobController.dispose();
+    nameFocusNode.dispose();
+    jobFocusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final onboardingNotifier = ref.read(onboardingNotifierProvider.notifier);
     final crushInfo = ref.watch(onboardingNotifierProvider).userInfo.crushInfo;
