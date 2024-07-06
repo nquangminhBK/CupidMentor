@@ -25,7 +25,8 @@ class LocalizationNotifier extends _$LocalizationNotifier {
 
   Future<void> checkInitialLanguage() async {
     final currentLanguageResponse = await getLanguage(NoParams());
-    final currentLanguage = currentLanguageResponse.getOrElse(() => LocalizationEnum.english);
+    final currentLanguage = currentLanguageResponse.getOrElse(() => null);
+    if (currentLanguage == null) return;
     await updateLanguage(currentLanguage);
   }
 

@@ -1,5 +1,8 @@
 class AppRoutes {
   static const String splash = '/';
+
+  static const String selectLanguage = '/select_language';
+
   static const String showcase = '/showcase';
 
   static const String login = '/login';

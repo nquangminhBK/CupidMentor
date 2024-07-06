@@ -3,7 +3,7 @@ import 'package:cupid_mentor/core/errors/failure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class LocalizationRepository {
-  Future<Either<Failure, LocalizationEnum>> getLanguage();
+  Future<Either<Failure, LocalizationEnum?>> getLanguage();
 
   Future<Either<Failure, bool>> setLanguage(LocalizationEnum language);
 

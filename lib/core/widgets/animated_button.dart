@@ -12,6 +12,7 @@ class AnimatedButton extends ConsumerStatefulWidget {
   final double? borderSize;
   final Color? borderColor;
   final Function? onLongPress;
+  final bool enable;
 
   const AnimatedButton({
     required this.onPress,
@@ -24,6 +25,7 @@ class AnimatedButton extends ConsumerStatefulWidget {
     this.scaleSize,
     this.borderSize,
     this.padding,
+    this.enable = true,
     super.key,
   });
 
@@ -73,6 +75,7 @@ class AnimatedButtonState extends ConsumerState<AnimatedButton>
             ),
           ),
           onTap: () {
+            if (!widget.enable) return;
             _controller.forward().whenComplete(() {
               _controller.reverse().whenComplete(() {
                 try {
@@ -84,6 +87,7 @@ class AnimatedButtonState extends ConsumerState<AnimatedButton>
             });
           },
           onLongPress: () {
+            if (!widget.enable) return;
             widget.onLongPress?.call();
           },
         ),

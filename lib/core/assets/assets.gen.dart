@@ -47,11 +47,17 @@ class $AssetsPngGen {
   /// File path: assets/png/dating_delight_image_light.png
   AssetGenImage get datingDelightImageLight => const AssetGenImage('assets/png/dating_delight_image_light.png');
 
+  /// File path: assets/png/english.png
+  AssetGenImage get english => const AssetGenImage('assets/png/english.png');
+
   /// File path: assets/png/gift_menu_image.png
   AssetGenImage get giftMenuImage => const AssetGenImage('assets/png/gift_menu_image.png');
 
   /// File path: assets/png/gift_menu_image_light.png
   AssetGenImage get giftMenuImageLight => const AssetGenImage('assets/png/gift_menu_image_light.png');
+
+  /// File path: assets/png/japanese.png
+  AssetGenImage get japanese => const AssetGenImage('assets/png/japanese.png');
 
   /// File path: assets/png/login_image.png
   AssetGenImage get loginImage => const AssetGenImage('assets/png/login_image.png');
@@ -92,6 +98,9 @@ class $AssetsPngGen {
   /// File path: assets/png/valentine_image.png
   AssetGenImage get valentineImage => const AssetGenImage('assets/png/valentine_image.png');
 
+  /// File path: assets/png/vietnamese.png
+  AssetGenImage get vietnamese => const AssetGenImage('assets/png/vietnamese.png');
+
   /// File path: assets/png/welcome_image.png
   AssetGenImage get welcomeImage => const AssetGenImage('assets/png/welcome_image.png');
 
@@ -110,8 +119,10 @@ class $AssetsPngGen {
         christmasImage,
         datingDelightImage,
         datingDelightImageLight,
+        english,
         giftMenuImage,
         giftMenuImageLight,
+        japanese,
         loginImage,
         loginImageLight,
         mensDayImage,
@@ -125,6 +136,7 @@ class $AssetsPngGen {
         tipMenuImage,
         tipMenuImageLight,
         valentineImage,
+        vietnamese,
         welcomeImage,
         welcomeImageLight,
         womensDayImages

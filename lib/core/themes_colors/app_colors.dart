@@ -8,6 +8,7 @@ class AppColors {
   final Color textColor;
   final Color cardColorWithoutOpacity;
   final Gradient mainGradient;
+  final Gradient buttonBackgroundColorInGradient;
 
   const AppColors({
     required this.primaryColor,
@@ -17,6 +18,7 @@ class AppColors {
     required this.cardColorWithoutOpacity,
     required this.mainGradient,
     required this.textColor,
+    required this.buttonBackgroundColorInGradient,
   });
 
   static AppColors dark = AppColors(
@@ -32,6 +34,12 @@ class AppColors {
         Color(0xffff36ab),
       ],
     ),
+    buttonBackgroundColorInGradient: LinearGradient(
+      colors: [
+        Colors.white.withOpacity(0.08),
+        Colors.white.withOpacity(0.08),
+      ],
+    ),
   );
   static AppColors light = const AppColors(
     primaryColor: Color(0xff642CA9),
@@ -44,6 +52,12 @@ class AppColors {
       colors: [
         Color(0xff642ca9),
         Color(0xffff36ab),
+      ],
+    ),
+    buttonBackgroundColorInGradient: LinearGradient(
+      colors: [
+        Color(0xfff1f1f1),
+        Color(0xfff1f1f1),
       ],
     ),
   );

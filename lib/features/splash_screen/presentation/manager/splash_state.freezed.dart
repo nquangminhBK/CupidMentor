@@ -20,6 +20,7 @@ mixin _$SplashState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() goToLogin,
+    required TResult Function() goToSelectLanguage,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
     required TResult Function() goToHome,
@@ -29,6 +30,7 @@ mixin _$SplashState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? goToLogin,
+    TResult? Function()? goToSelectLanguage,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
     TResult? Function()? goToHome,
@@ -38,6 +40,7 @@ mixin _$SplashState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? goToLogin,
+    TResult Function()? goToSelectLanguage,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
     TResult Function()? goToHome,
@@ -48,6 +51,8 @@ mixin _$SplashState {
   TResult map<TResult extends Object?>({
     required TResult Function(SplashInitializedState value) initialized,
     required TResult Function(SplashGoToLoginState value) goToLogin,
+    required TResult Function(SplashGoToSelectLanguageState value)
+        goToSelectLanguage,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
     required TResult Function(SplashGoToHomeState value) goToHome,
@@ -57,6 +62,7 @@ mixin _$SplashState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SplashInitializedState value)? initialized,
     TResult? Function(SplashGoToLoginState value)? goToLogin,
+    TResult? Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult? Function(SplashGoToHomeState value)? goToHome,
@@ -66,6 +72,7 @@ mixin _$SplashState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SplashInitializedState value)? initialized,
     TResult Function(SplashGoToLoginState value)? goToLogin,
+    TResult Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult Function(SplashGoToHomeState value)? goToHome,
@@ -135,6 +142,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() goToLogin,
+    required TResult Function() goToSelectLanguage,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
     required TResult Function() goToHome,
@@ -147,6 +155,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? goToLogin,
+    TResult? Function()? goToSelectLanguage,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
     TResult? Function()? goToHome,
@@ -159,6 +168,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? goToLogin,
+    TResult Function()? goToSelectLanguage,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
     TResult Function()? goToHome,
@@ -175,6 +185,8 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
   TResult map<TResult extends Object?>({
     required TResult Function(SplashInitializedState value) initialized,
     required TResult Function(SplashGoToLoginState value) goToLogin,
+    required TResult Function(SplashGoToSelectLanguageState value)
+        goToSelectLanguage,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
     required TResult Function(SplashGoToHomeState value) goToHome,
@@ -187,6 +199,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SplashInitializedState value)? initialized,
     TResult? Function(SplashGoToLoginState value)? goToLogin,
+    TResult? Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult? Function(SplashGoToHomeState value)? goToHome,
@@ -199,6 +212,7 @@ class _$SplashInitializedStateImpl implements SplashInitializedState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SplashInitializedState value)? initialized,
     TResult Function(SplashGoToLoginState value)? goToLogin,
+    TResult Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult Function(SplashGoToHomeState value)? goToHome,
@@ -256,6 +270,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() goToLogin,
+    required TResult Function() goToSelectLanguage,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
     required TResult Function() goToHome,
@@ -268,6 +283,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? goToLogin,
+    TResult? Function()? goToSelectLanguage,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
     TResult? Function()? goToHome,
@@ -280,6 +296,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? goToLogin,
+    TResult Function()? goToSelectLanguage,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
     TResult Function()? goToHome,
@@ -296,6 +313,8 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
   TResult map<TResult extends Object?>({
     required TResult Function(SplashInitializedState value) initialized,
     required TResult Function(SplashGoToLoginState value) goToLogin,
+    required TResult Function(SplashGoToSelectLanguageState value)
+        goToSelectLanguage,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
     required TResult Function(SplashGoToHomeState value) goToHome,
@@ -308,6 +327,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SplashInitializedState value)? initialized,
     TResult? Function(SplashGoToLoginState value)? goToLogin,
+    TResult? Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult? Function(SplashGoToHomeState value)? goToHome,
@@ -320,6 +340,7 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SplashInitializedState value)? initialized,
     TResult Function(SplashGoToLoginState value)? goToLogin,
+    TResult Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult Function(SplashGoToHomeState value)? goToHome,
@@ -334,6 +355,138 @@ class _$SplashGoToLoginStateImpl implements SplashGoToLoginState {
 
 abstract class SplashGoToLoginState implements SplashState {
   const factory SplashGoToLoginState() = _$SplashGoToLoginStateImpl;
+}
+
+/// @nodoc
+abstract class _$$SplashGoToSelectLanguageStateImplCopyWith<$Res> {
+  factory _$$SplashGoToSelectLanguageStateImplCopyWith(
+          _$SplashGoToSelectLanguageStateImpl value,
+          $Res Function(_$SplashGoToSelectLanguageStateImpl) then) =
+      __$$SplashGoToSelectLanguageStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SplashGoToSelectLanguageStateImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$SplashGoToSelectLanguageStateImpl>
+    implements _$$SplashGoToSelectLanguageStateImplCopyWith<$Res> {
+  __$$SplashGoToSelectLanguageStateImplCopyWithImpl(
+      _$SplashGoToSelectLanguageStateImpl _value,
+      $Res Function(_$SplashGoToSelectLanguageStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SplashGoToSelectLanguageStateImpl
+    implements SplashGoToSelectLanguageState {
+  const _$SplashGoToSelectLanguageStateImpl();
+
+  @override
+  String toString() {
+    return 'SplashState.goToSelectLanguage()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SplashGoToSelectLanguageStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() goToLogin,
+    required TResult Function() goToSelectLanguage,
+    required TResult Function() goToOnboarding,
+    required TResult Function() goToShowCase,
+    required TResult Function() goToHome,
+  }) {
+    return goToSelectLanguage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? goToLogin,
+    TResult? Function()? goToSelectLanguage,
+    TResult? Function()? goToOnboarding,
+    TResult? Function()? goToShowCase,
+    TResult? Function()? goToHome,
+  }) {
+    return goToSelectLanguage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? goToLogin,
+    TResult Function()? goToSelectLanguage,
+    TResult Function()? goToOnboarding,
+    TResult Function()? goToShowCase,
+    TResult Function()? goToHome,
+    required TResult orElse(),
+  }) {
+    if (goToSelectLanguage != null) {
+      return goToSelectLanguage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SplashInitializedState value) initialized,
+    required TResult Function(SplashGoToLoginState value) goToLogin,
+    required TResult Function(SplashGoToSelectLanguageState value)
+        goToSelectLanguage,
+    required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
+    required TResult Function(SplashGoToShowCaseState value) goToShowCase,
+    required TResult Function(SplashGoToHomeState value) goToHome,
+  }) {
+    return goToSelectLanguage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SplashInitializedState value)? initialized,
+    TResult? Function(SplashGoToLoginState value)? goToLogin,
+    TResult? Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
+    TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
+    TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult? Function(SplashGoToHomeState value)? goToHome,
+  }) {
+    return goToSelectLanguage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SplashInitializedState value)? initialized,
+    TResult Function(SplashGoToLoginState value)? goToLogin,
+    TResult Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
+    TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
+    TResult Function(SplashGoToShowCaseState value)? goToShowCase,
+    TResult Function(SplashGoToHomeState value)? goToHome,
+    required TResult orElse(),
+  }) {
+    if (goToSelectLanguage != null) {
+      return goToSelectLanguage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SplashGoToSelectLanguageState implements SplashState {
+  const factory SplashGoToSelectLanguageState() =
+      _$SplashGoToSelectLanguageStateImpl;
 }
 
 /// @nodoc
@@ -379,6 +532,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() goToLogin,
+    required TResult Function() goToSelectLanguage,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
     required TResult Function() goToHome,
@@ -391,6 +545,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? goToLogin,
+    TResult? Function()? goToSelectLanguage,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
     TResult? Function()? goToHome,
@@ -403,6 +558,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? goToLogin,
+    TResult Function()? goToSelectLanguage,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
     TResult Function()? goToHome,
@@ -419,6 +575,8 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
   TResult map<TResult extends Object?>({
     required TResult Function(SplashInitializedState value) initialized,
     required TResult Function(SplashGoToLoginState value) goToLogin,
+    required TResult Function(SplashGoToSelectLanguageState value)
+        goToSelectLanguage,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
     required TResult Function(SplashGoToHomeState value) goToHome,
@@ -431,6 +589,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SplashInitializedState value)? initialized,
     TResult? Function(SplashGoToLoginState value)? goToLogin,
+    TResult? Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult? Function(SplashGoToHomeState value)? goToHome,
@@ -443,6 +602,7 @@ class _$SplashGoToOnboardingStateImpl implements SplashGoToOnboardingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SplashInitializedState value)? initialized,
     TResult Function(SplashGoToLoginState value)? goToLogin,
+    TResult Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult Function(SplashGoToHomeState value)? goToHome,
@@ -502,6 +662,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() goToLogin,
+    required TResult Function() goToSelectLanguage,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
     required TResult Function() goToHome,
@@ -514,6 +675,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? goToLogin,
+    TResult? Function()? goToSelectLanguage,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
     TResult? Function()? goToHome,
@@ -526,6 +688,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? goToLogin,
+    TResult Function()? goToSelectLanguage,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
     TResult Function()? goToHome,
@@ -542,6 +705,8 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
   TResult map<TResult extends Object?>({
     required TResult Function(SplashInitializedState value) initialized,
     required TResult Function(SplashGoToLoginState value) goToLogin,
+    required TResult Function(SplashGoToSelectLanguageState value)
+        goToSelectLanguage,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
     required TResult Function(SplashGoToHomeState value) goToHome,
@@ -554,6 +719,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SplashInitializedState value)? initialized,
     TResult? Function(SplashGoToLoginState value)? goToLogin,
+    TResult? Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult? Function(SplashGoToHomeState value)? goToHome,
@@ -566,6 +732,7 @@ class _$SplashGoToShowCaseStateImpl implements SplashGoToShowCaseState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SplashInitializedState value)? initialized,
     TResult Function(SplashGoToLoginState value)? goToLogin,
+    TResult Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult Function(SplashGoToHomeState value)? goToHome,
@@ -623,6 +790,7 @@ class _$SplashGoToHomeStateImpl implements SplashGoToHomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() goToLogin,
+    required TResult Function() goToSelectLanguage,
     required TResult Function() goToOnboarding,
     required TResult Function() goToShowCase,
     required TResult Function() goToHome,
@@ -635,6 +803,7 @@ class _$SplashGoToHomeStateImpl implements SplashGoToHomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? goToLogin,
+    TResult? Function()? goToSelectLanguage,
     TResult? Function()? goToOnboarding,
     TResult? Function()? goToShowCase,
     TResult? Function()? goToHome,
@@ -647,6 +816,7 @@ class _$SplashGoToHomeStateImpl implements SplashGoToHomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? goToLogin,
+    TResult Function()? goToSelectLanguage,
     TResult Function()? goToOnboarding,
     TResult Function()? goToShowCase,
     TResult Function()? goToHome,
@@ -663,6 +833,8 @@ class _$SplashGoToHomeStateImpl implements SplashGoToHomeState {
   TResult map<TResult extends Object?>({
     required TResult Function(SplashInitializedState value) initialized,
     required TResult Function(SplashGoToLoginState value) goToLogin,
+    required TResult Function(SplashGoToSelectLanguageState value)
+        goToSelectLanguage,
     required TResult Function(SplashGoToOnboardingState value) goToOnboarding,
     required TResult Function(SplashGoToShowCaseState value) goToShowCase,
     required TResult Function(SplashGoToHomeState value) goToHome,
@@ -675,6 +847,7 @@ class _$SplashGoToHomeStateImpl implements SplashGoToHomeState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SplashInitializedState value)? initialized,
     TResult? Function(SplashGoToLoginState value)? goToLogin,
+    TResult? Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult? Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult? Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult? Function(SplashGoToHomeState value)? goToHome,
@@ -687,6 +860,7 @@ class _$SplashGoToHomeStateImpl implements SplashGoToHomeState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SplashInitializedState value)? initialized,
     TResult Function(SplashGoToLoginState value)? goToLogin,
+    TResult Function(SplashGoToSelectLanguageState value)? goToSelectLanguage,
     TResult Function(SplashGoToOnboardingState value)? goToOnboarding,
     TResult Function(SplashGoToShowCaseState value)? goToShowCase,
     TResult Function(SplashGoToHomeState value)? goToHome,

@@ -10,13 +10,13 @@ final getLanguageUseCaseProvider = Provider<GetLanguage>((ref) {
   return GetIt.I<GetLanguage>();
 });
 
-class GetLanguage implements UseCase<LocalizationEnum, NoParams> {
+class GetLanguage implements UseCase<LocalizationEnum?, NoParams> {
   final LocalizationRepository repository;
 
   const GetLanguage({required this.repository});
 
   @override
-  Future<Either<Failure, LocalizationEnum>> call(NoParams params) async {
+  Future<Either<Failure, LocalizationEnum?>> call(NoParams params) async {
     return await repository.getLanguage();
   }
 }

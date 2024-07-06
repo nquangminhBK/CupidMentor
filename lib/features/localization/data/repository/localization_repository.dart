@@ -25,7 +25,7 @@ class LocalizationRepositoryImpl implements LocalizationRepository {
   }
 
   @override
-  Future<Either<Failure, LocalizationEnum>> getLanguage() async {
+  Future<Either<Failure, LocalizationEnum?>> getLanguage() async {
     try {
       final result = await datasource.getLanguage();
 

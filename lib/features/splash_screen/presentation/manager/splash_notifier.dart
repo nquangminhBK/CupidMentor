@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/usecases/usecase.dart';
+import 'package:cupid_mentor/features/localization/domain/use_cases/get_language.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_is_logged_in.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_onboarding.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_showcase.dart';
@@ -20,28 +21,33 @@ class SplashNotifier extends _$SplashNotifier {
 
   CheckNeedLogin get checkNeedLogin => ref.read(checkNeedLoginUseCaseProvider);
 
+  GetLanguage get getLanguage => ref.read(getLanguageUseCaseProvider);
+
   Future<void> checkInitialCondition() async {
+    final languageResult = await getLanguage(NoParams());
+    final language = languageResult.getOrElse(() => null);
+    if (language == null) {
+      state = const SplashState.goToSelectLanguage();
+      return;
+    }
     final needShowCaseResult = await checkNeedShowCase(NoParams());
-    await needShowCaseResult.fold((failed) => null, (needShowCase) async {
-      if (needShowCase) {
-        state = const SplashState.goToShowCase();
-      } else {
-        final needLoginResult = await checkNeedLogin(NoParams());
-        await needLoginResult.fold((failed) => null, (needLogin) async {
-          if (needLogin) {
-            state = const SplashState.goToLogin();
-          } else {
-            final needOnboarding = await checkNeedOnboarding(NoParams());
-            await needOnboarding.fold((failed) => null, (needOnboarding) async {
-              if (needOnboarding) {
-                state = const SplashState.goToOnboarding();
-              } else {
-                state = const SplashState.goToHome();
-              }
-            });
-          }
-        });
-      }
-    });
+    final needShowCase = needShowCaseResult.getOrElse(() => false);
+    if (needShowCase) {
+      state = const SplashState.goToShowCase();
+      return;
+    }
+    final needLoginResult = await checkNeedLogin(NoParams());
+    final needLogin = needLoginResult.getOrElse(() => false);
+    if (needLogin) {
+      state = const SplashState.goToLogin();
+      return;
+    }
+    final needOnboardingResult = await checkNeedOnboarding(NoParams());
+    final needOnboarding = needOnboardingResult.getOrElse(() => false);
+    if (needOnboarding) {
+      state = const SplashState.goToOnboarding();
+    } else {
+      state = const SplashState.goToHome();
+    }
   }
 }

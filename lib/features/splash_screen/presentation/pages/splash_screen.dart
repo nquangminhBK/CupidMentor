@@ -24,6 +24,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(splashNotifierProvider, (previous, next) {
+
+      if (previous is! SplashGoToSelectLanguageState && next is SplashGoToSelectLanguageState) {
+        NavigationService.instance.push(AppRoutes.selectLanguage, replace: true);
+      }
+
       if (previous is! SplashGoToShowCaseState && next is SplashGoToShowCaseState) {
         NavigationService.instance.push(AppRoutes.showcase, replace: true);
       }

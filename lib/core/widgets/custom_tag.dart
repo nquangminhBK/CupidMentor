@@ -26,8 +26,9 @@ class CustomTag extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
-            color: isSelected ? null : ref.currentAppColor.buttonBackgroundColor,
-            gradient: isSelected ? ref.currentAppColor.mainGradient : null,
+            gradient: isSelected
+                ? ref.currentAppColor.mainGradient
+                : ref.currentAppColor.buttonBackgroundColorInGradient,
           ),
           duration: const Duration(milliseconds: 200),
           child: Text(

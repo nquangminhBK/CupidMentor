@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 const String localizationDBKey = 'localization';
 
 abstract class LocalizationDatasource {
-  Future<LocalizationEnum> getLanguage();
+  Future<LocalizationEnum?> getLanguage();
 
   Future<bool> setLanguage(LocalizationEnum language);
 
@@ -17,9 +17,10 @@ class LocalizationDatasourceImpl implements LocalizationDatasource {
   const LocalizationDatasourceImpl({required this.sharedPreferences});
 
   @override
-  Future<LocalizationEnum> getLanguage() async {
+  Future<LocalizationEnum?> getLanguage() async {
     final value = sharedPreferences.getString(localizationDBKey);
-    return LocalizationEnum.parse(value ?? '');
+    if (value == null) return null;
+    return LocalizationEnum.parse(value);
   }
 
   @override

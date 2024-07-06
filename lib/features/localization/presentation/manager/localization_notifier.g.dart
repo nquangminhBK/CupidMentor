@@ -7,7 +7,7 @@ part of 'localization_notifier.dart';
 // **************************************************************************
 
 String _$localizationNotifierHash() =>
-    r'0d7f3a6420d2d1b3c54f5fd70b4215a9c2de853f';
+    r'b9765ecb8ad0f482bc4255189908c38f7b098cdd';
 
 /// See also [LocalizationNotifier].
 @ProviderFor(LocalizationNotifier)
