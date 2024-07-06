@@ -1,6 +1,7 @@
 import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,29 +15,8 @@ class TipsDateSpotScreen extends ConsumerWidget {
       color: context.theme.scaffoldBackgroundColor,
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            titleSpacing: 0,
-            title: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'The Perfect Date Spots  🍿',
-                style: context.textTheme.titleLarge!.copyWith(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            backgroundColor: context.theme.scaffoldBackgroundColor,
-            elevation: 0,
-            actions: [
-              AnimatedButton(
-                onPress: () {},
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: Icon(Icons.info_outline_rounded),
-                ),
-              ),
-            ],
-          ),
+          appBar:
+              MyAppBar.myAppBar(title: 'The Perfect Date Spots  🍿', ref: ref, context: context),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: GridView.builder(

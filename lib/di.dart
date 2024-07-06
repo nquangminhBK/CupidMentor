@@ -90,6 +90,7 @@ void _registerRepositories() {
       remoteDatasource: get(),
       localDatasource: get(),
       connectivity: get(),
+      sharedPreferences: get(),
     ),
   );
   get.registerLazySingleton<OnboardingRepository>(

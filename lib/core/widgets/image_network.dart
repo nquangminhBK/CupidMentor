@@ -23,8 +23,9 @@ class ImageNetwork extends StatelessWidget {
               errorBuilder: (context, url, error) => Container(
                 color: Colors.white,
                 child: Align(
-                    alignment: Alignment.center,
-                    child: Assets.png.appIcon.image(color: Colors.grey)),
+                  alignment: Alignment.center,
+                  child: Assets.png.appIcon.image(color: Colors.grey),
+                ),
               ),
             )
           : CachedNetworkImage(

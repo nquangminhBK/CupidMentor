@@ -3,6 +3,7 @@ import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/chat_now_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/menu_widget.dart';
@@ -18,44 +19,16 @@ class HomeScreen extends ConsumerWidget {
         color: context.theme.scaffoldBackgroundColor,
         child: SafeArea(
           child: Scaffold(
-            appBar: AppBar(
-              titleSpacing: 0,
-              title: Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Text(
-                    'Good morning Mia 🌤',
-                    style: context.textTheme.titleLarge!.copyWith(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ),
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: AnimatedButton(
-                    onPress: () {
-                      NavigationService.instance.push(AppRoutes.setting);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey.withOpacity(0.5),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: const Icon(
-                        Icons.settings_rounded,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-              automaticallyImplyLeading: false,
-              backgroundColor: context.theme.scaffoldBackgroundColor,
-              elevation: 0,
+            appBar: MyAppBar.myAppBar(
+              title: 'Good morning Mia 🌤',
+              ref: ref,
+              context: context,
+              hasBackIcon: false,
+              actionButton: {
+                Icons.settings_rounded: () {
+                  NavigationService.instance.push(AppRoutes.setting);
+                },
+              },
             ),
             body: SizedBox.expand(
               child: SingleChildScrollView(

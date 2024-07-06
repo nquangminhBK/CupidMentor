@@ -14,21 +14,24 @@ class ItemSetting extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       height: 48,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Icon(icon),
-          const HorizontalSpace(size: 12),
-          Text(
-            title,
-            style: context.textTheme.titleMedium,
-          ),
-          const Spacer(),
-          const Icon(
-            Icons.arrow_forward_ios_rounded,
-            size: 16,
-          ),
-        ],
+      child: InkWell(
+        onTap: onTap,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(icon),
+            const HorizontalSpace(size: 12),
+            Text(
+              title,
+              style: context.textTheme.titleMedium,
+            ),
+            const Spacer(),
+            const Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 16,
+            ),
+          ],
+        ),
       ),
     );
   }

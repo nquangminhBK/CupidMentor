@@ -20,7 +20,7 @@ class GenerateResponseTipsSelfImprove
   @override
   Future<Either<Failure, String>> call(GenerateResponseTipsSelfImproveParam params) async {
     return repository.generateResponseTipsSelfImprove(
-        content: params.content, userInfo: params.userInfo);
+        content: params.content, userInfo: params.userInfo,);
   }
 }
 

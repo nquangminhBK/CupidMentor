@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/constants/hobbies.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
@@ -76,9 +77,9 @@ class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
         if (searchedList.isNotEmpty) const VerticalSpace(size: 16),
         if (searchedList.isNotEmpty)
           Container(
-            color: Colors.white,
+            color: ref.currentAppColor.textColor,
             width: double.infinity,
-            height: 2,
+            height: 1,
           ),
         if (searchedList.isNotEmpty) const VerticalSpace(size: 16),
         Wrap(

@@ -28,7 +28,7 @@ class IconCloseButton extends ConsumerWidget {
             child: Center(
               child: Icon(
                 icon ?? Icons.close_rounded,
-                color: Colors.white,
+                color: ref.currentAppColor.textColor,
               ),
             ),
           ),

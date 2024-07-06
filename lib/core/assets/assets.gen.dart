@@ -33,8 +33,17 @@ class $AssetsPngGen {
   /// File path: assets/png/dating_delight_image.png
   AssetGenImage get datingDelightImage => const AssetGenImage('assets/png/dating_delight_image.png');
 
+  /// File path: assets/png/dating_delight_image_light.png
+  AssetGenImage get datingDelightImageLight => const AssetGenImage('assets/png/dating_delight_image_light.png');
+
   /// File path: assets/png/gift_menu_image.png
   AssetGenImage get giftMenuImage => const AssetGenImage('assets/png/gift_menu_image.png');
+
+  /// File path: assets/png/login_image.png
+  AssetGenImage get loginImage => const AssetGenImage('assets/png/login_image.png');
+
+  /// File path: assets/png/login_image_light.png
+  AssetGenImage get loginImageLight => const AssetGenImage('assets/png/login_image_light.png');
 
   /// File path: assets/png/mens_day_image.png
   AssetGenImage get mensDayImage => const AssetGenImage('assets/png/mens_day_image.png');
@@ -42,8 +51,14 @@ class $AssetsPngGen {
   /// File path: assets/png/profile_prowess_image.png
   AssetGenImage get profileProwessImage => const AssetGenImage('assets/png/profile_prowess_image.png');
 
+  /// File path: assets/png/profile_prowess_image_light.png
+  AssetGenImage get profileProwessImageLight => const AssetGenImage('assets/png/profile_prowess_image_light.png');
+
   /// File path: assets/png/self_enhancement_image.png
   AssetGenImage get selfEnhancementImage => const AssetGenImage('assets/png/self_enhancement_image.png');
+
+  /// File path: assets/png/self_enhancement_image_light.png
+  AssetGenImage get selfEnhancementImageLight => const AssetGenImage('assets/png/self_enhancement_image_light.png');
 
   /// File path: assets/png/spot_menu_image.png
   AssetGenImage get spotMenuImage => const AssetGenImage('assets/png/spot_menu_image.png');
@@ -57,8 +72,11 @@ class $AssetsPngGen {
   /// File path: assets/png/valentine_image.png
   AssetGenImage get valentineImage => const AssetGenImage('assets/png/valentine_image.png');
 
-  /// File path: assets/png/welcome_dark.png
-  AssetGenImage get welcomeDark => const AssetGenImage('assets/png/welcome_dark.png');
+  /// File path: assets/png/welcome_image.png
+  AssetGenImage get welcomeImage => const AssetGenImage('assets/png/welcome_image.png');
+
+  /// File path: assets/png/welcome_image_light.png
+  AssetGenImage get welcomeImageLight => const AssetGenImage('assets/png/welcome_image_light.png');
 
   /// File path: assets/png/womens_day_images.png
   AssetGenImage get womensDayImages => const AssetGenImage('assets/png/womens_day_images.png');
@@ -71,15 +89,21 @@ class $AssetsPngGen {
         casualImage,
         christmasImage,
         datingDelightImage,
+        datingDelightImageLight,
         giftMenuImage,
+        loginImage,
+        loginImageLight,
         mensDayImage,
         profileProwessImage,
+        profileProwessImageLight,
         selfEnhancementImage,
+        selfEnhancementImageLight,
         spotMenuImage,
         thanksgivingImage,
         tipMenuImage,
         valentineImage,
-        welcomeDark,
+        welcomeImage,
+        welcomeImageLight,
         womensDayImages
       ];
 }

@@ -1,5 +1,8 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
+import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
+import 'package:cupid_mentor/core/widgets/reset_all_app.dart';
 import 'package:cupid_mentor/features/setting/presentation/manager/setting_notifier.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/widgets/item_setting.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/widgets/profile_section.dart';
@@ -26,18 +29,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
       color: context.theme.scaffoldBackgroundColor,
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            titleSpacing: 0,
-            title: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Setting',
-                style: context.textTheme.titleLarge!.copyWith(fontSize: 20),
-              ),
-            ),
-            backgroundColor: context.theme.scaffoldBackgroundColor,
-            elevation: 0,
-          ),
+          appBar: MyAppBar.myAppBar(title: 'Setting', ref: ref, context: context),
           body: Padding(
             padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
             child: Column(
@@ -46,7 +38,9 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 ItemSetting(
                   icon: Icons.remove_red_eye_outlined,
                   title: 'Theme',
-                  onTap: () {},
+                  onTap: () async {
+                    await ref.watch(themeNotifierProvider.notifier).switchTheme();
+                  },
                 ),
                 ItemSetting(
                   icon: Icons.language,
@@ -66,7 +60,12 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 ItemSetting(
                   icon: Icons.logout,
                   title: 'Logout',
-                  onTap: () {},
+                  onTap: () async {
+                    final result = await ref.read(settingNotifierProvider.notifier).signOut();
+                    if (result && context.mounted) {
+                      ResetAllApp.restartApp(context);
+                    }
+                  },
                 ),
               ],
             ),

@@ -25,26 +25,28 @@ class _AppState extends ConsumerState<App> {
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        title: 'Cupid Mentor',
-        scrollBehavior: const MaterialScrollBehavior().copyWith(
-          dragDevices: {
-            PointerDeviceKind.mouse,
-            PointerDeviceKind.touch,
-            PointerDeviceKind.stylus,
-            PointerDeviceKind.unknown,
-          },
-        ),
-        debugShowCheckedModeBanner: false,
-        navigatorKey: NavigationService.instance.globalNavigatorKey,
-        theme: MyTheme.lightTheme(context),
-        darkTheme: MyTheme.darkTheme(context),
-        themeMode: ref.read(themeNotifierProvider).currentTheme,
-        onGenerateRoute: generateRoute,
-        initialRoute: AppRoutes.splash,
-        builder: (context, myWidget) {
-          myWidget = EasyLoading.init()(context, myWidget);
-          return myWidget;
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Cupid Mentor',
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.unknown,
         },
-      );
+      ),
+      debugShowCheckedModeBanner: false,
+      navigatorKey: NavigationService.instance.globalNavigatorKey,
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
+      themeMode: ref.watch(themeNotifierProvider).currentTheme,
+      onGenerateRoute: generateRoute,
+      initialRoute: AppRoutes.splash,
+      builder: (context, myWidget) {
+        myWidget = EasyLoading.init()(context, myWidget);
+        return myWidget;
+      },
+    );
+  }
 }

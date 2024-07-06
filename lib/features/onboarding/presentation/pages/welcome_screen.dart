@@ -4,6 +4,7 @@ import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/gradient_text.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
 import 'package:flutter/material.dart';
@@ -20,26 +21,46 @@ class WelcomeScreen extends ConsumerWidget {
         child: SizedBox.expand(
           child: Column(
             children: [
-              Expanded(child: Assets.png.welcomeDark.image()),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(40),
+                  child: ref.currentTheme == ThemeMode.dark
+                      ? Assets.png.welcomeImage.image()
+                      : Assets.png.welcomeImageLight.image(),
+                ),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Assets.png.appIcon.image(width: 60, height: 60),
+                  GradientText(
+                    'Cupid Mentor',
+                    style: context.textTheme.titleLarge?.copyWith(
+                      fontSize: 40,
+                    ),
+                    gradient: ref.currentAppColor.mainGradient,
+                  ),
+                ],
+              ),
+              const VerticalSpace(size: 16),
               Text(
                 'Welcome, ${userInfo.name}',
                 style: context.textTheme.titleLarge!.copyWith(
-                  fontSize: 30,
+                  fontSize: 24,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const VerticalSpace(size: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Text(
                   'Get ready with us to discover all the amazing features we have in store for you!',
                   style: context.textTheme.bodyLarge!.copyWith(
-                    fontSize: 20,
+                    fontSize: 16,
                   ),
                   textAlign: TextAlign.center,
                 ),
               ),
-              const VerticalSpace(size: 56),
+              const VerticalSpace(size: 20),
               AnimatedButton(
                 onPress: () {
                   NavigationService.instance.push(AppRoutes.home, replace: true);
@@ -57,11 +78,12 @@ class WelcomeScreen extends ConsumerWidget {
                   child: Center(
                     child: Text(
                       "Okay, let's start",
-                      style: context.textTheme.titleMedium,
+                      style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                     ),
                   ),
                 ),
               ),
+              const VerticalSpace(size: 10),
             ],
           ),
         ),

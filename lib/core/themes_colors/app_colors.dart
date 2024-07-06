@@ -33,14 +33,14 @@ class AppColors {
       ],
     ),
   );
-  static AppColors light = AppColors(
-    primaryColor: const Color(0xff642CA9),
-    secondaryColor: const Color(0xffFF36AB),
-    screenBackgroundColor: const Color(0xffF4F4F5),
-    cardColorWithoutOpacity: const Color(0xff282828),
-    buttonBackgroundColor: Colors.white.withOpacity(0.08),
-    textColor: const Color(0xff101828),
-    mainGradient: const LinearGradient(
+  static AppColors light = const AppColors(
+    primaryColor: Color(0xff642CA9),
+    secondaryColor: Color(0xffFF36AB),
+    screenBackgroundColor: Colors.white,
+    cardColorWithoutOpacity: Colors.white,
+    buttonBackgroundColor: Color(0xfff1f1f1),
+    textColor: Color(0xff101828),
+    mainGradient: LinearGradient(
       colors: [
         Color(0xff642ca9),
         Color(0xffff36ab),

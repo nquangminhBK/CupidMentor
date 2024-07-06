@@ -36,7 +36,7 @@ class MyTextField extends ConsumerWidget {
           onChanged: onChanged,
           style: context.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
           textAlign: TextAlign.left,
-          cursorColor: Colors.white,
+          cursorColor: ref.currentAppColor.textColor,
           decoration: InputDecoration(
             suffixIcon: suffixIcon,
             prefixIcon: prefixIcon,
@@ -67,7 +67,7 @@ class MyTextField extends ConsumerWidget {
         onChanged: onChanged,
         style: context.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
         textAlign: TextAlign.left,
-        cursorColor: Colors.white,
+        cursorColor: ref.currentAppColor.textColor,
         decoration: InputDecoration(
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,

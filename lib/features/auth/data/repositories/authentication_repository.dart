@@ -8,10 +8,12 @@ import 'package:cupid_mentor/features/auth/domain/repositories/authentication_re
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationRepositoryImpl with ConnectivityMixin implements AuthenticationRepository {
   final AuthenticationRemoteDatasource remoteDatasource;
   final AuthenticationLocalDatasource localDatasource;
+  final SharedPreferences sharedPreferences;
 
   @override
   final Connectivity connectivity;
@@ -20,6 +22,7 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
     required this.remoteDatasource,
     required this.localDatasource,
     required this.connectivity,
+    required this.sharedPreferences,
   });
 
   @override
@@ -66,6 +69,7 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
     if (await isInConnection()) {
       try {
         await remoteDatasource.signOut();
+       // await sharedPreferences.remove(key);
         return const Right(true);
       } catch (e, _) {
         debugPrint(e.toString());

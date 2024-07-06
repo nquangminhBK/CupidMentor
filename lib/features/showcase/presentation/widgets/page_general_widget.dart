@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/widgets/gradient_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PageGeneralWidget extends ConsumerWidget {
@@ -29,7 +29,7 @@ class PageGeneralWidget extends ConsumerWidget {
           ),
         ),
         SizedBox(
-          height: 72,
+          height: 86,
           child: Stack(
             children: [
               Align(alignment: Alignment.topCenter, child: textBg),
@@ -37,12 +37,20 @@ class PageGeneralWidget extends ConsumerWidget {
                 alignment: Alignment.bottomLeft,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Text(
-                    title,
-                    style: context.textTheme.titleLarge?.copyWith(
-                      fontSize: 24,
-                    ),
-                  ),
+                  child: ref.currentTheme == ThemeMode.dark
+                      ? Text(
+                          title,
+                          style: context.textTheme.titleLarge?.copyWith(
+                            fontSize: 24,
+                          ),
+                        )
+                      : GradientText(
+                          title,
+                          style: context.textTheme.titleLarge?.copyWith(
+                            fontSize: 24,
+                          ),
+                          gradient: ref.currentAppColor.mainGradient,
+                        ),
                 ),
               ),
             ],

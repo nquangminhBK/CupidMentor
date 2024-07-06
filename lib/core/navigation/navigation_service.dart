@@ -8,8 +8,13 @@ class NavigationService {
 
   static NavigationService get instance => overrideService ?? navigation;
 
-  GlobalKey<NavigatorState> globalNavigatorKey =
-      GlobalKey<NavigatorState>(debugLabel: 'global_key');
+  GlobalKey<NavigatorState> globalNavigatorKey = GlobalKey<NavigatorState>();
+
+  GlobalKey<NavigatorState>? getNavigatorKey() => globalNavigatorKey;
+
+  void resetNavigatorKey() {
+    globalNavigatorKey = GlobalKey<NavigatorState>();
+  }
 
   /// Returns value from pop if exists.
   /// [clean] is true to remove all back stacks after pushing
@@ -72,8 +77,6 @@ class NavigationService {
       getNavigatorKey()!.currentState!.pop(data);
     }
   }
-
-  GlobalKey<NavigatorState>? getNavigatorKey() => globalNavigatorKey;
 
   void popWithGlobalKey({dynamic data}) {
     if (globalNavigatorKey.currentState!.canPop()) {

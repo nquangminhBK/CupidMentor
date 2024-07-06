@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,7 @@ class MenuWidget extends ConsumerWidget {
                             height: 44,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: Colors.white.withOpacity(0.20),
+                              color: ref.currentAppColor.buttonBackgroundColor,
                             ),
                             child: Center(
                               child: Text(
@@ -112,7 +113,7 @@ class MenuWidget extends ConsumerWidget {
                             height: 44,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: Colors.white.withOpacity(0.20),
+                              color: ref.currentAppColor.buttonBackgroundColor,
                             ),
                             child: Center(
                               child: Text(

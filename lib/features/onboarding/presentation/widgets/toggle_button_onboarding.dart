@@ -38,16 +38,19 @@ class ToggleButtonOnboarding extends ConsumerWidget {
           children: [
             const HorizontalSpace(size: 16),
             isSelected
-                ? const Icon(
+                ? Icon(
                     Icons.radio_button_checked_rounded,
+                    color: isSelected ? Colors.white : ref.currentAppColor.textColor,
                   )
-                : const Icon(
+                : Icon(
                     Icons.radio_button_unchecked_rounded,
+                    color: isSelected ? Colors.white : ref.currentAppColor.textColor,
                   ),
             const HorizontalSpace(size: 8),
             Text(
               title,
-              style: context.textTheme.bodyLarge!.copyWith(),
+              style: context.textTheme.bodyLarge!
+                  .copyWith(color: isSelected ? Colors.white : ref.currentAppColor.textColor),
             ),
           ],
         ),

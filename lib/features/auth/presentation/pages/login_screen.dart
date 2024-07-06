@@ -5,6 +5,7 @@ import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/gradient_text.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/auth/presentation/manager/auth_notifier.dart';
@@ -39,22 +40,38 @@ class LoginScreen extends ConsumerWidget {
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(20),
-                    child: Assets.png.datingDelightImage.image(),
+                    child: ref.currentTheme == ThemeMode.dark
+                        ? Assets.png.loginImage.image()
+                        : Assets.png.loginImageLight.image(),
                   ),
                 ),
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Assets.png.appIcon.image(width: 60, height: 60),
+                      GradientText(
+                        'Cupid Mentor',
+                        style: context.textTheme.titleLarge?.copyWith(
+                          fontSize: 40,
+                        ),
+                        gradient: ref.currentAppColor.mainGradient,
+                      ),
+                    ],
+                  ),
+                  const VerticalSpace(size: 16),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
-                      "Hi there, Welcome to Cupid mentor, To start your journey, let's",
+                      "To start your journey, let's",
                       textAlign: TextAlign.center,
-                      style: context.textTheme.bodyLarge,
+                      style: context.textTheme.bodyLarge!.copyWith(fontSize: 16),
                     ),
                   ),
-                  const VerticalSpace(size: 20),
+                  const VerticalSpace(size: 10),
                   AnimatedButton(
                     onPress: () async {
                       await ref.read(authNotifierProvider.notifier).login();
@@ -74,31 +91,6 @@ class LoginScreen extends ConsumerWidget {
                           const HorizontalSpace(size: 12),
                           Text(
                             'Continue with Google',
-                            textAlign: TextAlign.center,
-                            style: context.textTheme.titleMedium,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const VerticalSpace(size: 20),
-                  AnimatedButton(
-                    onPress: () {},
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 24),
-                      width: double.infinity,
-                      height: 44,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: ref.currentAppColor.buttonBackgroundColor,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Assets.svg.appleIcon.svg(),
-                          const HorizontalSpace(size: 12),
-                          Text(
-                            'Continue with Apple',
                             textAlign: TextAlign.center,
                             style: context.textTheme.titleMedium,
                           ),
