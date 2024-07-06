@@ -26,8 +26,7 @@ class SplashRepositoriesImpl implements SplashRepositories {
 
   @override
   Future<Either<Failure, bool>> needOnboarding() async {
-    final currentUser = authenticationRemoteDatasource.getCurrentUser();
-    final userInfo = await authenticationRemoteDatasource.getUserInfo(currentUser?.uid ?? '');
+    final userInfo = await authenticationRemoteDatasource.getUserInfo();
     if (userInfo == null) return const Right(true);
     return const Right(false);
   }

@@ -88,6 +88,7 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
           onSelectGender: (Gender? gender) =>
               onboardingNotifier.updateCrushBasicInfo(gender: gender),
           selectedGender: gender,
+          hint: 'Choose gender',
         ),
         const VerticalSpace(size: 24),
         Text(

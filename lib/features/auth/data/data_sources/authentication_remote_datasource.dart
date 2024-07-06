@@ -14,7 +14,7 @@ abstract class AuthenticationRemoteDatasource {
 
   User? getCurrentUser();
 
-  Future<LoggedInUserInfoModel?> getUserInfo(String userId);
+  Future<LoggedInUserInfoModel?> getUserInfo();
 
   Future<CrushInfo> getCrushInfo();
 }
@@ -44,7 +44,10 @@ class AuthenticationRemoteDatasourceImpl implements AuthenticationRemoteDatasour
   }
 
   @override
-  Future<LoggedInUserInfoModel?> getUserInfo(String userId) async {
+  Future<LoggedInUserInfoModel?> getUserInfo() async {
+    final currentUser = getCurrentUser();
+    final userId = currentUser?.uid;
+    if (userId == null) return null;
     final result = await firestore.collection('users_info').doc(userId).get();
     if (result.data() != null) {
       try {

@@ -31,8 +31,7 @@ class $AssetsPngGen {
   AssetGenImage get christmasImage => const AssetGenImage('assets/png/christmas_image.png');
 
   /// File path: assets/png/dating_delight_image.png
-  AssetGenImage get datingDelightImage =>
-      const AssetGenImage('assets/png/dating_delight_image.png');
+  AssetGenImage get datingDelightImage => const AssetGenImage('assets/png/dating_delight_image.png');
 
   /// File path: assets/png/gift_menu_image.png
   AssetGenImage get giftMenuImage => const AssetGenImage('assets/png/gift_menu_image.png');
@@ -41,12 +40,10 @@ class $AssetsPngGen {
   AssetGenImage get mensDayImage => const AssetGenImage('assets/png/mens_day_image.png');
 
   /// File path: assets/png/profile_prowess_image.png
-  AssetGenImage get profileProwessImage =>
-      const AssetGenImage('assets/png/profile_prowess_image.png');
+  AssetGenImage get profileProwessImage => const AssetGenImage('assets/png/profile_prowess_image.png');
 
   /// File path: assets/png/self_enhancement_image.png
-  AssetGenImage get selfEnhancementImage =>
-      const AssetGenImage('assets/png/self_enhancement_image.png');
+  AssetGenImage get selfEnhancementImage => const AssetGenImage('assets/png/self_enhancement_image.png');
 
   /// File path: assets/png/spot_menu_image.png
   AssetGenImage get spotMenuImage => const AssetGenImage('assets/png/spot_menu_image.png');
@@ -106,23 +103,13 @@ class $AssetsSvgGen {
   SvgGenImage get iconValentine => const SvgGenImage('assets/svg/icon_valentine.svg');
 
   /// File path: assets/svg/profile_prowess_bg_text.svg
-  SvgGenImage get profileProwessBgText =>
-      const SvgGenImage('assets/svg/profile_prowess_bg_text.svg');
+  SvgGenImage get profileProwessBgText => const SvgGenImage('assets/svg/profile_prowess_bg_text.svg');
 
   /// File path: assets/svg/self_enhancement_bg_text.svg
-  SvgGenImage get selfEnhancementBgText =>
-      const SvgGenImage('assets/svg/self_enhancement_bg_text.svg');
+  SvgGenImage get selfEnhancementBgText => const SvgGenImage('assets/svg/self_enhancement_bg_text.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [
-        appleIcon,
-        backgroundChatNow,
-        datingDelightBgText,
-        googleIcon,
-        iconValentine,
-        profileProwessBgText,
-        selfEnhancementBgText
-      ];
+  List<SvgGenImage> get values => [appleIcon, backgroundChatNow, datingDelightBgText, googleIcon, iconValentine, profileProwessBgText, selfEnhancementBgText];
 }
 
 class Assets {

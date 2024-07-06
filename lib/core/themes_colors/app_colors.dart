@@ -36,10 +36,10 @@ class AppColors {
   static AppColors light = AppColors(
     primaryColor: const Color(0xff642CA9),
     secondaryColor: const Color(0xffFF36AB),
-    screenBackgroundColor: const Color(0xff1A1A1A),
+    screenBackgroundColor: const Color(0xffF4F4F5),
     cardColorWithoutOpacity: const Color(0xff282828),
     buttonBackgroundColor: Colors.white.withOpacity(0.08),
-    textColor: const Color(0xffF9FAFB),
+    textColor: const Color(0xff101828),
     mainGradient: const LinearGradient(
       colors: [
         Color(0xff642ca9),

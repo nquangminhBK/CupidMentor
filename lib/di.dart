@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:cupid_mentor/core/constants/gemini_api_key.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_local_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_remote_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/repositories/authentication_repository.dart';
@@ -11,21 +12,30 @@ import 'package:cupid_mentor/features/onboarding/data/repository/onboarding_repo
 import 'package:cupid_mentor/features/onboarding/domain/repository/onboarding_repository.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_user.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
+import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
 import 'package:cupid_mentor/features/splash_screen/data/data_sources/splash_datasource.dart';
 import 'package:cupid_mentor/features/splash_screen/data/repositories/splash_repositories.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/repositories/splash_repositories.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_is_logged_in.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_onboarding.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_showcase.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/data/data_sources/tips_self_improve_datasource.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/data/repository/tips_self_improve_repository.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/domain/repository/tips_self_improve_repository.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/generate_response_tips_self_improve.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
 
 GetIt get = GetIt.instance;
 
 Future<void> _registerCore() async {
+  get.registerLazySingleton<GenerativeModel>(
+    () => GenerativeModel(model: 'gemini-1.5-flash', apiKey: GeminiApiKey.apiKey),
+  );
   get.registerLazySingleton<Connectivity>(() => Connectivity());
   get.registerLazySingleton<GoogleAuthProvider>(() => GoogleAuthProvider());
   // get.registerFactoryParam<OAuthCredential, String, String>((accessToken, idToken) =>
@@ -66,6 +76,9 @@ void _registerDataSources() {
       firestore: get(),
     ),
   );
+  get.registerLazySingleton<TipsSelfImproveDatasource>(
+    () => TipsSelfImproveDatasourceImpl(generativeModel: get()),
+  );
 }
 
 void _registerRepositories() {
@@ -82,6 +95,9 @@ void _registerRepositories() {
   get.registerLazySingleton<OnboardingRepository>(
     () => OnboardingRepositoryImpl(datasource: get(), connectivity: get()),
   );
+  get.registerLazySingleton<TipsSelfImproveRepository>(
+    () => TipsSelfImproveRepositoryImpl(datasource: get(), connectivity: get()),
+  );
 }
 
 void _registerUseCases() {
@@ -92,6 +108,8 @@ void _registerUseCases() {
   get.registerLazySingleton(() => LogoutUseCase(repository: get()));
   get.registerLazySingleton(() => GetCurrentUser(repository: get()));
   get.registerLazySingleton(() => SaveUserInfo(repository: get()));
+  get.registerLazySingleton(() => GetUserInfo(repository: get()));
+  get.registerLazySingleton(() => GenerateResponseTipsSelfImprove(repository: get()));
 }
 
 Future<void> setupLocator() async {

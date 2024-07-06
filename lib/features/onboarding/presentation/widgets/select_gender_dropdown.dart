@@ -12,10 +12,12 @@ class SelectGenderDropdown extends ConsumerStatefulWidget {
     super.key,
     required this.onSelectGender,
     required this.selectedGender,
+    required this.hint,
   });
 
   final Function(Gender?) onSelectGender;
   final Gender selectedGender;
+  final String hint;
 
   @override
   ConsumerState<SelectGenderDropdown> createState() => _SelectGenderDropdownState();

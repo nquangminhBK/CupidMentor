@@ -80,6 +80,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
         SelectGenderDropdown(
           onSelectGender: (Gender? gender) => onboardingNotifier.updateBasicInfo(gender: gender),
           selectedGender: userInfo.gender,
+          hint: 'Choose your gender',
         ),
         const VerticalSpace(size: 24),
         Text(

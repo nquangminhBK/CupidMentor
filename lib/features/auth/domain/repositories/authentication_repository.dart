@@ -11,8 +11,6 @@ abstract class AuthenticationRepository {
 
   Future<Either<Failure, LoggedInUserInfo?>> getUserInfo();
 
-  Future<Either<Failure, CrushInfo>> getCrushInfo();
-
   Either<Failure, bool> needLogin();
 
   Either<Failure, User> getCurrentUser();

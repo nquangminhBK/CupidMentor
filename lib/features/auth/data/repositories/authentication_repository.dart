@@ -3,7 +3,6 @@ import 'package:cupid_mentor/core/errors/failure.dart';
 import 'package:cupid_mentor/core/utils/mixin/connectivity_mixin.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_local_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_remote_datasource.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/auth/domain/repositories/authentication_repository.dart';
 import 'package:dartz/dartz.dart';
@@ -24,14 +23,18 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
   });
 
   @override
-  Future<Either<Failure, CrushInfo>> getCrushInfo() {
-// TODO: implement getCrushInfo
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<Failure, LoggedInUserInfo?>> getUserInfo() async {
-    return const Left(Failure('No User Info'));
+    if (await isInConnection()) {
+      try {
+        final user = await remoteDatasource.getUserInfo();
+
+        return Right(user?.toEntity);
+      } catch (e, _) {
+        debugPrint(e.toString());
+        return Left(Failure(e.toString()));
+      }
+    }
+    return const Left(NoConnection());
   }
 
   @override
