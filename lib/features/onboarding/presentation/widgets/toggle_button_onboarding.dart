@@ -27,11 +27,12 @@ class ToggleButtonOnboarding extends ConsumerWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: onChange,
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          gradient: isSelected ? ref.currentAppColor.mainGradient : null,
-          color: isSelected ? null : ref.currentAppColor.buttonBackgroundColor,
+          gradient: isSelected ? ref.currentAppColor.mainGradient : ref.currentAppColor.buttonBackgroundColorInGradient,
+
         ),
         height: 50,
         child: Row(

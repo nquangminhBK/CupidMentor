@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
-import 'package:cupid_mentor/features/setting/presentation/pages/widgets/item_setting.dart';
+import 'package:cupid_mentor/features/setting/presentation/widgets/item_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

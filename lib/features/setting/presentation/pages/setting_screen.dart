@@ -1,12 +1,19 @@
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/icon_close_button.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/reset_all_app.dart';
+import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
+import 'package:cupid_mentor/features/localization/presentation/widgets/item_language.dart';
 import 'package:cupid_mentor/features/setting/presentation/manager/setting_notifier.dart';
-import 'package:cupid_mentor/features/setting/presentation/pages/widgets/item_setting.dart';
-import 'package:cupid_mentor/features/setting/presentation/pages/widgets/profile_section.dart';
-import 'package:cupid_mentor/features/setting/presentation/pages/widgets/theme_setting.dart';
+import 'package:cupid_mentor/features/setting/presentation/widgets/dialog_change_language.dart';
+import 'package:cupid_mentor/features/setting/presentation/widgets/item_setting.dart';
+import 'package:cupid_mentor/features/setting/presentation/widgets/profile_section.dart';
+import 'package:cupid_mentor/features/setting/presentation/widgets/theme_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -39,25 +46,18 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 const ThemeSetting(),
                 ItemSetting(
                   leftIcon: Icons.language,
+                  rightWidget: Text(
+                    ref.watch(localizationNotifierProvider).lang.displayText,
+                    style: context.textTheme.titleMedium,
+                  ),
                   title: 'Language',
-                  onTap: ()async {
-                    final currentLang = ref.read(localizationNotifierProvider).lang;
-                    if (currentLang == LocalizationEnum.english) {
-                      await ref
-                          .read(localizationNotifierProvider.notifier)
-                          .updateLanguage(LocalizationEnum.japanese);
-                    }
-                    if (currentLang == LocalizationEnum.japanese) {
-                      await ref
-                          .read(localizationNotifierProvider.notifier)
-                          .updateLanguage(LocalizationEnum.vietnamese);
-                    }
-                    if (currentLang == LocalizationEnum.vietnamese) {
-                      await ref
-                          .read(localizationNotifierProvider.notifier)
-                          .updateLanguage(LocalizationEnum.english);
-                    }
-                    ResetAllApp.restartApp(context);
+                  onTap: () async {
+                    await showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const DialogChangeLanguage();
+                      },
+                    );
                   },
                 ),
                 ItemSetting(
