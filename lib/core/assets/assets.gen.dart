@@ -50,6 +50,9 @@ class $AssetsPngGen {
   /// File path: assets/png/gift_menu_image.png
   AssetGenImage get giftMenuImage => const AssetGenImage('assets/png/gift_menu_image.png');
 
+  /// File path: assets/png/gift_menu_image_light.png
+  AssetGenImage get giftMenuImageLight => const AssetGenImage('assets/png/gift_menu_image_light.png');
+
   /// File path: assets/png/login_image.png
   AssetGenImage get loginImage => const AssetGenImage('assets/png/login_image.png');
 
@@ -74,11 +77,17 @@ class $AssetsPngGen {
   /// File path: assets/png/spot_menu_image.png
   AssetGenImage get spotMenuImage => const AssetGenImage('assets/png/spot_menu_image.png');
 
+  /// File path: assets/png/spot_menu_image_light.png
+  AssetGenImage get spotMenuImageLight => const AssetGenImage('assets/png/spot_menu_image_light.png');
+
   /// File path: assets/png/thanksgiving_image.png
   AssetGenImage get thanksgivingImage => const AssetGenImage('assets/png/thanksgiving_image.png');
 
   /// File path: assets/png/tip_menu_image.png
   AssetGenImage get tipMenuImage => const AssetGenImage('assets/png/tip_menu_image.png');
+
+  /// File path: assets/png/tip_menu_image_light.png
+  AssetGenImage get tipMenuImageLight => const AssetGenImage('assets/png/tip_menu_image_light.png');
 
   /// File path: assets/png/valentine_image.png
   AssetGenImage get valentineImage => const AssetGenImage('assets/png/valentine_image.png');
@@ -102,6 +111,7 @@ class $AssetsPngGen {
         datingDelightImage,
         datingDelightImageLight,
         giftMenuImage,
+        giftMenuImageLight,
         loginImage,
         loginImageLight,
         mensDayImage,
@@ -110,8 +120,10 @@ class $AssetsPngGen {
         selfEnhancementImage,
         selfEnhancementImageLight,
         spotMenuImage,
+        spotMenuImageLight,
         thanksgivingImage,
         tipMenuImage,
+        tipMenuImageLight,
         valentineImage,
         welcomeImage,
         welcomeImageLight,

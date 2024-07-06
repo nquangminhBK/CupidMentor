@@ -52,7 +52,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   dropdown_button2: ^2.3.9
   lottie: ^3.1.2
-  intl: ^0.19.0
+  intl: ^0.18.1
   google_sign_in: ^6.2.1
   firebase_auth: ^5.1.1
   flutter_secure_storage: ^4.2.1
@@ -65,6 +65,8 @@ dependencies:
   collection: ^1.18.0
   cached_network_image: ^3.3.1
   flutter_markdown: ^0.7.3
+  flutter_localizations:
+    sdk: flutter
 
 
 dev_dependencies:
@@ -104,6 +106,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
   assets:
     - assets/svg/
     - assets/png/

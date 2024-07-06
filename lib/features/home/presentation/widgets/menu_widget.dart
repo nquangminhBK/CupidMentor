@@ -44,7 +44,7 @@ class MenuWidget extends ConsumerWidget {
                     children: [
                       Text(
                         title,
-                        style: context.textTheme.titleSmall!.copyWith(
+                        style: context.textTheme.headlineMedium!.copyWith(
                           fontSize: 16,
                         ),
                         textAlign: TextAlign.start,
@@ -52,7 +52,7 @@ class MenuWidget extends ConsumerWidget {
                       Text(
                         description,
                         style: context.textTheme.labelLarge!.copyWith(
-                          fontSize: 12,
+                          fontSize: 14,
                         ),
                         textAlign: TextAlign.start,
                       ),
@@ -60,20 +60,16 @@ class MenuWidget extends ConsumerWidget {
                       Container(
                         margin: const EdgeInsets.only(right: 45),
                         height: 44,
+                        width: 150,
                         child: AnimatedButton(
                           onPress: onTap,
-                          child: Container(
-                            height: 44,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: ref.currentAppColor.buttonBackgroundColor,
-                            ),
-                            child: Center(
-                              child: Text(
-                                buttonText,
-                                textAlign: TextAlign.center,
-                                style: context.textTheme.titleMedium,
-                              ),
+                          borderRadius: BorderRadius.circular(8),
+                          color: ref.currentAppColor.primaryColor,
+                          child: Center(
+                            child: Text(
+                              buttonText,
+                              textAlign: TextAlign.center,
+                              style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                             ),
                           ),
                         ),
@@ -96,7 +92,7 @@ class MenuWidget extends ConsumerWidget {
                     children: [
                       Text(
                         title,
-                        style: context.textTheme.titleSmall!.copyWith(
+                        style: context.textTheme.headlineMedium!.copyWith(
                           fontSize: 16,
                         ),
                         textAlign: TextAlign.end,
@@ -104,7 +100,7 @@ class MenuWidget extends ConsumerWidget {
                       Text(
                         description,
                         style: context.textTheme.labelLarge!.copyWith(
-                          fontSize: 12,
+                          fontSize: 14,
                         ),
                         textAlign: TextAlign.end,
                       ),
@@ -112,20 +108,16 @@ class MenuWidget extends ConsumerWidget {
                       Container(
                         margin: const EdgeInsets.only(left: 45),
                         height: 44,
+                        width: 150,
                         child: AnimatedButton(
                           onPress: onTap,
-                          child: Container(
-                            height: 44,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: ref.currentAppColor.buttonBackgroundColor,
-                            ),
-                            child: Center(
-                              child: Text(
-                                buttonText,
-                                textAlign: TextAlign.center,
-                                style: context.textTheme.titleMedium,
-                              ),
+                          borderRadius: BorderRadius.circular(8),
+                          color: ref.currentAppColor.primaryColor,
+                          child: Center(
+                            child: Text(
+                              buttonText,
+                              textAlign: TextAlign.center,
+                              style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                             ),
                           ),
                         ),

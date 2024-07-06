@@ -7,6 +7,12 @@ import 'package:cupid_mentor/features/auth/data/repositories/authentication_repo
 import 'package:cupid_mentor/features/auth/domain/repositories/authentication_repository.dart';
 import 'package:cupid_mentor/features/auth/domain/use_cases/signin.dart';
 import 'package:cupid_mentor/features/auth/domain/use_cases/signout.dart';
+import 'package:cupid_mentor/features/localization/data/data_sources/localization_datasource.dart';
+import 'package:cupid_mentor/features/localization/data/repository/localization_repository.dart';
+import 'package:cupid_mentor/features/localization/domain/repository/localization_repository.dart';
+import 'package:cupid_mentor/features/localization/domain/use_cases/clear_language_data.dart';
+import 'package:cupid_mentor/features/localization/domain/use_cases/get_language.dart';
+import 'package:cupid_mentor/features/localization/domain/use_cases/set_language.dart';
 import 'package:cupid_mentor/features/onboarding/data/data_sources/onboarding_datasource.dart';
 import 'package:cupid_mentor/features/onboarding/data/repository/onboarding_repository.dart';
 import 'package:cupid_mentor/features/onboarding/domain/repository/onboarding_repository.dart';
@@ -55,6 +61,11 @@ Future<void> _registerCore() async {
 }
 
 void _registerDataSources() {
+  get.registerLazySingleton<LocalizationDatasource>(
+    () => LocalizationDatasourceImpl(
+      sharedPreferences: get(),
+    ),
+  );
   get.registerLazySingleton<AuthenticationRemoteDatasource>(
     () => AuthenticationRemoteDatasourceImpl(
       googleSignIn: get(),
@@ -82,6 +93,9 @@ void _registerDataSources() {
 }
 
 void _registerRepositories() {
+  get.registerLazySingleton<LocalizationRepository>(
+    () => LocalizationRepositoryImpl(datasource: get()),
+  );
   get.registerLazySingleton<SplashRepositories>(
     () => SplashRepositoriesImpl(splashDatasource: get(), authenticationRemoteDatasource: get()),
   );
@@ -111,6 +125,9 @@ void _registerUseCases() {
   get.registerLazySingleton(() => SaveUserInfo(repository: get()));
   get.registerLazySingleton(() => GetUserInfo(repository: get()));
   get.registerLazySingleton(() => GenerateResponseTipsSelfImprove(repository: get()));
+  get.registerLazySingleton(() => ClearLanguageData(repository: get()));
+  get.registerLazySingleton(() => GetLanguage(repository: get()));
+  get.registerLazySingleton(() => SetLanguage(repository: get()));
 }
 
 Future<void> setupLocator() async {

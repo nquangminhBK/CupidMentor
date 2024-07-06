@@ -6,11 +6,7 @@ class TextThemes {
         fontWeight: FontWeight.w300,
       );
 
-  static TextStyle light() => GoogleFonts.poppins();
-
-  static TextStyle medium() => GoogleFonts.poppins(
-        fontWeight: FontWeight.w600,
-      );
+  static TextStyle medium() => GoogleFonts.poppins(fontWeight: FontWeight.w500);
 
   static TextStyle bold() => GoogleFonts.poppins(fontWeight: FontWeight.w700);
 
@@ -23,8 +19,8 @@ class TextThemes {
         titleLarge: TextThemes.medium().copyWith(fontSize: 18),
         titleMedium: TextThemes.medium().copyWith(fontSize: 15),
         titleSmall: TextThemes.medium(),
-        bodyLarge: TextThemes.thin(),
-        labelLarge: TextThemes.thin(),
-        bodySmall: TextThemes.thin(),
+        bodyLarge: TextThemes.medium(),
+        labelLarge: TextThemes.medium(),
+        bodySmall: TextThemes.medium(),
       );
 }

@@ -1,8 +1,11 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/gradient_text.dart';
+import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/chat_now_widget.dart';
@@ -20,7 +23,24 @@ class HomeScreen extends ConsumerWidget {
         child: SafeArea(
           child: Scaffold(
             appBar: MyAppBar.myAppBar(
-              title: 'Good morning Mia 🌤',
+              titleWidget: Row(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const HorizontalSpace(size: 24),
+                      Assets.png.appIcon.image(width: 30, height: 30),
+                      GradientText(
+                        'Cupid Mentor',
+                        style: context.textTheme.titleLarge?.copyWith(
+                          fontSize: 20,
+                        ),
+                        gradient: ref.currentAppColor.mainGradient,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
               ref: ref,
               context: context,
               hasBackIcon: false,
@@ -46,7 +66,9 @@ class HomeScreen extends ConsumerWidget {
                           'Covering self-improvement, crafting an engaging bio, body language, etc.',
                       buttonText: 'Explore Tips',
                       onTap: () => NavigationService.instance.push(AppRoutes.tipSelfImprovement),
-                      image: Assets.png.tipMenuImage.image(width: 140, height: 140),
+                      image: ref.currentTheme == ThemeMode.dark
+                          ? Assets.png.tipMenuImage.image(width: 140, height: 140)
+                          : Assets.png.tipMenuImageLight.image(width: 140, height: 140),
                     ),
                     const VerticalSpace(size: 16),
                     MenuWidget(
@@ -56,7 +78,9 @@ class HomeScreen extends ConsumerWidget {
                           'Offering suitable gifts for special occasions like Christmas, Birthdays, etc.',
                       buttonText: 'See All Gifts',
                       onTap: () => NavigationService.instance.push(AppRoutes.tipGift),
-                      image: Assets.png.giftMenuImage.image(width: 140, height: 140),
+                      image: ref.currentTheme == ThemeMode.dark
+                          ? Assets.png.giftMenuImage.image(width: 140, height: 140)
+                          : Assets.png.giftMenuImageLight.image(width: 140, height: 140),
                     ),
                     const VerticalSpace(size: 16),
                     MenuWidget(
@@ -66,7 +90,9 @@ class HomeScreen extends ConsumerWidget {
                           "Suggesting interesting date spots based on your and partner's preferences.",
                       buttonText: 'View All Spots',
                       onTap: () => NavigationService.instance.push(AppRoutes.tipDateSpot),
-                      image: Assets.png.spotMenuImage.image(width: 140, height: 140),
+                      image: ref.currentTheme == ThemeMode.dark
+                          ? Assets.png.spotMenuImage.image(width: 140, height: 140)
+                          : Assets.png.spotMenuImageLight.image(width: 140, height: 140),
                     ),
                   ],
                 ),
