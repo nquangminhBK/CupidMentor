@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:cupid_mentor/core/constants/love_language.dart';
+import 'package:cupid_mentor/core/core_entity/localization_content.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';
@@ -36,7 +37,7 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
           return Transform.scale(
             scale: scale,
             child: ItemLoveLanguage(
-              title: loveLanguages[index],
+              title: (LoveLanguage.loveLanguages[loveLanguages[index]]?.$1)?.value(context) ?? '',
               index: index,
               onTap: () {},
             ),
@@ -47,21 +48,19 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
     }
 
     return PageSkeletonWidget(
-      title: 'Tell us about your love languages 🫶🏻',
-      description:
-          "Uncover your unique love languages and prioritize them. Let's rank your heart's desires for having more fulfilling connections in the future!",
+      title: context.l10n.inputLoveLanguageTitle,
+      description: context.l10n.inputLoveLanguageDesc,
       children: [
         if (loveLanguages.length < LoveLanguage.loveLanguages.length)
           RichText(
             text: TextSpan(
               children: [
                 TextSpan(
-                  text:
-                      'First, tap the items below to select, you can arrange the order after selecting, ',
+                  text: context.l10n.loveLanguageExplain1,
                   style: context.textTheme.bodyLarge,
                 ),
                 TextSpan(
-                  text: 'click here',
+                  text: context.l10n.loveLanguageExplain2,
                   style: context.textTheme.bodyLarge!.copyWith(
                     color: ref.currentAppColor.secondaryColor,
                     decoration: TextDecoration.underline,
@@ -75,7 +74,7 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
                     },
                 ),
                 TextSpan(
-                  text: ' to read more about the concept love language.',
+                  text: context.l10n.loveLanguageExplain3,
                   style: context.textTheme.bodyLarge,
                 ),
               ],
@@ -89,7 +88,7 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
               .where((element) => !loveLanguages.contains(element))
               .map(
                 (e) => CustomTag(
-                  title: e,
+                  title: (LoveLanguage.loveLanguages[e]?.$1)?.value(context) ?? '',
                   isSelected: false,
                   onTap: () {
                     notifier.updateLoveLanguages(
@@ -122,7 +121,8 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
                 children: [
                   for (int i = 0; i < loveLanguages.length; i++)
                     ItemLoveLanguage(
-                      title: loveLanguages[i],
+                      title:
+                          (LoveLanguage.loveLanguages[loveLanguages[i]]?.$1)?.value(context) ?? '',
                       index: i,
                       key: ValueKey(loveLanguages[i]),
                       onTap: () {

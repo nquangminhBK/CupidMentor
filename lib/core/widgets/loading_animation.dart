@@ -27,7 +27,7 @@ class LoadingAnimation extends ConsumerWidget {
                 repeatForever: true,
                 animatedTexts: [
                   TyperAnimatedText(
-                    message ?? 'loading . . .',
+                    message ?? context.l10n.loadingAnimationText,
                     textAlign: TextAlign.center,
                     textStyle: context.textTheme.titleMedium!.copyWith(
                       fontWeight: FontWeight.w900,

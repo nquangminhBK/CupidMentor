@@ -10,6 +10,7 @@ import 'package:cupid_mentor/features/localization/presentation/widgets/dialog_c
 import 'package:cupid_mentor/features/localization/presentation/widgets/item_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SelectLanguagePage extends ConsumerStatefulWidget {
   const SelectLanguagePage({super.key});
@@ -24,6 +25,28 @@ class _SelectLanguagePageState extends ConsumerState<SelectLanguagePage> {
   @override
   Widget build(BuildContext context) {
     final localizationNotifier = ref.read(localizationNotifierProvider.notifier);
+    (String, String, String, String) getContent() {
+      // the moment we change the language, the content need to be updated too,
+      // but because at that time, we didnt perform the change yet, so have to get like this
+      if (currentLanguage == null || currentLanguage == LocalizationEnum.english) {
+        return (
+          'Continue',
+          'Cancel',
+          'Start',
+          "You've just picked English, you can change the language after, in the Setting page"
+        );
+      }
+      if (currentLanguage == LocalizationEnum.vietnamese) {
+        return (
+          'Tiếp tục',
+          'Hủy',
+          'Bắt đầu',
+          'Bạn đã chọn Tiếng Việt, bạn có thể thay đổi ngôn ngữ sau, trong phần Cài Đặt.'
+        );
+      }
+      return ('続ける', 'キャンセル', '始める', '日本語を選択しましたが、後で設定ページで言語を変更できます。');
+    }
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -95,9 +118,9 @@ class _SelectLanguagePageState extends ConsumerState<SelectLanguagePage> {
                           await localizationNotifier.updateLanguage(currentLanguage!);
                           if (context.mounted) ResetAllApp.restartApp(context);
                         },
-                        message:
-                            "You've just picked English, you can change the language after, in the Setting page",
-                        titlePositiveButton: 'Start',
+                        message: getContent().$4,
+                        titleNegativeButton: getContent().$2,
+                        titlePositiveButton: getContent().$3,
                       );
                     },
                   );
@@ -112,7 +135,7 @@ class _SelectLanguagePageState extends ConsumerState<SelectLanguagePage> {
                   height: 48,
                   child: Center(
                     child: Text(
-                      'Continue',
+                      getContent().$1,
                       style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                     ),
                   ),

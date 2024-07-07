@@ -2,13 +2,6 @@ import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/core_entity/localization_content.dart';
 
 class LoveLanguage {
-  static Map<String, String> loveLanguages = {
-    'Words of Affirmation': 'Expressing love and appreciation through spoken or written words.',
-    'Acts of Service': 'Showing love by doing things for the other person.',
-    'Gifts': 'Giving and receiving gifts as a way to express love.',
-    'Quality Time': 'Spending meaningful time together.',
-    'Physical Touch': 'Expressing love through physical contact.',
-  };
   static const LocalizationContent reasonOfConcept = LocalizationContent(
     content: {
       LocalizationEnum.english:
@@ -30,7 +23,7 @@ class LoveLanguage {
           'Khái niệm về ngôn ngữ tình yêu đề cập đến ý tưởng rằng mọi người thể hiện và trải nghiệm tình yêu theo những cách khác nhau. Nó được giới thiệu bởi Tiến sĩ Gary Chapman trong cuốn sách "5 Ngôn ngữ Tình Yêu" của ông, trong đó phác thảo năm cách chính mà các cá nhân có xu hướng trao và nhận tình yêu. Những ngôn ngữ tình yêu này là:',
     },
   );
-  static Map<String, (LocalizationContent, LocalizationContent)> loveLanguages2 = {
+  static Map<String, (LocalizationContent, LocalizationContent)> loveLanguages = {
     'wordsOfAffirmation': (
       const LocalizationContent(
         content: {

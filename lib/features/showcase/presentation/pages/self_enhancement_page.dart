@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
+import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/features/showcase/presentation/widgets/page_general_widget.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,7 @@ class SelfEnhancementPage extends ConsumerWidget {
           : Assets.png.selfEnhancementImageLight.image(),
       textBg: Assets.svg.selfEnhancementBgText.svg(fit: BoxFit.fitWidth, width: double.infinity),
       title: 'Self-Enhancement Insights',
-      description:
-          'Elevate your dating journey with personalized tips. From self-care to communication, empower yourself for success in dating.',
+      description: context.l10n.selfEnhancementDescription,
     );
   }
 }

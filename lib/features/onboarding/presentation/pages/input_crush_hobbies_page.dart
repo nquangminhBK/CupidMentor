@@ -1,4 +1,6 @@
 import 'package:cupid_mentor/core/constants/hobbies.dart';
+import 'package:cupid_mentor/core/core_entity/localization_content.dart';
+import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
@@ -16,16 +18,18 @@ class InputCrushHobbiesPage extends ConsumerStatefulWidget {
 }
 
 class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
-  List<String> searchedList = [];
-  List<String> unSearchedList = Hobbies.hobbies;
+  List<LocalizationContent> searchedList = [];
+  List<LocalizationContent> unSearchedList = Hobbies.hobbies;
 
   void _executeSearch(String searchKey) {
     if (searchKey.isNotEmpty) {
       searchedList = Hobbies.hobbies
-          .where((element) => element.toLowerCase().contains(searchKey.toLowerCase()))
+          .where(
+              (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
           .toList();
       unSearchedList = Hobbies.hobbies
-          .where((element) => !element.toLowerCase().contains(searchKey.toLowerCase()))
+          .where(
+              (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
           .toList();
     } else {
       searchedList = [];
@@ -39,9 +43,8 @@ class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
         ref.watch(onboardingNotifierProvider).userInfo.crushInfo?.hobbies ?? <String>[];
     final notifier = ref.read(onboardingNotifierProvider.notifier);
     return PageSkeletonWidget(
-      title: 'We’re excited to discover your unique interests & passions 🤩',
-      description:
-          'Feel free to share your hobbies so we can tailor our suggestions perfectly for you.',
+      title: context.l10n.inputCrushHobbiesTitle,
+      description: context.l10n.inputCrushBasicInfoDesc,
       children: [
         MyTextField(
           onChanged: (text) {
@@ -49,7 +52,7 @@ class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
               _executeSearch(text);
             });
           },
-          hintText: 'Search your hobbies',
+          hintText: context.l10n.searchHobbies,
           suffixIcon: const Icon(
             Icons.search_rounded,
           ),
@@ -62,12 +65,12 @@ class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
             children: searchedList
                 .map(
                   (e) => CustomTag(
-                    title: e,
-                    isSelected: crushHobbies.contains(e),
+                    title: e.value(context),
+                    isSelected: crushHobbies.contains(e.id),
                     onTap: () {
                       notifier.updateCrushHobbies(
-                        e,
-                        crushHobbies.contains(e),
+                        e.id!,
+                        crushHobbies.contains(e.id),
                       );
                     },
                   ),
@@ -88,12 +91,12 @@ class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
           children: unSearchedList
               .map(
                 (e) => CustomTag(
-                  title: e,
-                  isSelected: crushHobbies.contains(e),
+                  title: e.value(context),
+                  isSelected: crushHobbies.contains(e.id),
                   onTap: () {
                     notifier.updateCrushHobbies(
-                      e,
-                      crushHobbies.contains(e),
+                      e.id!,
+                      crushHobbies.contains(e.id),
                     );
                   },
                 ),

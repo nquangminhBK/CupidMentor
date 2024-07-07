@@ -20,7 +20,7 @@ class LoginScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(authNotifierProvider, (previous, next) {
       if (next is AuthLoadingState) {
-        LoadingUtils.showLoading(message: 'Logging in...');
+        LoadingUtils.showLoading(message: context.l10n.loginAnimationText);
       } else {
         LoadingUtils.hideLoading();
       }
@@ -66,7 +66,7 @@ class LoginScreen extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
-                      "To start your journey, let's",
+                      context.l10n.toStartJourney,
                       textAlign: TextAlign.center,
                       style: context.textTheme.bodyLarge!.copyWith(fontSize: 16),
                     ),
@@ -90,7 +90,7 @@ class LoginScreen extends ConsumerWidget {
                           Assets.svg.googleIcon.svg(),
                           const HorizontalSpace(size: 12),
                           Text(
-                            'Continue with Google',
+                            context.l10n.loginButtonText,
                             textAlign: TextAlign.center,
                             style: context.textTheme.titleMedium,
                           ),
@@ -102,7 +102,7 @@ class LoginScreen extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
-                      'By logging in, you agree to our Terms of Conditions. LEarn how we use your data in our Privacy Policy',
+                      'By logging in, you agree to our Terms of Conditions. Learn how we use your data in our Privacy Policy',
                       textAlign: TextAlign.center,
                       style: context.textTheme.bodyLarge,
                     ),

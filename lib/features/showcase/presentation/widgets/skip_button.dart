@@ -23,7 +23,7 @@ class SkipButton extends ConsumerWidget {
             child: visible
                 ? Center(
                     child: Text(
-                      'Skip',
+                      context.l10n.skip,
                       style: context.textTheme.titleMedium,
                     ),
                   )

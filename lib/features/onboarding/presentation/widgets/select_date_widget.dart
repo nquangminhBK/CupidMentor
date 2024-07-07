@@ -7,10 +7,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 class SelectDateWidget extends ConsumerStatefulWidget {
-  const SelectDateWidget({super.key, required this.onDateSelected, required this.selectedDate});
+  const SelectDateWidget({
+    super.key,
+    required this.onDateSelected,
+    required this.selectedDate,
+    required this.hint,
+  });
 
   final Function(DateTime) onDateSelected;
   final DateTime? selectedDate;
+  final String hint;
 
   @override
   ConsumerState<SelectDateWidget> createState() => _SelectDateWidgetState();
@@ -32,7 +38,7 @@ class _SelectDateWidgetState extends ConsumerState<SelectDateWidget> {
         MyDateTimePicker.showDatePicker(
           context: context,
           ref: ref,
-          title: 'Select your birthday',
+          title: widget.hint,
           initialDate: widget.selectedDate,
           updateDateTime: (selectedDate) {
             widget.onDateSelected(selectedDate);
@@ -56,7 +62,7 @@ class _SelectDateWidgetState extends ConsumerState<SelectDateWidget> {
           alignment: Alignment.centerLeft,
           child: Text(
             widget.selectedDate == null
-                ? 'Select your birthday'
+                ? widget.hint
                 : DateFormat.yMMMd().format(widget.selectedDate!),
             style: context.textTheme.bodyLarge,
           ),

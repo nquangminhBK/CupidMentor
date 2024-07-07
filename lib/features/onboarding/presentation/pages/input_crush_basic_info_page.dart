@@ -65,14 +65,15 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
     }
 
     return PageSkeletonWidget(
-      title: 'Got it, and now is some questions about your crush 💘',
-      description:
-          "You can skip any information you're unsure of and update it later. Your journey, your pace!",
+      title: context.l10n.inputCrushBasicInfoTitle,
+      description: context.l10n.inputCrushBasicInfoDesc,
       children: [
         Text(
           gender == Gender.none
-              ? 'Her/his name is'
-              : (gender == Gender.male ? 'His name is' : 'Her name is'),
+              ? context.l10n.crushNameFieldTitle
+              : (gender == Gender.male
+                  ? context.l10n.maleCrushNameFieldTitle
+                  : context.l10n.femaleCrushNameFieldTitle),
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
@@ -83,13 +84,15 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
           onChanged: (text) {
             onboardingNotifier.updateCrushBasicInfo(name: text);
           },
-          hintText: 'Enter name',
+          hintText: context.l10n.crushNameFieldHint,
         ),
         const VerticalSpace(size: 24),
         Text(
           gender == Gender.none
-              ? 'Her/his gender is'
-              : (gender == Gender.male ? 'His gender is' : 'Her gender is'),
+              ? context.l10n.crushGenderFieldTitle
+              : (gender == Gender.male
+                  ? context.l10n.maleCrushGenderFieldTitle
+                  : context.l10n.femaleCrushGenderFieldTitle),
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
@@ -97,17 +100,20 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
           onSelectGender: (Gender? gender) =>
               onboardingNotifier.updateCrushBasicInfo(gender: gender),
           selectedGender: gender,
-          hint: 'Choose gender',
+          hint: context.l10n.crushGenderFieldHint,
         ),
         const VerticalSpace(size: 24),
         Text(
           gender == Gender.none
-              ? 'Her/his birthday is'
-              : (gender == Gender.male ? 'His birthday is' : 'Her birthday is'),
+              ? context.l10n.crushBirthdayFieldTitle
+              : (gender == Gender.male
+                  ? context.l10n.maleCrushBirthdayFieldTitle
+                  : context.l10n.femaleCrushBirthdayFieldTitle),
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         SelectDateWidget(
+          hint: context.l10n.crushBirthdayFieldHint,
           onDateSelected: (selectedDate) {
             onboardingNotifier.updateCrushBasicInfo(birthDay: selectedDate);
           },
@@ -118,8 +124,10 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
         const VerticalSpace(size: 24),
         Text(
           gender == Gender.none
-              ? 'Her/his job is'
-              : (gender == Gender.male ? 'His job is' : 'Her job is'),
+              ? context.l10n.crushJobFieldTitle
+              : (gender == Gender.male
+                  ? context.l10n.maleCrushJobFieldTitle
+                  : context.l10n.femaleCrushJobFieldTitle),
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
@@ -130,7 +138,7 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
           onChanged: (text) {
             onboardingNotifier.updateCrushBasicInfo(job: text);
           },
-          hintText: 'Input jobs',
+          hintText: context.l10n.crushJobFieldHint,
         ),
         const VerticalSpace(size: 24),
         Row(
@@ -140,7 +148,7 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
             ),
             const HorizontalSpace(size: 6),
             Text(
-              'Your information will be safe with us.',
+              context.l10n.informationSafe,
               style: context.textTheme.bodyLarge,
             ),
           ],

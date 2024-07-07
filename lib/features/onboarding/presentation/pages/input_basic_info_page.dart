@@ -62,12 +62,11 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
     }
 
     return PageSkeletonWidget(
-      title: "We're thrilled to have you here. What should we call you? 👋",
-      description:
-          "The more detailed your answers, the better Cupid Mentor can give personalized suggestions for you. Let's dive in!!!",
+      title: context.l10n.inputBasicInfoTitle,
+      description: context.l10n.inputBasicInfoDesc,
       children: [
         Text(
-          'Your name is',
+          context.l10n.nameFieldTitle,
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
@@ -78,26 +77,26 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
           onChanged: (text) {
             onboardingNotifier.updateBasicInfo(name: text);
           },
-          hintText: 'Enter your name',
+          hintText: context.l10n.nameFieldHint,
         ),
         const VerticalSpace(size: 24),
         Text(
-          'Your gender is',
+          context.l10n.genderFieldTitle,
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         SelectGenderDropdown(
-          onSelectGender: (Gender? gender) => onboardingNotifier.updateBasicInfo(gender: gender),
-          selectedGender: userInfo.gender,
-          hint: 'Choose your gender',
-        ),
+            onSelectGender: (Gender? gender) => onboardingNotifier.updateBasicInfo(gender: gender),
+            selectedGender: userInfo.gender,
+            hint: context.l10n.genderFieldHint),
         const VerticalSpace(size: 24),
         Text(
-          'Your birthday is',
+          context.l10n.birthdayFieldTitle,
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         SelectDateWidget(
+          hint: context.l10n.birthdayFieldHint,
           onDateSelected: (selectedDate) {
             onboardingNotifier.updateBasicInfo(birthDay: selectedDate);
           },
@@ -106,7 +105,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
         ),
         const VerticalSpace(size: 24),
         Text(
-          'And your job is',
+          context.l10n.jobFieldTitle,
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
@@ -117,7 +116,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
           onChanged: (text) {
             onboardingNotifier.updateBasicInfo(job: text);
           },
-          hintText: 'Input your jobs',
+          hintText: context.l10n.jobFieldHint,
         ),
         const VerticalSpace(size: 24),
         Row(
@@ -127,7 +126,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
             ),
             const HorizontalSpace(size: 6),
             Text(
-              'Your information will be safe with us.',
+              context.l10n.informationSafe,
               style: context.textTheme.bodyLarge,
             ),
           ],

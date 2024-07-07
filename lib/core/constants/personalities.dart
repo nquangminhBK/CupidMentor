@@ -2,34 +2,7 @@ import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/core_entity/localization_content.dart';
 
 class Personalities {
-  static const List<String> personalities = [
-    'Honest',
-    'Ambitious',
-    'Adventurous',
-    'Brave',
-    'Cheerful',
-    'Witty',
-    'Generous',
-    'Aggression',
-    'Artistic',
-    'Calm',
-    'Bold',
-    'Charming',
-    'Confident',
-    'Easygoing',
-    'Affectionate',
-    'Cautious',
-    'Arrogant',
-    'Optimistic',
-    'Sociable',
-    'Intelligent',
-    'Adaptable',
-    'Bossy',
-    'Bright',
-    'Anxious',
-  ];
-
-  static const List<LocalizationContent> personalities2 = [
+  static const List<LocalizationContent> personalities = [
     LocalizationContent(
       content: {
         LocalizationEnum.english: 'Honest',

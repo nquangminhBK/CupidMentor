@@ -1,4 +1,6 @@
 import 'package:cupid_mentor/core/constants/hobbies.dart';
+import 'package:cupid_mentor/core/core_entity/localization_content.dart';
+import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
@@ -16,16 +18,16 @@ class InputHobbiesPage extends ConsumerStatefulWidget {
 }
 
 class _InputHobbiesPageState extends ConsumerState<InputHobbiesPage> {
-  List<String> searchedList = [];
-  List<String> unSearchedList = Hobbies.hobbies;
+  List<LocalizationContent> searchedList = [];
+  List<LocalizationContent> unSearchedList = Hobbies.hobbies;
 
   void _executeSearch(String searchKey) {
     if (searchKey.isNotEmpty) {
       searchedList = Hobbies.hobbies
-          .where((element) => element.toLowerCase().contains(searchKey.toLowerCase()))
+          .where((element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
           .toList();
       unSearchedList = Hobbies.hobbies
-          .where((element) => !element.toLowerCase().contains(searchKey.toLowerCase()))
+          .where((element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
           .toList();
     } else {
       searchedList = [];
@@ -38,9 +40,8 @@ class _InputHobbiesPageState extends ConsumerState<InputHobbiesPage> {
     final hobbies = ref.watch(onboardingNotifierProvider).userInfo.hobbies;
     final notifier = ref.read(onboardingNotifierProvider.notifier);
     return PageSkeletonWidget(
-      title: 'We’re excited to discover your unique interests & passions 🤩',
-      description:
-          'Feel free to share your hobbies so we can tailor our suggestions perfectly for you.',
+      title: context.l10n.inputHobbiesTitle,
+      description: context.l10n.inputHobbiesDesc,
       children: [
         MyTextField(
           onChanged: (text) {
@@ -48,7 +49,7 @@ class _InputHobbiesPageState extends ConsumerState<InputHobbiesPage> {
               _executeSearch(text);
             });
           },
-          hintText: 'Search your hobbies',
+          hintText: context.l10n.searchHobbies,
           suffixIcon: const Icon(
             Icons.search_rounded,
           ),
@@ -61,12 +62,12 @@ class _InputHobbiesPageState extends ConsumerState<InputHobbiesPage> {
             children: searchedList
                 .map(
                   (e) => CustomTag(
-                    title: e,
-                    isSelected: hobbies.contains(e),
+                    title: e.value(context),
+                    isSelected: hobbies.contains(e.id),
                     onTap: () {
                       notifier.updateHobbies(
-                        e,
-                        hobbies.contains(e),
+                        e.id!,
+                        hobbies.contains(e.id),
                       );
                     },
                   ),
@@ -87,12 +88,12 @@ class _InputHobbiesPageState extends ConsumerState<InputHobbiesPage> {
           children: unSearchedList
               .map(
                 (e) => CustomTag(
-                  title: e,
-                  isSelected: hobbies.contains(e),
+                  title: e.value(context),
+                  isSelected: hobbies.contains(e.id),
                   onTap: () {
                     notifier.updateHobbies(
-                      e,
-                      hobbies.contains(e),
+                      e.id!,
+                      hobbies.contains(e.id),
                     );
                   },
                 ),

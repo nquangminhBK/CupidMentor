@@ -39,7 +39,7 @@ class NavigateButton extends ConsumerWidget {
           height: 48,
           child: Center(
             child: Text(
-              "All right, let's get started!",
+              context.l10n.alrightStart,
               style: context.textTheme.titleMedium!.copyWith(
                 color: const Color(0xfff1f1f1),
               ),

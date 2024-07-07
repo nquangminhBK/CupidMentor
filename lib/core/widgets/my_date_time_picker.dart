@@ -92,7 +92,7 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
                     ),
                     child: Center(
                       child: Text(
-                        'Save',
+                        context.l10n.save,
                         style: context.textTheme.bodyLarge,
                       ),
                     ),

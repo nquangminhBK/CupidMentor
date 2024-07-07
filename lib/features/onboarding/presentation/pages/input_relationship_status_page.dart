@@ -21,24 +21,24 @@ class _InputRelationshipStatusPageState extends ConsumerState<InputRelationshipS
     final crushType = ref.watch(onboardingNotifierProvider).userInfo.crushType;
     final notifier = ref.read(onboardingNotifierProvider.notifier);
     return PageSkeletonWidget(
-      title: 'Have you found your perfect match? 😘',
-      description: "Let us know if there's someone special in your life.",
+      title: context.l10n.inputRelationshipStatusTitle,
+      description: context.l10n.inputRelationshipStatusDesc,
       children: [
         ToggleButtonOnboarding(
           isSelected: !hasCrush,
           onChange: () => notifier.updateRelationshipStatus(false),
-          title: 'Not have yet',
+          title: context.l10n.notHaveYet,
         ),
         const VerticalSpace(size: 16),
         ToggleButtonOnboarding(
           isSelected: hasCrush,
           onChange: () => notifier.updateRelationshipStatus(true),
-          title: 'Already have',
+          title: context.l10n.alreadyHave,
         ),
         const VerticalSpace(size: 32),
         if (hasCrush) ...[
           Text(
-            "Wow that's wonderful! Congratulations! So what's your relationship with that special someone?",
+            context.l10n.inputRelationshipStatusDesc2,
             style: context.textTheme.bodyLarge,
           ),
           ...RelationshipType.relationshipTypes().map(
@@ -47,7 +47,7 @@ class _InputRelationshipStatusPageState extends ConsumerState<InputRelationshipS
               child: ToggleButtonOnboarding(
                 isSelected: e.value == crushType,
                 onChange: () => notifier.updateCrushType(e),
-                title: e.value,
+                title: e.displayText.value(context),
               ),
             ),
           ),

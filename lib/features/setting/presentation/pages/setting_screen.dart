@@ -30,7 +30,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
       color: context.theme.scaffoldBackgroundColor,
       child: SafeArea(
         child: Scaffold(
-          appBar: MyAppBar.myAppBar(title: context.l10n.helloWorld, ref: ref, context: context),
+          appBar: MyAppBar.myAppBar(title: 'Setting', ref: ref, context: context),
           body: Padding(
             padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
             child: Column(

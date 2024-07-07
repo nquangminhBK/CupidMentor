@@ -1,4 +1,6 @@
 import 'package:cupid_mentor/core/constants/personalities.dart';
+import 'package:cupid_mentor/core/core_entity/localization_content.dart';
+import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
@@ -16,16 +18,18 @@ class InputPersonalitiesPage extends ConsumerStatefulWidget {
 }
 
 class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage> {
-  List<String> searchedList = [];
-  List<String> unSearchedList = Personalities.personalities;
+  List<LocalizationContent> searchedList = [];
+  List<LocalizationContent> unSearchedList = Personalities.personalities;
 
   void _executeSearch(String searchKey) {
     if (searchKey.isNotEmpty) {
       searchedList = Personalities.personalities
-          .where((element) => element.toLowerCase().contains(searchKey.toLowerCase()))
+          .where(
+              (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
           .toList();
       unSearchedList = Personalities.personalities
-          .where((element) => !element.toLowerCase().contains(searchKey.toLowerCase()))
+          .where(
+              (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
           .toList();
     } else {
       searchedList = [];
@@ -38,9 +42,8 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
     final personalities = ref.watch(onboardingNotifierProvider).userInfo.personalities;
     final notifier = ref.read(onboardingNotifierProvider.notifier);
     return PageSkeletonWidget(
-      title: 'Describe yourself in a few words that we can know the real you 🙄',
-      description:
-          'Choose some words that best describe your personality. This enables us to enhance your unique and memorable dating experience.',
+      title: context.l10n.inputPersonalitiesTitle,
+      description: context.l10n.inputLoveLanguageDesc,
       children: [
         MyTextField(
           onChanged: (text) {
@@ -48,7 +51,7 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
               _executeSearch(text);
             });
           },
-          hintText: 'Search your personalities',
+          hintText: context.l10n.searchPersonalities,
           suffixIcon: const Icon(
             Icons.search_rounded,
           ),
@@ -61,12 +64,12 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
             children: searchedList
                 .map(
                   (e) => CustomTag(
-                    title: e,
-                    isSelected: personalities.contains(e),
+                    title: e.value(context),
+                    isSelected: personalities.contains(e.id),
                     onTap: () {
                       notifier.updatePersonalities(
-                        e,
-                        personalities.contains(e),
+                        e.id!,
+                        personalities.contains(e.id),
                       );
                     },
                   ),
@@ -87,12 +90,12 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
           children: unSearchedList
               .map(
                 (e) => CustomTag(
-                  title: e,
-                  isSelected: personalities.contains(e),
+                  title: e.value(context),
+                  isSelected: personalities.contains(e.id),
                   onTap: () {
                     notifier.updatePersonalities(
-                      e,
-                      personalities.contains(e),
+                      e.id!,
+                      personalities.contains(e.id),
                     );
                   },
                 ),

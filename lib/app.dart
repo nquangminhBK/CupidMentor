@@ -48,7 +48,7 @@ class _AppState extends ConsumerState<App> {
       darkTheme: MyTheme.darkTheme(context),
       themeMode: ref.watch(themeNotifierProvider).currentTheme,
       onGenerateRoute: generateRoute,
-      initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.showcase,
       builder: (context, myWidget) {
         myWidget = EasyLoading.init()(context, myWidget);
         return myWidget;
