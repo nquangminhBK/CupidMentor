@@ -63,6 +63,9 @@
   "cancel": "キャンセル",
   "start": "始める",
   "skip": "スキップ",
-  "alrightStart": "さあ、始めましょう!"
+  "alrightStart": "さあ、始めましょう!",
+  "welcomeScreenTitle": "こんにちは",
+  "welcomeScreenDesc" : "私たちがお届けする貴重なヒントやアドバイスを探求する準備をしてください。",
+  "letStartButton": "はい、始めましょう"
 
 }

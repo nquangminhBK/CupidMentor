@@ -63,5 +63,8 @@
   "cancel" : "Hủy",
   "start" : "Bắt đầu",
   "skip": "Bỏ qua",
-  "alrightStart": "Được rồi, bắt đầu thôi"
+  "alrightStart": "Được rồi, bắt đầu thôi",
+  "welcomeScreenTitle": "Xin chào",
+  "welcomeScreenDesc" : "Sẵn sàng khám phá những tips, những lời khuyên đầy thú vị và bổ ích mà chúng tôi mang đến cho bạn.",
+  "letStartButton": "Bắt đầu thôi"
 }

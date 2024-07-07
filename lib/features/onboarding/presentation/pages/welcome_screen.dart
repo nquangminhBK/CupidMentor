@@ -44,7 +44,7 @@ class WelcomeScreen extends ConsumerWidget {
               ),
               const VerticalSpace(size: 16),
               Text(
-                'Welcome, ${userInfo.name}',
+                '${context.l10n.welcomeScreenTitle}, ${userInfo.name}',
                 style: context.textTheme.titleLarge!.copyWith(
                   fontSize: 24,
                 ),
@@ -53,7 +53,7 @@ class WelcomeScreen extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Text(
-                  'Get ready with us to discover all the amazing features we have in store for you!',
+                  context.l10n.welcomeScreenDesc,
                   style: context.textTheme.bodyLarge!.copyWith(
                     fontSize: 16,
                   ),
@@ -77,7 +77,7 @@ class WelcomeScreen extends ConsumerWidget {
                   height: 48,
                   child: Center(
                     child: Text(
-                      "Okay, let's start",
+                      context.l10n.letStartButton,
                       style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                     ),
                   ),

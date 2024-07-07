@@ -63,5 +63,8 @@
   "cancel": "Cancel",
   "start": "Start",
   "skip": "Skip",
-  "alrightStart": "All right, let's get started!"
+  "alrightStart": "All right, let's get started!",
+  "welcomeScreenTitle" : "Welcome",
+  "welcomeScreenDesc" : "Get ready to explore the valuable tips and advice we bring for you.",
+  "letStartButton": "Okay, let's start"
 }
