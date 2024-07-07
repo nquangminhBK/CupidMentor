@@ -42,7 +42,7 @@ class DialogLoveLanguageConcept extends ConsumerWidget {
               height: 16,
             ),
             Text(
-              LoveLanguage.overallInfo,
+              LoveLanguage.overallInfo.value(context),
               style: context.textTheme.bodyLarge,
             ),
             const SizedBox(
@@ -72,7 +72,7 @@ class DialogLoveLanguageConcept extends ConsumerWidget {
               height: 10,
             ),
             Text(
-              LoveLanguage.reasonOfConcept,
+              LoveLanguage.reasonOfConcept.value(context),
               style: context.textTheme.bodyLarge,
             ),
           ],

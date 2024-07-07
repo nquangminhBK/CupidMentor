@@ -15,6 +15,7 @@ class ImageNetwork extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    if (imageUrl.isEmpty) return const SizedBox();
     return SizedBox(
       width: width,
       height: height,

@@ -73,6 +73,16 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                     }
                   },
                 ),
+                ItemSetting(
+                  leftIcon: Icons.logout,
+                  title: 'Delete account',
+                  onTap: () async {
+                    final result = await ref.read(settingNotifierProvider.notifier).signOut();
+                    if (result && context.mounted) {
+                      ResetAllApp.restartApp(context);
+                    }
+                  },
+                ),
               ],
             ),
           ),

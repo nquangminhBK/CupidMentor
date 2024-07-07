@@ -16,7 +16,7 @@ class TipsSelfImprovementItem extends ConsumerWidget {
     return InkWell(
       onTap: () async {
         final content =
-            await ref.read(tipsSelfImproveNotifierProvider.notifier).getData(item.title);
+            await ref.read(tipsSelfImproveNotifierProvider.notifier).getData(item.title.value(context));
         print("minh check $content");
         showDialog(
             context: context,
@@ -38,7 +38,7 @@ class TipsSelfImprovementItem extends ConsumerWidget {
           children: [
             Expanded(
               child: Text(
-                item.title,
+                item.title.value(context),
                 style: context.textTheme.labelLarge,
               ),
             ),

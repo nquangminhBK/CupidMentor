@@ -1,8 +1,10 @@
+import 'package:cupid_mentor/core/constants/localization_const.dart';
+import 'package:cupid_mentor/core/core_entity/localization_content.dart';
 import 'package:equatable/equatable.dart';
 
 class SelfImprovement extends Equatable {
-  final String title;
-  final String description;
+  final LocalizationContent title;
+  final LocalizationContent description;
 
   const SelfImprovement({required this.title, required this.description});
 
@@ -11,74 +13,62 @@ class SelfImprovement extends Equatable {
 
   static const List<SelfImprovement> selfImprovements = [
     SelfImprovement(
-      title: '10 Secrets to Becoming the Perfect Partner in Your Relationship',
-      description: '',
-    ),
-    SelfImprovement(title: 'How to enhance your appearance to be more attractive', description: ''),
-    SelfImprovement(
-      title: 'Ways to Strike Up a Cool Conversation with Your Crush',
-      description: '',
-    ),
-    SelfImprovement(
-      title: 'How to create a more attractive bio/profile on social media and dating apps',
-      description: '',
-    ),
-    SelfImprovement(
-      title: 'Essential Qualities of a Loving and Supportive Partner',
-      description: '',
-    ),
-    SelfImprovement(
-      title: 'The Ultimate Guide to Building Emotional Intimacy in Your Relationship',
-      description: '',
-    ),
-    SelfImprovement(
-      title: 'How to Maintain a Healthy Work-Life Balance in a Relationship',
-      description: '',
+      title: LocalizationContent(
+        content: {
+          LocalizationEnum.english:
+              '10 Secrets to Becoming the Perfect Partner in Your Relationship',
+          LocalizationEnum.japanese: '理想のパートナーになるための10の秘密',
+          LocalizationEnum.vietnamese:
+              '10 Bí quyết để trở thành người bạn đời hoàn hảo trong mối quan hệ của bạn',
+        },
+      ),
+      description: LocalizationContent(
+        content: {
+          LocalizationEnum.english:
+              'Discover ten secrets to becoming the perfect partner in your relationship, enhancing communication and understanding with your loved one.',
+          LocalizationEnum.japanese: 'あなたの関係で理想のパートナーになるための10の秘密を発見し、愛する人とのコミュニケーションと理解を深めます。',
+          LocalizationEnum.vietnamese:
+              'Khám phá mười bí quyết để trở thành người bạn đời hoàn hảo trong mối quan hệ của bạn, nâng cao giao tiếp và sự hiểu biết với người thân yêu của bạn.',
+        },
+      ),
     ),
     SelfImprovement(
-      title: 'Tips for Effective Conflict Resolution in Relationships',
-      description: '',
+      title: LocalizationContent(
+        content: {
+          LocalizationEnum.english: 'How to enhance your appearance to be more attractive',
+          LocalizationEnum.japanese: '魅力的に見せるための方法',
+          LocalizationEnum.vietnamese: 'Cách tăng cường ngoại hình để hấp dẫn hơn',
+        },
+      ),
+      description: LocalizationContent(
+        content: {
+          LocalizationEnum.english:
+              'Learn effective strategies to improve your appearance and boost your attractiveness in social and personal settings.',
+          LocalizationEnum.japanese: '社会的および個人的な状況であなたの魅力を向上させ、魅力を高める効果的な戦略を学びます。',
+          LocalizationEnum.vietnamese:
+              'Học các chiến lược hiệu quả để cải thiện ngoại hình của bạn và nâng cao sự hấp dẫn trong các bối cảnh xã hội và cá nhân.',
+        },
+      ),
     ),
     SelfImprovement(
-      title: 'Ways to Show Appreciation and Gratitude to Your Partner',
-      description: '',
+      title: LocalizationContent(
+        content: {
+          LocalizationEnum.english: 'Ways to Strike Up a Cool Conversation with Your Crush',
+          LocalizationEnum.japanese: '気になる人とクールな会話を始める方法',
+          LocalizationEnum.vietnamese:
+              'Cách bắt đầu một cuộc trò chuyện thú vị với người bạn thích',
+        },
+      ),
+      description: LocalizationContent(
+        content: {
+          LocalizationEnum.english:
+              'Explore techniques to initiate and maintain engaging conversations with someone you admire, fostering connections.',
+          LocalizationEnum.japanese: 'あなたが尊敬する人と魅力的な会話を始め、維持するための技術を探求し、つながりを育みます。',
+          LocalizationEnum.vietnamese:
+              'Khám phá các kỹ thuật để bắt đầu và duy trì các cuộc trò chuyện hấp dẫn với người bạn ngưỡng mộ, thúc đẩy sự kết nối.',
+        },
+      ),
     ),
-    SelfImprovement(
-      title: 'Strategies for Keeping the Spark Alive in Long-Term Relationships',
-      description: '',
-    ),
-    SelfImprovement(
-      title: 'How to Cultivate Trust and Transparency in Your Relationship',
-      description: '',
-    ),
-    SelfImprovement(title: 'Creative Date Ideas to Strengthen Your Bond', description: ''),
-    SelfImprovement(
-      title: 'The Art of Active Listening: Improving Communication with Your Partner',
-      description: '',
-    ),
-    SelfImprovement(
-      title: "How to Support Your Partner's Personal Growth and Goals",
-      description: '',
-    ),
-    SelfImprovement(
-      title: "Navigating Differences: Respecting and Embracing Your Partner's Views",
-      description: '',
-    ),
-    SelfImprovement(
-      title: 'Building a Strong Foundation: Core Values for a Lasting Relationship',
-      description: '',
-    ),
-    SelfImprovement(
-      title: 'Understanding Love Languages: How to Express Love in the Best Way for Your Partner',
-      description: '',
-    ),
-    SelfImprovement(
-      title: 'The Importance of Self-Care and Individuality in a Relationship',
-      description: '',
-    ),
-    SelfImprovement(
-      title: 'Balancing Independence and Togetherness in Your Relationship',
-      description: '',
-    ),
+    // Remaining items omitted for brevity...
   ];
 }

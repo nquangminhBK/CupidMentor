@@ -44,7 +44,7 @@ class TipsDateSpotScreen extends ConsumerWidget {
                       ),
                       const VerticalSpace(size: 24),
                       Text(
-                        SpecialOccasion.specialOccasions[index].title,
+                        SpecialOccasion.specialOccasions[index].title.value(context),
                         style: context.textTheme.titleSmall!.copyWith(
                           fontSize: 18,
                         ),
