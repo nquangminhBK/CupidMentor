@@ -16,6 +16,8 @@ class ChatNowWidget extends ConsumerWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
       decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
+      width: double.infinity,
+      height: 150,
       child: Stack(
         children: [
           ClipRRect(
@@ -26,67 +28,50 @@ class ChatNowWidget extends ConsumerWidget {
               child: Assets.svg.backgroundChatNow.svg(fit: BoxFit.cover),
             ),
           ),
-          SizedBox(
-            width: double.infinity,
-            height: 150,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 12, top: 12),
-                      child: Text(
-                        'Struggling to craft the perfect responses? Don’t worry, we’re here for you!!!',
-                        style: context.textTheme.labelLarge!.copyWith(
-                          fontSize: 14,
-                          color: AppColors.dark.textColor,
-                        ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Container(
+              width: context.screenSize.width * 3 / 5,
+              padding: const EdgeInsets.only(left: 12, top: 12),
+              child: Text(
+                context.l10n.tipsReplyDesc,
+                style: context.textTheme.labelLarge!.copyWith(
+                  fontSize: 14,
+                  color: AppColors.dark.textColor,
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              width: 160,
+              height: 44,
+              margin: const EdgeInsets.only(bottom: 12, right: 12),
+              child: AnimatedButton(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.white.withOpacity(0.20),
+                onPress: () => NavigationService.instance.push(AppRoutes.tipReplying),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      context.l10n.tipsReplyButtonTitle,
+                      textAlign: TextAlign.center,
+                      style: context.textTheme.titleMedium!.copyWith(
+                        color: AppColors.dark.textColor,
                       ),
                     ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 12, right: 12),
-                      height: 44,
-                      child: AnimatedButton(
-                        onPress: () => NavigationService.instance.push(AppRoutes.tipReplying),
-                        child: Container(
-                          width: double.infinity,
-                          height: 44,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.white.withOpacity(0.20),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Chat now',
-                                textAlign: TextAlign.center,
-                                style: context.textTheme.titleMedium!.copyWith(
-                                  color: AppColors.dark.textColor,
-                                ),
-                              ),
-                              const HorizontalSpace(size: 8),
-                              Icon(
-                                Icons.chat_outlined,
-                                size: 15,
-                                color: AppColors.dark.textColor,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    const HorizontalSpace(size: 8),
+                    Icon(
+                      Icons.chat_outlined,
+                      size: 15,
+                      color: AppColors.dark.textColor,
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ],

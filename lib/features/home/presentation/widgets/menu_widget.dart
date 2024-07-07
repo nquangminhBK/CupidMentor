@@ -60,7 +60,7 @@ class MenuWidget extends ConsumerWidget {
                       Container(
                         margin: const EdgeInsets.only(right: 45),
                         height: 44,
-                        width: 150,
+                        width: 170,
                         child: AnimatedButton(
                           onPress: onTap,
                           borderRadius: BorderRadius.circular(8),
@@ -108,7 +108,7 @@ class MenuWidget extends ConsumerWidget {
                       Container(
                         margin: const EdgeInsets.only(left: 45),
                         height: 44,
-                        width: 150,
+                        width: 170,
                         child: AnimatedButton(
                           onPress: onTap,
                           borderRadius: BorderRadius.circular(8),

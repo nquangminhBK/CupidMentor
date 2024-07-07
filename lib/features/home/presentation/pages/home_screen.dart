@@ -62,10 +62,9 @@ class HomeScreen extends ConsumerWidget {
                   const VerticalSpace(size: 16),
                   MenuWidget(
                     isLeftToRight: true,
-                    title: 'Some Tips For You',
-                    description:
-                        'Covering self-improvement, crafting an engaging bio, body language, etc.',
-                    buttonText: 'Explore Tips',
+                    title: context.l10n.tipSelfImprovementTitle,
+                    description: context.l10n.tipSelfImprovementDesc,
+                    buttonText: context.l10n.tipSelfImprovementButton,
                     onTap: () => NavigationService.instance.push(AppRoutes.tipSelfImprovement),
                     image: ref.currentTheme == ThemeMode.dark
                         ? Assets.png.tipMenuImage.image(width: 140, height: 140)
@@ -74,10 +73,9 @@ class HomeScreen extends ConsumerWidget {
                   const VerticalSpace(size: 16),
                   MenuWidget(
                     isLeftToRight: false,
-                    title: 'The Ideal Gifts',
-                    description:
-                        'Offering suitable gifts for special occasions like Christmas, Birthdays, etc.',
-                    buttonText: 'See All Gifts',
+                    title: context.l10n.tipGiftTitle,
+                    description: context.l10n.tipGiftDesc,
+                    buttonText: context.l10n.tipGiftButton,
                     onTap: () => NavigationService.instance.push(AppRoutes.tipGift),
                     image: ref.currentTheme == ThemeMode.dark
                         ? Assets.png.giftMenuImage.image(width: 140, height: 140)
@@ -86,15 +84,15 @@ class HomeScreen extends ConsumerWidget {
                   const VerticalSpace(size: 16),
                   MenuWidget(
                     isLeftToRight: true,
-                    title: 'The Perfect Date Spots',
-                    description:
-                        "Suggesting interesting date spots based on your and partner's preferences.",
-                    buttonText: 'View All Spots',
+                    title: context.l10n.tipDateSpotTitle,
+                    description: context.l10n.tipDateSpotDesc,
+                    buttonText: context.l10n.tipDateSpotButton,
                     onTap: () => NavigationService.instance.push(AppRoutes.tipDateSpot),
                     image: ref.currentTheme == ThemeMode.dark
                         ? Assets.png.spotMenuImage.image(width: 140, height: 140)
                         : Assets.png.spotMenuImageLight.image(width: 140, height: 140),
                   ),
+                  const VerticalSpace(size: 24),
                 ],
               ),
             ),

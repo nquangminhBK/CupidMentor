@@ -13,26 +13,31 @@ class ProfileWidget extends ConsumerWidget {
   const ProfileWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) => Row(
+  Widget build(BuildContext context, WidgetRef ref) {
+    return IntrinsicHeight(
+      child: Row(
         children: [
           const HorizontalSpace(size: 24),
           Expanded(
-            child: AnimatedButton(
-              onPress: () {
-                NavigationService.instance.push(AppRoutes.onboarding);
-              },
-              child: Container(
-                width: double.infinity,
-                height: 44,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: ref.currentAppColor.buttonBackgroundColor,
-                ),
-                child: Center(
-                  child: Text(
-                    'Your info 😊',
-                    textAlign: TextAlign.center,
-                    style: context.textTheme.titleMedium,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 50),
+              child: AnimatedButton(
+                onPress: () {
+                  NavigationService.instance.push(AppRoutes.onboarding);
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: ref.currentAppColor.buttonBackgroundColor,
+                  ),
+                  child: Center(
+                    child: Text(
+                      context.l10n.yourInfo,
+                      textAlign: TextAlign.center,
+                      style: context.textTheme.titleMedium,
+                    ),
                   ),
                 ),
               ),
@@ -40,22 +45,25 @@ class ProfileWidget extends ConsumerWidget {
           ),
           const HorizontalSpace(size: 16),
           Expanded(
-            child: AnimatedButton(
-              onPress: () {
-                NavigationService.instance.push(AppRoutes.onboarding);
-              },
-              child: Container(
-                width: double.infinity,
-                height: 44,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: ref.currentAppColor.buttonBackgroundColor,
-                ),
-                child: Center(
-                  child: Text(
-                    "Partner's Info 💜",
-                    textAlign: TextAlign.center,
-                    style: context.textTheme.titleMedium,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 50),
+              child: AnimatedButton(
+                onPress: () {
+                  NavigationService.instance.push(AppRoutes.onboarding);
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: ref.currentAppColor.buttonBackgroundColor,
+                  ),
+                  child: Center(
+                    child: Text(
+                      context.l10n.partnerInfo,
+                      textAlign: TextAlign.center,
+                      style: context.textTheme.titleMedium,
+                    ),
                   ),
                 ),
               ),
@@ -63,5 +71,7 @@ class ProfileWidget extends ConsumerWidget {
           ),
           const HorizontalSpace(size: 24),
         ],
-      );
+      ),
+    );
+  }
 }
