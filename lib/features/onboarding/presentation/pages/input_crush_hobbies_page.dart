@@ -25,11 +25,13 @@ class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
     if (searchKey.isNotEmpty) {
       searchedList = Hobbies.hobbies
           .where(
-              (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
+            (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+          )
           .toList();
       unSearchedList = Hobbies.hobbies
           .where(
-              (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
+            (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+          )
           .toList();
     } else {
       searchedList = [];

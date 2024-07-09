@@ -10,16 +10,21 @@ class TipsSelfImprovementScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    List<SelfImprovement> tempList = [];
+    SelfImprovement.selfImprovements.forEach((key, value) {
+      tempList = [...tempList, ...value];
+    });
     return Container(
       color: context.theme.scaffoldBackgroundColor,
       child: SafeArea(
         child: Scaffold(
-          appBar: MyAppBar.myAppBar(title: 'Some Tips For You  💡', ref: ref, context: context),
+          appBar: MyAppBar.myAppBar(
+              title: '${context.l10n.tipSelfImprovementTitle}  💡', ref: ref, context: context),
           body: ListView.builder(
             itemBuilder: (context, index) {
-              return TipsSelfImprovementItem(item: SelfImprovement.selfImprovements[index]);
+              return TipsSelfImprovementItem(item: tempList[index]);
             },
-            itemCount: SelfImprovement.selfImprovements.length,
+            itemCount: tempList.length,
           ),
         ),
       ),

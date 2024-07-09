@@ -10,7 +10,6 @@ import 'package:cupid_mentor/features/localization/presentation/widgets/dialog_c
 import 'package:cupid_mentor/features/localization/presentation/widgets/item_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SelectLanguagePage extends ConsumerStatefulWidget {
   const SelectLanguagePage({super.key});

@@ -79,5 +79,15 @@
   "tipGiftButton": "すべてのギフトを見る",
   "tipDateSpotTitle": "パーフェクトなデートスポット",
   "tipDateSpotDesc": "あなたとパートナーの好みに基づいて興味深いデートスポットを提案。",
-  "tipDateSpotButton": "すべてのスポットを見る"
+  "tipDateSpotButton": "すべてのスポットを見る",
+  "setting": "設定",
+  "theme": "テーマ",
+  "light": "ライト",
+  "dark": "ダーク",
+  "language": "言語",
+  "chooseLanguage": "言語を選択",
+  "change": "変更",
+  "helpCenter": "ヘルプセンター",
+  "aboutTheAuthor": "著者について",
+  "logout": "ログアウト"
 }

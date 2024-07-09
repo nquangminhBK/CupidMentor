@@ -48,7 +48,7 @@ class _DialogChangeLanguageState extends ConsumerState<DialogChangeLanguage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  'Change language',
+                  context.l10n.chooseLanguage,
                   style: context.textTheme.titleSmall!.copyWith(fontSize: 20),
                 ),
                 const Spacer(),
@@ -91,7 +91,7 @@ class _DialogChangeLanguageState extends ConsumerState<DialogChangeLanguage> {
             const VerticalSpace(size: 24),
             AnimatedButton(
               enable: currentLanguage != null,
-              onPress: () async{
+              onPress: () async {
                 if (currentLanguage == ref.read(localizationNotifierProvider).lang) {
                   NavigationService.instance.pop();
                   return;
@@ -110,7 +110,7 @@ class _DialogChangeLanguageState extends ConsumerState<DialogChangeLanguage> {
                 height: 48,
                 child: Center(
                   child: Text(
-                    'Change',
+                    context.l10n.change,
                     style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                   ),
                 ),

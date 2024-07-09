@@ -79,5 +79,15 @@
   "tipGiftButton": "Xem gợi ý",
   "tipDateSpotTitle": "Địa Điểm Hẹn Hò Lý Tưởng",
   "tipDateSpotDesc": "Đề xuất những địa điểm hẹn hò thú vị dựa trên sở thích của bạn và đối tác.",
-  "tipDateSpotButton": "Khám phá"
+  "tipDateSpotButton": "Khám phá",
+  "setting": "Cài đặt",
+  "theme": "Giao diện",
+  "light": "Sáng",
+  "dark": "Tối",
+  "language": "Ngôn ngữ",
+  "chooseLanguage": "Chọn ngôn ngữ",
+  "change": "Thay đổi",
+  "helpCenter": "Trung tâm trợ giúp",
+  "aboutTheAuthor": "Về tác giả",
+  "logout": "Đăng xuất"
 }

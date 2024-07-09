@@ -30,7 +30,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
       color: context.theme.scaffoldBackgroundColor,
       child: SafeArea(
         child: Scaffold(
-          appBar: MyAppBar.myAppBar(title: 'Setting', ref: ref, context: context),
+          appBar: MyAppBar.myAppBar(title: context.l10n.setting, ref: ref, context: context),
           body: Padding(
             padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
             child: Column(
@@ -43,7 +43,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                     ref.watch(localizationNotifierProvider).lang.displayText,
                     style: context.textTheme.titleMedium,
                   ),
-                  title: 'Language',
+                  title: context.l10n.language,
                   onTap: () async {
                     await showDialog(
                       context: context,
@@ -55,17 +55,17 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 ),
                 ItemSetting(
                   leftIcon: Icons.help_outline_rounded,
-                  title: 'Help center',
+                  title: context.l10n.helpCenter,
                   onTap: () {},
                 ),
                 ItemSetting(
                   leftIcon: Icons.info_outline_rounded,
-                  title: 'About the author',
+                  title: context.l10n.aboutTheAuthor,
                   onTap: () {},
                 ),
                 ItemSetting(
                   leftIcon: Icons.logout,
-                  title: 'Logout',
+                  title: context.l10n.logout,
                   onTap: () async {
                     final result = await ref.read(settingNotifierProvider.notifier).signOut();
                     if (result && context.mounted) {

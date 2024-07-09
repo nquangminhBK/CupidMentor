@@ -25,14 +25,14 @@ class MyAppBar {
               child: (hasBackIcon ?? true)
                   ? Text(
                       title ?? '',
-                      style: context.textTheme.titleLarge!.copyWith(fontSize: 20),
+                      style: context.textTheme.headlineSmall!.copyWith(fontSize: 18),
                     )
                   : Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Text(
                         title ?? '',
-                        style: context.textTheme.titleLarge!.copyWith(
-                          fontSize: 20,
+                        style: context.textTheme.headlineSmall!.copyWith(
+                          fontSize: 18,
                         ),
                       ),
                     ),

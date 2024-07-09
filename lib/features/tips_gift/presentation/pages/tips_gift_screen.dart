@@ -1,5 +1,7 @@
 import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
@@ -15,7 +17,8 @@ class TipsGiftsScreen extends ConsumerWidget {
       color: context.theme.scaffoldBackgroundColor,
       child: SafeArea(
         child: Scaffold(
-          appBar: MyAppBar.myAppBar(title: 'The Ideal Gifts  🎁', ref: ref, context: context),
+          appBar: MyAppBar.myAppBar(
+              title: '${context.l10n.tipGiftTitle}  🎁', ref: ref, context: context),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: GridView.builder(
@@ -30,9 +33,11 @@ class TipsGiftsScreen extends ConsumerWidget {
               itemCount: SpecialOccasion.specialOccasions.length,
               itemBuilder: (context, index) {
                 return AnimatedButton(
-                  onPress: () {},
+                  onPress: () {
+
+                  },
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.white.withOpacity(0.05),
+                  color: ref.currentAppColor.homeMenuColor,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -47,6 +52,7 @@ class TipsGiftsScreen extends ConsumerWidget {
                         style: context.textTheme.titleSmall!.copyWith(
                           fontSize: 18,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),

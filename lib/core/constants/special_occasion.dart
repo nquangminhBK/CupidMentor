@@ -17,6 +17,7 @@ class SpecialOccasion extends Equatable {
     SpecialOccasion(
       image: Assets.png.casualImage.image(),
       title: const LocalizationContent(
+        id: 'casualDates',
         content: {
           LocalizationEnum.english: 'Casual Dates',
           LocalizationEnum.japanese: 'カジュアルデート',
@@ -27,6 +28,7 @@ class SpecialOccasion extends Equatable {
     SpecialOccasion(
       image: Assets.png.birthdayImage.image(),
       title: const LocalizationContent(
+        id: 'birthday',
         content: {
           LocalizationEnum.english: 'Birthday',
           LocalizationEnum.japanese: '誕生日',
@@ -37,6 +39,7 @@ class SpecialOccasion extends Equatable {
     SpecialOccasion(
       image: Assets.png.anniversaryImage.image(),
       title: const LocalizationContent(
+        id: 'anniversary',
         content: {
           LocalizationEnum.english: 'Anniversary',
           LocalizationEnum.japanese: '記念日',
@@ -47,6 +50,7 @@ class SpecialOccasion extends Equatable {
     SpecialOccasion(
       image: Assets.png.valentineImage.image(),
       title: const LocalizationContent(
+        id: 'valentine',
         content: {
           LocalizationEnum.english: 'Valentine',
           LocalizationEnum.japanese: 'バレンタイン',
@@ -57,6 +61,7 @@ class SpecialOccasion extends Equatable {
     SpecialOccasion(
       image: Assets.png.christmasImage.image(),
       title: const LocalizationContent(
+        id: 'christmas',
         content: {
           LocalizationEnum.english: 'Christmas',
           LocalizationEnum.japanese: 'クリスマス',
@@ -67,6 +72,7 @@ class SpecialOccasion extends Equatable {
     SpecialOccasion(
       image: Assets.png.thanksgivingImage.image(),
       title: const LocalizationContent(
+        id: 'thanksgiving',
         content: {
           LocalizationEnum.english: 'Thanksgiving',
           LocalizationEnum.japanese: '感謝祭',
@@ -77,6 +83,7 @@ class SpecialOccasion extends Equatable {
     SpecialOccasion(
       image: Assets.png.mensDayImage.image(),
       title: const LocalizationContent(
+        id: 'mensDay',
         content: {
           LocalizationEnum.english: "Men's Day",
           LocalizationEnum.japanese: '男性の日',
@@ -87,6 +94,7 @@ class SpecialOccasion extends Equatable {
     SpecialOccasion(
       image: Assets.png.womensDayImages.image(),
       title: const LocalizationContent(
+        id: 'womenDay',
         content: {
           LocalizationEnum.english: "Women's Day",
           LocalizationEnum.japanese: '女性の日',

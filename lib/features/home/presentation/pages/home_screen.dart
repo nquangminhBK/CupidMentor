@@ -1,5 +1,4 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
-import 'package:cupid_mentor/core/constants/hobbies.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';

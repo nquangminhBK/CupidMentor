@@ -41,12 +41,12 @@ class _ThemeSettingState extends ConsumerState<ThemeSetting> with SingleTickerPr
         children: [
           Assets.lottie.darkLightMode.lottie(controller: _controller, repeat: false),
           Text(
-            themeMode == ThemeMode.dark ? 'Dark' : 'Light',
+            themeMode == ThemeMode.dark ? context.l10n.dark : context.l10n.light,
             style: context.textTheme.titleMedium,
           ),
         ],
       ),
-      title: 'Theme',
+      title: context.l10n.theme,
       onTap: () async {
         await ref.read(themeNotifierProvider.notifier).switchTheme();
       },

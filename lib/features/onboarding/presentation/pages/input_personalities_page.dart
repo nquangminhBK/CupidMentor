@@ -25,11 +25,13 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
     if (searchKey.isNotEmpty) {
       searchedList = Personalities.personalities
           .where(
-              (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
+            (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+          )
           .toList();
       unSearchedList = Personalities.personalities
           .where(
-              (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
+            (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+          )
           .toList();
     } else {
       searchedList = [];

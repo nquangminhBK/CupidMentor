@@ -86,9 +86,10 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
         ),
         const VerticalSpace(size: 6),
         SelectGenderDropdown(
-            onSelectGender: (Gender? gender) => onboardingNotifier.updateBasicInfo(gender: gender),
-            selectedGender: userInfo.gender,
-            hint: context.l10n.genderFieldHint),
+          onSelectGender: (Gender? gender) => onboardingNotifier.updateBasicInfo(gender: gender),
+          selectedGender: userInfo.gender,
+          hint: context.l10n.genderFieldHint,
+        ),
         const VerticalSpace(size: 24),
         Text(
           context.l10n.birthdayFieldTitle,
