@@ -43,12 +43,15 @@ class WelcomeScreen extends ConsumerWidget {
                 ],
               ),
               const VerticalSpace(size: 16),
-              Text(
-                '${context.l10n.welcomeScreenTitle}, ${userInfo.name}',
-                style: context.textTheme.titleLarge!.copyWith(
-                  fontSize: 24,
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  '${context.l10n.welcomeScreenTitle}, ${userInfo.name}',
+                  style: context.textTheme.titleLarge!.copyWith(
+                    fontSize: 24,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),

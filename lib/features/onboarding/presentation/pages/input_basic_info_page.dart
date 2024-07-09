@@ -125,9 +125,11 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
               Icons.privacy_tip_outlined,
             ),
             const HorizontalSpace(size: 6),
-            Text(
-              context.l10n.informationSafe,
-              style: context.textTheme.bodyLarge,
+            Expanded(
+              child: Text(
+                context.l10n.informationSafe,
+                style: context.textTheme.bodyLarge,
+              ),
             ),
           ],
         ),

@@ -56,7 +56,7 @@ class LoginScreen extends ConsumerWidget {
                       GradientText(
                         'Cupid Mentor',
                         style: context.textTheme.titleLarge?.copyWith(
-                          fontSize: 40,
+                          fontSize: 38,
                         ),
                         gradient: ref.currentAppColor.mainGradient,
                       ),
