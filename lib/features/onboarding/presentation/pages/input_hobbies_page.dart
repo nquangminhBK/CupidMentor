@@ -1,5 +1,5 @@
 import 'package:cupid_mentor/core/constants/hobbies.dart';
-import 'package:cupid_mentor/core/core_entity/localization_content.dart';
+import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';

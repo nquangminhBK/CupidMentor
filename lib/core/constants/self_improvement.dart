@@ -1,5 +1,5 @@
 import 'package:cupid_mentor/core/constants/localization_const.dart';
-import 'package:cupid_mentor/core/core_entity/localization_content.dart';
+import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:equatable/equatable.dart';
 
 class SelfImprovement extends Equatable {
