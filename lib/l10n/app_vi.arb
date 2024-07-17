@@ -89,5 +89,7 @@
   "change": "Thay đổi",
   "helpCenter": "Trung tâm trợ giúp",
   "aboutTheAuthor": "Về tác giả",
-  "logout": "Đăng xuất"
+  "logout": "Đăng xuất",
+  "generateFailed" : "Quá nhiều yêu cầu, vui lòng thử lại sau ít phút.",
+  "generateANewOne" : "Đưa ra một gợi ý mới"
 }

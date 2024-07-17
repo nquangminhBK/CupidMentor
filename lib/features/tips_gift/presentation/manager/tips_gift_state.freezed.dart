@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TipsGiftState {
   Map<String, List<ContentResponse>> get content =>
       throw _privateConstructorUsedError;
+  LoggedInUserInfo get userInfo => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TipsGiftStateCopyWith<TipsGiftState> get copyWith =>
@@ -30,7 +32,12 @@ abstract class $TipsGiftStateCopyWith<$Res> {
           TipsGiftState value, $Res Function(TipsGiftState) then) =
       _$TipsGiftStateCopyWithImpl<$Res, TipsGiftState>;
   @useResult
-  $Res call({Map<String, List<ContentResponse>> content});
+  $Res call(
+      {Map<String, List<ContentResponse>> content,
+      LoggedInUserInfo userInfo,
+      String? error});
+
+  $LoggedInUserInfoCopyWith<$Res> get userInfo;
 }
 
 /// @nodoc
@@ -47,13 +54,31 @@ class _$TipsGiftStateCopyWithImpl<$Res, $Val extends TipsGiftState>
   @override
   $Res call({
     Object? content = null,
+    Object? userInfo = null,
+    Object? error = freezed,
   }) {
     return _then(_value.copyWith(
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as Map<String, List<ContentResponse>>,
+      userInfo: null == userInfo
+          ? _value.userInfo
+          : userInfo // ignore: cast_nullable_to_non_nullable
+              as LoggedInUserInfo,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LoggedInUserInfoCopyWith<$Res> get userInfo {
+    return $LoggedInUserInfoCopyWith<$Res>(_value.userInfo, (value) {
+      return _then(_value.copyWith(userInfo: value) as $Val);
+    });
   }
 }
 
@@ -65,7 +90,13 @@ abstract class _$$TipsGiftStateImplCopyWith<$Res>
       __$$TipsGiftStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Map<String, List<ContentResponse>> content});
+  $Res call(
+      {Map<String, List<ContentResponse>> content,
+      LoggedInUserInfo userInfo,
+      String? error});
+
+  @override
+  $LoggedInUserInfoCopyWith<$Res> get userInfo;
 }
 
 /// @nodoc
@@ -80,12 +111,22 @@ class __$$TipsGiftStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? content = null,
+    Object? userInfo = null,
+    Object? error = freezed,
   }) {
     return _then(_$TipsGiftStateImpl(
       content: null == content
           ? _value._content
           : content // ignore: cast_nullable_to_non_nullable
               as Map<String, List<ContentResponse>>,
+      userInfo: null == userInfo
+          ? _value.userInfo
+          : userInfo // ignore: cast_nullable_to_non_nullable
+              as LoggedInUserInfo,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -94,7 +135,9 @@ class __$$TipsGiftStateImplCopyWithImpl<$Res>
 
 class _$TipsGiftStateImpl extends _TipsGiftState {
   const _$TipsGiftStateImpl(
-      {required final Map<String, List<ContentResponse>> content})
+      {required final Map<String, List<ContentResponse>> content,
+      required this.userInfo,
+      this.error})
       : _content = content,
         super._();
 
@@ -107,8 +150,13 @@ class _$TipsGiftStateImpl extends _TipsGiftState {
   }
 
   @override
+  final LoggedInUserInfo userInfo;
+  @override
+  final String? error;
+
+  @override
   String toString() {
-    return 'TipsGiftState(content: $content)';
+    return 'TipsGiftState(content: $content, userInfo: $userInfo, error: $error)';
   }
 
   @override
@@ -116,12 +164,15 @@ class _$TipsGiftStateImpl extends _TipsGiftState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TipsGiftStateImpl &&
-            const DeepCollectionEquality().equals(other._content, _content));
+            const DeepCollectionEquality().equals(other._content, _content) &&
+            (identical(other.userInfo, userInfo) ||
+                other.userInfo == userInfo) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_content));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_content), userInfo, error);
 
   @JsonKey(ignore: true)
   @override
@@ -132,12 +183,17 @@ class _$TipsGiftStateImpl extends _TipsGiftState {
 
 abstract class _TipsGiftState extends TipsGiftState {
   const factory _TipsGiftState(
-          {required final Map<String, List<ContentResponse>> content}) =
-      _$TipsGiftStateImpl;
+      {required final Map<String, List<ContentResponse>> content,
+      required final LoggedInUserInfo userInfo,
+      final String? error}) = _$TipsGiftStateImpl;
   const _TipsGiftState._() : super._();
 
   @override
   Map<String, List<ContentResponse>> get content;
+  @override
+  LoggedInUserInfo get userInfo;
+  @override
+  String? get error;
   @override
   @JsonKey(ignore: true)
   _$$TipsGiftStateImplCopyWith<_$TipsGiftStateImpl> get copyWith =>

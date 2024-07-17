@@ -89,5 +89,7 @@
   "change": "変更",
   "helpCenter": "ヘルプセンター",
   "aboutTheAuthor": "著者について",
-  "logout": "ログアウト"
+  "logout": "ログアウト",
+  "generateFailed" : "リクエストが多すぎます。数分後にもう一度お試しください。",
+  "generateANewOne" : "新しいものを生成してください"
 }

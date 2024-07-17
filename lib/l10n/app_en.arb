@@ -89,5 +89,7 @@
   "change": "Change",
   "helpCenter": "Help center",
   "aboutTheAuthor": "About the author",
-  "logout": "Logout"
+  "logout": "Logout",
+  "generateFailed" : "Too many requests, please try again in a few minutes.",
+  "generateANewOne" : "Let's generate a new one"
 }

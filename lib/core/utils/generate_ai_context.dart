@@ -311,13 +311,13 @@ class AIContext {
     final currentLang = ProviderScope.containerOf(context).read(localizationNotifierProvider).lang;
     switch (currentLang) {
       case LocalizationEnum.english:
-        return '$_generateAIContext. Please give me gift suggestions for my $crushType on the occasion of ${occasion.title.value(context)}';
+        return '$_generateAIContext. Please give me gift suggestions for my $crushType on the occasion of ${occasion.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
       case LocalizationEnum.japanese:
-        return '$_generateAIContext. 私の$crushTypeにお勧めの贈り物を、${occasion.title.value(context)}のお祝いの際に教えてください。';
+        return '$_generateAIContext. 私の$crushTypeにお勧めの贈り物を、${occasion.title.value(context)}のお祝いの際に教えてください。具体的で詳細なフィードバックを提供してください。情報が不十分な場合は、異なるシナリオに合わせた提案をしてください。ナンセンスなことを言わないでください';
       case LocalizationEnum.vietnamese:
-        return '$_generateAIContext. Hãy cho tôi gợi ý chọn quà tặng cho $crushType của tôi vào dịp ${occasion.title.value(context)}';
+        return '$_generateAIContext. Hãy cho tôi gợi ý chọn quà tặng cho $crushType của tôi vào dịp ${occasion.title.value(context)}. Vui lòng cung cấp phản hồi cụ thể và chi tiết. Nếu thông tin chưa đủ, hãy đưa ra các gợi ý phù hợp với các tình huống khác nhau. Không nói tào lao.';
       default:
-        return '$_generateAIContext. Please give me gift suggestions for my $crushType on the occasion of ${occasion.title.value(context)}';
+        return '$_generateAIContext. Please give me gift suggestions for my $crushType on the occasion of ${occasion.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
     }
   }
 
@@ -325,13 +325,13 @@ class AIContext {
     final currentLang = ProviderScope.containerOf(context).read(localizationNotifierProvider).lang;
     switch (currentLang) {
       case LocalizationEnum.english:
-        return '$_generateAIContext. Please give me suggestions for a dating location to celebrate the ${occasion.title.value(context)}';
+        return '$_generateAIContext. Please give me suggestions for a dating location to celebrate the ${occasion.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
       case LocalizationEnum.japanese:
-        return '$_generateAIContext. ${occasion.title.value(context)}のデートスポットの提案を教えてください。';
+        return '$_generateAIContext. ${occasion.title.value(context)}のデートスポットの提案を教えてください。具体的で詳細なフィードバックを提供してください。情報が不十分な場合は、異なるシナリオに合わせた提案をしてください。ナンセンスなことを言わないでください';
       case LocalizationEnum.vietnamese:
-        return '$_generateAIContext. Hãy cho tôi gợi ý về địa điểm hẹn hò vào dịp ${occasion.title.value(context)}';
+        return '$_generateAIContext. Hãy cho tôi gợi ý về địa điểm hẹn hò vào dịp ${occasion.title.value(context)}. Vui lòng cung cấp phản hồi cụ thể và chi tiết. Nếu thông tin chưa đủ, hãy đưa ra các gợi ý phù hợp với các tình huống khác nhau. Không nói tào lao.';
       default:
-        return '$_generateAIContext. Please give me suggestions for a dating location to celebrate the ${occasion.title.value(context)}';
+        return '$_generateAIContext. Please give me suggestions for a dating location to celebrate the ${occasion.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
     }
   }
 
@@ -339,13 +339,13 @@ class AIContext {
     final currentLang = ProviderScope.containerOf(context).read(localizationNotifierProvider).lang;
     switch (currentLang) {
       case LocalizationEnum.english:
-        return '$_generateAIContext. With these info. Let give me the best response about: ${tips.title.value(context)}';
+        return '$_generateAIContext. With these info. Let give me the best response about: ${tips.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
       case LocalizationEnum.japanese:
-        return '$_generateAIContext. この情報を元に、${tips.title.value(context)} について最良のフィードバックをください。';
+        return '$_generateAIContext. この情報を元に、${tips.title.value(context)} について最良のフィードバックをください。具体的で詳細なフィードバックを提供してください。情報が不十分な場合は、異なるシナリオに合わせた提案をしてください。ナンセンスなことを言わないでください';
       case LocalizationEnum.vietnamese:
-        return '$_generateAIContext. Với những thông tin này, hãy cho tôi phản hồi tốt nhất về: ${tips.title.value(context)}';
+        return '$_generateAIContext. Với những thông tin này, hãy cho tôi phản hồi tốt nhất về: ${tips.title.value(context)}. Vui lòng cung cấp phản hồi cụ thể và chi tiết. Nếu thông tin chưa đủ, hãy đưa ra các gợi ý phù hợp với các tình huống khác nhau. Không nói tào lao.';
       default:
-        return '$_generateAIContext. With these info. Let give me the best response about: ${tips.title.value(context)}';
+        return '$_generateAIContext. With these info. Let give me the best response about: ${tips.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
     }
   }
 }

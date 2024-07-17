@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:cupid_mentor/core/constants/gemini_api_key.dart';
+import 'package:cupid_mentor/core/core_use_cases/generate_ai_content.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_local_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_remote_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/repositories/authentication_repository.dart';
@@ -25,6 +26,11 @@ import 'package:cupid_mentor/features/splash_screen/domain/repositories/splash_r
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_is_logged_in.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_onboarding.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_showcase.dart';
+import 'package:cupid_mentor/features/tips_gift/data/data_sources/tips_gift_datasource.dart';
+import 'package:cupid_mentor/features/tips_gift/data/repository/tips_gift_repository.dart';
+import 'package:cupid_mentor/features/tips_gift/domain/repository/tips_gift_repository.dart';
+import 'package:cupid_mentor/features/tips_gift/domain/use_cases/add_tips_gift.dart';
+import 'package:cupid_mentor/features/tips_gift/domain/use_cases/get_tips_gift.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/data/data_sources/tips_self_improve_datasource.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/data/repository/tips_self_improve_repository.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/domain/repository/tips_self_improve_repository.dart';
@@ -90,6 +96,9 @@ void _registerDataSources() {
   get.registerLazySingleton<TipsSelfImproveDatasource>(
     () => TipsSelfImproveDatasourceImpl(generativeModel: get()),
   );
+  get.registerLazySingleton<TipsGiftDatasource>(
+    () => TipsGiftDatasourceImpl(firestore: get(), firebaseAuth: get()),
+  );
 }
 
 void _registerRepositories() {
@@ -113,21 +122,27 @@ void _registerRepositories() {
   get.registerLazySingleton<TipsSelfImproveRepository>(
     () => TipsSelfImproveRepositoryImpl(datasource: get(), connectivity: get()),
   );
+  get.registerLazySingleton<TipsGiftRepository>(
+    () => TipsGiftRepositoryImpl(datasource: get(), connectivity: get()),
+  );
 }
 
 void _registerUseCases() {
   get.registerLazySingleton(() => CheckNeedOnboarding(repository: get()));
   get.registerLazySingleton(() => CheckNeedShowCase(repository: get()));
   get.registerLazySingleton(() => CheckNeedLogin(repository: get()));
+  get.registerLazySingleton(() => ClearLanguageData(repository: get()));
+  get.registerLazySingleton(() => GetLanguage(repository: get()));
+  get.registerLazySingleton(() => SetLanguage(repository: get()));
   get.registerLazySingleton(() => LoginUseCase(repository: get()));
   get.registerLazySingleton(() => LogoutUseCase(repository: get()));
   get.registerLazySingleton(() => GetCurrentUser(repository: get()));
   get.registerLazySingleton(() => SaveUserInfo(repository: get()));
   get.registerLazySingleton(() => GetUserInfo(repository: get()));
+  get.registerLazySingleton(() => GenerateAIContent(generativeModel: get()));
   get.registerLazySingleton(() => GenerateResponseTipsSelfImprove(repository: get()));
-  get.registerLazySingleton(() => ClearLanguageData(repository: get()));
-  get.registerLazySingleton(() => GetLanguage(repository: get()));
-  get.registerLazySingleton(() => SetLanguage(repository: get()));
+  get.registerLazySingleton(() => AddTipsGift(repository: get()));
+  get.registerLazySingleton(() => GetTipsGift(repository: get()));
 }
 
 Future<void> setupLocator() async {
