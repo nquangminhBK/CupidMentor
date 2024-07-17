@@ -77,6 +77,8 @@ class _DialogListGeneratedContentState extends ConsumerState<DialogListGenerated
                           final newSuggestion = await widget.onTapCreateNewOne();
                           if (newSuggestion != null) {
                             setState(() {});
+                          } else {
+                            NavigationService.instance.pop();
                           }
                         },
                       ),

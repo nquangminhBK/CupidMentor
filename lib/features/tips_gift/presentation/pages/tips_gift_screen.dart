@@ -3,7 +3,7 @@ import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
-import 'package:cupid_mentor/core/utils/snackbar_utils.dart';
+import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/dialog_list_generated_content.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
@@ -19,7 +19,7 @@ class TipsGiftsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(tipsGiftNotifierProvider, (previous, next) {
       if (next.error?.isNotEmpty ?? false) {
-        SnackBarUtils.showErrorSnackBar(message: next.error!, context: context);
+        SnackBarService.instance.showErrorSnackBar(message: next.error!, context: context);
       }
     });
     return Container(

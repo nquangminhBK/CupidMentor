@@ -26,6 +26,11 @@ import 'package:cupid_mentor/features/splash_screen/domain/repositories/splash_r
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_is_logged_in.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_onboarding.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_showcase.dart';
+import 'package:cupid_mentor/features/tip_date_spots/data/data_sources/tips_date_spot_datasource.dart';
+import 'package:cupid_mentor/features/tip_date_spots/data/repository/tip_date_spot_repository.dart';
+import 'package:cupid_mentor/features/tip_date_spots/domain/repository/tip_date_spot_repository.dart';
+import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/add_tips_date_spot.dart';
+import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/get_tips_date_spot.dart';
 import 'package:cupid_mentor/features/tips_gift/data/data_sources/tips_gift_datasource.dart';
 import 'package:cupid_mentor/features/tips_gift/data/repository/tips_gift_repository.dart';
 import 'package:cupid_mentor/features/tips_gift/domain/repository/tips_gift_repository.dart';
@@ -99,6 +104,9 @@ void _registerDataSources() {
   get.registerLazySingleton<TipsGiftDatasource>(
     () => TipsGiftDatasourceImpl(firestore: get(), firebaseAuth: get()),
   );
+  get.registerLazySingleton<TipsDateSpotDatasource>(
+    () => TipsDateSpotDatasourceImpl(firestore: get(), firebaseAuth: get()),
+  );
 }
 
 void _registerRepositories() {
@@ -125,6 +133,9 @@ void _registerRepositories() {
   get.registerLazySingleton<TipsGiftRepository>(
     () => TipsGiftRepositoryImpl(datasource: get(), connectivity: get()),
   );
+  get.registerLazySingleton<TipsDateSpotRepository>(
+    () => TipsDateSpotRepositoryImpl(datasource: get(), connectivity: get()),
+  );
 }
 
 void _registerUseCases() {
@@ -143,6 +154,8 @@ void _registerUseCases() {
   get.registerLazySingleton(() => GenerateResponseTipsSelfImprove(repository: get()));
   get.registerLazySingleton(() => AddTipsGift(repository: get()));
   get.registerLazySingleton(() => GetTipsGift(repository: get()));
+  get.registerLazySingleton(() => AddTipsDateSpot(repository: get()));
+  get.registerLazySingleton(() => GetTipsDateSpot(repository: get()));
 }
 
 Future<void> setupLocator() async {

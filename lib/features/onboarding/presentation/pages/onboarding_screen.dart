@@ -2,7 +2,7 @@ import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
-import 'package:cupid_mentor/core/utils/snackbar_utils.dart';
+import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/navigate_button.dart';
 import 'package:cupid_mentor/core/widgets/progress_bar.dart';
@@ -39,7 +39,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   Widget build(BuildContext context) {
     ref.listen(onboardingNotifierProvider, (previous, next) {
       if (next.errorMessage.isNotEmpty) {
-        SnackBarUtils.showErrorSnackBar(
+        SnackBarService.instance.showErrorSnackBar(
           message: next.errorMessage,
           context: context,
           icon: Icons.warning_amber_rounded,
@@ -131,7 +131,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       await NavigationService.instance.push(AppRoutes.welcome, replace: true);
                     } else {
                       if (context.mounted) {
-                        SnackBarUtils.showErrorSnackBar(
+                        SnackBarService.instance.showErrorSnackBar(
                           message: 'Cannot save information, please try again later!',
                           context: context,
                         );

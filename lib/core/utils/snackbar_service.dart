@@ -4,8 +4,15 @@ import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SnackBarUtils {
-  static SnackBar _snackBarContent({
+class SnackBarService {
+  static final SnackBarService service = SnackBarService();
+
+  @visibleForTesting
+  static SnackBarService? overrideService;
+
+  static SnackBarService get instance => overrideService ?? service;
+
+  SnackBar _snackBarContent({
     required BuildContext context,
     required String message,
     required Color color,
@@ -39,7 +46,7 @@ class SnackBarUtils {
         ),
       );
 
-  static void showErrorSnackBar({
+  void showErrorSnackBar({
     required String message,
     IconData? icon,
     required BuildContext context,
@@ -48,7 +55,7 @@ class SnackBarUtils {
         _snackBarContent(context: context, message: message, icon: icon, color: Colors.redAccent),
       );
 
-  static void showSuccessSnackBar({
+  void showSuccessSnackBar({
     required String message,
     IconData? icon,
     required BuildContext context,
@@ -65,6 +72,6 @@ class SnackBarUtils {
         ),
       );
 
-  static void removeSnackBar(BuildContext context) =>
+  void removeSnackBar(BuildContext context) =>
       ScaffoldMessenger.of(context).removeCurrentSnackBar();
 }

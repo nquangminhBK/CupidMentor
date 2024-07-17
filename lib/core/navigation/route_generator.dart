@@ -61,7 +61,7 @@ Route<Object>? generateRoute(RouteSettings settings) {
     case AppRoutes.tipDateSpot:
       return _buildRoute(
         settings: settings,
-        screen: const TipsDateSpotScreen(),
+        screen: const TipsDateSpotsScreen(),
       );
     case AppRoutes.tipSelfImprovement:
       return _buildRoute(
