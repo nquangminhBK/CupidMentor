@@ -34,7 +34,7 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: Colors.white.withOpacity(0.08),
+        color: ref.currentAppColor.homeMenuColor,
       ),
       margin: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
       width: double.infinity,
