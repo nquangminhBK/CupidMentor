@@ -24,10 +24,14 @@ class _InputHobbiesPageState extends ConsumerState<InputHobbiesPage> {
   void _executeSearch(String searchKey) {
     if (searchKey.isNotEmpty) {
       searchedList = Hobbies.hobbies
-          .where((element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
+          .where(
+            (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+          )
           .toList();
       unSearchedList = Hobbies.hobbies
-          .where((element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()))
+          .where(
+            (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+          )
           .toList();
     } else {
       searchedList = [];

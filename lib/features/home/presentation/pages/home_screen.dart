@@ -8,7 +8,7 @@ import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/chat_now_widget.dart';
-import 'package:cupid_mentor/features/home/presentation/widgets/menu_widget.dart';
+import 'package:cupid_mentor/features/home/presentation/widgets/menu_item.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/profile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -59,7 +59,7 @@ class HomeScreen extends ConsumerWidget {
                   const VerticalSpace(size: 16),
                   const ChatNowWidget(),
                   const VerticalSpace(size: 16),
-                  MenuWidget(
+                  MenuItem(
                     isLeftToRight: true,
                     title: context.l10n.tipSelfImprovementTitle,
                     description: context.l10n.tipSelfImprovementDesc,
@@ -70,7 +70,7 @@ class HomeScreen extends ConsumerWidget {
                         : Assets.png.tipMenuImageLight.image(width: 140, height: 140),
                   ),
                   const VerticalSpace(size: 16),
-                  MenuWidget(
+                  MenuItem(
                     isLeftToRight: false,
                     title: context.l10n.tipGiftTitle,
                     description: context.l10n.tipGiftDesc,
@@ -81,7 +81,7 @@ class HomeScreen extends ConsumerWidget {
                         : Assets.png.giftMenuImageLight.image(width: 140, height: 140),
                   ),
                   const VerticalSpace(size: 16),
-                  MenuWidget(
+                  MenuItem(
                     isLeftToRight: true,
                     title: context.l10n.tipDateSpotTitle,
                     description: context.l10n.tipDateSpotDesc,

@@ -1,6 +1,60 @@
+import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
+
+class SelfImprovementCategory extends Equatable {
+  final Widget image;
+  final LocalizationContent title;
+
+  const SelfImprovementCategory({required this.image, required this.title});
+
+  @override
+  List<Object?> get props => [title, image];
+
+  static final categoryBuildStrongRelationShips = SelfImprovementCategory(
+    image: Assets.png.strongRelationshipImage.image(),
+    title: const LocalizationContent(
+      content: {
+        LocalizationEnum.english: 'Building Strong Relationships',
+        LocalizationEnum.japanese: '強い関係を築く',
+        LocalizationEnum.vietnamese: 'Xây dựng mối quan hệ vững chắc',
+      },
+      id: 'buildStrongRelationShips',
+    ),
+  );
+
+  static final categoryPersonalDevelopmentAndSelfCare = SelfImprovementCategory(
+    image: Assets.png.selfImprovementImage.image(),
+    title: const LocalizationContent(
+      content: {
+        LocalizationEnum.english: 'Personal Development and Self-Care',
+        LocalizationEnum.japanese: '個人の成長とセルフケア',
+        LocalizationEnum.vietnamese: 'Phát triển cá nhân và chăm sóc bản thân',
+      },
+      id: 'personalDevelopmentAndSelfCare',
+    ),
+  );
+
+  static final categoryCommunicationAndConflictResolution = SelfImprovementCategory(
+    image: Assets.png.conflictImage.image(),
+    title: const LocalizationContent(
+      content: {
+        LocalizationEnum.english: 'Communication and Conflict Resolution',
+        LocalizationEnum.japanese: 'コミュニケーションと対立解決',
+        LocalizationEnum.vietnamese: 'Giao tiếp và giải quyết mâu thuẫn',
+      },
+      id: 'communicationAndConflictResolution',
+    ),
+  );
+
+  static final categories = [
+    categoryBuildStrongRelationShips,
+    categoryCommunicationAndConflictResolution,
+    categoryPersonalDevelopmentAndSelfCare,
+  ];
+}
 
 class SelfImprovement extends Equatable {
   final String id;
@@ -12,33 +66,8 @@ class SelfImprovement extends Equatable {
   @override
   List<Object?> get props => [title, description];
 
-  static const categoryBuildStrongRelationShips = LocalizationContent(
-    content: {
-      LocalizationEnum.english: 'Building Strong Relationships',
-      LocalizationEnum.japanese: '強い関係を築く',
-      LocalizationEnum.vietnamese: 'Xây dựng mối quan hệ vững chắc',
-    },
-    id: 'buildStrongRelationShips',
-  );
-  static const categoryPersonalDevelopmentAndSelfCare = LocalizationContent(
-    content: {
-      LocalizationEnum.english: 'Personal Development and Self-Care',
-      LocalizationEnum.japanese: '個人の成長とセルフケア',
-      LocalizationEnum.vietnamese: 'Phát triển cá nhân và chăm sóc bản thân',
-    },
-    id: 'personalDevelopmentAndSelfCare',
-  );
-  static const categoryCommunicationAndConflictResolution = LocalizationContent(
-    content: {
-      LocalizationEnum.english: 'Communication and Conflict Resolution',
-      LocalizationEnum.japanese: 'コミュニケーションと対立解決',
-      LocalizationEnum.vietnamese: 'Giao tiếp và giải quyết mâu thuẫn',
-    },
-    id: 'communicationAndConflictResolution',
-  );
-
   static Map<String, List<SelfImprovement>> selfImprovements = {
-    categoryBuildStrongRelationShips.id ?? '': const [
+    SelfImprovementCategory.categoryBuildStrongRelationShips.title.id ?? '': const [
       SelfImprovement(
         id: '10SecretsToBecomingPerfectPartner',
         title: LocalizationContent(
@@ -225,7 +254,7 @@ class SelfImprovement extends Equatable {
         ),
       ),
     ],
-    categoryPersonalDevelopmentAndSelfCare.id ?? '': const [
+    SelfImprovementCategory.categoryPersonalDevelopmentAndSelfCare.title.id ?? '': const [
       SelfImprovement(
         id: 'howToEnhanceYourAppearanceToBeMoreAttractive',
         title: LocalizationContent(
@@ -329,7 +358,7 @@ class SelfImprovement extends Equatable {
         ),
       ),
     ],
-    categoryCommunicationAndConflictResolution.id ?? '': const [
+    SelfImprovementCategory.categoryCommunicationAndConflictResolution.title.id ?? '': const [
       SelfImprovement(
         id: 'waysToStrikeUpACoolConversationWithYourCrush',
         title: LocalizationContent(

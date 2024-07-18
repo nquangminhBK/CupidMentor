@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
@@ -47,21 +48,23 @@ class TipsDateSpotsScreen extends ConsumerWidget {
                 return AnimatedButton(
                   onPress: () async {
                     LoadingUtils.showLoading();
-                    var contents =
-                    await ref.read(tipsDateSpotNotifierProvider.notifier).getTipsDateSpotByOccasion(
-                      SpecialOccasion.specialOccasions[index],
-                    );
+                    var contents = await ref
+                        .read(tipsDateSpotNotifierProvider.notifier)
+                        .getTipsDateSpotByOccasion(
+                          SpecialOccasion.specialOccasions[index],
+                        );
                     if (contents.isEmpty && context.mounted) {
                       await ref.read(tipsDateSpotNotifierProvider.notifier).generateAiContent(
-                        SpecialOccasion.specialOccasions[index],
-                        context,
-                      );
+                            SpecialOccasion.specialOccasions[index],
+                            context,
+                          );
                     }
                     LoadingUtils.hideLoading();
-                    contents =
-                    await ref.read(tipsDateSpotNotifierProvider.notifier).getTipsDateSpotByOccasion(
-                      SpecialOccasion.specialOccasions[index],
-                    );
+                    contents = await ref
+                        .read(tipsDateSpotNotifierProvider.notifier)
+                        .getTipsDateSpotByOccasion(
+                          SpecialOccasion.specialOccasions[index],
+                        );
                     if (context.mounted) {
                       unawaited(
                         showDialog(
@@ -74,9 +77,9 @@ class TipsDateSpotsScreen extends ConsumerWidget {
                                 final result = await ref
                                     .read(tipsDateSpotNotifierProvider.notifier)
                                     .generateAiContent(
-                                  SpecialOccasion.specialOccasions[index],
-                                  context,
-                                );
+                                      SpecialOccasion.specialOccasions[index],
+                                      context,
+                                    );
                                 LoadingUtils.hideLoading();
                                 return result;
                               },

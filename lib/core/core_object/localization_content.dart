@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'localization_content.freezed.dart';
-
 part 'localization_content.g.dart';
 
 @freezed

@@ -3,7 +3,6 @@ import 'package:cupid_mentor/core/utils/datetime_utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'content_response_model.freezed.dart';
-
 part 'content_response_model.g.dart';
 
 @freezed

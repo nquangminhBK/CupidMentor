@@ -36,16 +36,17 @@ import 'package:cupid_mentor/features/tips_gift/data/repository/tips_gift_reposi
 import 'package:cupid_mentor/features/tips_gift/domain/repository/tips_gift_repository.dart';
 import 'package:cupid_mentor/features/tips_gift/domain/use_cases/add_tips_gift.dart';
 import 'package:cupid_mentor/features/tips_gift/domain/use_cases/get_tips_gift.dart';
-import 'package:cupid_mentor/features/tips_self_improvement/data/data_sources/tips_self_improve_datasource.dart';
-import 'package:cupid_mentor/features/tips_self_improvement/data/repository/tips_self_improve_repository.dart';
-import 'package:cupid_mentor/features/tips_self_improvement/domain/repository/tips_self_improve_repository.dart';
-import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/generate_response_tips_self_improve.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/data/data_sources/tips_self_improvement_datasource.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/data/repository/tips_self_improvement_repository.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/domain/repository/tips_self_improvement_repository.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/add_tips_self_improvement.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/get_tips_self_improvement.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
 
 GetIt get = GetIt.instance;
 
@@ -98,8 +99,8 @@ void _registerDataSources() {
       firestore: get(),
     ),
   );
-  get.registerLazySingleton<TipsSelfImproveDatasource>(
-    () => TipsSelfImproveDatasourceImpl(generativeModel: get()),
+  get.registerLazySingleton<TipsSelfImprovementDatasource>(
+    () => TipsSelfImprovementDatasourceImpl(firestore: get(), firebaseAuth: get()),
   );
   get.registerLazySingleton<TipsGiftDatasource>(
     () => TipsGiftDatasourceImpl(firestore: get(), firebaseAuth: get()),
@@ -127,8 +128,8 @@ void _registerRepositories() {
   get.registerLazySingleton<OnboardingRepository>(
     () => OnboardingRepositoryImpl(datasource: get(), connectivity: get()),
   );
-  get.registerLazySingleton<TipsSelfImproveRepository>(
-    () => TipsSelfImproveRepositoryImpl(datasource: get(), connectivity: get()),
+  get.registerLazySingleton<TipsSelfImprovementRepository>(
+    () => TipsSelfImprovementRepositoryImpl(datasource: get(), connectivity: get()),
   );
   get.registerLazySingleton<TipsGiftRepository>(
     () => TipsGiftRepositoryImpl(datasource: get(), connectivity: get()),
@@ -151,7 +152,8 @@ void _registerUseCases() {
   get.registerLazySingleton(() => SaveUserInfo(repository: get()));
   get.registerLazySingleton(() => GetUserInfo(repository: get()));
   get.registerLazySingleton(() => GenerateAIContent(generativeModel: get()));
-  get.registerLazySingleton(() => GenerateResponseTipsSelfImprove(repository: get()));
+  get.registerLazySingleton(() => AddTipsSelfImprovement(repository: get()));
+  get.registerLazySingleton(() => GetTipsSelfImprovement(repository: get()));
   get.registerLazySingleton(() => AddTipsGift(repository: get()));
   get.registerLazySingleton(() => GetTipsGift(repository: get()));
   get.registerLazySingleton(() => AddTipsDateSpot(repository: get()));

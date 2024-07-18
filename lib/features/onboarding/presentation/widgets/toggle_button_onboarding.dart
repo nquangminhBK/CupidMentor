@@ -31,8 +31,9 @@ class ToggleButtonOnboarding extends ConsumerWidget {
         duration: const Duration(milliseconds: 300),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          gradient: isSelected ? ref.currentAppColor.mainGradient : ref.currentAppColor.buttonBackgroundColorInGradient,
-
+          gradient: isSelected
+              ? ref.currentAppColor.mainGradient
+              : ref.currentAppColor.buttonBackgroundColorInGradient,
         ),
         height: 50,
         child: Row(

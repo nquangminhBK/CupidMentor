@@ -30,7 +30,8 @@ class TipsDateSpotNotifier extends _$TipsDateSpotNotifier {
   GenerateAIContent get generateAIContent => ref.read(generateAIContentUseCaseProvider);
 
   Future<List<ContentResponse>> getTipsDateSpotByOccasion(SpecialOccasion occasion) async {
-    final response = await getTipsDateSpot(GetTipsDateSpotParam(occasionId: occasion.title.id ?? ''));
+    final response =
+        await getTipsDateSpot(GetTipsDateSpotParam(occasionId: occasion.title.id ?? ''));
     final data = response.getOrElse(() => []);
     final currentContent = Map<String, List<ContentResponse>>.from(state.content);
     currentContent[occasion.title.id ?? ''] = data;
@@ -41,11 +42,12 @@ class TipsDateSpotNotifier extends _$TipsDateSpotNotifier {
   Future<ContentResponse?> generateAiContent(SpecialOccasion occasion, BuildContext context) async {
     final userInfo = (await getUserInfo(NoParams())).getOrElse(() => null);
     if (userInfo != null && context.mounted) {
-      final aiContent = AIContext(userInfo: userInfo, context: context).tipsDateSpotCommand(occasion);
+      final aiContent =
+          AIContext(userInfo: userInfo, context: context).tipsDateSpotCommand(occasion);
       debugPrint(aiContent);
       final aiMDText =
-      (await generateAIContent(GenerateAIContentParam(contents: [Content.text(aiContent)])))
-          .getOrElse(() => '');
+          (await generateAIContent(GenerateAIContentParam(contents: [Content.text(aiContent)])))
+              .getOrElse(() => '');
       if (aiMDText.isNotEmpty) {
         final newContent = ContentResponse(content: aiMDText, createdDate: DateTime.now());
         final currentContentsOfOccasion = state.content[occasion.title.id ?? ''] ?? [];
@@ -58,10 +60,9 @@ class TipsDateSpotNotifier extends _$TipsDateSpotNotifier {
         );
         return newContent;
       } else {
-        if(context.mounted) {
+        if (context.mounted) {
           state = state.copyWith(error: context.l10n.generateFailed);
         }
-
       }
     }
     return null;

@@ -5,8 +5,8 @@ import 'package:cupid_mentor/features/localization/domain/use_cases/get_language
 import 'package:cupid_mentor/features/localization/domain/use_cases/set_language.dart';
 import 'package:cupid_mentor/features/localization/presentation/manager/localization_state.dart';
 import 'package:flutter/material.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'localization_notifier.g.dart';
 

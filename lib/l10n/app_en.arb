@@ -90,6 +90,6 @@
   "helpCenter": "Help center",
   "aboutTheAuthor": "About the author",
   "logout": "Logout",
-  "generateFailed" : "Too many requests, please try again in a few minutes.",
-  "generateANewOne" : "Let's generate a new one"
+  "generateFailed": "Too many requests, please try again in a few minutes.",
+  "generateANewOne": "Let's generate a new one"
 }

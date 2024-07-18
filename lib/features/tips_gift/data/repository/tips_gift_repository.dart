@@ -38,7 +38,9 @@ class TipsGiftRepositoryImpl with ConnectivityMixin implements TipsGiftRepositor
   }
 
   @override
-  Future<Either<Failure, List<ContentResponse>>> getListTipsGift({required String occasionId}) async {
+  Future<Either<Failure, List<ContentResponse>>> getListTipsGift({
+    required String occasionId,
+  }) async {
     if (await isInConnection()) {
       try {
         final result = await datasource.getListTipsGift(occasionId: occasionId);

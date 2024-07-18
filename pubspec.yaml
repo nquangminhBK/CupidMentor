@@ -67,6 +67,7 @@ dependencies:
   flutter_markdown: ^0.7.3
   flutter_localizations:
     sdk: flutter
+  expandable: ^5.0.1
 
 
 dev_dependencies:

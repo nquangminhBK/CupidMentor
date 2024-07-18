@@ -11,15 +11,16 @@ class DialogMarkdownContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
-        child: Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: ref.currentAppColor.screenBackgroundColor,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: ref.currentAppColor.screenBackgroundColor,
+        ),
+        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.symmetric(horizontal: 24),
+        width: double.infinity,
+        child: Markdown(data: content),
       ),
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.symmetric(horizontal: 24),
-      width: double.infinity,
-      child: Markdown(data: content),
-    ),);
+    );
   }
 }

@@ -5,8 +5,8 @@ import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MenuWidget extends ConsumerWidget {
-  const MenuWidget({
+class MenuItem extends ConsumerWidget {
+  const MenuItem({
     super.key,
     required this.isLeftToRight,
     required this.image,
