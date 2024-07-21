@@ -40,6 +40,7 @@ import 'package:cupid_mentor/features/tips_replying/data/data_sources/tip_replyi
 import 'package:cupid_mentor/features/tips_replying/data/repository/tip_replying_repository.dart';
 import 'package:cupid_mentor/features/tips_replying/domain/repository/tip_replying_repository.dart';
 import 'package:cupid_mentor/features/tips_replying/domain/use_cases/add_message.dart';
+import 'package:cupid_mentor/features/tips_replying/domain/use_cases/delete_conversation.dart';
 import 'package:cupid_mentor/features/tips_replying/domain/use_cases/get_message.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/data/data_sources/tips_self_improvement_datasource.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/data/repository/tips_self_improvement_repository.dart';
@@ -173,6 +174,7 @@ void _registerUseCases() {
   get.registerLazySingleton(() => GetTipsDateSpot(repository: get()));
   get.registerLazySingleton(() => AddTipsReplying(repository: get()));
   get.registerLazySingleton(() => GetTipsReplying(repository: get()));
+  get.registerLazySingleton(() => DeleteConversation(repository: get()));
 }
 
 Future<void> setupLocator() async {

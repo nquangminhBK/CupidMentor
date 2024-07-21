@@ -15,6 +15,7 @@ class DialogConfirm extends ConsumerWidget {
   final String message;
   final String titlePositiveButton;
   final String? titleNegativeButton;
+  final Widget? icon;
 
   const DialogConfirm({
     super.key,
@@ -24,6 +25,7 @@ class DialogConfirm extends ConsumerWidget {
     this.title,
     required this.titlePositiveButton,
     this.titleNegativeButton,
+    this.icon,
   });
 
   @override
@@ -41,13 +43,15 @@ class DialogConfirm extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const VerticalSpace(size: 24),
+            if (icon != null) icon!,
+            if (title != null && icon != null) const VerticalSpace(size: 8),
             if (title != null)
               Text(
                 title!,
-                style:
-                    context.textTheme.headlineSmall!.copyWith(color: ref.currentAppColor.textColor),
+                style: context.textTheme.headlineSmall!
+                    .copyWith(color: ref.currentAppColor.textColor, fontSize: 20),
               ),
-            if (title != null) const VerticalSpace(size: 24),
+            if (title != null) const VerticalSpace(size: 8),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(

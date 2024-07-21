@@ -46,4 +46,18 @@ class TipsReplyingRepositoryImpl with ConnectivityMixin implements TipsReplyingR
     }
     return const Left(NoConnection());
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteConversation() async {
+    if (await isInConnection()) {
+      try {
+        final result = await datasource.deleteConversation();
+        return Right(result);
+      } catch (e, _) {
+        debugPrint(e.toString());
+        return Left(Failure(e.toString()));
+      }
+    }
+    return const Left(NoConnection());
+  }
 }

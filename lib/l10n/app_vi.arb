@@ -80,6 +80,7 @@
   "tipDateSpotTitle": "Địa Điểm Hẹn Hò Lý Tưởng",
   "tipDateSpotDesc": "Đề xuất những địa điểm hẹn hò thú vị dựa trên sở thích của bạn và đối tác.",
   "tipDateSpotButton": "Khám phá",
+  "tipsReplyingTitle": "Tip nhắn tin \uD83D\uDCAC",
   "setting": "Cài đặt",
   "theme": "Giao diện",
   "light": "Sáng",
@@ -91,5 +92,6 @@
   "aboutTheAuthor": "Về tác giả",
   "logout": "Đăng xuất",
   "generateFailed": "Quá nhiều yêu cầu, vui lòng thử lại sau ít phút.",
-  "generateANewOne": "Đưa ra một gợi ý mới"
+  "generateANewOne": "Đưa ra một gợi ý mới",
+  "generating" : "Đang tạo..."
 }

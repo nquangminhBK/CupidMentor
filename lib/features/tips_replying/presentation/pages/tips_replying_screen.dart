@@ -1,6 +1,9 @@
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+import 'package:cupid_mentor/core/utils/loading_utils.dart';
+import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
 import 'package:cupid_mentor/features/tips_replying/presentation/manager/tip_replying_notifier.dart';
@@ -156,13 +159,51 @@ class _TipsReplyingMessageScreenState extends ConsumerState<TipsReplyingMessageS
   Widget build(BuildContext context) {
     final currentLanguage = ref.read(localizationNotifierProvider).lang;
     final messages = ref.watch(tipsReplyingNotifierProvider).content;
+    ref.listen(tipsReplyingNotifierProvider, (previous, next) {
+      if (previous?.loading != next.loading && next.loading == true) {
+        LoadingUtils.showLoading(message: context.l10n.generating);
+      } else {
+        LoadingUtils.hideLoading();
+      }
+    });
     return Container(
       color: context.theme.scaffoldBackgroundColor,
       child: Scaffold(
         appBar: MyAppBar.myAppBar(
-          title: '${context.l10n.tipDateSpotTitle}  🎁',
+          title: context.l10n.tipsReplyingTitle,
           ref: ref,
           context: context,
+          actionButton: {
+            Icons.delete_outline_rounded: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return DialogConfirm(
+                    onPositiveButtonExecute: () {
+                      ref.read(tipsReplyingNotifierProvider.notifier).deleteMessage();
+                      NavigationService.instance.pop();
+                    },
+                    message: 'Are you sure you want to delete this conversation?',
+                    titlePositiveButton: 'Yes',
+                    title: 'Dialog Confirmation',
+                    icon: Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: ref.currentAppColor.buttonBackgroundColor,
+                      ),
+                      child: const Icon(
+                        Icons.delete_outline_rounded,
+                        color: Colors.red,
+                        size: 30,
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          },
         ),
         body: Chat(
           theme: ref.currentTheme == ThemeMode.light ? cupidMentorLightColor : cupidMentorDarkColor,

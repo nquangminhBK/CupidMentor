@@ -11,6 +11,8 @@ abstract class TipsReplyingDatasource {
   Future<bool> addMessage({
     required types.Message message,
   });
+
+  Future<bool> deleteConversation();
 }
 
 class TipsReplyingDatasourceImpl implements TipsReplyingDatasource {
@@ -21,8 +23,8 @@ class TipsReplyingDatasourceImpl implements TipsReplyingDatasource {
 
   @override
   Future<bool> addMessage({required types.Message message}) async {
-    final currentUser = firebaseAuth.currentUser;
     try {
+      final currentUser = firebaseAuth.currentUser;
       await firestore
           .collection('users_info')
           .doc(currentUser!.uid)
@@ -39,8 +41,8 @@ class TipsReplyingDatasourceImpl implements TipsReplyingDatasource {
 
   @override
   Future<List<types.Message>> getMessages({required String lastMsgId}) async {
-    final currentUser = firebaseAuth.currentUser;
     try {
+      final currentUser = firebaseAuth.currentUser;
       if (lastMsgId.isEmpty) {
         final data = await firestore
             .collection('users_info')
@@ -76,6 +78,28 @@ class TipsReplyingDatasourceImpl implements TipsReplyingDatasource {
       final result = data.docs.map((e) => types.Message.fromJson(e.data())).toList();
       result.sort((a, b) => (b.createdAt ?? 0).compareTo(a.createdAt ?? 0));
       return result;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<bool> deleteConversation() async {
+    try {
+      final currentUser = firebaseAuth.currentUser;
+      await firestore
+          .collection('users_info')
+          .doc(currentUser!.uid)
+          .collection('ai_suggestions')
+          .doc('replying_recommendations')
+          .collection('messages')
+          .get()
+          .then((snapshot) {
+        for (final doc in snapshot.docs) {
+          doc.reference.delete();
+        }
+      });
+      return true;
     } catch (e) {
       rethrow;
     }

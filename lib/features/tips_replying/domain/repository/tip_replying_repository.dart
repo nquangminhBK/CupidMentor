@@ -6,4 +6,6 @@ abstract class TipsReplyingRepository {
   Future<Either<Failure, List<types.Message>>> getMessage({required String lastMsgId});
 
   Future<Either<Failure, bool>> addMessage({required types.Message message});
+
+  Future<Either<Failure, bool>> deleteConversation();
 }

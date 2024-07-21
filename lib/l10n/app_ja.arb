@@ -80,6 +80,7 @@
   "tipDateSpotTitle": "パーフェクトなデートスポット",
   "tipDateSpotDesc": "あなたとパートナーの好みに基づいて興味深いデートスポットを提案。",
   "tipDateSpotButton": "すべてのスポットを見る",
+  "tipsReplyingTitle": "メッセージ返信ガイド \uD83D\uDCAC",
   "setting": "設定",
   "theme": "テーマ",
   "light": "ライト",
@@ -91,5 +92,6 @@
   "aboutTheAuthor": "著者について",
   "logout": "ログアウト",
   "generateFailed": "リクエストが多すぎます。数分後にもう一度お試しください。",
-  "generateANewOne": "新しいものを生成してください"
+  "generateANewOne": "新しいものを生成してください",
+  "generating" : "生成中..."
 }

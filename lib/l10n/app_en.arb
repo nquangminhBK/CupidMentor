@@ -80,6 +80,7 @@
   "tipDateSpotTitle": "The Perfect Date Spots",
   "tipDateSpotDesc": "Suggesting interesting date spots based on your and partner's preferences.",
   "tipDateSpotButton": "View All Spots",
+  "tipsReplyingTitle": "Messages replying tips \uD83D\uDCAC",
   "setting": "Setting",
   "theme": "Theme",
   "light": "Light",
@@ -91,5 +92,6 @@
   "aboutTheAuthor": "About the author",
   "logout": "Logout",
   "generateFailed": "Too many requests, please try again in a few minutes.",
-  "generateANewOne": "Let's generate a new one"
+  "generateANewOne": "Let's generate a new one",
+  "generating" : "Generating..."
 }
