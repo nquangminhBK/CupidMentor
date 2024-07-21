@@ -348,4 +348,18 @@ class AIContext {
         return '$_generateAIContext. With these info. Let give me the best response about: ${tips.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
     }
   }
+
+  String tipsReplying(String message) {
+    final currentLang = ProviderScope.containerOf(context).read(localizationNotifierProvider).lang;
+    switch (currentLang) {
+      case LocalizationEnum.english:
+        return '$_generateAIContext. With this information, please help me think of a way to reply when my special someone texts me: "$message". Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
+      case LocalizationEnum.japanese:
+        return '$_generateAIContext. これらの情報を基に、彼女が「$message」とメッセージを送ってきたときの返信方法を考えるのを手伝ってください。。具体的で詳細なフィードバックを提供してください。情報が不十分な場合は、異なるシナリオに合わせた提案をしてください。ナンセンスなことを言わないでください';
+      case LocalizationEnum.vietnamese:
+        return '$_generateAIContext. hãy giúp tôi nghĩ về cách trả lời tin nhắn khi người ấy của tôi nhắn tin rằng: "$message". Vui lòng cung cấp phản hồi cụ thể và chi tiết. Nếu thông tin chưa đủ, hãy đưa ra các gợi ý phù hợp với các tình huống khác nhau. Không nói tào lao.';
+      default:
+        return '$_generateAIContext. With this information, please help me think of a way to reply when my special someone texts me: "$message". Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
+    }
+  }
 }
