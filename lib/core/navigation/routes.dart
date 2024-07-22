@@ -22,4 +22,8 @@ class AppRoutes {
   static const String tipReplying = '/tip_replying';
 
   static const String setting = '/setting';
+
+  static const String profile = '/profile';
+
+  static const String crushProfile = '/crush_profile';
 }

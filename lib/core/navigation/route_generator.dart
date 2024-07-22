@@ -1,10 +1,13 @@
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/adaptive_screen.dart';
+import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
 import 'package:cupid_mentor/features/auth/presentation/pages/login_screen.dart';
 import 'package:cupid_mentor/features/home/presentation/pages/home_screen.dart';
 import 'package:cupid_mentor/features/localization/presentation/pages/select_language_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/welcome_screen.dart';
+import 'package:cupid_mentor/features/profile/presentation/pages/partner_profile_page.dart';
+import 'package:cupid_mentor/features/profile/presentation/pages/your_profile_page.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/setting_screen.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/showcase_screen.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/pages/splash_screen.dart';
@@ -77,6 +80,17 @@ Route<Object>? generateRoute(RouteSettings settings) {
       return _buildRoute(
         settings: settings,
         screen: const SettingScreen(),
+      );
+
+    case AppRoutes.profile:
+      return _buildRoute(
+        settings: settings,
+        screen: const YourProfilePages(),
+      );
+    case AppRoutes.crushProfile:
+      return _buildRoute(
+        settings: settings,
+        screen: const PartnerProfilePage(),
       );
     default:
       return _errorRoute();

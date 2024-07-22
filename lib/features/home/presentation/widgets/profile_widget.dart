@@ -23,7 +23,7 @@ class ProfileWidget extends ConsumerWidget {
               constraints: const BoxConstraints(minHeight: 50),
               child: AnimatedButton(
                 onPress: () {
-                  NavigationService.instance.push(AppRoutes.onboarding);
+                  NavigationService.instance.push(AppRoutes.profile);
                 },
                 child: Container(
                   width: double.infinity,
@@ -49,7 +49,7 @@ class ProfileWidget extends ConsumerWidget {
               constraints: const BoxConstraints(minHeight: 50),
               child: AnimatedButton(
                 onPress: () {
-                  NavigationService.instance.push(AppRoutes.onboarding);
+                  NavigationService.instance.push(AppRoutes.crushProfile);
                 },
                 child: Container(
                   width: double.infinity,
