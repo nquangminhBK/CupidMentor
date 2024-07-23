@@ -8,8 +8,8 @@ import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dar
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/add_tips_self_improvement.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/get_tips_self_improvement.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/manager/tips_self_improvement_state.dart';
+import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'tips_self_improvement_notifier.g.dart';

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:cupid_mentor/core/constants/gemini_api_key.dart';
 import 'package:cupid_mentor/core/core_use_cases/generate_ai_content.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_local_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_remote_datasource.dart';
@@ -48,9 +47,9 @@ import 'package:cupid_mentor/features/tips_self_improvement/domain/repository/ti
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/add_tips_self_improvement.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/get_tips_self_improvement.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -58,7 +57,7 @@ GetIt get = GetIt.instance;
 
 Future<void> _registerCore() async {
   get.registerLazySingleton<GenerativeModel>(
-    () => GenerativeModel(model: 'gemini-1.5-flash', apiKey: GeminiApiKey.apiKey),
+    () => FirebaseVertexAI.instance.generativeModel(model: 'gemini-1.5-flash'),
   );
   get.registerLazySingleton<Connectivity>(() => Connectivity());
   get.registerLazySingleton<GoogleAuthProvider>(() => GoogleAuthProvider());

@@ -9,7 +9,7 @@ import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/add_tips_d
 import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/get_tips_date_spot.dart';
 import 'package:cupid_mentor/features/tip_date_spots/presentation/manager/tip_date_spot_state.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'tip_date_spot_notifier.g.dart';

@@ -1,10 +1,10 @@
 import 'package:cupid_mentor/core/errors/failure.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
 
 final generateAIContentUseCaseProvider = Provider<GenerateAIContent>((ref) {
   return GetIt.I<GenerateAIContent>();

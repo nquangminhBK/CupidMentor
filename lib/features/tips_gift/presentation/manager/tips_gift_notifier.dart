@@ -9,7 +9,7 @@ import 'package:cupid_mentor/features/tips_gift/domain/use_cases/add_tips_gift.d
 import 'package:cupid_mentor/features/tips_gift/domain/use_cases/get_tips_gift.dart';
 import 'package:cupid_mentor/features/tips_gift/presentation/manager/tips_gift_state.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'tips_gift_notifier.g.dart';

@@ -10,7 +10,7 @@ import 'package:cupid_mentor/features/tips_replying/domain/use_cases/delete_conv
 import 'package:cupid_mentor/features/tips_replying/domain/use_cases/get_message.dart';
 import 'package:cupid_mentor/features/tips_replying/presentation/manager/tip_replying_state.dart';
 import 'package:flutter/material.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:uuid/uuid.dart';
