@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/reset_all_app.dart';
 import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
@@ -77,10 +78,14 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                   leftIcon: Icons.logout,
                   title: 'Delete account',
                   onTap: () async {
-                    final result = await ref.read(settingNotifierProvider.notifier).signOut();
-                    if (result && context.mounted) {
-                      ResetAllApp.restartApp(context);
+                    LoadingUtils.showLoading();
+                    final result = await ref.read(settingNotifierProvider.notifier).deleteAccount();
+                    if (result) {
+                      await ref.read(settingNotifierProvider.notifier).signOut();
+                      LoadingUtils.hideLoading();
+                      if (context.mounted) ResetAllApp.restartApp(context);
                     }
+                    LoadingUtils.hideLoading();
                   },
                 ),
               ],

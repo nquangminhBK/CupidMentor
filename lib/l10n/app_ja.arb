@@ -93,5 +93,8 @@
   "logout": "ログアウト",
   "generateFailed": "リクエストが多すぎます。数分後にもう一度お試しください。",
   "generateANewOne": "新しいものを生成してください",
-  "generating" : "生成中..."
+  "generating" : "生成中...",
+  "addPartnerScreenTitle" : "その特別な人との関係はどうですか？",
+  "addPartnerDesc" : "もし特別な人がいるなら、その人について少し教えてください。もっと具体的で有益なアドバイスができるようになります。",
+  "addPartnerInfoBtn" : "その人の情報を入力"
 }

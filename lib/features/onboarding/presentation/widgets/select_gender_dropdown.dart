@@ -76,7 +76,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
               ),
             ],
           ),
-          items: Gender.genders()
+          items: Gender.values
               .map(
                 (Gender item) => DropdownMenuItem<Gender>(
                   value: item,

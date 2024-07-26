@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/utils/datetime_utils.dart';
@@ -24,21 +25,41 @@ class BasicInfoWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    String getBasicInfoDisplay() {
+      if (name.isEmpty && gender == Gender.none && birthday == DateTimeConst.empty()) {
+        return 'No Data';
+      }
+
+      final genderDisplay = gender != Gender.none ? gender.displayText.value(context) : '';
+      final birthdayDisplay =
+          birthday != DateTimeConst.empty() ? DateTimeUtils.convertToString(birthday) : '';
+      final nameDisplay = name.isNotEmpty ? name : '';
+
+      var result = nameDisplay;
+      if (genderDisplay.isNotEmpty || birthdayDisplay.isNotEmpty) {
+        result = '$nameDisplay\n${[
+          genderDisplay,
+          birthdayDisplay
+        ].where((e) => e.isNotEmpty).join(', ')}';
+      }
+      return result.trim();
+    }
+
     return Column(
       children: [
         const VerticalSpace(size: 10),
         ItemInfo(
           title: 'Basic info',
-          value:
-              '$name\n${gender.displayText.value(context)}, ${DateTimeUtils.convertToString(birthday)}',
+          value: getBasicInfoDisplay(),
           onTap: onTapEditBasicInfo,
         ),
-        const VerticalSpace(size: 16),
-        ItemInfo(
-          title: 'Job',
-          value: job,
-          onTap: onTapEditBasicInfo,
-        ),
+        if (job.isNotEmpty) const VerticalSpace(size: 16),
+        if (job.isNotEmpty)
+          ItemInfo(
+            title: 'Job',
+            value: job,
+            onTap: onTapEditBasicInfo,
+          ),
         const VerticalSpace(size: 16),
         Container(
           width: double.infinity,

@@ -17,6 +17,8 @@ abstract class AuthenticationRemoteDatasource {
   Future<LoggedInUserInfoModel?> getUserInfo();
 
   Future<CrushInfo> getCrushInfo();
+
+  Future<bool> deleteUser();
 }
 
 class AuthenticationRemoteDatasourceImpl implements AuthenticationRemoteDatasource {
@@ -92,6 +94,19 @@ class AuthenticationRemoteDatasourceImpl implements AuthenticationRemoteDatasour
     try {
       final userCredential = await firebaseAuth.signInWithPopup(googleAuthProvider);
       return userCredential.user;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<bool> deleteUser() async {
+    try {
+      final currentUser = getCurrentUser();
+      final userId = currentUser?.uid;
+      if (userId == null) return false;
+      await firestore.collection('users_info').doc(userId).delete();
+      return true;
     } catch (e) {
       rethrow;
     }

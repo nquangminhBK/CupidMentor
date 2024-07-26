@@ -8,6 +8,8 @@ import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_user.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_state.dart';
+import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
+import 'package:dartz/dartz.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'onboarding_notifier.g.dart';
@@ -21,70 +23,91 @@ class OnboardingNotifier extends _$OnboardingNotifier {
 
   GetCurrentUser get getCurrentUser => ref.read(getCurrentUserUseCaseProvider);
 
+  GetUserInfo get getUserInfo => ref.read(getUserInfoUseCaseProvider);
+
   SaveUserInfo get saveUserInfo => ref.read(saveUserInfoUserUseCaseProvider);
 
-  String userId = '';
-
   Future<void> initializeUserInfo() async {
-    final currentUser = await getCurrentUser(NoParams());
+    final currentUser = await getUserInfo(NoParams());
     currentUser.fold((failed) {}, (user) {
-      userId = user.uid;
       state = state.copyWith(
-        userInfo: LoggedInUserInfo.empty().copyWith(
-          name: user.displayName ?? '',
-          avatar: user.photoURL ?? '',
-        ),
+        userInfo: user ?? LoggedInUserInfo.empty(),
       );
     });
   }
 
-  Future<void> goNextPage(int currentPage) async {
+  Future<void> goNextPage(int currentPage, bool isOnboarding) async {
     state = state.copyWith(errorMessage: '', canGoNext: false);
-    switch (currentPage) {
-      case 0:
-        if (state.userInfo.name.isEmpty) {
-          state = state.copyWith(canGoNext: false, errorMessage: 'Please input your name!');
-          return;
-        }
-        if (state.userInfo.gender == Gender.none) {
-          state = state.copyWith(canGoNext: false, errorMessage: 'Please select your gender!');
-          return;
-        }
-        if (state.userInfo.birthday.isSameDate(DateTimeConst.empty())) {
-          state = state.copyWith(canGoNext: false, errorMessage: 'Please input your birthday!');
-          return;
-        }
-        if (state.userInfo.job.isEmpty) {
-          state = state.copyWith(canGoNext: false, errorMessage: 'Please input your job!');
-          return;
-        }
-      case 1:
-        if (state.userInfo.personalities.isEmpty) {
-          state = state.copyWith(
-            canGoNext: false,
-            errorMessage: 'Please select some work to describe the real you!',
-          );
-          return;
-        }
-      case 2:
-        if (state.userInfo.hobbies.isEmpty) {
-          state = state.copyWith(
-            canGoNext: false,
-            errorMessage:
-                'Please select some hobbies, The more we know about you, the easier it will be for us to give advice!',
-          );
-          return;
-        }
-      case 3:
-        if (state.userInfo.loveLanguages.isEmpty) {
-          state = state.copyWith(
-            canGoNext: false,
-            errorMessage:
-                'Please tell us about your love language, The more we know about you, the easier it will be for us to give advice!',
-          );
-          return;
-        }
+    if(isOnboarding) {
+      switch (currentPage) {
+        case 0:
+          if (state.userInfo.name.isEmpty) {
+            state = state.copyWith(canGoNext: false, errorMessage: 'Please input your name!');
+            return;
+          }
+          if (state.userInfo.gender == Gender.none) {
+            state = state.copyWith(canGoNext: false, errorMessage: 'Please select your gender!');
+            return;
+          }
+          if (state.userInfo.birthday.isSameDate(DateTimeConst.empty())) {
+            state = state.copyWith(canGoNext: false, errorMessage: 'Please input your birthday!');
+            return;
+          }
+          if (state.userInfo.job.isEmpty) {
+            state = state.copyWith(canGoNext: false, errorMessage: 'Please input your job!');
+            return;
+          }
+        case 1:
+          if (state.userInfo.personalities.isEmpty) {
+            state = state.copyWith(
+              canGoNext: false,
+              errorMessage: 'Please select some work to describe the real you!',
+            );
+            return;
+          }
+        case 2:
+          if (state.userInfo.hobbies.isEmpty) {
+            state = state.copyWith(
+              canGoNext: false,
+              errorMessage:
+              'Please select some hobbies, The more we know about you, the easier it will be for us to give advice!',
+            );
+            return;
+          }
+        case 3:
+          if (state.userInfo.loveLanguages.isEmpty) {
+            state = state.copyWith(
+              canGoNext: false,
+              errorMessage:
+              'Please tell us about your love language, The more we know about you, the easier it will be for us to give advice!',
+            );
+            return;
+          }
+      }
+    } else {
+      switch (currentPage) {
+        case 0:
+          if(state.userInfo.hasCrush == false) {
+            state = state.copyWith(
+              canGoNext: false,
+              errorMessage:
+              'Please select the relation ship type first',
+            );
+            return;
+          }
+        case 1:
+          if(state.userInfo.crushInfo?.gender == null) {
+            state = state.copyWith(
+              canGoNext: false,
+              errorMessage:
+              'Please tell us at least their gender',
+            );
+            return;
+          }
+      }
+
     }
+
     state = state.copyWith(errorMessage: '', canGoNext: true);
   }
 
@@ -207,12 +230,14 @@ class OnboardingNotifier extends _$OnboardingNotifier {
   void updateCrushType(RelationshipType type) {
     final currentUserInfo = state.userInfo;
 
-    state =
-        state.copyWith(userInfo: currentUserInfo.copyWith(crushType: type.value), errorMessage: '');
+    state = state.copyWith(
+      userInfo: currentUserInfo.copyWith(crushType: type.value, hasCrush: true),
+      errorMessage: '',
+    );
   }
 
   Future<bool> saveUser() async {
-    final result = await saveUserInfo(SaveUserInfoParam(userId: userId, userInfo: state.userInfo));
+    final result = await saveUserInfo(SaveUserInfoParam(userInfo: state.userInfo));
     return result.getOrElse(() => false);
   }
 }

@@ -6,6 +6,7 @@ import 'package:cupid_mentor/features/home/presentation/pages/home_screen.dart';
 import 'package:cupid_mentor/features/localization/presentation/pages/select_language_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/welcome_screen.dart';
+import 'package:cupid_mentor/features/profile/presentation/pages/add_partner_screen.dart';
 import 'package:cupid_mentor/features/profile/presentation/pages/partner_profile_page.dart';
 import 'package:cupid_mentor/features/profile/presentation/pages/your_profile_page.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/setting_screen.dart';
@@ -87,10 +88,15 @@ Route<Object>? generateRoute(RouteSettings settings) {
         settings: settings,
         screen: const YourProfilePages(),
       );
-    case AppRoutes.crushProfile:
+    case AppRoutes.partnerProfile:
       return _buildRoute(
         settings: settings,
         screen: const PartnerProfilePage(),
+      );
+    case AppRoutes.addPartnerProfile:
+      return _buildRoute(
+        settings: settings,
+        screen: const AddPartnerScreen(),
       );
     default:
       return _errorRoute();

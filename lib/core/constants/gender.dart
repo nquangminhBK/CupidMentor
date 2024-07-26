@@ -44,6 +44,4 @@ enum Gender {
   static Gender? tryParse(String value) => Gender.values.firstWhereOrNull(
         (element) => element.value.toLowerCase() == value.toLowerCase(),
       );
-
-  static List<Gender> genders() => [Gender.male, Gender.female, Gender.other];
 }

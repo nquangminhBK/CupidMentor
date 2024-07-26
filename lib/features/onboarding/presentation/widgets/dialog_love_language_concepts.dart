@@ -56,11 +56,11 @@ class DialogLoveLanguageConcept extends ConsumerWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: '$key: ',
+                        text: '${LoveLanguage.loveLanguages[key]?.$1.value(context)}: ',
                         style: context.textTheme.titleSmall,
                       ),
                       TextSpan(
-                        text: '${LoveLanguage.loveLanguages[key]}',
+                        text: '${LoveLanguage.loveLanguages[key]?.$2.value(context)}',
                         style: context.textTheme.bodyLarge,
                       ),
                     ],

@@ -18,6 +18,7 @@ import 'package:cupid_mentor/features/onboarding/data/repository/onboarding_repo
 import 'package:cupid_mentor/features/onboarding/domain/repository/onboarding_repository.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_user.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
+import 'package:cupid_mentor/features/setting/domain/use_cases/delete_user.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
 import 'package:cupid_mentor/features/splash_screen/data/data_sources/splash_datasource.dart';
 import 'package:cupid_mentor/features/splash_screen/data/repositories/splash_repositories.dart';
@@ -174,6 +175,7 @@ void _registerUseCases() {
   get.registerLazySingleton(() => AddTipsReplying(repository: get()));
   get.registerLazySingleton(() => GetTipsReplying(repository: get()));
   get.registerLazySingleton(() => DeleteConversation(repository: get()));
+  get.registerLazySingleton(() => DeleteUser(repository: get()));
 }
 
 Future<void> setupLocator() async {

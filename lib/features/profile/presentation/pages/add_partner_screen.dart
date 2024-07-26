@@ -3,6 +3,7 @@ import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
+import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/navigate_button.dart';
 import 'package:cupid_mentor/core/widgets/progress_bar.dart';
@@ -15,17 +16,18 @@ import 'package:cupid_mentor/features/onboarding/presentation/pages/input_hobbie
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_love_languages_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_personalities_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_relationship_status_page.dart';
+import 'package:cupid_mentor/features/profile/presentation/manager/profile_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class OnboardingScreen extends ConsumerStatefulWidget {
-  const OnboardingScreen({super.key});
+class AddPartnerScreen extends ConsumerStatefulWidget {
+  const AddPartnerScreen({super.key});
 
   @override
-  ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
+  ConsumerState<AddPartnerScreen> createState() => _AddPartnerScreenState();
 }
 
-class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
+class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
   @override
   void initState() {
     ref.read(onboardingNotifierProvider.notifier).initializeUserInfo();
@@ -57,7 +59,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       }
     });
     final state = ref.watch(onboardingNotifierProvider);
-    final totalStep = state.userInfo.hasCrush ? 7 : 5;
+
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -67,13 +69,25 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             children: [
               Row(
                 children: [
-                  const HorizontalSpace(size: 30),
+                  AnimatedButton(
+                    onPress: () {
+                      NavigationService.instance.pop();
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                  const HorizontalSpace(size: 12),
                   Expanded(
                     child: ProgressBar(
-                      totalStep: totalStep,
+                      totalStep: 3,
                       currentStep: currentPage,
                       width: context.screenSize.width - 100,
-                      color: currentPage > 4
+                      color: currentPage > 0
                           ? ref.currentAppColor.secondaryColor
                           : ref.currentAppColor.primaryColor,
                     ),
@@ -82,7 +96,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     width: 70,
                     child: Center(
                       child: Text(
-                        '${currentPage + 1}/$totalStep',
+                        '${currentPage + 1}/3',
                         style: context.textTheme.titleSmall,
                       ),
                     ),
@@ -94,17 +108,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   controller: pageController,
                   children: [
-                    const InputBasicInfoPage(),
-                    const InputPersonalitiesPage(),
-                    const InputHobbiesPage(),
-                    const InputLoveLanguagesPage(),
                     const InputRelationshipStatusPage(
-                      isOnboarding: true,
+                      isOnboarding: false,
                     ),
-                    if (state.userInfo.hasCrush) ...[
-                      const InputCrushBasicInfoPage(),
-                      const InputCrushHobbiesPage(),
-                    ],
+                    const InputCrushBasicInfoPage(),
+                    const InputCrushHobbiesPage(),
                   ],
                   onPageChanged: (index) {
                     setState(() {
@@ -127,10 +135,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   });
                 },
                 onPressNext: () async {
-                  if (currentPage == totalStep - 1) {
+                  if (currentPage == 2) {
                     final result = await ref.read(onboardingNotifierProvider.notifier).saveUser();
                     if (result) {
-                      await NavigationService.instance.push(AppRoutes.welcome, replace: true);
+                      NavigationService.instance.pop();
+                      await ref.read(profileNotifierProvider.notifier).getData();
                     } else {
                       if (context.mounted) {
                         SnackBarService.instance.showErrorSnackBar(
@@ -142,7 +151,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   } else {
                     await ref
                         .read(onboardingNotifierProvider.notifier)
-                        .goNextPage(currentPage, true);
+                        .goNextPage(currentPage, false);
                   }
                 },
                 onPressLastButton: () {},

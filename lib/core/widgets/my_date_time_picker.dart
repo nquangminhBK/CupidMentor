@@ -106,8 +106,11 @@ class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
             SizedBox(
               height: 260,
               child: CupertinoDatePicker(
-                initialDateTime: widget.initialDate ?? DateTime.now(),
+                initialDateTime:
+                    widget.initialDate ?? DateTime.now().subtract(const Duration(days: 8 * 365)),
                 mode: CupertinoDatePickerMode.date,
+                maximumDate:
+                    widget.initialDate ?? DateTime.now().subtract(const Duration(days: 8 * 365)),
                 onDateTimeChanged: (DateTime newDate) {
                   setState(() => selectedDateTime = newDate);
                   widget.updateDateTime(selectedDateTime);

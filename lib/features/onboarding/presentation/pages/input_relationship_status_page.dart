@@ -7,51 +7,66 @@ import 'package:cupid_mentor/features/onboarding/presentation/widgets/toggle_but
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InputRelationshipStatusPage extends ConsumerStatefulWidget {
-  const InputRelationshipStatusPage({super.key});
+class InputRelationshipStatusPage extends ConsumerWidget {
+  const InputRelationshipStatusPage({super.key, required this.isOnboarding});
+
+  final bool isOnboarding;
 
   @override
-  ConsumerState<InputRelationshipStatusPage> createState() => _InputRelationshipStatusPageState();
-}
-
-class _InputRelationshipStatusPageState extends ConsumerState<InputRelationshipStatusPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final hasCrush = ref.watch(onboardingNotifierProvider).userInfo.hasCrush;
     final crushType = ref.watch(onboardingNotifierProvider).userInfo.crushType;
     final notifier = ref.read(onboardingNotifierProvider.notifier);
-    return PageSkeletonWidget(
-      title: context.l10n.inputRelationshipStatusTitle,
-      description: context.l10n.inputRelationshipStatusDesc,
-      children: [
-        ToggleButtonOnboarding(
-          isSelected: !hasCrush,
-          onChange: () => notifier.updateRelationshipStatus(false),
-          title: context.l10n.notHaveYet,
-        ),
-        const VerticalSpace(size: 16),
-        ToggleButtonOnboarding(
-          isSelected: hasCrush,
-          onChange: () => notifier.updateRelationshipStatus(true),
-          title: context.l10n.alreadyHave,
-        ),
-        const VerticalSpace(size: 32),
-        if (hasCrush) ...[
-          Text(
-            context.l10n.inputRelationshipStatusDesc2,
-            style: context.textTheme.bodyLarge,
+    if (isOnboarding) {
+      return PageSkeletonWidget(
+        title: context.l10n.inputRelationshipStatusTitle,
+        description: context.l10n.inputRelationshipStatusDesc,
+        children: [
+          ToggleButtonOnboarding(
+            isSelected: !hasCrush,
+            onChange: () => notifier.updateRelationshipStatus(false),
+            title: context.l10n.notHaveYet,
           ),
-          ...RelationshipType.relationshipTypes().map(
-            (e) => Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: ToggleButtonOnboarding(
-                isSelected: e.value == crushType,
-                onChange: () => notifier.updateCrushType(e),
-                title: e.displayText.value(context),
+          const VerticalSpace(size: 16),
+          ToggleButtonOnboarding(
+            isSelected: hasCrush,
+            onChange: () => notifier.updateRelationshipStatus(true),
+            title: context.l10n.alreadyHave,
+          ),
+          const VerticalSpace(size: 32),
+          if (hasCrush) ...[
+            Text(
+              context.l10n.inputRelationshipStatusDesc2,
+              style: context.textTheme.bodyLarge,
+            ),
+            ...RelationshipType.values.map(
+              (e) => Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: ToggleButtonOnboarding(
+                  isSelected: e.value == crushType,
+                  onChange: () => notifier.updateCrushType(e),
+                  title: e.displayText.value(context),
+                ),
               ),
             ),
-          ),
+          ],
         ],
+      );
+    }
+    return PageSkeletonWidget(
+      title: context.l10n.addPartnerScreenTitle,
+      description: context.l10n.inputRelationshipStatusDesc,
+      children: [
+        ...RelationshipType.values.map(
+          (e) => Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: ToggleButtonOnboarding(
+              isSelected: e.value == crushType,
+              onChange: () => notifier.updateCrushType(e),
+              title: e.displayText.value(context),
+            ),
+          ),
+        ),
       ],
     );
   }

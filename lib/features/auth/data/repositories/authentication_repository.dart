@@ -69,7 +69,6 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
     if (await isInConnection()) {
       try {
         await remoteDatasource.signOut();
-        // await sharedPreferences.remove(key);
         return const Right(true);
       } catch (e, _) {
         debugPrint(e.toString());
@@ -91,5 +90,19 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
     final user = remoteDatasource.getCurrentUser();
     if (user != null) return Right(user);
     return const Left(Failure('Not found'));
+  }
+
+  @override
+  Future<Either<Failure, bool>> deleteUser() async {
+    if (await isInConnection()) {
+      try {
+        await remoteDatasource.deleteUser();
+        return const Right(true);
+      } catch (e, _) {
+        debugPrint(e.toString());
+        return Left(Failure(e.toString()));
+      }
+    }
+    return const Left(NoConnection());
   }
 }

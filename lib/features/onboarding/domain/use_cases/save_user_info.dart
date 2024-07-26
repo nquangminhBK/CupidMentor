@@ -17,16 +17,14 @@ class SaveUserInfo implements UseCase<bool, SaveUserInfoParam> {
 
   @override
   Future<Either<Failure, bool>> call(SaveUserInfoParam params) async {
-    return repository.saveUserInfo(params.userId, params.userInfo);
+    return repository.saveUserInfo(params.userInfo);
   }
 }
 
 class SaveUserInfoParam {
   SaveUserInfoParam({
-    required this.userId,
     required this.userInfo,
   });
 
-  final String userId;
   final LoggedInUserInfo userInfo;
 }

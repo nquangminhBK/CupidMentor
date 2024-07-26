@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
@@ -9,6 +11,10 @@ import 'package:cupid_mentor/features/profile/presentation/widgets/describe_you.
 import 'package:cupid_mentor/features/profile/presentation/widgets/hobbies.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/love_languages.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/relationship_status.dart';
+import 'package:cupid_mentor/features/profile/presentation/widgets/update_hobbies_dialog.dart';
+import 'package:cupid_mentor/features/profile/presentation/widgets/update_love_languages_dialog.dart';
+import 'package:cupid_mentor/features/profile/presentation/widgets/update_personalities_dialog.dart';
+import 'package:cupid_mentor/features/profile/presentation/widgets/update_basic_info_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,6 +37,7 @@ class _YourProfilePagesState extends ConsumerState<YourProfilePages> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(profileNotifierProvider);
+    print("minh check ${state.userInfo}");
     return Container(
       color: context.theme.scaffoldBackgroundColor,
       child: SafeArea(
@@ -40,41 +47,63 @@ class _YourProfilePagesState extends ConsumerState<YourProfilePages> {
             ref: ref,
             context: context,
           ),
-          body: (state.userInfo.name.isNotEmpty)
+          body: (state.userInfo != null)
               ? Padding(
                   padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
                   child: Column(
                     children: [
                       BasicInfoWidget(
-                        name: state.userInfo.name,
-                        job: state.userInfo.job,
-                        birthday: state.userInfo.birthday,
-                        gender: state.userInfo.gender,
+                        name: state.userInfo!.name,
+                        job: state.userInfo!.job,
+                        birthday: state.userInfo!.birthday,
+                        gender: state.userInfo!.gender,
                         onTapEditBasicInfo: () {
-                          print("minh check 1");
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return UpdateYourBasicInfoDialog();
+                              });
                         },
                       ),
                       DescribeYouWidget(
-                        personalities: state.userInfo.personalities,
-                      ),
+                          personalities: state.userInfo!.personalities,
+                          onTapEdit: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return UpdatePersonalitiesDialog();
+                                });
+                          }),
                       HobbiesWidget(
-                        hobbies: state.userInfo.hobbies,
-                      ),
+                          hobbies: state.userInfo!.hobbies,
+                          onTapEdit: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return UpdateHobbiesDialog();
+                                });
+                          }),
                       LoveLanguagesWidget(
-                        loveLanguages: state.userInfo.loveLanguages,
-                      ),
+                          loveLanguages: state.userInfo!.loveLanguages,
+                          onTapEdit: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return UpdateLoveLanguagesDialog();
+                                });
+                          }),
                       RelationshipStatus(
-                        status: state.userInfo.crushInfo == null
-                            ? context.l10n.notHaveYet
-                            : '${context.l10n.alreadyHave},\n${RelationshipType.tryParse(state.userInfo.crushType)?.displayText.value(context) ?? ''}',
+                        status: state.userInfo!.hasCrush
+                            ? '${context.l10n.alreadyHave},\n${RelationshipType.tryParse(state.userInfo!.crushType)?.displayText.value(context) ?? ''}'
+                            : context.l10n.notHaveYet,
                         onTapEditPartnerProfile: () {
-                          NavigationService.instance.push(AppRoutes.crushProfile);
+                          NavigationService.instance.push(AppRoutes.partnerProfile);
                         },
                       ),
                     ],
                   ),
                 )
-              : Container(),
+              : const SizedBox(),
         ),
       ),
     );

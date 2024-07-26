@@ -19,10 +19,10 @@ class OnboardingRepositoryImpl with ConnectivityMixin implements OnboardingRepos
   });
 
   @override
-  Future<Either<Failure, bool>> saveUserInfo(String userId, LoggedInUserInfo userInfo) async {
+  Future<Either<Failure, bool>> saveUserInfo(LoggedInUserInfo userInfo) async {
     if (await isInConnection()) {
       try {
-        final result = await datasource.saveUserInfo(userId, userInfo.toModel);
+        final result = await datasource.saveUserInfo(userInfo.toModel);
         return Right(result);
       } catch (e, _) {
         debugPrint(e.toString());

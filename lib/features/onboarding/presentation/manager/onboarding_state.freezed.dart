@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OnboardingState {
   LoggedInUserInfo get userInfo => throw _privateConstructorUsedError;
-  CrushInfo? get crushInfo => throw _privateConstructorUsedError;
   bool get canGoNext => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
@@ -32,14 +31,9 @@ abstract class $OnboardingStateCopyWith<$Res> {
           OnboardingState value, $Res Function(OnboardingState) then) =
       _$OnboardingStateCopyWithImpl<$Res, OnboardingState>;
   @useResult
-  $Res call(
-      {LoggedInUserInfo userInfo,
-      CrushInfo? crushInfo,
-      bool canGoNext,
-      String errorMessage});
+  $Res call({LoggedInUserInfo userInfo, bool canGoNext, String errorMessage});
 
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
-  $CrushInfoCopyWith<$Res>? get crushInfo;
 }
 
 /// @nodoc
@@ -56,7 +50,6 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
   @override
   $Res call({
     Object? userInfo = null,
-    Object? crushInfo = freezed,
     Object? canGoNext = null,
     Object? errorMessage = null,
   }) {
@@ -65,10 +58,6 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
           ? _value.userInfo
           : userInfo // ignore: cast_nullable_to_non_nullable
               as LoggedInUserInfo,
-      crushInfo: freezed == crushInfo
-          ? _value.crushInfo
-          : crushInfo // ignore: cast_nullable_to_non_nullable
-              as CrushInfo?,
       canGoNext: null == canGoNext
           ? _value.canGoNext
           : canGoNext // ignore: cast_nullable_to_non_nullable
@@ -87,18 +76,6 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
       return _then(_value.copyWith(userInfo: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CrushInfoCopyWith<$Res>? get crushInfo {
-    if (_value.crushInfo == null) {
-      return null;
-    }
-
-    return $CrushInfoCopyWith<$Res>(_value.crushInfo!, (value) {
-      return _then(_value.copyWith(crushInfo: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -109,16 +86,10 @@ abstract class _$$OnboardingStateImplCopyWith<$Res>
       __$$OnboardingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {LoggedInUserInfo userInfo,
-      CrushInfo? crushInfo,
-      bool canGoNext,
-      String errorMessage});
+  $Res call({LoggedInUserInfo userInfo, bool canGoNext, String errorMessage});
 
   @override
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
-  @override
-  $CrushInfoCopyWith<$Res>? get crushInfo;
 }
 
 /// @nodoc
@@ -133,7 +104,6 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userInfo = null,
-    Object? crushInfo = freezed,
     Object? canGoNext = null,
     Object? errorMessage = null,
   }) {
@@ -142,10 +112,6 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
           ? _value.userInfo
           : userInfo // ignore: cast_nullable_to_non_nullable
               as LoggedInUserInfo,
-      crushInfo: freezed == crushInfo
-          ? _value.crushInfo
-          : crushInfo // ignore: cast_nullable_to_non_nullable
-              as CrushInfo?,
       canGoNext: null == canGoNext
           ? _value.canGoNext
           : canGoNext // ignore: cast_nullable_to_non_nullable
@@ -163,7 +129,6 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
 class _$OnboardingStateImpl extends _OnboardingState {
   const _$OnboardingStateImpl(
       {required this.userInfo,
-      this.crushInfo,
       required this.canGoNext,
       required this.errorMessage})
       : super._();
@@ -171,15 +136,13 @@ class _$OnboardingStateImpl extends _OnboardingState {
   @override
   final LoggedInUserInfo userInfo;
   @override
-  final CrushInfo? crushInfo;
-  @override
   final bool canGoNext;
   @override
   final String errorMessage;
 
   @override
   String toString() {
-    return 'OnboardingState(userInfo: $userInfo, crushInfo: $crushInfo, canGoNext: $canGoNext, errorMessage: $errorMessage)';
+    return 'OnboardingState(userInfo: $userInfo, canGoNext: $canGoNext, errorMessage: $errorMessage)';
   }
 
   @override
@@ -189,8 +152,6 @@ class _$OnboardingStateImpl extends _OnboardingState {
             other is _$OnboardingStateImpl &&
             (identical(other.userInfo, userInfo) ||
                 other.userInfo == userInfo) &&
-            (identical(other.crushInfo, crushInfo) ||
-                other.crushInfo == crushInfo) &&
             (identical(other.canGoNext, canGoNext) ||
                 other.canGoNext == canGoNext) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -199,7 +160,7 @@ class _$OnboardingStateImpl extends _OnboardingState {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, userInfo, crushInfo, canGoNext, errorMessage);
+      Object.hash(runtimeType, userInfo, canGoNext, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -212,15 +173,12 @@ class _$OnboardingStateImpl extends _OnboardingState {
 abstract class _OnboardingState extends OnboardingState {
   const factory _OnboardingState(
       {required final LoggedInUserInfo userInfo,
-      final CrushInfo? crushInfo,
       required final bool canGoNext,
       required final String errorMessage}) = _$OnboardingStateImpl;
   const _OnboardingState._() : super._();
 
   @override
   LoggedInUserInfo get userInfo;
-  @override
-  CrushInfo? get crushInfo;
   @override
   bool get canGoNext;
   @override

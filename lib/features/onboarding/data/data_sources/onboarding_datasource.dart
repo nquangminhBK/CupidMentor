@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class OnboardingDatasource {
-  Future<bool> saveUserInfo(String userId, LoggedInUserInfoModel userInfoModel);
+  Future<bool> saveUserInfo(LoggedInUserInfoModel userInfoModel);
 }
 
 class OnboardingDatasourceImpl implements OnboardingDatasource {
@@ -21,8 +21,11 @@ class OnboardingDatasourceImpl implements OnboardingDatasource {
   });
 
   @override
-  Future<bool> saveUserInfo(String userId, LoggedInUserInfoModel userInfoModel) async {
+  Future<bool> saveUserInfo(LoggedInUserInfoModel userInfoModel) async {
     try {
+      final currentUser = firebaseAuth.currentUser;
+      final userId = currentUser?.uid;
+      if (userId == null) return false;
       await firestore.collection('users_info').doc(userId).set(userInfoModel.toJson());
       return true;
     } catch (_) {

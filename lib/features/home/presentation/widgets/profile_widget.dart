@@ -49,7 +49,7 @@ class ProfileWidget extends ConsumerWidget {
               constraints: const BoxConstraints(minHeight: 50),
               child: AnimatedButton(
                 onPress: () {
-                  NavigationService.instance.push(AppRoutes.crushProfile);
+                  NavigationService.instance.push(AppRoutes.partnerProfile);
                 },
                 child: Container(
                   width: double.infinity,

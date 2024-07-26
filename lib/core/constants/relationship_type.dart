@@ -43,7 +43,4 @@ enum RelationshipType {
   static RelationshipType? tryParse(String value) => RelationshipType.values.firstWhereOrNull(
         (element) => element.value.toLowerCase() == value.toLowerCase(),
       );
-
-  static List<RelationshipType> relationshipTypes() =>
-      [RelationshipType.crush, RelationshipType.friends, RelationshipType.lover];
 }

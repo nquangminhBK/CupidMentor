@@ -36,7 +36,7 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
         loveLanguages: [],
         crushType: '',
         hasCrush: false,
-        crushInfo: CrushInfo.empty(),
+        crushInfo: null,
       );
 
   LoggedInUserInfoModel get toModel {

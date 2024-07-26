@@ -7,8 +7,12 @@ part 'profile_state.freezed.dart';
 abstract class ProfileState with _$ProfileState {
   const ProfileState._();
 
-  const factory ProfileState({required LoggedInUserInfo userInfo, String? error, bool? isLoading}) =
-      _ProfileState;
+  const factory ProfileState({
+    LoggedInUserInfo? userInfo,
+    LoggedInUserInfo? tempUserInfo,
+    String? error,
+    bool? isLoading,
+  }) = _ProfileState;
 
-  factory ProfileState.initial() => ProfileState(userInfo: LoggedInUserInfo.empty());
+  factory ProfileState.initial() => const ProfileState();
 }
