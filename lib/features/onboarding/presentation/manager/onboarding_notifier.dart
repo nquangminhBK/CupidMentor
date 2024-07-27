@@ -4,7 +4,7 @@ import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/errors/ui_failures.dart';
 import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
+import 'package:cupid_mentor/features/auth/domain/entities/partner_info.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_user.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
@@ -76,13 +76,13 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     } else {
       switch (currentPage) {
         case 0:
-          if (state.userInfo.hasCrush == false) {
+          if (state.userInfo.hasPartner == false) {
             state =
                 state.copyWith(canGoNext: false, error: OnboardingMissingRelationshipTypeError());
             return;
           }
         case 1:
-          if (state.userInfo.crushInfo?.gender == null) {
+          if (state.userInfo.partnerInfo?.gender == null) {
             state = state.copyWith(canGoNext: false, error: OnboardingMissingPartnerGenderError());
             return;
           }
@@ -106,18 +106,18 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     );
   }
 
-  void updateCrushBasicInfo({String? name, Gender? gender, DateTime? birthDay, String? job}) {
-    final currentCrushInfo = state.userInfo.crushInfo ?? CrushInfo.empty();
+  void updatePartnerBasicInfo({String? name, Gender? gender, DateTime? birthDay, String? job}) {
+    final currentPartnerInfo = state.userInfo.partnerInfo ?? PartnerInfo.empty();
     final currentUserInfo = state.userInfo;
-    final updatedCrushInfo = currentCrushInfo.copyWith(
-      name: name ?? currentCrushInfo.name,
-      birthday: birthDay ?? currentCrushInfo.birthday,
-      job: job ?? currentCrushInfo.job,
-      gender: gender ?? currentCrushInfo.gender,
+    final updatedPartnerInfo = currentPartnerInfo.copyWith(
+      name: name ?? currentPartnerInfo.name,
+      birthday: birthDay ?? currentPartnerInfo.birthday,
+      job: job ?? currentPartnerInfo.job,
+      gender: gender ?? currentPartnerInfo.gender,
     );
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(
-        crushInfo: updatedCrushInfo,
+        partnerInfo: updatedPartnerInfo,
       ),
       error: null,
       canGoNext: false,
@@ -149,20 +149,20 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     state = state.copyWith(userInfo: currentUserInfo.copyWith(hobbies: hobbies), error: null);
   }
 
-  void updateCrushHobbies(String hobby, bool isRemove) {
-    final currentCrushInfo = state.userInfo.crushInfo ?? CrushInfo.empty();
+  void updatePartnerHobbies(String hobby, bool isRemove) {
+    final currentPartnerInfo = state.userInfo.partnerInfo ?? PartnerInfo.empty();
     final currentUserInfo = state.userInfo;
-    final hobbies = List<String>.from(currentCrushInfo.hobbies);
+    final hobbies = List<String>.from(currentPartnerInfo.hobbies);
     if (isRemove) {
       hobbies.remove(hobby);
     } else {
       hobbies.add(hobby);
     }
-    final updatedCrushInfo = currentCrushInfo.copyWith(
+    final updatedPartnerInfo = currentPartnerInfo.copyWith(
       hobbies: hobbies,
     );
     state = state.copyWith(
-      userInfo: currentUserInfo.copyWith(crushInfo: updatedCrushInfo),
+      userInfo: currentUserInfo.copyWith(partnerInfo: updatedPartnerInfo),
       error: null,
     );
   }
@@ -199,19 +199,19 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     final currentUserInfo = state.userInfo;
     if (!status) {
       state = state.copyWith(
-        userInfo: currentUserInfo.copyWith(hasCrush: status, crushType: ''),
+        userInfo: currentUserInfo.copyWith(hasPartner: status, relationship: ''),
         error: null,
       );
     } else {
-      state = state.copyWith(userInfo: currentUserInfo.copyWith(hasCrush: status), error: null);
+      state = state.copyWith(userInfo: currentUserInfo.copyWith(hasPartner: status), error: null);
     }
   }
 
-  void updateCrushType(RelationshipType type) {
+  void updateRelationship(RelationshipType type) {
     final currentUserInfo = state.userInfo;
 
     state = state.copyWith(
-      userInfo: currentUserInfo.copyWith(crushType: type.value, hasCrush: true),
+      userInfo: currentUserInfo.copyWith(relationship: type.value, hasPartner: true),
       error: null,
     );
   }

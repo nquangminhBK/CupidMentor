@@ -11,8 +11,8 @@ import 'package:cupid_mentor/features/profile/presentation/manager/profile_notif
 import 'package:cupid_mentor/features/profile/presentation/widgets/basic_info.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/hobbies.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/item_info.dart';
-import 'package:cupid_mentor/features/profile/presentation/widgets/update_crush_basic_info_dialog.dart';
-import 'package:cupid_mentor/features/profile/presentation/widgets/update_crush_hobbies_dialog.dart';
+import 'package:cupid_mentor/features/profile/presentation/widgets/update_partner_basic_info_dialog.dart';
+import 'package:cupid_mentor/features/profile/presentation/widgets/update_partner_hobbies_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -34,8 +34,8 @@ class _PartnerProfilePageState extends ConsumerState<PartnerProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final crushInfo = ref.watch(profileNotifierProvider).userInfo?.crushInfo;
-    final crushType = ref.watch(profileNotifierProvider).userInfo?.crushType;
+    final partnerInfo = ref.watch(profileNotifierProvider).userInfo?.partnerInfo;
+    final relationship = ref.watch(profileNotifierProvider).userInfo?.relationship;
     final notifier = ref.read(profileNotifierProvider.notifier);
     return Container(
       color: context.theme.scaffoldBackgroundColor,
@@ -79,7 +79,7 @@ class _PartnerProfilePageState extends ConsumerState<PartnerProfilePage> {
           ),
           body: Padding(
             padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
-            child: crushInfo == null
+            child: partnerInfo == null
                 ? Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -118,7 +118,7 @@ class _PartnerProfilePageState extends ConsumerState<PartnerProfilePage> {
                     children: [
                       ItemInfo(
                         title: 'Relation',
-                        value: RelationshipType.tryParse(crushType ?? '')
+                        value: RelationshipType.tryParse(relationship ?? '')
                                 ?.displayText
                                 .value(context) ??
                             'No data',
@@ -126,32 +126,32 @@ class _PartnerProfilePageState extends ConsumerState<PartnerProfilePage> {
                           showDialog(
                             context: context,
                             builder: (context) {
-                              return const UpdateCrushBasicInfoDialog();
+                              return const UpdatePartnerBasicInfoDialog();
                             },
                           );
                         },
                       ),
                       BasicInfoWidget(
-                        name: crushInfo.name,
-                        job: crushInfo.job,
-                        birthday: crushInfo.birthday,
-                        gender: crushInfo.gender,
+                        name: partnerInfo.name,
+                        job: partnerInfo.job,
+                        birthday: partnerInfo.birthday,
+                        gender: partnerInfo.gender,
                         onTapEditBasicInfo: () {
                           showDialog(
                             context: context,
                             builder: (context) {
-                              return const UpdateCrushBasicInfoDialog();
+                              return const UpdatePartnerBasicInfoDialog();
                             },
                           );
                         },
                       ),
                       HobbiesWidget(
-                        hobbies: crushInfo.hobbies,
+                        hobbies: partnerInfo.hobbies,
                         onTapEdit: () {
                           showDialog(
                             context: context,
                             builder: (context) {
-                              return const UpdateCrushHobbiesDialog();
+                              return const UpdatePartnerHobbiesDialog();
                             },
                           );
                         },

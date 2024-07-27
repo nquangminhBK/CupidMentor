@@ -2,7 +2,7 @@ import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/utils/datetime_utils.dart';
 import 'package:cupid_mentor/features/auth/data/models/user_info_model.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
+import 'package:cupid_mentor/features/auth/domain/entities/partner_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_info.freezed.dart';
@@ -20,9 +20,9 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
     required List<String> personalities,
     required List<String> hobbies,
     required List<String> loveLanguages,
-    required bool hasCrush,
-    required String crushType,
-    required CrushInfo? crushInfo,
+    required bool hasPartner,
+    required String relationship,
+    required PartnerInfo? partnerInfo,
   }) = _LoggedInUserInfo;
 
   factory LoggedInUserInfo.empty() => LoggedInUserInfo(
@@ -34,9 +34,9 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
         personalities: [],
         hobbies: [],
         loveLanguages: [],
-        crushType: '',
-        hasCrush: false,
-        crushInfo: null,
+        relationship: '',
+        hasPartner: false,
+        partnerInfo: null,
       );
 
   LoggedInUserInfoModel get toModel {
@@ -49,9 +49,9 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
       personalities: personalities,
       hobbies: hobbies,
       loveLanguages: loveLanguages,
-      crushType: crushType,
-      hasCrush: hasCrush,
-      crushInfoModel: crushInfo?.toModel,
+      relationship: relationship,
+      hasPartner: hasPartner,
+      partnerInfoModel: partnerInfo?.toModel,
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cupid_mentor/features/auth/data/models/user_info_model.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -15,8 +14,6 @@ abstract class AuthenticationRemoteDatasource {
   User? getCurrentUser();
 
   Future<LoggedInUserInfoModel?> getUserInfo();
-
-  Future<CrushInfo> getCrushInfo();
 
   Future<bool> deleteUser();
 }
@@ -33,12 +30,6 @@ class AuthenticationRemoteDatasourceImpl implements AuthenticationRemoteDatasour
     required this.googleAuthProvider,
     required this.firestore,
   });
-
-  @override
-  Future<CrushInfo> getCrushInfo() {
-    // TODO: implement getCrushInfo
-    throw UnimplementedError();
-  }
 
   @override
   User? getCurrentUser() {

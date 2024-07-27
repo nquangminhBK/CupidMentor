@@ -24,9 +24,9 @@ mixin _$LoggedInUserInfo {
   List<String> get personalities => throw _privateConstructorUsedError;
   List<String> get hobbies => throw _privateConstructorUsedError;
   List<String> get loveLanguages => throw _privateConstructorUsedError;
-  bool get hasCrush => throw _privateConstructorUsedError;
-  String get crushType => throw _privateConstructorUsedError;
-  CrushInfo? get crushInfo => throw _privateConstructorUsedError;
+  bool get hasPartner => throw _privateConstructorUsedError;
+  String get relationship => throw _privateConstructorUsedError;
+  PartnerInfo? get partnerInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoggedInUserInfoCopyWith<LoggedInUserInfo> get copyWith =>
@@ -48,11 +48,11 @@ abstract class $LoggedInUserInfoCopyWith<$Res> {
       List<String> personalities,
       List<String> hobbies,
       List<String> loveLanguages,
-      bool hasCrush,
-      String crushType,
-      CrushInfo? crushInfo});
+      bool hasPartner,
+      String relationship,
+      PartnerInfo? partnerInfo});
 
-  $CrushInfoCopyWith<$Res>? get crushInfo;
+  $PartnerInfoCopyWith<$Res>? get partnerInfo;
 }
 
 /// @nodoc
@@ -76,9 +76,9 @@ class _$LoggedInUserInfoCopyWithImpl<$Res, $Val extends LoggedInUserInfo>
     Object? personalities = null,
     Object? hobbies = null,
     Object? loveLanguages = null,
-    Object? hasCrush = null,
-    Object? crushType = null,
-    Object? crushInfo = freezed,
+    Object? hasPartner = null,
+    Object? relationship = null,
+    Object? partnerInfo = freezed,
   }) {
     return _then(_value.copyWith(
       gender: null == gender
@@ -113,30 +113,30 @@ class _$LoggedInUserInfoCopyWithImpl<$Res, $Val extends LoggedInUserInfo>
           ? _value.loveLanguages
           : loveLanguages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      hasCrush: null == hasCrush
-          ? _value.hasCrush
-          : hasCrush // ignore: cast_nullable_to_non_nullable
+      hasPartner: null == hasPartner
+          ? _value.hasPartner
+          : hasPartner // ignore: cast_nullable_to_non_nullable
               as bool,
-      crushType: null == crushType
-          ? _value.crushType
-          : crushType // ignore: cast_nullable_to_non_nullable
+      relationship: null == relationship
+          ? _value.relationship
+          : relationship // ignore: cast_nullable_to_non_nullable
               as String,
-      crushInfo: freezed == crushInfo
-          ? _value.crushInfo
-          : crushInfo // ignore: cast_nullable_to_non_nullable
-              as CrushInfo?,
+      partnerInfo: freezed == partnerInfo
+          ? _value.partnerInfo
+          : partnerInfo // ignore: cast_nullable_to_non_nullable
+              as PartnerInfo?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $CrushInfoCopyWith<$Res>? get crushInfo {
-    if (_value.crushInfo == null) {
+  $PartnerInfoCopyWith<$Res>? get partnerInfo {
+    if (_value.partnerInfo == null) {
       return null;
     }
 
-    return $CrushInfoCopyWith<$Res>(_value.crushInfo!, (value) {
-      return _then(_value.copyWith(crushInfo: value) as $Val);
+    return $PartnerInfoCopyWith<$Res>(_value.partnerInfo!, (value) {
+      return _then(_value.copyWith(partnerInfo: value) as $Val);
     });
   }
 }
@@ -158,12 +158,12 @@ abstract class _$$LoggedInUserInfoImplCopyWith<$Res>
       List<String> personalities,
       List<String> hobbies,
       List<String> loveLanguages,
-      bool hasCrush,
-      String crushType,
-      CrushInfo? crushInfo});
+      bool hasPartner,
+      String relationship,
+      PartnerInfo? partnerInfo});
 
   @override
-  $CrushInfoCopyWith<$Res>? get crushInfo;
+  $PartnerInfoCopyWith<$Res>? get partnerInfo;
 }
 
 /// @nodoc
@@ -185,9 +185,9 @@ class __$$LoggedInUserInfoImplCopyWithImpl<$Res>
     Object? personalities = null,
     Object? hobbies = null,
     Object? loveLanguages = null,
-    Object? hasCrush = null,
-    Object? crushType = null,
-    Object? crushInfo = freezed,
+    Object? hasPartner = null,
+    Object? relationship = null,
+    Object? partnerInfo = freezed,
   }) {
     return _then(_$LoggedInUserInfoImpl(
       gender: null == gender
@@ -222,18 +222,18 @@ class __$$LoggedInUserInfoImplCopyWithImpl<$Res>
           ? _value._loveLanguages
           : loveLanguages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      hasCrush: null == hasCrush
-          ? _value.hasCrush
-          : hasCrush // ignore: cast_nullable_to_non_nullable
+      hasPartner: null == hasPartner
+          ? _value.hasPartner
+          : hasPartner // ignore: cast_nullable_to_non_nullable
               as bool,
-      crushType: null == crushType
-          ? _value.crushType
-          : crushType // ignore: cast_nullable_to_non_nullable
+      relationship: null == relationship
+          ? _value.relationship
+          : relationship // ignore: cast_nullable_to_non_nullable
               as String,
-      crushInfo: freezed == crushInfo
-          ? _value.crushInfo
-          : crushInfo // ignore: cast_nullable_to_non_nullable
-              as CrushInfo?,
+      partnerInfo: freezed == partnerInfo
+          ? _value.partnerInfo
+          : partnerInfo // ignore: cast_nullable_to_non_nullable
+              as PartnerInfo?,
     ));
   }
 }
@@ -250,9 +250,9 @@ class _$LoggedInUserInfoImpl extends _LoggedInUserInfo {
       required final List<String> personalities,
       required final List<String> hobbies,
       required final List<String> loveLanguages,
-      required this.hasCrush,
-      required this.crushType,
-      required this.crushInfo})
+      required this.hasPartner,
+      required this.relationship,
+      required this.partnerInfo})
       : _personalities = personalities,
         _hobbies = hobbies,
         _loveLanguages = loveLanguages,
@@ -293,15 +293,15 @@ class _$LoggedInUserInfoImpl extends _LoggedInUserInfo {
   }
 
   @override
-  final bool hasCrush;
+  final bool hasPartner;
   @override
-  final String crushType;
+  final String relationship;
   @override
-  final CrushInfo? crushInfo;
+  final PartnerInfo? partnerInfo;
 
   @override
   String toString() {
-    return 'LoggedInUserInfo(gender: $gender, name: $name, avatar: $avatar, birthday: $birthday, job: $job, personalities: $personalities, hobbies: $hobbies, loveLanguages: $loveLanguages, hasCrush: $hasCrush, crushType: $crushType, crushInfo: $crushInfo)';
+    return 'LoggedInUserInfo(gender: $gender, name: $name, avatar: $avatar, birthday: $birthday, job: $job, personalities: $personalities, hobbies: $hobbies, loveLanguages: $loveLanguages, hasPartner: $hasPartner, relationship: $relationship, partnerInfo: $partnerInfo)';
   }
 
   @override
@@ -320,12 +320,12 @@ class _$LoggedInUserInfoImpl extends _LoggedInUserInfo {
             const DeepCollectionEquality().equals(other._hobbies, _hobbies) &&
             const DeepCollectionEquality()
                 .equals(other._loveLanguages, _loveLanguages) &&
-            (identical(other.hasCrush, hasCrush) ||
-                other.hasCrush == hasCrush) &&
-            (identical(other.crushType, crushType) ||
-                other.crushType == crushType) &&
-            (identical(other.crushInfo, crushInfo) ||
-                other.crushInfo == crushInfo));
+            (identical(other.hasPartner, hasPartner) ||
+                other.hasPartner == hasPartner) &&
+            (identical(other.relationship, relationship) ||
+                other.relationship == relationship) &&
+            (identical(other.partnerInfo, partnerInfo) ||
+                other.partnerInfo == partnerInfo));
   }
 
   @override
@@ -339,9 +339,9 @@ class _$LoggedInUserInfoImpl extends _LoggedInUserInfo {
       const DeepCollectionEquality().hash(_personalities),
       const DeepCollectionEquality().hash(_hobbies),
       const DeepCollectionEquality().hash(_loveLanguages),
-      hasCrush,
-      crushType,
-      crushInfo);
+      hasPartner,
+      relationship,
+      partnerInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -361,9 +361,9 @@ abstract class _LoggedInUserInfo extends LoggedInUserInfo {
       required final List<String> personalities,
       required final List<String> hobbies,
       required final List<String> loveLanguages,
-      required final bool hasCrush,
-      required final String crushType,
-      required final CrushInfo? crushInfo}) = _$LoggedInUserInfoImpl;
+      required final bool hasPartner,
+      required final String relationship,
+      required final PartnerInfo? partnerInfo}) = _$LoggedInUserInfoImpl;
   const _LoggedInUserInfo._() : super._();
 
   @override
@@ -383,11 +383,11 @@ abstract class _LoggedInUserInfo extends LoggedInUserInfo {
   @override
   List<String> get loveLanguages;
   @override
-  bool get hasCrush;
+  bool get hasPartner;
   @override
-  String get crushType;
+  String get relationship;
   @override
-  CrushInfo? get crushInfo;
+  PartnerInfo? get partnerInfo;
   @override
   @JsonKey(ignore: true)
   _$$LoggedInUserInfoImplCopyWith<_$LoggedInUserInfoImpl> get copyWith =>

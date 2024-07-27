@@ -10,14 +10,14 @@ import 'package:cupid_mentor/features/onboarding/presentation/widgets/page_skele
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InputCrushHobbiesPage extends ConsumerStatefulWidget {
-  const InputCrushHobbiesPage({super.key});
+class InputPartnerHobbiesPage extends ConsumerStatefulWidget {
+  const InputPartnerHobbiesPage({super.key});
 
   @override
-  ConsumerState<InputCrushHobbiesPage> createState() => _InputCrushHobbiesPageState();
+  ConsumerState<InputPartnerHobbiesPage> createState() => _InputPartnerHobbiesPageState();
 }
 
-class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
+class _InputPartnerHobbiesPageState extends ConsumerState<InputPartnerHobbiesPage> {
   List<LocalizationContent> searchedList = [];
   List<LocalizationContent> unSearchedList = Hobbies.hobbies;
 
@@ -41,12 +41,12 @@ class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
 
   @override
   Widget build(BuildContext context) {
-    final crushHobbies =
-        ref.watch(onboardingNotifierProvider).userInfo.crushInfo?.hobbies ?? <String>[];
+    final partnerHobbies =
+        ref.watch(onboardingNotifierProvider).userInfo.partnerInfo?.hobbies ?? <String>[];
     final notifier = ref.read(onboardingNotifierProvider.notifier);
     return PageSkeletonWidget(
-      title: context.l10n.inputCrushHobbiesTitle,
-      description: context.l10n.inputCrushBasicInfoDesc,
+      title: context.l10n.inputPartnerHobbiesTitle,
+      description: context.l10n.inputPartnerBasicInfoDesc,
       children: [
         MyTextField(
           onChanged: (text) {
@@ -68,11 +68,11 @@ class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
                 .map(
                   (e) => CustomTag(
                     title: e.value(context),
-                    isSelected: crushHobbies.contains(e.id),
+                    isSelected: partnerHobbies.contains(e.id),
                     onTap: () {
-                      notifier.updateCrushHobbies(
+                      notifier.updatePartnerHobbies(
                         e.id!,
-                        crushHobbies.contains(e.id),
+                        partnerHobbies.contains(e.id),
                       );
                     },
                   ),
@@ -94,11 +94,11 @@ class _InputCrushHobbiesPageState extends ConsumerState<InputCrushHobbiesPage> {
               .map(
                 (e) => CustomTag(
                   title: e.value(context),
-                  isSelected: crushHobbies.contains(e.id),
+                  isSelected: partnerHobbies.contains(e.id),
                   onTap: () {
-                    notifier.updateCrushHobbies(
+                    notifier.updatePartnerHobbies(
                       e.id!,
-                      crushHobbies.contains(e.id),
+                      partnerHobbies.contains(e.id),
                     );
                   },
                 ),

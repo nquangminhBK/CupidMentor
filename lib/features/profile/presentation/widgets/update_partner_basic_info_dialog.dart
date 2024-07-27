@@ -17,16 +17,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class UpdateCrushBasicInfoDialog extends ConsumerStatefulWidget {
-  const UpdateCrushBasicInfoDialog({
+class UpdatePartnerBasicInfoDialog extends ConsumerStatefulWidget {
+  const UpdatePartnerBasicInfoDialog({
     super.key,
   });
 
   @override
-  ConsumerState<UpdateCrushBasicInfoDialog> createState() => _UpdateCrushBasicInfoDialogState();
+  ConsumerState<UpdatePartnerBasicInfoDialog> createState() => _UpdatePartnerBasicInfoDialogState();
 }
 
-class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInfoDialog> {
+class _UpdatePartnerBasicInfoDialogState extends ConsumerState<UpdatePartnerBasicInfoDialog> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController jobController = TextEditingController();
   final FocusNode nameFocusNode = FocusNode();
@@ -44,20 +44,20 @@ class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInf
   @override
   Widget build(BuildContext context) {
     final notifier = ref.read(profileNotifierProvider.notifier);
-    final crushInfo = ref.watch(profileNotifierProvider).tempUserInfo?.crushInfo;
+    final partnerInfo = ref.watch(profileNotifierProvider).tempUserInfo?.partnerInfo;
     final userInfo = ref.watch(profileNotifierProvider).tempUserInfo;
-    if (crushInfo == null) return const SizedBox();
+    if (partnerInfo == null) return const SizedBox();
     if (kIsWeb) {
       nameController.value = nameController.value.copyWith(
-        text: crushInfo.name,
+        text: partnerInfo.name,
         selection: TextSelection.collapsed(
-          offset: crushInfo.name.length,
+          offset: partnerInfo.name.length,
         ),
       );
       jobController.value = jobController.value.copyWith(
-        text: crushInfo.job,
+        text: partnerInfo.job,
         selection: TextSelection.collapsed(
-          offset: crushInfo.job.length,
+          offset: partnerInfo.job.length,
         ),
       );
       /*TODO: the reason why we need this is because of this bug
@@ -65,8 +65,8 @@ class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInf
               need to check and update in the future
       */
     } else {
-      nameController.text = crushInfo.name;
-      jobController.text = crushInfo.job;
+      nameController.text = partnerInfo.name;
+      jobController.text = partnerInfo.job;
     }
     return Center(
       child: Container(
@@ -93,9 +93,9 @@ class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInf
             const VerticalSpace(size: 6),
             SelectRelationshipType(
               onTypeSelected: (type) {
-                notifier.updateCrushType(type);
+                notifier.updateRelationship(type);
               },
-              selectedType: RelationshipType.tryParse(userInfo?.crushType ?? ''),
+              selectedType: RelationshipType.tryParse(userInfo?.relationship ?? ''),
               hint: 'Select type',
             ),
             const VerticalSpace(size: 6),
@@ -109,7 +109,7 @@ class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInf
               focusNode: nameFocusNode,
               key: const ValueKey('name'),
               onChanged: (text) {
-                notifier.updateCrushBasicInfo(name: text);
+                notifier.updatePartnerBasicInfo(name: text);
                 clearError();
               },
               hintText: context.l10n.nameFieldHint,
@@ -126,8 +126,8 @@ class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInf
             ),
             const VerticalSpace(size: 6),
             SelectGenderDropdown(
-              onSelectGender: (Gender? gender) => notifier.updateCrushBasicInfo(gender: gender),
-              selectedGender: crushInfo.gender,
+              onSelectGender: (Gender? gender) => notifier.updatePartnerBasicInfo(gender: gender),
+              selectedGender: partnerInfo.gender,
               hint: context.l10n.genderFieldHint,
             ),
             const VerticalSpace(size: 10),
@@ -139,11 +139,11 @@ class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInf
             SelectDateWidget(
               hint: context.l10n.birthdayFieldHint,
               onDateSelected: (selectedDate) {
-                notifier.updateCrushBasicInfo(birthDay: selectedDate);
+                notifier.updatePartnerBasicInfo(birthDay: selectedDate);
                 clearError();
               },
               selectedDate:
-                  crushInfo.birthday.isSameDate(DateTimeConst.empty()) ? null : crushInfo.birthday,
+                  partnerInfo.birthday.isSameDate(DateTimeConst.empty()) ? null : partnerInfo.birthday,
             ),
             const VerticalSpace(size: 10),
             Text(
@@ -156,7 +156,7 @@ class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInf
               focusNode: jobFocusNode,
               key: const ValueKey('jobs'),
               onChanged: (text) {
-                notifier.updateCrushBasicInfo(job: text);
+                notifier.updatePartnerBasicInfo(job: text);
               },
               hintText: context.l10n.jobFieldHint,
             ),

@@ -14,8 +14,8 @@ class InputRelationshipStatusPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hasCrush = ref.watch(onboardingNotifierProvider).userInfo.hasCrush;
-    final crushType = ref.watch(onboardingNotifierProvider).userInfo.crushType;
+    final hasPartner = ref.watch(onboardingNotifierProvider).userInfo.hasPartner;
+    final relationship = ref.watch(onboardingNotifierProvider).userInfo.relationship;
     final notifier = ref.read(onboardingNotifierProvider.notifier);
     if (isOnboarding) {
       return PageSkeletonWidget(
@@ -23,18 +23,18 @@ class InputRelationshipStatusPage extends ConsumerWidget {
         description: context.l10n.inputRelationshipStatusDesc,
         children: [
           ToggleButtonOnboarding(
-            isSelected: !hasCrush,
+            isSelected: !hasPartner,
             onChange: () => notifier.updateRelationshipStatus(false),
             title: context.l10n.notHaveYet,
           ),
           const VerticalSpace(size: 16),
           ToggleButtonOnboarding(
-            isSelected: hasCrush,
+            isSelected: hasPartner,
             onChange: () => notifier.updateRelationshipStatus(true),
             title: context.l10n.alreadyHave,
           ),
           const VerticalSpace(size: 32),
-          if (hasCrush) ...[
+          if (hasPartner) ...[
             Text(
               context.l10n.inputRelationshipStatusDesc2,
               style: context.textTheme.bodyLarge,
@@ -43,8 +43,8 @@ class InputRelationshipStatusPage extends ConsumerWidget {
               (e) => Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: ToggleButtonOnboarding(
-                  isSelected: e.value == crushType,
-                  onChange: () => notifier.updateCrushType(e),
+                  isSelected: e.value == relationship,
+                  onChange: () => notifier.updateRelationship(e),
                   title: e.displayText.value(context),
                 ),
               ),
@@ -61,8 +61,8 @@ class InputRelationshipStatusPage extends ConsumerWidget {
           (e) => Padding(
             padding: const EdgeInsets.only(top: 16),
             child: ToggleButtonOnboarding(
-              isSelected: e.value == crushType,
-              onChange: () => notifier.updateCrushType(e),
+              isSelected: e.value == relationship,
+              onChange: () => notifier.updateRelationship(e),
               title: e.displayText.value(context),
             ),
           ),

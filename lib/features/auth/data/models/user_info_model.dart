@@ -1,10 +1,11 @@
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/utils/datetime_utils.dart';
-import 'package:cupid_mentor/features/auth/data/models/crush_info_model.dart';
+import 'package:cupid_mentor/features/auth/data/models/partner_info_model.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_info_model.freezed.dart';
+
 part 'user_info_model.g.dart';
 
 @freezed
@@ -21,9 +22,9 @@ class LoggedInUserInfoModel with _$LoggedInUserInfoModel {
     required List<String> personalities,
     required List<String> hobbies,
     required List<String> loveLanguages,
-    required bool hasCrush,
-    required String crushType,
-    @JsonKey(name: 'crush') required CrushInfoModel? crushInfoModel,
+    required bool hasPartner,
+    required String relationship,
+    @JsonKey(name: 'partner') required PartnerInfoModel? partnerInfoModel,
   }) = _LoggedInUserInfoModel;
 
   factory LoggedInUserInfoModel.fromJson(Map<String, dynamic> json) =>
@@ -39,9 +40,9 @@ class LoggedInUserInfoModel with _$LoggedInUserInfoModel {
       personalities: personalities,
       hobbies: hobbies,
       loveLanguages: loveLanguages,
-      crushType: crushType,
-      hasCrush: hasCrush,
-      crushInfo: crushInfoModel?.toEntity,
+      relationship: relationship,
+      hasPartner: hasPartner,
+      partnerInfo: partnerInfoModel?.toEntity,
     );
   }
 }

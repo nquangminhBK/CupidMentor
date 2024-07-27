@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'crush_info_model.dart';
+part of 'partner_info_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-CrushInfoModel _$CrushInfoModelFromJson(Map<String, dynamic> json) {
-  return _CrushInfoModel.fromJson(json);
+PartnerInfoModel _$PartnerInfoModelFromJson(Map<String, dynamic> json) {
+  return _PartnerInfoModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CrushInfoModel {
+mixin _$PartnerInfoModel {
   @JsonKey(name: 'gender')
   String get genderRaw => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -30,15 +30,15 @@ mixin _$CrushInfoModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CrushInfoModelCopyWith<CrushInfoModel> get copyWith =>
+  $PartnerInfoModelCopyWith<PartnerInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CrushInfoModelCopyWith<$Res> {
-  factory $CrushInfoModelCopyWith(
-          CrushInfoModel value, $Res Function(CrushInfoModel) then) =
-      _$CrushInfoModelCopyWithImpl<$Res, CrushInfoModel>;
+abstract class $PartnerInfoModelCopyWith<$Res> {
+  factory $PartnerInfoModelCopyWith(
+          PartnerInfoModel value, $Res Function(PartnerInfoModel) then) =
+      _$PartnerInfoModelCopyWithImpl<$Res, PartnerInfoModel>;
   @useResult
   $Res call(
       {@JsonKey(name: 'gender') String genderRaw,
@@ -49,9 +49,9 @@ abstract class $CrushInfoModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CrushInfoModelCopyWithImpl<$Res, $Val extends CrushInfoModel>
-    implements $CrushInfoModelCopyWith<$Res> {
-  _$CrushInfoModelCopyWithImpl(this._value, this._then);
+class _$PartnerInfoModelCopyWithImpl<$Res, $Val extends PartnerInfoModel>
+    implements $PartnerInfoModelCopyWith<$Res> {
+  _$PartnerInfoModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -93,11 +93,11 @@ class _$CrushInfoModelCopyWithImpl<$Res, $Val extends CrushInfoModel>
 }
 
 /// @nodoc
-abstract class _$$CrushInfoModelImplCopyWith<$Res>
-    implements $CrushInfoModelCopyWith<$Res> {
-  factory _$$CrushInfoModelImplCopyWith(_$CrushInfoModelImpl value,
-          $Res Function(_$CrushInfoModelImpl) then) =
-      __$$CrushInfoModelImplCopyWithImpl<$Res>;
+abstract class _$$PartnerInfoModelImplCopyWith<$Res>
+    implements $PartnerInfoModelCopyWith<$Res> {
+  factory _$$PartnerInfoModelImplCopyWith(_$PartnerInfoModelImpl value,
+          $Res Function(_$PartnerInfoModelImpl) then) =
+      __$$PartnerInfoModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$CrushInfoModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CrushInfoModelImplCopyWithImpl<$Res>
-    extends _$CrushInfoModelCopyWithImpl<$Res, _$CrushInfoModelImpl>
-    implements _$$CrushInfoModelImplCopyWith<$Res> {
-  __$$CrushInfoModelImplCopyWithImpl(
-      _$CrushInfoModelImpl _value, $Res Function(_$CrushInfoModelImpl) _then)
+class __$$PartnerInfoModelImplCopyWithImpl<$Res>
+    extends _$PartnerInfoModelCopyWithImpl<$Res, _$PartnerInfoModelImpl>
+    implements _$$PartnerInfoModelImplCopyWith<$Res> {
+  __$$PartnerInfoModelImplCopyWithImpl(_$PartnerInfoModelImpl _value,
+      $Res Function(_$PartnerInfoModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$CrushInfoModelImplCopyWithImpl<$Res>
     Object? job = null,
     Object? hobbies = null,
   }) {
-    return _then(_$CrushInfoModelImpl(
+    return _then(_$PartnerInfoModelImpl(
       genderRaw: null == genderRaw
           ? _value.genderRaw
           : genderRaw // ignore: cast_nullable_to_non_nullable
@@ -152,8 +152,8 @@ class __$$CrushInfoModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CrushInfoModelImpl extends _CrushInfoModel {
-  const _$CrushInfoModelImpl(
+class _$PartnerInfoModelImpl extends _PartnerInfoModel {
+  const _$PartnerInfoModelImpl(
       {@JsonKey(name: 'gender') required this.genderRaw,
       required this.name,
       @JsonKey(name: 'birthday') required this.birthdayRaw,
@@ -162,8 +162,8 @@ class _$CrushInfoModelImpl extends _CrushInfoModel {
       : _hobbies = hobbies,
         super._();
 
-  factory _$CrushInfoModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CrushInfoModelImplFromJson(json);
+  factory _$PartnerInfoModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PartnerInfoModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'gender')
@@ -185,14 +185,14 @@ class _$CrushInfoModelImpl extends _CrushInfoModel {
 
   @override
   String toString() {
-    return 'CrushInfoModel(genderRaw: $genderRaw, name: $name, birthdayRaw: $birthdayRaw, job: $job, hobbies: $hobbies)';
+    return 'PartnerInfoModel(genderRaw: $genderRaw, name: $name, birthdayRaw: $birthdayRaw, job: $job, hobbies: $hobbies)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CrushInfoModelImpl &&
+            other is _$PartnerInfoModelImpl &&
             (identical(other.genderRaw, genderRaw) ||
                 other.genderRaw == genderRaw) &&
             (identical(other.name, name) || other.name == name) &&
@@ -210,29 +210,29 @@ class _$CrushInfoModelImpl extends _CrushInfoModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CrushInfoModelImplCopyWith<_$CrushInfoModelImpl> get copyWith =>
-      __$$CrushInfoModelImplCopyWithImpl<_$CrushInfoModelImpl>(
+  _$$PartnerInfoModelImplCopyWith<_$PartnerInfoModelImpl> get copyWith =>
+      __$$PartnerInfoModelImplCopyWithImpl<_$PartnerInfoModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CrushInfoModelImplToJson(
+    return _$$PartnerInfoModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _CrushInfoModel extends CrushInfoModel {
-  const factory _CrushInfoModel(
+abstract class _PartnerInfoModel extends PartnerInfoModel {
+  const factory _PartnerInfoModel(
       {@JsonKey(name: 'gender') required final String genderRaw,
       required final String name,
       @JsonKey(name: 'birthday') required final String birthdayRaw,
       required final String job,
-      required final List<String> hobbies}) = _$CrushInfoModelImpl;
-  const _CrushInfoModel._() : super._();
+      required final List<String> hobbies}) = _$PartnerInfoModelImpl;
+  const _PartnerInfoModel._() : super._();
 
-  factory _CrushInfoModel.fromJson(Map<String, dynamic> json) =
-      _$CrushInfoModelImpl.fromJson;
+  factory _PartnerInfoModel.fromJson(Map<String, dynamic> json) =
+      _$PartnerInfoModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'gender')
@@ -248,6 +248,6 @@ abstract class _CrushInfoModel extends CrushInfoModel {
   List<String> get hobbies;
   @override
   @JsonKey(ignore: true)
-  _$$CrushInfoModelImplCopyWith<_$CrushInfoModelImpl> get copyWith =>
+  _$$PartnerInfoModelImplCopyWith<_$PartnerInfoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

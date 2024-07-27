@@ -35,12 +35,12 @@ class AIContext {
         return loveLanguage?.value(context) ?? '';
       }).toList();
 
-  String? get crushTypeDisplay =>
-      RelationshipType.tryParse(userInfo.crushType)?.displayText.value(context);
+  String? get relationshipDisplay =>
+      RelationshipType.tryParse(userInfo.relationship)?.displayText.value(context);
 
-  String? get crushGenderDisplay => userInfo.crushInfo?.gender.displayText.value(context);
+  String? get partnerGenderDisplay => userInfo.partnerInfo?.gender.displayText.value(context);
 
-  List<String>? get crushHobbiesDisplay => userInfo.crushInfo?.hobbies.map((e) {
+  List<String>? get partnerHobbiesDisplay => userInfo.partnerInfo?.hobbies.map((e) {
         final hobby = Hobbies.hobbies.firstWhereOrNull((p) => p.id == e);
         return hobby?.value(context) ?? '';
       }).toList();
@@ -96,45 +96,45 @@ class AIContext {
       }
     }
 
-    if (userInfo.crushInfo != null) {
-      final crushInfo = userInfo.crushInfo!;
-      if (userInfo.crushType.isNotEmpty) {
-        result = '$result. I already had $crushTypeDisplay';
+    if (userInfo.partnerInfo != null) {
+      final partnerInfo = userInfo.partnerInfo!;
+      if (userInfo.relationship.isNotEmpty) {
+        result = '$result. I already had $relationshipDisplay';
       } else {
-        result = '$result. I already had a crush';
+        result = '$result. I already had a partner';
       }
-      if (crushInfo.name.isNotEmpty) {
+      if (partnerInfo.name.isNotEmpty) {
         result = '$result. ${userInfo.name}';
       }
-      if (crushInfo.gender != Gender.other && crushInfo.gender != Gender.none) {
-        result = '$result, $crushGenderDisplay';
+      if (partnerInfo.gender != Gender.other && partnerInfo.gender != Gender.none) {
+        result = '$result, $partnerGenderDisplay';
       }
-      if (!crushInfo.birthday.isSameDate(DateTimeConst.empty())) {
-        final crushAge = DateTime.now().year - (crushInfo.birthday.year);
-        if (crushAge > 0) {
+      if (!partnerInfo.birthday.isSameDate(DateTimeConst.empty())) {
+        final partnerAge = DateTime.now().year - (partnerInfo.birthday.year);
+        if (partnerAge > 0) {
           result = '$result, $currentAge years old';
         }
       }
 
-      if (crushInfo.job.isNotEmpty) {
-        if (crushInfo.gender == Gender.male) {
-          result = '$result, and he is a ${crushInfo.job}';
+      if (partnerInfo.job.isNotEmpty) {
+        if (partnerInfo.gender == Gender.male) {
+          result = '$result, and he is a ${partnerInfo.job}';
         }
 
-        if (crushInfo.gender == Gender.female) {
-          result = '$result, and she is a ${crushInfo.job}';
+        if (partnerInfo.gender == Gender.female) {
+          result = '$result, and she is a ${partnerInfo.job}';
         }
       }
 
-      if (crushInfo.hobbies.isNotEmpty) {
-        if (crushInfo.gender == Gender.male) {
+      if (partnerInfo.hobbies.isNotEmpty) {
+        if (partnerInfo.gender == Gender.male) {
           result = '$result, and his hobbies are';
         }
 
-        if (crushInfo.gender == Gender.female) {
+        if (partnerInfo.gender == Gender.female) {
           result = '$result, and her hobbies are';
         }
-        for (final hobby in crushHobbiesDisplay ?? []) {
+        for (final hobby in partnerHobbiesDisplay ?? []) {
           result = '$result $hobby,';
         }
       }
@@ -177,45 +177,45 @@ class AIContext {
       }
     }
 
-    if (userInfo.crushInfo != null) {
-      final crushInfo = userInfo.crushInfo!;
-      if (userInfo.crushType.isNotEmpty) {
-        result = '$result. Tôi đã có $crushTypeDisplay';
+    if (userInfo.partnerInfo != null) {
+      final partnerInfo = userInfo.partnerInfo!;
+      if (userInfo.relationship.isNotEmpty) {
+        result = '$result. Tôi đã có $relationshipDisplay';
       } else {
         result = '$result. Tôi đã có một người thầm thích';
       }
-      if (crushInfo.name.isNotEmpty) {
-        result = '$result. ${crushInfo.name}';
+      if (partnerInfo.name.isNotEmpty) {
+        result = '$result. ${partnerInfo.name}';
       }
-      if (crushInfo.gender != Gender.other && crushInfo.gender != Gender.none) {
-        result = '$result, $crushGenderDisplay';
+      if (partnerInfo.gender != Gender.other && partnerInfo.gender != Gender.none) {
+        result = '$result, $partnerGenderDisplay';
       }
-      if (!crushInfo.birthday.isSameDate(DateTimeConst.empty())) {
-        final crushAge = DateTime.now().year - (crushInfo.birthday.year);
-        if (crushAge > 0) {
-          result = '$result, $crushAge tuổi';
+      if (!partnerInfo.birthday.isSameDate(DateTimeConst.empty())) {
+        final partnerAge = DateTime.now().year - (partnerInfo.birthday.year);
+        if (partnerAge > 0) {
+          result = '$result, $partnerAge tuổi';
         }
       }
 
-      if (crushInfo.job.isNotEmpty) {
-        if (crushInfo.gender == Gender.male) {
-          result = '$result, và anh ấy là một ${crushInfo.job}';
+      if (partnerInfo.job.isNotEmpty) {
+        if (partnerInfo.gender == Gender.male) {
+          result = '$result, và anh ấy là một ${partnerInfo.job}';
         }
 
-        if (crushInfo.gender == Gender.female) {
-          result = '$result, và cô ấy là một ${crushInfo.job}';
+        if (partnerInfo.gender == Gender.female) {
+          result = '$result, và cô ấy là một ${partnerInfo.job}';
         }
       }
 
-      if (crushInfo.hobbies.isNotEmpty) {
-        if (crushInfo.gender == Gender.male) {
+      if (partnerInfo.hobbies.isNotEmpty) {
+        if (partnerInfo.gender == Gender.male) {
           result = '$result, và sở thích của anh ấy là ';
         }
 
-        if (crushInfo.gender == Gender.female) {
+        if (partnerInfo.gender == Gender.female) {
           result = '$result, và sở thích của cô ấy là ';
         }
-        for (final hobby in crushHobbiesDisplay ?? []) {
+        for (final hobby in partnerHobbiesDisplay ?? []) {
           result = '$result $hobby,';
         }
       }
@@ -258,45 +258,45 @@ class AIContext {
       }
     }
 
-    if (userInfo.crushInfo != null) {
-      final crushInfo = userInfo.crushInfo!;
-      if (userInfo.crushType.isNotEmpty) {
-        result = '$result. 私は既に${userInfo.crushType}がありました';
+    if (userInfo.partnerInfo != null) {
+      final partnerInfo = userInfo.partnerInfo!;
+      if (userInfo.relationship.isNotEmpty) {
+        result = '$result. 私は既に${userInfo.relationship}がありました';
       } else {
         result = '$result. 私は既に片思いがありました';
       }
-      if (crushInfo.name.isNotEmpty) {
-        result = '$result. ${crushInfo.name}';
+      if (partnerInfo.name.isNotEmpty) {
+        result = '$result. ${partnerInfo.name}';
       }
-      if (crushInfo.gender != Gender.other && crushInfo.gender != Gender.none) {
-        result = '$result, $crushGenderDisplay';
+      if (partnerInfo.gender != Gender.other && partnerInfo.gender != Gender.none) {
+        result = '$result, $partnerGenderDisplay';
       }
-      if (!crushInfo.birthday.isSameDate(DateTimeConst.empty())) {
-        final crushAge = DateTime.now().year - (crushInfo.birthday.year);
-        if (crushAge > 0) {
-          result = '$result, $crushAge歳です';
+      if (!partnerInfo.birthday.isSameDate(DateTimeConst.empty())) {
+        final partnerAge = DateTime.now().year - (partnerInfo.birthday.year);
+        if (partnerAge > 0) {
+          result = '$result, $partnerAge歳です';
         }
       }
 
-      if (crushInfo.job.isNotEmpty) {
-        if (crushInfo.gender == Gender.male) {
-          result = '$result, そして彼は${crushInfo.job}です';
+      if (partnerInfo.job.isNotEmpty) {
+        if (partnerInfo.gender == Gender.male) {
+          result = '$result, そして彼は${partnerInfo.job}です';
         }
 
-        if (crushInfo.gender == Gender.female) {
-          result = '$result, そして彼女は${crushInfo.job}です';
+        if (partnerInfo.gender == Gender.female) {
+          result = '$result, そして彼女は${partnerInfo.job}です';
         }
       }
 
-      if (crushInfo.hobbies.isNotEmpty) {
-        if (crushInfo.gender == Gender.male) {
+      if (partnerInfo.hobbies.isNotEmpty) {
+        if (partnerInfo.gender == Gender.male) {
           result = '$result, そして彼の趣味は';
         }
 
-        if (crushInfo.gender == Gender.female) {
+        if (partnerInfo.gender == Gender.female) {
           result = '$result, そして彼女の趣味は';
         }
-        for (final hobby in crushHobbiesDisplay ?? []) {
+        for (final hobby in partnerHobbiesDisplay ?? []) {
           result = '$result $hobby,';
         }
       }
@@ -305,19 +305,20 @@ class AIContext {
   }
 
   String tipsGiftCommand(SpecialOccasion occasion) {
-    final crushType = (RelationshipType.tryParse(userInfo.crushType) ?? RelationshipType.crush)
-        .displayText
-        .value(context);
+    final relationship =
+        (RelationshipType.tryParse(userInfo.relationship) ?? RelationshipType.crush)
+            .displayText
+            .value(context);
     final currentLang = ProviderScope.containerOf(context).read(localizationNotifierProvider).lang;
     switch (currentLang) {
       case LocalizationEnum.english:
-        return '$_generateAIContext. Please give me gift suggestions for my $crushType on the occasion of ${occasion.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
+        return '$_generateAIContext. Please give me gift suggestions for my $relationship on the occasion of ${occasion.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
       case LocalizationEnum.japanese:
-        return '$_generateAIContext. 私の$crushTypeにお勧めの贈り物を、${occasion.title.value(context)}のお祝いの際に教えてください。具体的で詳細なフィードバックを提供してください。情報が不十分な場合は、異なるシナリオに合わせた提案をしてください。ナンセンスなことを言わないでください';
+        return '$_generateAIContext. 私の$relationshipにお勧めの贈り物を、${occasion.title.value(context)}のお祝いの際に教えてください。具体的で詳細なフィードバックを提供してください。情報が不十分な場合は、異なるシナリオに合わせた提案をしてください。ナンセンスなことを言わないでください';
       case LocalizationEnum.vietnamese:
-        return '$_generateAIContext. Hãy cho tôi gợi ý chọn quà tặng cho $crushType của tôi vào dịp ${occasion.title.value(context)}. Vui lòng cung cấp phản hồi cụ thể và chi tiết. Nếu thông tin chưa đủ, hãy đưa ra các gợi ý phù hợp với các tình huống khác nhau. Không nói tào lao.';
+        return '$_generateAIContext. Hãy cho tôi gợi ý chọn quà tặng cho $relationship của tôi vào dịp ${occasion.title.value(context)}. Vui lòng cung cấp phản hồi cụ thể và chi tiết. Nếu thông tin chưa đủ, hãy đưa ra các gợi ý phù hợp với các tình huống khác nhau. Không nói tào lao.';
       default:
-        return '$_generateAIContext. Please give me gift suggestions for my $crushType on the occasion of ${occasion.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
+        return '$_generateAIContext. Please give me gift suggestions for my $relationship on the occasion of ${occasion.title.value(context)}. Please provide specific and detailed feedback. If the information is insufficient, offer suggestions tailored to different scenarios. No crap';
     }
   }
 

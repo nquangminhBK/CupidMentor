@@ -1,24 +1,24 @@
 import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/utils/datetime_utils.dart';
-import 'package:cupid_mentor/features/auth/data/models/crush_info_model.dart';
+import 'package:cupid_mentor/features/auth/data/models/partner_info_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'crush_info.freezed.dart';
+part 'partner_info.freezed.dart';
 
 @freezed
-class CrushInfo with _$CrushInfo {
-  const CrushInfo._();
+class PartnerInfo with _$PartnerInfo {
+  const PartnerInfo._();
 
-  const factory CrushInfo({
+  const factory PartnerInfo({
     required Gender gender,
     required String name,
     required DateTime birthday,
     required String job,
     required List<String> hobbies,
-  }) = _CrushInfo;
+  }) = _PartnerInfo;
 
-  factory CrushInfo.empty() => CrushInfo(
+  factory PartnerInfo.empty() => PartnerInfo(
         gender: Gender.none,
         name: '',
         birthday: DateTimeConst.empty(),
@@ -26,8 +26,8 @@ class CrushInfo with _$CrushInfo {
         hobbies: [],
       );
 
-  CrushInfoModel get toModel {
-    return CrushInfoModel(
+  PartnerInfoModel get toModel {
+    return PartnerInfoModel(
       genderRaw: gender.value,
       name: name,
       birthdayRaw: DateTimeUtils.convertToString(birthday),

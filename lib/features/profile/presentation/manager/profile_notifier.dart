@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
+import 'package:cupid_mentor/features/auth/domain/entities/partner_info.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
 import 'package:cupid_mentor/features/profile/presentation/manager/profile_state.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
@@ -52,20 +52,20 @@ class ProfileNotifier extends _$ProfileNotifier {
     state = state.copyWith(tempUserInfo: currentUserInfo?.copyWith(hobbies: hobbies), error: null);
   }
 
-  void updateCrushHobbies(String hobby, bool isRemove) {
-    final currentCrushInfo = state.tempUserInfo?.crushInfo ?? CrushInfo.empty();
+  void updatePartnerHobbies(String hobby, bool isRemove) {
+    final currentPartnerInfo = state.tempUserInfo?.partnerInfo ?? PartnerInfo.empty();
     final currentUserInfo = state.tempUserInfo;
-    final hobbies = List<String>.from(currentCrushInfo.hobbies);
+    final hobbies = List<String>.from(currentPartnerInfo.hobbies);
     if (isRemove) {
       hobbies.remove(hobby);
     } else {
       hobbies.add(hobby);
     }
-    final updatedCrushInfo = currentCrushInfo.copyWith(
+    final updatedPartnerInfo = currentPartnerInfo.copyWith(
       hobbies: hobbies,
     );
     state = state.copyWith(
-      tempUserInfo: currentUserInfo?.copyWith(crushInfo: updatedCrushInfo),
+      tempUserInfo: currentUserInfo?.copyWith(partnerInfo: updatedPartnerInfo),
       error: '',
     );
   }
@@ -88,13 +88,13 @@ class ProfileNotifier extends _$ProfileNotifier {
     if (state.userInfo == null) return;
     await saveUserInfo(
       SaveUserInfoParam(
-        userInfo: state.userInfo!.copyWith(hasCrush: false, crushInfo: null, crushType: ''),
+        userInfo: state.userInfo!.copyWith(hasPartner: false, partnerInfo: null, relationship: ''),
       ),
     );
     state = state.copyWith(
       isLoading: false,
-      userInfo: state.userInfo!.copyWith(hasCrush: false, crushInfo: null, crushType: ''),
-      tempUserInfo: state.userInfo!.copyWith(hasCrush: false, crushInfo: null, crushType: ''),
+      userInfo: state.userInfo!.copyWith(hasPartner: false, partnerInfo: null, relationship: ''),
+      tempUserInfo: state.userInfo!.copyWith(hasPartner: false, partnerInfo: null, relationship: ''),
     );
   }
 
@@ -126,11 +126,11 @@ class ProfileNotifier extends _$ProfileNotifier {
     );
   }
 
-  void updateCrushType(RelationshipType type) {
+  void updateRelationship(RelationshipType type) {
     final currentUserInfo = state.tempUserInfo;
 
     state =
-        state.copyWith(tempUserInfo: currentUserInfo?.copyWith(crushType: type.value), error: null);
+        state.copyWith(tempUserInfo: currentUserInfo?.copyWith(relationship: type.value), error: null);
   }
 
   void updateBasicInfo({String? name, Gender? gender, DateTime? birthDay, String? job}) {
@@ -146,18 +146,18 @@ class ProfileNotifier extends _$ProfileNotifier {
     );
   }
 
-  void updateCrushBasicInfo({String? name, Gender? gender, DateTime? birthDay, String? job}) {
-    final currentCrushInfo = state.tempUserInfo?.crushInfo ?? CrushInfo.empty();
+  void updatePartnerBasicInfo({String? name, Gender? gender, DateTime? birthDay, String? job}) {
+    final currentPartnerInfo = state.tempUserInfo?.partnerInfo ?? PartnerInfo.empty();
     final currentUserInfo = state.tempUserInfo;
-    final updatedCrushInfo = currentCrushInfo.copyWith(
-      name: name ?? currentCrushInfo.name,
-      birthday: birthDay ?? currentCrushInfo.birthday,
-      job: job ?? currentCrushInfo.job,
-      gender: gender ?? currentCrushInfo.gender,
+    final updatedPartnerInfo = currentPartnerInfo.copyWith(
+      name: name ?? currentPartnerInfo.name,
+      birthday: birthDay ?? currentPartnerInfo.birthday,
+      job: job ?? currentPartnerInfo.job,
+      gender: gender ?? currentPartnerInfo.gender,
     );
     state = state.copyWith(
       tempUserInfo: currentUserInfo?.copyWith(
-        crushInfo: updatedCrushInfo,
+        partnerInfo: updatedPartnerInfo,
       ),
       error: '',
     );

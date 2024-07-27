@@ -68,7 +68,7 @@ class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
               Expanded(
                 child: Text(
                   (widget.selectedGender == Gender.none)
-                      ? context.l10n.crushGenderFieldHint
+                      ? context.l10n.partnerGenderFieldHint
                       : widget.selectedGender.displayText.value(context),
                   style: context.textTheme.bodyLarge,
                   overflow: TextOverflow.ellipsis,

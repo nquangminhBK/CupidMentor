@@ -9,8 +9,8 @@ import 'package:cupid_mentor/core/widgets/progress_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_basic_info_page.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_basic_info_page.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_hobbies_page.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_partner_basic_info_page.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_partner_hobbies_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_hobbies_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_love_languages_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_personalities_page.dart';
@@ -57,7 +57,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       }
     });
     final state = ref.watch(onboardingNotifierProvider);
-    final totalStep = state.userInfo.hasCrush ? 7 : 5;
+    final totalStep = state.userInfo.hasPartner ? 7 : 5;
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -101,9 +101,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     const InputRelationshipStatusPage(
                       isOnboarding: true,
                     ),
-                    if (state.userInfo.hasCrush) ...[
-                      const InputCrushBasicInfoPage(),
-                      const InputCrushHobbiesPage(),
+                    if (state.userInfo.hasPartner) ...[
+                      const InputPartnerBasicInfoPage(),
+                      const InputPartnerHobbiesPage(),
                     ],
                   ],
                   onPageChanged: (index) {

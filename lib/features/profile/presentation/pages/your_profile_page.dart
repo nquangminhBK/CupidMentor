@@ -97,8 +97,8 @@ class _YourProfilePagesState extends ConsumerState<YourProfilePages> {
                         },
                       ),
                       RelationshipStatus(
-                        status: state.userInfo!.hasCrush
-                            ? '${context.l10n.alreadyHave},\n${RelationshipType.tryParse(state.userInfo!.crushType)?.displayText.value(context) ?? ''}'
+                        status: state.userInfo!.hasPartner
+                            ? '${context.l10n.alreadyHave},\n${RelationshipType.tryParse(state.userInfo!.relationship)?.displayText.value(context) ?? ''}'
                             : context.l10n.notHaveYet,
                         onTapEditPartnerProfile: () {
                           NavigationService.instance.push(AppRoutes.partnerProfile);

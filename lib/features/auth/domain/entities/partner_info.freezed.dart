@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'crush_info.dart';
+part of 'partner_info.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$CrushInfo {
+mixin _$PartnerInfo {
   Gender get gender => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get birthday => throw _privateConstructorUsedError;
@@ -23,14 +23,15 @@ mixin _$CrushInfo {
   List<String> get hobbies => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CrushInfoCopyWith<CrushInfo> get copyWith =>
+  $PartnerInfoCopyWith<PartnerInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CrushInfoCopyWith<$Res> {
-  factory $CrushInfoCopyWith(CrushInfo value, $Res Function(CrushInfo) then) =
-      _$CrushInfoCopyWithImpl<$Res, CrushInfo>;
+abstract class $PartnerInfoCopyWith<$Res> {
+  factory $PartnerInfoCopyWith(
+          PartnerInfo value, $Res Function(PartnerInfo) then) =
+      _$PartnerInfoCopyWithImpl<$Res, PartnerInfo>;
   @useResult
   $Res call(
       {Gender gender,
@@ -41,9 +42,9 @@ abstract class $CrushInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CrushInfoCopyWithImpl<$Res, $Val extends CrushInfo>
-    implements $CrushInfoCopyWith<$Res> {
-  _$CrushInfoCopyWithImpl(this._value, this._then);
+class _$PartnerInfoCopyWithImpl<$Res, $Val extends PartnerInfo>
+    implements $PartnerInfoCopyWith<$Res> {
+  _$PartnerInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -85,11 +86,11 @@ class _$CrushInfoCopyWithImpl<$Res, $Val extends CrushInfo>
 }
 
 /// @nodoc
-abstract class _$$CrushInfoImplCopyWith<$Res>
-    implements $CrushInfoCopyWith<$Res> {
-  factory _$$CrushInfoImplCopyWith(
-          _$CrushInfoImpl value, $Res Function(_$CrushInfoImpl) then) =
-      __$$CrushInfoImplCopyWithImpl<$Res>;
+abstract class _$$PartnerInfoImplCopyWith<$Res>
+    implements $PartnerInfoCopyWith<$Res> {
+  factory _$$PartnerInfoImplCopyWith(
+          _$PartnerInfoImpl value, $Res Function(_$PartnerInfoImpl) then) =
+      __$$PartnerInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -101,11 +102,11 @@ abstract class _$$CrushInfoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CrushInfoImplCopyWithImpl<$Res>
-    extends _$CrushInfoCopyWithImpl<$Res, _$CrushInfoImpl>
-    implements _$$CrushInfoImplCopyWith<$Res> {
-  __$$CrushInfoImplCopyWithImpl(
-      _$CrushInfoImpl _value, $Res Function(_$CrushInfoImpl) _then)
+class __$$PartnerInfoImplCopyWithImpl<$Res>
+    extends _$PartnerInfoCopyWithImpl<$Res, _$PartnerInfoImpl>
+    implements _$$PartnerInfoImplCopyWith<$Res> {
+  __$$PartnerInfoImplCopyWithImpl(
+      _$PartnerInfoImpl _value, $Res Function(_$PartnerInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -117,7 +118,7 @@ class __$$CrushInfoImplCopyWithImpl<$Res>
     Object? job = null,
     Object? hobbies = null,
   }) {
-    return _then(_$CrushInfoImpl(
+    return _then(_$PartnerInfoImpl(
       gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
@@ -144,8 +145,8 @@ class __$$CrushInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CrushInfoImpl extends _CrushInfo {
-  const _$CrushInfoImpl(
+class _$PartnerInfoImpl extends _PartnerInfo {
+  const _$PartnerInfoImpl(
       {required this.gender,
       required this.name,
       required this.birthday,
@@ -172,14 +173,14 @@ class _$CrushInfoImpl extends _CrushInfo {
 
   @override
   String toString() {
-    return 'CrushInfo(gender: $gender, name: $name, birthday: $birthday, job: $job, hobbies: $hobbies)';
+    return 'PartnerInfo(gender: $gender, name: $name, birthday: $birthday, job: $job, hobbies: $hobbies)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CrushInfoImpl &&
+            other is _$PartnerInfoImpl &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.birthday, birthday) ||
@@ -195,18 +196,18 @@ class _$CrushInfoImpl extends _CrushInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CrushInfoImplCopyWith<_$CrushInfoImpl> get copyWith =>
-      __$$CrushInfoImplCopyWithImpl<_$CrushInfoImpl>(this, _$identity);
+  _$$PartnerInfoImplCopyWith<_$PartnerInfoImpl> get copyWith =>
+      __$$PartnerInfoImplCopyWithImpl<_$PartnerInfoImpl>(this, _$identity);
 }
 
-abstract class _CrushInfo extends CrushInfo {
-  const factory _CrushInfo(
+abstract class _PartnerInfo extends PartnerInfo {
+  const factory _PartnerInfo(
       {required final Gender gender,
       required final String name,
       required final DateTime birthday,
       required final String job,
-      required final List<String> hobbies}) = _$CrushInfoImpl;
-  const _CrushInfo._() : super._();
+      required final List<String> hobbies}) = _$PartnerInfoImpl;
+  const _PartnerInfo._() : super._();
 
   @override
   Gender get gender;
@@ -220,6 +221,6 @@ abstract class _CrushInfo extends CrushInfo {
   List<String> get hobbies;
   @override
   @JsonKey(ignore: true)
-  _$$CrushInfoImplCopyWith<_$CrushInfoImpl> get copyWith =>
+  _$$PartnerInfoImplCopyWith<_$PartnerInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

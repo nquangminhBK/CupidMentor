@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'crush_info_model.dart';
+part of 'partner_info_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CrushInfoModelImpl _$$CrushInfoModelImplFromJson(Map<String, dynamic> json) =>
-    _$CrushInfoModelImpl(
+_$PartnerInfoModelImpl _$$PartnerInfoModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PartnerInfoModelImpl(
       genderRaw: json['gender'] as String,
       name: json['name'] as String,
       birthdayRaw: json['birthday'] as String,
@@ -16,8 +17,8 @@ _$CrushInfoModelImpl _$$CrushInfoModelImplFromJson(Map<String, dynamic> json) =>
           (json['hobbies'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$CrushInfoModelImplToJson(
-        _$CrushInfoModelImpl instance) =>
+Map<String, dynamic> _$$PartnerInfoModelImplToJson(
+        _$PartnerInfoModelImpl instance) =>
     <String, dynamic>{
       'gender': instance.genderRaw,
       'name': instance.name,

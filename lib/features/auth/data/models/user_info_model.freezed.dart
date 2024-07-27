@@ -31,10 +31,10 @@ mixin _$LoggedInUserInfoModel {
   List<String> get personalities => throw _privateConstructorUsedError;
   List<String> get hobbies => throw _privateConstructorUsedError;
   List<String> get loveLanguages => throw _privateConstructorUsedError;
-  bool get hasCrush => throw _privateConstructorUsedError;
-  String get crushType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'crush')
-  CrushInfoModel? get crushInfoModel => throw _privateConstructorUsedError;
+  bool get hasPartner => throw _privateConstructorUsedError;
+  String get relationship => throw _privateConstructorUsedError;
+  @JsonKey(name: 'partner')
+  PartnerInfoModel? get partnerInfoModel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,11 +57,11 @@ abstract class $LoggedInUserInfoModelCopyWith<$Res> {
       List<String> personalities,
       List<String> hobbies,
       List<String> loveLanguages,
-      bool hasCrush,
-      String crushType,
-      @JsonKey(name: 'crush') CrushInfoModel? crushInfoModel});
+      bool hasPartner,
+      String relationship,
+      @JsonKey(name: 'partner') PartnerInfoModel? partnerInfoModel});
 
-  $CrushInfoModelCopyWith<$Res>? get crushInfoModel;
+  $PartnerInfoModelCopyWith<$Res>? get partnerInfoModel;
 }
 
 /// @nodoc
@@ -86,9 +86,9 @@ class _$LoggedInUserInfoModelCopyWithImpl<$Res,
     Object? personalities = null,
     Object? hobbies = null,
     Object? loveLanguages = null,
-    Object? hasCrush = null,
-    Object? crushType = null,
-    Object? crushInfoModel = freezed,
+    Object? hasPartner = null,
+    Object? relationship = null,
+    Object? partnerInfoModel = freezed,
   }) {
     return _then(_value.copyWith(
       genderRaw: null == genderRaw
@@ -123,30 +123,30 @@ class _$LoggedInUserInfoModelCopyWithImpl<$Res,
           ? _value.loveLanguages
           : loveLanguages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      hasCrush: null == hasCrush
-          ? _value.hasCrush
-          : hasCrush // ignore: cast_nullable_to_non_nullable
+      hasPartner: null == hasPartner
+          ? _value.hasPartner
+          : hasPartner // ignore: cast_nullable_to_non_nullable
               as bool,
-      crushType: null == crushType
-          ? _value.crushType
-          : crushType // ignore: cast_nullable_to_non_nullable
+      relationship: null == relationship
+          ? _value.relationship
+          : relationship // ignore: cast_nullable_to_non_nullable
               as String,
-      crushInfoModel: freezed == crushInfoModel
-          ? _value.crushInfoModel
-          : crushInfoModel // ignore: cast_nullable_to_non_nullable
-              as CrushInfoModel?,
+      partnerInfoModel: freezed == partnerInfoModel
+          ? _value.partnerInfoModel
+          : partnerInfoModel // ignore: cast_nullable_to_non_nullable
+              as PartnerInfoModel?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $CrushInfoModelCopyWith<$Res>? get crushInfoModel {
-    if (_value.crushInfoModel == null) {
+  $PartnerInfoModelCopyWith<$Res>? get partnerInfoModel {
+    if (_value.partnerInfoModel == null) {
       return null;
     }
 
-    return $CrushInfoModelCopyWith<$Res>(_value.crushInfoModel!, (value) {
-      return _then(_value.copyWith(crushInfoModel: value) as $Val);
+    return $PartnerInfoModelCopyWith<$Res>(_value.partnerInfoModel!, (value) {
+      return _then(_value.copyWith(partnerInfoModel: value) as $Val);
     });
   }
 }
@@ -169,12 +169,12 @@ abstract class _$$LoggedInUserInfoModelImplCopyWith<$Res>
       List<String> personalities,
       List<String> hobbies,
       List<String> loveLanguages,
-      bool hasCrush,
-      String crushType,
-      @JsonKey(name: 'crush') CrushInfoModel? crushInfoModel});
+      bool hasPartner,
+      String relationship,
+      @JsonKey(name: 'partner') PartnerInfoModel? partnerInfoModel});
 
   @override
-  $CrushInfoModelCopyWith<$Res>? get crushInfoModel;
+  $PartnerInfoModelCopyWith<$Res>? get partnerInfoModel;
 }
 
 /// @nodoc
@@ -197,9 +197,9 @@ class __$$LoggedInUserInfoModelImplCopyWithImpl<$Res>
     Object? personalities = null,
     Object? hobbies = null,
     Object? loveLanguages = null,
-    Object? hasCrush = null,
-    Object? crushType = null,
-    Object? crushInfoModel = freezed,
+    Object? hasPartner = null,
+    Object? relationship = null,
+    Object? partnerInfoModel = freezed,
   }) {
     return _then(_$LoggedInUserInfoModelImpl(
       genderRaw: null == genderRaw
@@ -234,18 +234,18 @@ class __$$LoggedInUserInfoModelImplCopyWithImpl<$Res>
           ? _value._loveLanguages
           : loveLanguages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      hasCrush: null == hasCrush
-          ? _value.hasCrush
-          : hasCrush // ignore: cast_nullable_to_non_nullable
+      hasPartner: null == hasPartner
+          ? _value.hasPartner
+          : hasPartner // ignore: cast_nullable_to_non_nullable
               as bool,
-      crushType: null == crushType
-          ? _value.crushType
-          : crushType // ignore: cast_nullable_to_non_nullable
+      relationship: null == relationship
+          ? _value.relationship
+          : relationship // ignore: cast_nullable_to_non_nullable
               as String,
-      crushInfoModel: freezed == crushInfoModel
-          ? _value.crushInfoModel
-          : crushInfoModel // ignore: cast_nullable_to_non_nullable
-              as CrushInfoModel?,
+      partnerInfoModel: freezed == partnerInfoModel
+          ? _value.partnerInfoModel
+          : partnerInfoModel // ignore: cast_nullable_to_non_nullable
+              as PartnerInfoModel?,
     ));
   }
 }
@@ -263,9 +263,9 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
       required final List<String> personalities,
       required final List<String> hobbies,
       required final List<String> loveLanguages,
-      required this.hasCrush,
-      required this.crushType,
-      @JsonKey(name: 'crush') required this.crushInfoModel})
+      required this.hasPartner,
+      required this.relationship,
+      @JsonKey(name: 'partner') required this.partnerInfoModel})
       : _personalities = personalities,
         _hobbies = hobbies,
         _loveLanguages = loveLanguages,
@@ -311,16 +311,16 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
   }
 
   @override
-  final bool hasCrush;
+  final bool hasPartner;
   @override
-  final String crushType;
+  final String relationship;
   @override
-  @JsonKey(name: 'crush')
-  final CrushInfoModel? crushInfoModel;
+  @JsonKey(name: 'partner')
+  final PartnerInfoModel? partnerInfoModel;
 
   @override
   String toString() {
-    return 'LoggedInUserInfoModel(genderRaw: $genderRaw, name: $name, avatar: $avatar, birthdayRaw: $birthdayRaw, job: $job, personalities: $personalities, hobbies: $hobbies, loveLanguages: $loveLanguages, hasCrush: $hasCrush, crushType: $crushType, crushInfoModel: $crushInfoModel)';
+    return 'LoggedInUserInfoModel(genderRaw: $genderRaw, name: $name, avatar: $avatar, birthdayRaw: $birthdayRaw, job: $job, personalities: $personalities, hobbies: $hobbies, loveLanguages: $loveLanguages, hasPartner: $hasPartner, relationship: $relationship, partnerInfoModel: $partnerInfoModel)';
   }
 
   @override
@@ -340,12 +340,12 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
             const DeepCollectionEquality().equals(other._hobbies, _hobbies) &&
             const DeepCollectionEquality()
                 .equals(other._loveLanguages, _loveLanguages) &&
-            (identical(other.hasCrush, hasCrush) ||
-                other.hasCrush == hasCrush) &&
-            (identical(other.crushType, crushType) ||
-                other.crushType == crushType) &&
-            (identical(other.crushInfoModel, crushInfoModel) ||
-                other.crushInfoModel == crushInfoModel));
+            (identical(other.hasPartner, hasPartner) ||
+                other.hasPartner == hasPartner) &&
+            (identical(other.relationship, relationship) ||
+                other.relationship == relationship) &&
+            (identical(other.partnerInfoModel, partnerInfoModel) ||
+                other.partnerInfoModel == partnerInfoModel));
   }
 
   @JsonKey(ignore: true)
@@ -360,9 +360,9 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
       const DeepCollectionEquality().hash(_personalities),
       const DeepCollectionEquality().hash(_hobbies),
       const DeepCollectionEquality().hash(_loveLanguages),
-      hasCrush,
-      crushType,
-      crushInfoModel);
+      hasPartner,
+      relationship,
+      partnerInfoModel);
 
   @JsonKey(ignore: true)
   @override
@@ -389,10 +389,10 @@ abstract class _LoggedInUserInfoModel extends LoggedInUserInfoModel {
           required final List<String> personalities,
           required final List<String> hobbies,
           required final List<String> loveLanguages,
-          required final bool hasCrush,
-          required final String crushType,
-          @JsonKey(name: 'crush')
-          required final CrushInfoModel? crushInfoModel}) =
+          required final bool hasPartner,
+          required final String relationship,
+          @JsonKey(name: 'partner')
+          required final PartnerInfoModel? partnerInfoModel}) =
       _$LoggedInUserInfoModelImpl;
   const _LoggedInUserInfoModel._() : super._();
 
@@ -418,12 +418,12 @@ abstract class _LoggedInUserInfoModel extends LoggedInUserInfoModel {
   @override
   List<String> get loveLanguages;
   @override
-  bool get hasCrush;
+  bool get hasPartner;
   @override
-  String get crushType;
+  String get relationship;
   @override
-  @JsonKey(name: 'crush')
-  CrushInfoModel? get crushInfoModel;
+  @JsonKey(name: 'partner')
+  PartnerInfoModel? get partnerInfoModel;
   @override
   @JsonKey(ignore: true)
   _$$LoggedInUserInfoModelImplCopyWith<_$LoggedInUserInfoModelImpl>

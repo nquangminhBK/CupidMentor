@@ -13,14 +13,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InputCrushBasicInfoPage extends ConsumerStatefulWidget {
-  const InputCrushBasicInfoPage({super.key});
+class InputPartnerBasicInfoPage extends ConsumerStatefulWidget {
+  const InputPartnerBasicInfoPage({super.key});
 
   @override
-  ConsumerState<InputCrushBasicInfoPage> createState() => _InputCrushBasicInfoPageState();
+  ConsumerState<InputPartnerBasicInfoPage> createState() => _InputPartnerBasicInfoPageState();
 }
 
-class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPage> {
+class _InputPartnerBasicInfoPageState extends ConsumerState<InputPartnerBasicInfoPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController jobController = TextEditingController();
   final FocusNode nameFocusNode = FocusNode();
@@ -38,20 +38,20 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
   @override
   Widget build(BuildContext context) {
     final onboardingNotifier = ref.read(onboardingNotifierProvider.notifier);
-    final crushInfo = ref.watch(onboardingNotifierProvider).userInfo.crushInfo;
-    final gender = crushInfo?.gender ?? Gender.none;
-    if (crushInfo != null) {
+    final partnerInfo = ref.watch(onboardingNotifierProvider).userInfo.partnerInfo;
+    final gender = partnerInfo?.gender ?? Gender.none;
+    if (partnerInfo != null) {
       if (kIsWeb) {
         nameController.value = nameController.value.copyWith(
-          text: crushInfo.name,
+          text: partnerInfo.name,
           selection: TextSelection.collapsed(
-            offset: crushInfo.name.length,
+            offset: partnerInfo.name.length,
           ),
         );
         jobController.value = jobController.value.copyWith(
-          text: crushInfo.job,
+          text: partnerInfo.job,
           selection: TextSelection.collapsed(
-            offset: crushInfo.job.length,
+            offset: partnerInfo.job.length,
           ),
         );
         /*TODO: the reason why we need this is because of this bug
@@ -59,86 +59,86 @@ class _InputCrushBasicInfoPageState extends ConsumerState<InputCrushBasicInfoPag
               need to check and update in the future
       */
       } else {
-        nameController.text = crushInfo.name;
-        jobController.text = crushInfo.job;
+        nameController.text = partnerInfo.name;
+        jobController.text = partnerInfo.job;
       }
     }
 
     return PageSkeletonWidget(
-      title: context.l10n.inputCrushBasicInfoTitle,
-      description: context.l10n.inputCrushBasicInfoDesc,
+      title: context.l10n.inputPartnerBasicInfoTitle,
+      description: context.l10n.inputPartnerBasicInfoDesc,
       children: [
         Text(
           gender == Gender.none
-              ? context.l10n.crushNameFieldTitle
+              ? context.l10n.partnerNameFieldTitle
               : (gender == Gender.male
-                  ? context.l10n.maleCrushNameFieldTitle
-                  : context.l10n.femaleCrushNameFieldTitle),
+                  ? context.l10n.malePartnerNameFieldTitle
+                  : context.l10n.femalePartnerNameFieldTitle),
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         MyTextField(
           controller: nameController,
           focusNode: nameFocusNode,
-          key: const ValueKey('crushName'),
+          key: const ValueKey('PartnerName'),
           onChanged: (text) {
-            onboardingNotifier.updateCrushBasicInfo(name: text);
+            onboardingNotifier.updatePartnerBasicInfo(name: text);
           },
-          hintText: context.l10n.crushNameFieldHint,
+          hintText: context.l10n.partnerNameFieldHint,
         ),
         const VerticalSpace(size: 24),
         Text(
           gender == Gender.none
-              ? context.l10n.crushGenderFieldTitle
+              ? context.l10n.partnerGenderFieldTitle
               : (gender == Gender.male
-                  ? context.l10n.maleCrushGenderFieldTitle
-                  : context.l10n.femaleCrushGenderFieldTitle),
+                  ? context.l10n.malePartnerGenderFieldTitle
+                  : context.l10n.femalePartnerGenderFieldTitle),
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         SelectGenderDropdown(
           onSelectGender: (Gender? gender) =>
-              onboardingNotifier.updateCrushBasicInfo(gender: gender),
+              onboardingNotifier.updatePartnerBasicInfo(gender: gender),
           selectedGender: gender,
-          hint: context.l10n.crushGenderFieldHint,
+          hint: context.l10n.partnerGenderFieldHint,
         ),
         const VerticalSpace(size: 24),
         Text(
           gender == Gender.none
-              ? context.l10n.crushBirthdayFieldTitle
+              ? context.l10n.partnerBirthdayFieldTitle
               : (gender == Gender.male
-                  ? context.l10n.maleCrushBirthdayFieldTitle
-                  : context.l10n.femaleCrushBirthdayFieldTitle),
+                  ? context.l10n.malePartnerBirthdayFieldTitle
+                  : context.l10n.femalePartnerBirthdayFieldTitle),
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         SelectDateWidget(
-          hint: context.l10n.crushBirthdayFieldHint,
+          hint: context.l10n.partnerBirthdayFieldHint,
           onDateSelected: (selectedDate) {
-            onboardingNotifier.updateCrushBasicInfo(birthDay: selectedDate);
+            onboardingNotifier.updatePartnerBasicInfo(birthDay: selectedDate);
           },
-          selectedDate: (crushInfo?.birthday.isSameDate(DateTimeConst.empty()) ?? true)
+          selectedDate: (partnerInfo?.birthday.isSameDate(DateTimeConst.empty()) ?? true)
               ? null
-              : crushInfo!.birthday,
+              : partnerInfo!.birthday,
         ),
         const VerticalSpace(size: 24),
         Text(
           gender == Gender.none
-              ? context.l10n.crushJobFieldTitle
+              ? context.l10n.partnerJobFieldTitle
               : (gender == Gender.male
-                  ? context.l10n.maleCrushJobFieldTitle
-                  : context.l10n.femaleCrushJobFieldTitle),
+                  ? context.l10n.malePartnerJobFieldTitle
+                  : context.l10n.femalePartnerJobFieldTitle),
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
         MyTextField(
           controller: jobController,
           focusNode: jobFocusNode,
-          key: const ValueKey('crushJobs'),
+          key: const ValueKey('PartnerJobs'),
           onChanged: (text) {
-            onboardingNotifier.updateCrushBasicInfo(job: text);
+            onboardingNotifier.updatePartnerBasicInfo(job: text);
           },
-          hintText: context.l10n.crushJobFieldHint,
+          hintText: context.l10n.partnerJobFieldHint,
         ),
         const VerticalSpace(size: 24),
         Row(

@@ -22,11 +22,11 @@ _$LoggedInUserInfoModelImpl _$$LoggedInUserInfoModelImplFromJson(
       loveLanguages: (json['loveLanguages'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      hasCrush: json['hasCrush'] as bool,
-      crushType: json['crushType'] as String,
-      crushInfoModel: json['crush'] == null
+      hasPartner: json['hasPartner'] as bool,
+      relationship: json['relationship'] as String,
+      partnerInfoModel: json['partner'] == null
           ? null
-          : CrushInfoModel.fromJson(json['crush'] as Map<String, dynamic>),
+          : PartnerInfoModel.fromJson(json['partner'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$LoggedInUserInfoModelImplToJson(
@@ -40,7 +40,7 @@ Map<String, dynamic> _$$LoggedInUserInfoModelImplToJson(
       'personalities': instance.personalities,
       'hobbies': instance.hobbies,
       'loveLanguages': instance.loveLanguages,
-      'hasCrush': instance.hasCrush,
-      'crushType': instance.crushType,
-      'crush': instance.crushInfoModel?.toJson(),
+      'hasPartner': instance.hasPartner,
+      'relationship': instance.relationship,
+      'partner': instance.partnerInfoModel?.toJson(),
     };

@@ -8,8 +8,8 @@ import 'package:cupid_mentor/core/widgets/navigate_button.dart';
 import 'package:cupid_mentor/core/widgets/progress_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_basic_info_page.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_hobbies_page.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_partner_basic_info_page.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/pages/input_partner_hobbies_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_relationship_status_page.dart';
 import 'package:cupid_mentor/features/profile/presentation/manager/profile_notifier.dart';
 import 'package:flutter/material.dart';
@@ -105,8 +105,8 @@ class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
                     InputRelationshipStatusPage(
                       isOnboarding: false,
                     ),
-                    InputCrushBasicInfoPage(),
-                    InputCrushHobbiesPage(),
+                    InputPartnerBasicInfoPage(),
+                    InputPartnerHobbiesPage(),
                   ],
                   onPageChanged: (index) {
                     setState(() {
