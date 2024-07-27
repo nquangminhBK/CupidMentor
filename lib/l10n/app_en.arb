@@ -93,8 +93,17 @@
   "logout": "Logout",
   "generateFailed": "Too many requests, please try again in a few minutes.",
   "generateANewOne": "Let's generate a new one",
-  "generating" : "Generating...",
-  "addPartnerScreenTitle" : "What's your relationship with that special someone?",
-  "addPartnerDesc" : "If you have someone special in your life, please share some details about them so we can provide you with more tailored and meaningful advice.",
-  "addPartnerInfoBtn" : "Add information"
+  "generating": "Generating...",
+  "addPartnerScreenTitle": "What's your relationship with that special someone?",
+  "addPartnerDesc": "If you have someone special in your life, please share some details about them so we can provide you with more tailored and meaningful advice.",
+  "addPartnerInfoBtn": "Add information",
+  "onboardingMissingNameError": "Please input your name!",
+  "onboardingMissingGenderError": "Please select your gender!",
+  "onboardingMissingBirthdayError": "Please input your birthday!",
+  "onboardingMissingJobError": "Please input your job!",
+  "onboardingMissingPersonalitiesError": "Please select some work to describe the real you!",
+  "onboardingMissingHobbiesError": "Please select some hobbies, The more we know about you, the easier it will be for us to give advice!",
+  "onboardingMissingLoveLanguagesError": "Please tell us about your love language, The more we know about you, the easier it will be for us to give advice!",
+  "onboardingMissingRelationshipTypeError": "Please select your relationship with them before adding their personal information!",
+  "onboardingMissingPartnerGenderError": "Please let us know at least their gender so we can offer more tailored advice."
 }

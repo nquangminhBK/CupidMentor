@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/errors/ui_failures.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,9 +11,9 @@ abstract class OnboardingState with _$OnboardingState {
   const factory OnboardingState({
     required LoggedInUserInfo userInfo,
     required bool canGoNext,
-    required String errorMessage,
+    required UIError? error,
   }) = _OnboardingState;
 
   factory OnboardingState.initial() =>
-      OnboardingState(userInfo: LoggedInUserInfo.empty(), canGoNext: false, errorMessage: '');
+      OnboardingState(userInfo: LoggedInUserInfo.empty(), canGoNext: false, error: null);
 }

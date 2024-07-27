@@ -1,5 +1,3 @@
-import 'package:collection/collection.dart';
-import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
@@ -37,7 +35,6 @@ class _YourProfilePagesState extends ConsumerState<YourProfilePages> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(profileNotifierProvider);
-    print("minh check ${state.userInfo}");
     return Container(
       color: context.theme.scaffoldBackgroundColor,
       child: SafeArea(
@@ -59,39 +56,46 @@ class _YourProfilePagesState extends ConsumerState<YourProfilePages> {
                         gender: state.userInfo!.gender,
                         onTapEditBasicInfo: () {
                           showDialog(
-                              context: context,
-                              builder: (context) {
-                                return UpdateYourBasicInfoDialog();
-                              });
+                            context: context,
+                            builder: (context) {
+                              return const UpdateYourBasicInfoDialog();
+                            },
+                          );
                         },
                       ),
                       DescribeYouWidget(
-                          personalities: state.userInfo!.personalities,
-                          onTapEdit: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return UpdatePersonalitiesDialog();
-                                });
-                          }),
+                        personalities: state.userInfo!.personalities,
+                        onTapEdit: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const UpdatePersonalitiesDialog();
+                            },
+                          );
+                        },
+                      ),
                       HobbiesWidget(
-                          hobbies: state.userInfo!.hobbies,
-                          onTapEdit: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return UpdateHobbiesDialog();
-                                });
-                          }),
+                        hobbies: state.userInfo!.hobbies,
+                        onTapEdit: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const UpdateHobbiesDialog();
+                            },
+                          );
+                        },
+                      ),
                       LoveLanguagesWidget(
-                          loveLanguages: state.userInfo!.loveLanguages,
-                          onTapEdit: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return UpdateLoveLanguagesDialog();
-                                });
-                          }),
+                        loveLanguages: state.userInfo!.loveLanguages,
+                        onTapEdit: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const UpdateLoveLanguagesDialog();
+                            },
+                          );
+                        },
+                      ),
                       RelationshipStatus(
                         status: state.userInfo!.hasCrush
                             ? '${context.l10n.alreadyHave},\n${RelationshipType.tryParse(state.userInfo!.crushType)?.displayText.value(context) ?? ''}'

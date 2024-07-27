@@ -168,6 +168,6 @@ class _UpdatePersonalitiesDialogState extends ConsumerState<UpdatePersonalitiesD
                   ),
                 ],
               ),
-            )));
+            ),),);
   }
 }

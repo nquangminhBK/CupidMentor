@@ -16,7 +16,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../onboarding/presentation/widgets/dialog_love_language_concepts.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/widgets/dialog_love_language_concepts.dart';
 
 class UpdateLoveLanguagesDialog extends ConsumerStatefulWidget {
   const UpdateLoveLanguagesDialog({super.key});

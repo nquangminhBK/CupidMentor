@@ -38,9 +38,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(onboardingNotifierProvider, (previous, next) {
-      if (next.errorMessage.isNotEmpty) {
+      if (next.error != null) {
         SnackBarService.instance.showErrorSnackBar(
-          message: next.errorMessage,
+          message: next.error!.getDisplayMessage(context),
           context: context,
           icon: Icons.warning_amber_rounded,
         );

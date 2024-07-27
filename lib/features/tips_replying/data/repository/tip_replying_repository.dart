@@ -1,5 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:cupid_mentor/core/errors/failure.dart';
+import 'package:cupid_mentor/core/errors/api_failure.dart';
 import 'package:cupid_mentor/core/utils/mixin/connectivity_mixin.dart';
 import 'package:cupid_mentor/features/tips_replying/data/data_sources/tip_replying_datasource.dart';
 import 'package:cupid_mentor/features/tips_replying/domain/repository/tip_replying_repository.dart';

@@ -9,7 +9,6 @@ import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_date_widget.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_gender_dropdown.dart';
 import 'package:cupid_mentor/features/profile/presentation/manager/profile_notifier.dart';
@@ -47,7 +46,6 @@ class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInf
     final notifier = ref.read(profileNotifierProvider.notifier);
     final crushInfo = ref.watch(profileNotifierProvider).tempUserInfo?.crushInfo;
     final userInfo = ref.watch(profileNotifierProvider).tempUserInfo;
-    print("minh check $crushInfo");
     if (crushInfo == null) return const SizedBox();
     if (kIsWeb) {
       nameController.value = nameController.value.copyWith(
@@ -94,11 +92,12 @@ class _UpdateCrushBasicInfoDialogState extends ConsumerState<UpdateCrushBasicInf
             ),
             const VerticalSpace(size: 6),
             SelectRelationshipType(
-                onTypeSelected: (type) {
-                  notifier.updateCrushType(type);
-                },
-                selectedType: RelationshipType.tryParse(userInfo?.crushType ?? ''),
-                hint: 'Select type'),
+              onTypeSelected: (type) {
+                notifier.updateCrushType(type);
+              },
+              selectedType: RelationshipType.tryParse(userInfo?.crushType ?? ''),
+              hint: 'Select type',
+            ),
             const VerticalSpace(size: 6),
             Text(
               context.l10n.nameFieldTitle,

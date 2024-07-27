@@ -96,5 +96,15 @@
   "generating" : "生成中...",
   "addPartnerScreenTitle" : "その特別な人との関係はどうですか？",
   "addPartnerDesc" : "もし特別な人がいるなら、その人について少し教えてください。もっと具体的で有益なアドバイスができるようになります。",
-  "addPartnerInfoBtn" : "その人の情報を入力"
+  "addPartnerInfoBtn" : "その人の情報を入力",
+  "onboardingMissingNameError": "名前を入力してください！",
+  "onboardingMissingGenderError": "性別を選択してください！",
+  "onboardingMissingBirthdayError": "誕生日を入力してください！",
+  "onboardingMissingJobError": "仕事を入力してください！",
+  "onboardingMissingPersonalitiesError": "あなたの本当の姿を表すいくつかの仕事を選択してください！",
+  "onboardingMissingHobbiesError": "趣味を選択してください。私たちがあなたについて知るほど、より良いアドバイスを提供できます！",
+  "onboardingMissingLoveLanguagesError": "あなたの愛の言語について教えてください。私たちがあなたについて知るほど、より良いアドバイスを提供できます！",
+  "onboardingMissingRelationshipTypeError": "彼らの個人情報を追加する前に、あなたと彼らの関係を選択してください！",
+  "onboardingMissingPartnerGenderError": "より良いアドバイスを提供できるように、彼らの性別を少なくとも教えてください。"
+
 }

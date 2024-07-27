@@ -8,7 +8,6 @@ import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_date_widget.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/select_gender_dropdown.dart';
 import 'package:cupid_mentor/features/profile/presentation/manager/profile_notifier.dart';

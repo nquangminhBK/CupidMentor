@@ -37,14 +37,15 @@ class _SelectRelationshipTypeState extends ConsumerState<SelectRelationshipType>
           isSelected = true;
         });
         showModalBottomSheet(
-            useRootNavigator: true,
-            context: context,
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            builder: (context) => BottomSheetSelectRelationshipType(
-                  initialValue: widget.selectedType ?? RelationshipType.crush,
-                  onTap: widget.onTypeSelected,
-                )).then((_) {
+          useRootNavigator: true,
+          context: context,
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
+          builder: (context) => BottomSheetSelectRelationshipType(
+            initialValue: widget.selectedType ?? RelationshipType.crush,
+            onTap: widget.onTypeSelected,
+          ),
+        ).then((_) {
           setState(() {
             isSelected = false;
           });
@@ -74,8 +75,11 @@ class _SelectRelationshipTypeState extends ConsumerState<SelectRelationshipType>
 }
 
 class BottomSheetSelectRelationshipType extends ConsumerWidget {
-  const BottomSheetSelectRelationshipType(
-      {super.key, required this.initialValue, required this.onTap});
+  const BottomSheetSelectRelationshipType({
+    super.key,
+    required this.initialValue,
+    required this.onTap,
+  });
 
   final RelationshipType initialValue;
   final Function(RelationshipType) onTap;
@@ -93,7 +97,7 @@ class BottomSheetSelectRelationshipType extends ConsumerWidget {
         children: RelationshipType.values
             .map(
               (type) => AnimatedButton(
-                onPress: (){
+                onPress: () {
                   onTap(type);
                   NavigationService.instance.pop();
                 },

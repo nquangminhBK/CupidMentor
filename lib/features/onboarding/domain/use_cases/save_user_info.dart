@@ -1,4 +1,4 @@
-import 'package:cupid_mentor/core/errors/failure.dart';
+import 'package:cupid_mentor/core/errors/api_failure.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/onboarding/domain/repository/onboarding_repository.dart';

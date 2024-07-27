@@ -3,19 +3,19 @@ import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/utils/datetime_utils.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/item_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BasicInfoWidget extends ConsumerWidget {
-  const BasicInfoWidget(
-      {super.key,
-      required this.name,
-      required this.job,
-      required this.gender,
-      required this.birthday,
-      required this.onTapEditBasicInfo});
+  const BasicInfoWidget({
+    super.key,
+    required this.name,
+    required this.job,
+    required this.gender,
+    required this.birthday,
+    required this.onTapEditBasicInfo,
+  });
 
   final String name;
   final String job;
@@ -39,7 +39,7 @@ class BasicInfoWidget extends ConsumerWidget {
       if (genderDisplay.isNotEmpty || birthdayDisplay.isNotEmpty) {
         result = '$nameDisplay\n${[
           genderDisplay,
-          birthdayDisplay
+          birthdayDisplay,
         ].where((e) => e.isNotEmpty).join(', ')}';
       }
       return result.trim();

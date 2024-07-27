@@ -1,6 +1,5 @@
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/adaptive_screen.dart';
-import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
 import 'package:cupid_mentor/features/auth/presentation/pages/login_screen.dart';
 import 'package:cupid_mentor/features/home/presentation/pages/home_screen.dart';
 import 'package:cupid_mentor/features/localization/presentation/pages/select_language_page.dart';

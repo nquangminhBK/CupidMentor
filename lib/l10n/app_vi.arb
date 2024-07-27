@@ -96,6 +96,15 @@
   "generating" : "Đang tạo...",
   "addPartnerScreenTitle" : "Mối quan hệ của bạn với người đặc biệt đó là gì?",
   "addPartnerDesc" : "Nếu bạn đã có người đặc biệt của mình, hãy cho chúng tôi biết một vài thông tin về người đó để chúng tôi có thể cho bạn nhiều lời khuyên hợp lý và cụ thể hơn nhé!",
-  "addPartnerInfoBtn" : "Nhập thông tin"
+  "addPartnerInfoBtn" : "Nhập thông tin",
+  "onboardingMissingNameError": "Vui lòng nhập tên của bạn!",
+  "onboardingMissingGenderError": "Vui lòng chọn giới tính của bạn!",
+  "onboardingMissingBirthdayError": "Vui lòng nhập ngày sinh của bạn!",
+  "onboardingMissingJobError": "Vui lòng nhập công việc của bạn!",
+  "onboardingMissingPersonalitiesError": "Vui lòng chọn một số đặc điểm để miêu tả con người thật của bạn!",
+  "onboardingMissingHobbiesError": "Vui lòng chọn một số sở thích của bạn, chúng tôi càng biết nhiều về bạn, chúng tôi sẽ dễ dàng đưa ra lời khuyên hơn!",
+  "onboardingMissingLoveLanguagesError": "Vui lòng cho chúng tôi biết về ngôn ngữ tình yêu của bạn, chúng tôi càng biết nhiều về bạn, chúng tôi càng dễ dàng đưa ra lời khuyên hơn!",
+  "onboardingMissingRelationshipTypeError": "Vui lòng chọn mối quan hệ của bạn với họ trước khi thêm thông tin cá nhân của họ!",
+  "onboardingMissingPartnerGenderError": "Vui lòng cho chúng tôi biết ít nhất là giới tính của họ để chúng tôi đưa ra những lời khuyên tốt hơn."
 
 }

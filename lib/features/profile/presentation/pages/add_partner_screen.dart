@@ -1,7 +1,6 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
-import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
@@ -9,12 +8,8 @@ import 'package:cupid_mentor/core/widgets/navigate_button.dart';
 import 'package:cupid_mentor/core/widgets/progress_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_basic_info_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_basic_info_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_crush_hobbies_page.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_hobbies_page.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_love_languages_page.dart';
-import 'package:cupid_mentor/features/onboarding/presentation/pages/input_personalities_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_relationship_status_page.dart';
 import 'package:cupid_mentor/features/profile/presentation/manager/profile_notifier.dart';
 import 'package:flutter/material.dart';
@@ -40,9 +35,9 @@ class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(onboardingNotifierProvider, (previous, next) {
-      if (next.errorMessage.isNotEmpty) {
+      if (next.error != null) {
         SnackBarService.instance.showErrorSnackBar(
-          message: next.errorMessage,
+          message: next.error!.getDisplayMessage(context),
           context: context,
           icon: Icons.warning_amber_rounded,
         );
@@ -58,7 +53,6 @@ class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
         });
       }
     });
-    final state = ref.watch(onboardingNotifierProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -107,12 +101,12 @@ class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
                 child: PageView(
                   physics: const NeverScrollableScrollPhysics(),
                   controller: pageController,
-                  children: [
-                    const InputRelationshipStatusPage(
+                  children: const [
+                    InputRelationshipStatusPage(
                       isOnboarding: false,
                     ),
-                    const InputCrushBasicInfoPage(),
-                    const InputCrushHobbiesPage(),
+                    InputCrushBasicInfoPage(),
+                    InputCrushHobbiesPage(),
                   ],
                   onPageChanged: (index) {
                     setState(() {

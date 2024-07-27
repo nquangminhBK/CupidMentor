@@ -9,15 +9,11 @@ import 'package:cupid_mentor/features/localization/presentation/manager/localiza
 import 'package:cupid_mentor/features/tips_replying/presentation/manager/tip_replying_notifier.dart';
 import 'package:cupid_mentor/features/tips_replying/presentation/widgets/chat_l10n.dart';
 import 'package:cupid_mentor/features/tips_replying/presentation/widgets/chat_theme.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:mime/mime.dart';
 import 'package:open_filex/open_filex.dart';
 
 class TipsReplyingMessageScreen extends ConsumerStatefulWidget {
@@ -129,7 +125,7 @@ class _TipsReplyingMessageScreenState extends ConsumerState<TipsReplyingMessageS
 
   Future<void> _handleMessageTap(BuildContext _, types.Message message) async {
     if (message is types.FileMessage) {
-      var localPath = message.uri;
+      final localPath = message.uri;
 
       if (message.uri.startsWith('http')) {}
 

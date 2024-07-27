@@ -3,8 +3,11 @@ import 'package:cupid_mentor/features/profile/presentation/widgets/item_info.dar
 import 'package:flutter/material.dart';
 
 class RelationshipStatus extends StatelessWidget {
-  const RelationshipStatus(
-      {super.key, required this.status, required this.onTapEditPartnerProfile});
+  const RelationshipStatus({
+    super.key,
+    required this.status,
+    required this.onTapEditPartnerProfile,
+  });
 
   final String status;
   final Function() onTapEditPartnerProfile;

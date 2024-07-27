@@ -1,7 +1,4 @@
-import 'package:collection/collection.dart';
-import 'package:cupid_mentor/core/constants/hobbies.dart';
 import 'package:cupid_mentor/core/constants/love_language.dart';
-import 'package:cupid_mentor/core/constants/personalities.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';

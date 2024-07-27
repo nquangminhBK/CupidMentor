@@ -170,6 +170,6 @@ class _UpdateCrushHobbiesDialogState extends ConsumerState<UpdateCrushHobbiesDia
                   ),
                 ],
               ),
-            )));
+            ),),);
   }
 }

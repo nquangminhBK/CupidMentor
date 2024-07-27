@@ -1,6 +1,7 @@
 import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
+import 'package:cupid_mentor/core/errors/ui_failures.dart';
 import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/crush_info.dart';
@@ -9,7 +10,6 @@ import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_us
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_state.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
-import 'package:dartz/dartz.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'onboarding_notifier.g.dart';
@@ -37,78 +37,59 @@ class OnboardingNotifier extends _$OnboardingNotifier {
   }
 
   Future<void> goNextPage(int currentPage, bool isOnboarding) async {
-    state = state.copyWith(errorMessage: '', canGoNext: false);
-    if(isOnboarding) {
+    state = state.copyWith(error: null, canGoNext: false);
+    if (isOnboarding) {
       switch (currentPage) {
         case 0:
           if (state.userInfo.name.isEmpty) {
-            state = state.copyWith(canGoNext: false, errorMessage: 'Please input your name!');
+            state = state.copyWith(canGoNext: false, error: OnboardingMissingNameError());
             return;
           }
           if (state.userInfo.gender == Gender.none) {
-            state = state.copyWith(canGoNext: false, errorMessage: 'Please select your gender!');
+            state = state.copyWith(canGoNext: false, error: OnboardingMissingGenderError());
             return;
           }
           if (state.userInfo.birthday.isSameDate(DateTimeConst.empty())) {
-            state = state.copyWith(canGoNext: false, errorMessage: 'Please input your birthday!');
+            state = state.copyWith(canGoNext: false, error: OnboardingMissingBirthdayError());
             return;
           }
           if (state.userInfo.job.isEmpty) {
-            state = state.copyWith(canGoNext: false, errorMessage: 'Please input your job!');
+            state = state.copyWith(canGoNext: false, error: OnboardingMissingJobError());
             return;
           }
         case 1:
           if (state.userInfo.personalities.isEmpty) {
-            state = state.copyWith(
-              canGoNext: false,
-              errorMessage: 'Please select some work to describe the real you!',
-            );
+            state = state.copyWith(canGoNext: false, error: OnboardingMissingPersonalitiesError());
             return;
           }
         case 2:
           if (state.userInfo.hobbies.isEmpty) {
-            state = state.copyWith(
-              canGoNext: false,
-              errorMessage:
-              'Please select some hobbies, The more we know about you, the easier it will be for us to give advice!',
-            );
+            state = state.copyWith(canGoNext: false, error: OnboardingMissingHobbiesError());
             return;
           }
         case 3:
           if (state.userInfo.loveLanguages.isEmpty) {
-            state = state.copyWith(
-              canGoNext: false,
-              errorMessage:
-              'Please tell us about your love language, The more we know about you, the easier it will be for us to give advice!',
-            );
+            state = state.copyWith(canGoNext: false, error: OnboardingMissingLoveLanguageError());
             return;
           }
       }
     } else {
       switch (currentPage) {
         case 0:
-          if(state.userInfo.hasCrush == false) {
-            state = state.copyWith(
-              canGoNext: false,
-              errorMessage:
-              'Please select the relation ship type first',
-            );
+          if (state.userInfo.hasCrush == false) {
+            state =
+                state.copyWith(canGoNext: false, error: OnboardingMissingRelationshipTypeError());
             return;
           }
         case 1:
-          if(state.userInfo.crushInfo?.gender == null) {
-            state = state.copyWith(
-              canGoNext: false,
-              errorMessage:
-              'Please tell us at least their gender',
-            );
+          if (state.userInfo.crushInfo?.gender == null) {
+            state = state.copyWith(canGoNext: false, error: OnboardingMissingPartnerGenderError());
             return;
           }
       }
-
     }
 
-    state = state.copyWith(errorMessage: '', canGoNext: true);
+    state = state.copyWith(error: null, canGoNext: true);
   }
 
   void updateBasicInfo({String? name, Gender? gender, DateTime? birthDay, String? job}) {
@@ -120,7 +101,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
         job: job ?? currentUserInfo.job,
         gender: gender ?? currentUserInfo.gender,
       ),
-      errorMessage: '',
+      error: null,
       canGoNext: false,
     );
   }
@@ -138,7 +119,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
       userInfo: currentUserInfo.copyWith(
         crushInfo: updatedCrushInfo,
       ),
-      errorMessage: '',
+      error: null,
       canGoNext: false,
     );
   }
@@ -153,7 +134,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     }
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(personalities: personalities),
-      errorMessage: '',
+      error: null,
     );
   }
 
@@ -165,7 +146,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     } else {
       hobbies.add(hobby);
     }
-    state = state.copyWith(userInfo: currentUserInfo.copyWith(hobbies: hobbies), errorMessage: '');
+    state = state.copyWith(userInfo: currentUserInfo.copyWith(hobbies: hobbies), error: null);
   }
 
   void updateCrushHobbies(String hobby, bool isRemove) {
@@ -182,7 +163,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     );
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(crushInfo: updatedCrushInfo),
-      errorMessage: '',
+      error: null,
     );
   }
 
@@ -196,7 +177,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     }
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(loveLanguages: loveLanguages),
-      errorMessage: '',
+      error: null,
     );
   }
 
@@ -210,7 +191,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     loveLanguages.insert(newIndex, item);
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(loveLanguages: loveLanguages),
-      errorMessage: '',
+      error: null,
     );
   }
 
@@ -219,11 +200,10 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     if (!status) {
       state = state.copyWith(
         userInfo: currentUserInfo.copyWith(hasCrush: status, crushType: ''),
-        errorMessage: '',
+        error: null,
       );
     } else {
-      state =
-          state.copyWith(userInfo: currentUserInfo.copyWith(hasCrush: status), errorMessage: '');
+      state = state.copyWith(userInfo: currentUserInfo.copyWith(hasCrush: status), error: null);
     }
   }
 
@@ -232,7 +212,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
 
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(crushType: type.value, hasCrush: true),
-      errorMessage: '',
+      error: null,
     );
   }
 
