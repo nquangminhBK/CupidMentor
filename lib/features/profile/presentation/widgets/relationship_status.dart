@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/item_info.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class RelationshipStatus extends StatelessWidget {
       children: [
         const VerticalSpace(size: 16),
         ItemInfo(
-          title: 'Relationship status',
+          title: context.l10n.relationshipStatus,
           value: status,
           onTap: onTapEditPartnerProfile,
         ),

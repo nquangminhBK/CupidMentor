@@ -11,7 +11,7 @@ class PartnerInfo with _$PartnerInfo {
   const PartnerInfo._();
 
   const factory PartnerInfo({
-    required Gender gender,
+    required Gender? gender,
     required String name,
     required DateTime birthday,
     required String job,
@@ -19,7 +19,7 @@ class PartnerInfo with _$PartnerInfo {
   }) = _PartnerInfo;
 
   factory PartnerInfo.empty() => PartnerInfo(
-        gender: Gender.none,
+        gender: null,
         name: '',
         birthday: DateTimeConst.empty(),
         job: '',
@@ -28,7 +28,7 @@ class PartnerInfo with _$PartnerInfo {
 
   PartnerInfoModel get toModel {
     return PartnerInfoModel(
-      genderRaw: gender.value,
+      genderRaw: gender?.value,
       name: name,
       birthdayRaw: DateTimeUtils.convertToString(birthday),
       job: job,

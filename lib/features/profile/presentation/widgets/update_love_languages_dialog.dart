@@ -71,7 +71,7 @@ class _UpdateLoveLanguagesDialogState extends ConsumerState<UpdateLoveLanguagesD
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Update your love languages',
+                context.l10n.updateLoveLanguages,
                 style: context.textTheme.headlineSmall,
               ),
               if (loveLanguages.length < LoveLanguage.loveLanguages.length)

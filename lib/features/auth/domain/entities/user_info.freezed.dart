@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoggedInUserInfo {
-  Gender get gender => throw _privateConstructorUsedError;
+  Gender? get gender => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
   DateTime get birthday => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $LoggedInUserInfoCopyWith<$Res> {
       _$LoggedInUserInfoCopyWithImpl<$Res, LoggedInUserInfo>;
   @useResult
   $Res call(
-      {Gender gender,
+      {Gender? gender,
       String name,
       String avatar,
       DateTime birthday,
@@ -68,7 +68,7 @@ class _$LoggedInUserInfoCopyWithImpl<$Res, $Val extends LoggedInUserInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gender = null,
+    Object? gender = freezed,
     Object? name = null,
     Object? avatar = null,
     Object? birthday = null,
@@ -81,10 +81,10 @@ class _$LoggedInUserInfoCopyWithImpl<$Res, $Val extends LoggedInUserInfo>
     Object? partnerInfo = freezed,
   }) {
     return _then(_value.copyWith(
-      gender: null == gender
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender,
+              as Gender?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -150,7 +150,7 @@ abstract class _$$LoggedInUserInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Gender gender,
+      {Gender? gender,
       String name,
       String avatar,
       DateTime birthday,
@@ -177,7 +177,7 @@ class __$$LoggedInUserInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gender = null,
+    Object? gender = freezed,
     Object? name = null,
     Object? avatar = null,
     Object? birthday = null,
@@ -190,10 +190,10 @@ class __$$LoggedInUserInfoImplCopyWithImpl<$Res>
     Object? partnerInfo = freezed,
   }) {
     return _then(_$LoggedInUserInfoImpl(
-      gender: null == gender
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender,
+              as Gender?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -259,7 +259,7 @@ class _$LoggedInUserInfoImpl extends _LoggedInUserInfo {
         super._();
 
   @override
-  final Gender gender;
+  final Gender? gender;
   @override
   final String name;
   @override
@@ -353,7 +353,7 @@ class _$LoggedInUserInfoImpl extends _LoggedInUserInfo {
 
 abstract class _LoggedInUserInfo extends LoggedInUserInfo {
   const factory _LoggedInUserInfo(
-      {required final Gender gender,
+      {required final Gender? gender,
       required final String name,
       required final String avatar,
       required final DateTime birthday,
@@ -367,7 +367,7 @@ abstract class _LoggedInUserInfo extends LoggedInUserInfo {
   const _LoggedInUserInfo._() : super._();
 
   @override
-  Gender get gender;
+  Gender? get gender;
   @override
   String get name;
   @override

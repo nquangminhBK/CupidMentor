@@ -22,7 +22,7 @@ LoggedInUserInfoModel _$LoggedInUserInfoModelFromJson(
 /// @nodoc
 mixin _$LoggedInUserInfoModel {
   @JsonKey(name: 'gender')
-  String get genderRaw => throw _privateConstructorUsedError;
+  String? get genderRaw => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
   @JsonKey(name: 'birthday')
@@ -49,7 +49,7 @@ abstract class $LoggedInUserInfoModelCopyWith<$Res> {
       _$LoggedInUserInfoModelCopyWithImpl<$Res, LoggedInUserInfoModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'gender') String genderRaw,
+      {@JsonKey(name: 'gender') String? genderRaw,
       String name,
       String avatar,
       @JsonKey(name: 'birthday') String birthdayRaw,
@@ -78,7 +78,7 @@ class _$LoggedInUserInfoModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? genderRaw = null,
+    Object? genderRaw = freezed,
     Object? name = null,
     Object? avatar = null,
     Object? birthdayRaw = null,
@@ -91,10 +91,10 @@ class _$LoggedInUserInfoModelCopyWithImpl<$Res,
     Object? partnerInfoModel = freezed,
   }) {
     return _then(_value.copyWith(
-      genderRaw: null == genderRaw
+      genderRaw: freezed == genderRaw
           ? _value.genderRaw
           : genderRaw // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -161,7 +161,7 @@ abstract class _$$LoggedInUserInfoModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'gender') String genderRaw,
+      {@JsonKey(name: 'gender') String? genderRaw,
       String name,
       String avatar,
       @JsonKey(name: 'birthday') String birthdayRaw,
@@ -189,7 +189,7 @@ class __$$LoggedInUserInfoModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? genderRaw = null,
+    Object? genderRaw = freezed,
     Object? name = null,
     Object? avatar = null,
     Object? birthdayRaw = null,
@@ -202,10 +202,10 @@ class __$$LoggedInUserInfoModelImplCopyWithImpl<$Res>
     Object? partnerInfoModel = freezed,
   }) {
     return _then(_$LoggedInUserInfoModelImpl(
-      genderRaw: null == genderRaw
+      genderRaw: freezed == genderRaw
           ? _value.genderRaw
           : genderRaw // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -276,7 +276,7 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
 
   @override
   @JsonKey(name: 'gender')
-  final String genderRaw;
+  final String? genderRaw;
   @override
   final String name;
   @override
@@ -381,7 +381,7 @@ class _$LoggedInUserInfoModelImpl extends _LoggedInUserInfoModel {
 
 abstract class _LoggedInUserInfoModel extends LoggedInUserInfoModel {
   const factory _LoggedInUserInfoModel(
-          {@JsonKey(name: 'gender') required final String genderRaw,
+          {@JsonKey(name: 'gender') required final String? genderRaw,
           required final String name,
           required final String avatar,
           @JsonKey(name: 'birthday') required final String birthdayRaw,
@@ -401,7 +401,7 @@ abstract class _LoggedInUserInfoModel extends LoggedInUserInfoModel {
 
   @override
   @JsonKey(name: 'gender')
-  String get genderRaw;
+  String? get genderRaw;
   @override
   String get name;
   @override

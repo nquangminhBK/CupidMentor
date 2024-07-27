@@ -39,7 +39,7 @@ class _InputPartnerBasicInfoPageState extends ConsumerState<InputPartnerBasicInf
   Widget build(BuildContext context) {
     final onboardingNotifier = ref.read(onboardingNotifierProvider.notifier);
     final partnerInfo = ref.watch(onboardingNotifierProvider).userInfo.partnerInfo;
-    final gender = partnerInfo?.gender ?? Gender.none;
+    final gender = partnerInfo?.gender;
     if (partnerInfo != null) {
       if (kIsWeb) {
         nameController.value = nameController.value.copyWith(
@@ -69,7 +69,7 @@ class _InputPartnerBasicInfoPageState extends ConsumerState<InputPartnerBasicInf
       description: context.l10n.inputPartnerBasicInfoDesc,
       children: [
         Text(
-          gender == Gender.none
+          gender == null || gender == Gender.other
               ? context.l10n.partnerNameFieldTitle
               : (gender == Gender.male
                   ? context.l10n.malePartnerNameFieldTitle
@@ -88,7 +88,7 @@ class _InputPartnerBasicInfoPageState extends ConsumerState<InputPartnerBasicInf
         ),
         const VerticalSpace(size: 24),
         Text(
-          gender == Gender.none
+          gender == null || gender == Gender.other
               ? context.l10n.partnerGenderFieldTitle
               : (gender == Gender.male
                   ? context.l10n.malePartnerGenderFieldTitle
@@ -96,7 +96,7 @@ class _InputPartnerBasicInfoPageState extends ConsumerState<InputPartnerBasicInf
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
-        SelectGenderDropdown(
+        SelectGenderWidget(
           onSelectGender: (Gender? gender) =>
               onboardingNotifier.updatePartnerBasicInfo(gender: gender),
           selectedGender: gender,
@@ -104,7 +104,7 @@ class _InputPartnerBasicInfoPageState extends ConsumerState<InputPartnerBasicInf
         ),
         const VerticalSpace(size: 24),
         Text(
-          gender == Gender.none
+          gender == null || gender == Gender.other
               ? context.l10n.partnerBirthdayFieldTitle
               : (gender == Gender.male
                   ? context.l10n.malePartnerBirthdayFieldTitle
@@ -123,7 +123,7 @@ class _InputPartnerBasicInfoPageState extends ConsumerState<InputPartnerBasicInf
         ),
         const VerticalSpace(size: 24),
         Text(
-          gender == Gender.none
+          gender == null || gender == Gender.other
               ? context.l10n.partnerJobFieldTitle
               : (gender == Gender.male
                   ? context.l10n.malePartnerJobFieldTitle

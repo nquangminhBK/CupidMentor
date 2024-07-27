@@ -105,5 +105,21 @@
   "onboardingMissingHobbiesError": "Vui lòng chọn một số sở thích của bạn, chúng tôi càng biết nhiều về bạn, chúng tôi sẽ dễ dàng đưa ra lời khuyên hơn!",
   "onboardingMissingLoveLanguagesError": "Vui lòng cho chúng tôi biết về ngôn ngữ tình yêu của bạn, chúng tôi càng biết nhiều về bạn, chúng tôi càng dễ dàng đưa ra lời khuyên hơn!",
   "onboardingMissingRelationshipTypeError": "Vui lòng chọn mối quan hệ của bạn với họ trước khi thêm thông tin cá nhân của họ!",
-  "onboardingMissingPartnerGenderError": "Vui lòng cho chúng tôi biết ít nhất là giới tính của họ để chúng tôi đưa ra những lời khuyên tốt hơn."
+  "onboardingMissingPartnerGenderError": "Vui lòng cho chúng tôi biết ít nhất là giới tính của họ để chúng tôi đưa ra những lời khuyên tốt hơn.",
+  "loveLanguagesDialogTitle": "\"Ngôn ngữ tình yêu\" là gì?",
+  "basicInfo": "Thông tin",
+  "job": "Nghề nghiệp",
+  "describeYou": "Tính cách",
+  "hobbies": "Sở thích",
+  "loveLanguages": "Ngôn ngữ tình yêu",
+  "relationshipStatus": "Trạng thái",
+  "edit": "Chỉnh sửa",
+  "noData": "Không có dữ liệu",
+  "updateBasicInfoTitle": "Cập nhật thông tin của bạn",
+  "updatePersonalities": "Cập nhật tính cách của bạn",
+  "updateHobbies": "Cập nhật sở thích của bạn",
+  "updateLoveLanguages": "Cập nhật ngôn ngữ tình yêu của bạn",
+  "relationship" : "Mối quan hệ",
+  "updatePartnerInfoTitle" : "Cập nhật thông tin đối phương",
+  "updatePartnerHobbies" : "Cập nhật sở thích đối phương"
 }

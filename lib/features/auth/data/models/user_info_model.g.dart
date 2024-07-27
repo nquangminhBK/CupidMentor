@@ -9,7 +9,7 @@ part of 'user_info_model.dart';
 _$LoggedInUserInfoModelImpl _$$LoggedInUserInfoModelImplFromJson(
         Map<String, dynamic> json) =>
     _$LoggedInUserInfoModelImpl(
-      genderRaw: json['gender'] as String,
+      genderRaw: json['gender'] as String?,
       name: json['name'] as String,
       avatar: json['avatar'] as String,
       birthdayRaw: json['birthday'] as String,

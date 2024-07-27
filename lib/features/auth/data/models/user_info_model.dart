@@ -14,7 +14,7 @@ class LoggedInUserInfoModel with _$LoggedInUserInfoModel {
 
   @JsonSerializable(explicitToJson: true)
   const factory LoggedInUserInfoModel({
-    @JsonKey(name: 'gender') required String genderRaw,
+    @JsonKey(name: 'gender') required String? genderRaw,
     required String name,
     required String avatar,
     @JsonKey(name: 'birthday') required String birthdayRaw,
@@ -32,7 +32,7 @@ class LoggedInUserInfoModel with _$LoggedInUserInfoModel {
 
   LoggedInUserInfo get toEntity {
     return LoggedInUserInfo(
-      gender: Gender.tryParse(genderRaw) ?? Gender.none,
+      gender: Gender.tryParse(genderRaw ?? ''),
       name: name,
       avatar: avatar,
       birthday: DateTimeUtils.convertToDateTime(birthdayRaw),

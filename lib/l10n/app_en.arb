@@ -105,5 +105,21 @@
   "onboardingMissingHobbiesError": "Please select some hobbies, The more we know about you, the easier it will be for us to give advice!",
   "onboardingMissingLoveLanguagesError": "Please tell us about your love language, The more we know about you, the easier it will be for us to give advice!",
   "onboardingMissingRelationshipTypeError": "Please select your relationship with them before adding their personal information!",
-  "onboardingMissingPartnerGenderError": "Please let us know at least their gender so we can offer more tailored advice."
+  "onboardingMissingPartnerGenderError": "Please let us know at least their gender so we can offer more tailored advice.",
+  "loveLanguagesDialogTitle": "What is the \"Love Languages\"",
+  "basicInfo": "Basic info",
+  "job": "Job",
+  "describeYou": "Describe you",
+  "hobbies": "Hobbies",
+  "loveLanguages": "Love languages",
+  "relationshipStatus": "Relationship",
+  "edit": "Edit",
+  "noData" : "No data",
+  "updateBasicInfoTitle" : "Update your information",
+  "updatePersonalities" : "Update your personalities",
+  "updateHobbies" : "Update your hobbies",
+  "updateLoveLanguages": "Update your love languages",
+  "relationship" : "Relationship",
+  "updatePartnerInfoTitle" : "Update partner's information",
+  "updatePartnerHobbies" : "Update partner's hobbies"
 }

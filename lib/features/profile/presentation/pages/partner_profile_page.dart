@@ -117,11 +117,11 @@ class _PartnerProfilePageState extends ConsumerState<PartnerProfilePage> {
                 : Column(
                     children: [
                       ItemInfo(
-                        title: 'Relation',
+                        title: context.l10n.relationship,
                         value: RelationshipType.tryParse(relationship ?? '')
                                 ?.displayText
                                 .value(context) ??
-                            'No data',
+                            context.l10n.noData,
                         onTap: () {
                           showDialog(
                             context: context,

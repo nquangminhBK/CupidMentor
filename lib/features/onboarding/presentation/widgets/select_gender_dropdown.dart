@@ -1,14 +1,14 @@
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/gradient_box_border.dart';
-import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SelectGenderDropdown extends ConsumerStatefulWidget {
-  const SelectGenderDropdown({
+class SelectGenderWidget extends ConsumerStatefulWidget {
+  const SelectGenderWidget({
     super.key,
     required this.onSelectGender,
     required this.selectedGender,
@@ -16,138 +16,112 @@ class SelectGenderDropdown extends ConsumerStatefulWidget {
   });
 
   final Function(Gender?) onSelectGender;
-  final Gender selectedGender;
+  final Gender? selectedGender;
   final String hint;
 
   @override
-  ConsumerState<SelectGenderDropdown> createState() => _SelectGenderDropdownState();
+  ConsumerState<SelectGenderWidget> createState() => _SelectGenderWidgetState();
 }
 
-class _SelectGenderDropdownState extends ConsumerState<SelectGenderDropdown>
-    with SingleTickerProviderStateMixin {
-  Gender? selectedValue;
-  bool isFocus = false;
-  late AnimationController controller;
-  late Animation<double> animation;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-    animation = Tween<double>(begin: 0.0, end: 1.0).animate(controller);
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+class _SelectGenderWidgetState extends ConsumerState<SelectGenderWidget> {
+  bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: context.screenSize.width,
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton2<Gender>(
-          onMenuStateChange: (isOpen) {
-            setState(() {
-              isFocus = isOpen;
-            });
-            if (isOpen) {
-              controller.forward();
-            } else {
-              controller.reverse();
-            }
-          },
-          isExpanded: true,
-          hint: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  (widget.selectedGender == Gender.none)
-                      ? context.l10n.partnerGenderFieldHint
-                      : widget.selectedGender.displayText.value(context),
-                  style: context.textTheme.bodyLarge,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
+    return InkWell(
+      customBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      onTap: () {
+        setState(() {
+          isSelected = true;
+        });
+        showModalBottomSheet(
+          useRootNavigator: true,
+          context: context,
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
+          builder: (context) => BottomSheetGender(
+            initialValue: widget.selectedGender,
+            onTap: widget.onSelectGender,
           ),
-          items: Gender.values
-              .map(
-                (Gender item) => DropdownMenuItem<Gender>(
-                  value: item,
-                  child: Row(
-                    children: [
-                      Text(
-                        item.displayText.value(context),
-                        style: context.textTheme.bodyLarge,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-              )
-              .toList(),
-          value: selectedValue,
-          onChanged: (value) {
-            setState(() {
-              selectedValue = value;
-            });
-            widget.onSelectGender(value);
-          },
-          buttonStyleData: ButtonStyleData(
-            height: 50,
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: isFocus
-                  ? GradientBoxBorder(gradient: ref.currentAppColor.mainGradient)
-                  : Border.all(color: Colors.transparent),
-              color: ref.currentAppColor.buttonBackgroundColor,
-            ),
-          ),
-          iconStyleData: IconStyleData(
-            icon: AnimatedIcon(
-              icon: AnimatedIcons.menu_close,
-              progress: animation,
-            ),
-            iconSize: 14,
-            iconEnabledColor: Colors.white,
-            iconDisabledColor: Colors.grey,
-          ),
-          dropdownStyleData: DropdownStyleData(
-            maxHeight: 200,
-            width: context.screenSize.width - 48,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-              color: ref.currentAppColor.cardColorWithoutOpacity,
-            ),
-            offset: const Offset(0, -6),
-          ),
-          menuItemStyleData: MenuItemStyleData(
-            selectedMenuItemBuilder: (context, child) {
-              return Container(
-                color: ref.currentAppColor.buttonBackgroundColor,
-                child: Row(
-                  children: [
-                    child,
-                    const Spacer(),
-                    const Icon(
-                      Icons.check_rounded,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    const HorizontalSpace(size: 14),
-                  ],
-                ),
-              );
-            },
+        ).then((_) {
+          setState(() {
+            isSelected = false;
+          });
+        });
+      },
+      child: Container(
+        width: double.infinity,
+        height: 50,
+        decoration: BoxDecoration(
+          color: ref.currentAppColor.buttonBackgroundColor,
+          borderRadius: BorderRadius.circular(8),
+          border: isSelected ? GradientBoxBorder(gradient: ref.currentAppColor.mainGradient) : null,
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            widget.selectedGender == null
+                ? widget.hint
+                : widget.selectedGender!.displayText.value(context),
+            style: context.textTheme.bodyLarge,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class BottomSheetGender extends ConsumerWidget {
+  const BottomSheetGender({
+    super.key,
+    required this.initialValue,
+    required this.onTap,
+  });
+
+  final Gender? initialValue;
+  final Function(Gender) onTap;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Container(
+      margin: const EdgeInsets.only(left: 10, right: 10, bottom: 24),
+      decoration: BoxDecoration(
+        color: ref.currentAppColor.cardColorWithoutOpacity,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: Gender.values
+            .map(
+              (type) => AnimatedButton(
+                onPress: () {
+                  onTap(type);
+                  NavigationService.instance.pop();
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: initialValue == type
+                        ? ref.currentAppColor.buttonBackgroundColor
+                        : ref.currentAppColor.cardColorWithoutOpacity,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 14),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      type.displayText.value(context),
+                      style: context.textTheme.bodyLarge,
+                    ),
+                  ),
+                ),
+              ),
+            )
+            .toList(),
       ),
     );
   }

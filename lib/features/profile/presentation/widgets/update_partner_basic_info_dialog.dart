@@ -45,6 +45,7 @@ class _UpdatePartnerBasicInfoDialogState extends ConsumerState<UpdatePartnerBasi
   Widget build(BuildContext context) {
     final notifier = ref.read(profileNotifierProvider.notifier);
     final partnerInfo = ref.watch(profileNotifierProvider).tempUserInfo?.partnerInfo;
+    final gender = partnerInfo?.gender;
     final userInfo = ref.watch(profileNotifierProvider).tempUserInfo;
     if (partnerInfo == null) return const SizedBox();
     if (kIsWeb) {
@@ -82,12 +83,12 @@ class _UpdatePartnerBasicInfoDialogState extends ConsumerState<UpdatePartnerBasi
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Update your basic info',
+              context.l10n.updatePartnerInfoTitle,
               style: context.textTheme.headlineSmall,
             ),
             const VerticalSpace(size: 6),
             Text(
-              'Relation',
+              context.l10n.relationship,
               style: context.textTheme.titleLarge,
             ),
             const VerticalSpace(size: 6),
@@ -100,7 +101,11 @@ class _UpdatePartnerBasicInfoDialogState extends ConsumerState<UpdatePartnerBasi
             ),
             const VerticalSpace(size: 6),
             Text(
-              context.l10n.nameFieldTitle,
+              gender == null || gender == Gender.other
+                  ? context.l10n.partnerNameFieldTitle
+                  : (gender == Gender.male
+                      ? context.l10n.malePartnerNameFieldTitle
+                      : context.l10n.femalePartnerNameFieldTitle),
               style: context.textTheme.titleLarge,
             ),
             const VerticalSpace(size: 6),
@@ -112,7 +117,7 @@ class _UpdatePartnerBasicInfoDialogState extends ConsumerState<UpdatePartnerBasi
                 notifier.updatePartnerBasicInfo(name: text);
                 clearError();
               },
-              hintText: context.l10n.nameFieldHint,
+              hintText: context.l10n.partnerNameFieldHint,
             ),
             if (nameError.isNotEmpty)
               Text(
@@ -121,33 +126,46 @@ class _UpdatePartnerBasicInfoDialogState extends ConsumerState<UpdatePartnerBasi
               ),
             const VerticalSpace(size: 10),
             Text(
-              context.l10n.genderFieldTitle,
+              gender == null || gender == Gender.other
+                  ? context.l10n.partnerGenderFieldTitle
+                  : (gender == Gender.male
+                      ? context.l10n.malePartnerGenderFieldTitle
+                      : context.l10n.femalePartnerGenderFieldTitle),
               style: context.textTheme.titleLarge,
             ),
             const VerticalSpace(size: 6),
-            SelectGenderDropdown(
+            SelectGenderWidget(
               onSelectGender: (Gender? gender) => notifier.updatePartnerBasicInfo(gender: gender),
               selectedGender: partnerInfo.gender,
-              hint: context.l10n.genderFieldHint,
+              hint: context.l10n.partnerGenderFieldHint,
             ),
             const VerticalSpace(size: 10),
             Text(
-              context.l10n.birthdayFieldTitle,
+              gender == null || gender == Gender.other
+                  ? context.l10n.partnerBirthdayFieldTitle
+                  : (gender == Gender.male
+                      ? context.l10n.malePartnerBirthdayFieldTitle
+                      : context.l10n.femalePartnerBirthdayFieldTitle),
               style: context.textTheme.titleLarge,
             ),
             const VerticalSpace(size: 6),
             SelectDateWidget(
-              hint: context.l10n.birthdayFieldHint,
+              hint: context.l10n.partnerBirthdayFieldHint,
               onDateSelected: (selectedDate) {
                 notifier.updatePartnerBasicInfo(birthDay: selectedDate);
                 clearError();
               },
-              selectedDate:
-                  partnerInfo.birthday.isSameDate(DateTimeConst.empty()) ? null : partnerInfo.birthday,
+              selectedDate: partnerInfo.birthday.isSameDate(DateTimeConst.empty())
+                  ? null
+                  : partnerInfo.birthday,
             ),
             const VerticalSpace(size: 10),
             Text(
-              context.l10n.jobFieldTitle,
+              gender == null || gender == Gender.other
+                  ? context.l10n.partnerJobFieldTitle
+                  : (gender == Gender.male
+                      ? context.l10n.malePartnerJobFieldTitle
+                      : context.l10n.femalePartnerJobFieldTitle),
               style: context.textTheme.titleLarge,
             ),
             const VerticalSpace(size: 6),
@@ -158,7 +176,7 @@ class _UpdatePartnerBasicInfoDialogState extends ConsumerState<UpdatePartnerBasi
               onChanged: (text) {
                 notifier.updatePartnerBasicInfo(job: text);
               },
-              hintText: context.l10n.jobFieldHint,
+              hintText: context.l10n.partnerJobFieldHint,
             ),
             if (jobError.isNotEmpty)
               Text(

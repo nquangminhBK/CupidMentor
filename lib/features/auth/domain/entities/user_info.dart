@@ -12,7 +12,7 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
   const LoggedInUserInfo._();
 
   const factory LoggedInUserInfo({
-    required Gender gender,
+    required Gender? gender,
     required String name,
     required String avatar,
     required DateTime birthday,
@@ -26,7 +26,7 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
   }) = _LoggedInUserInfo;
 
   factory LoggedInUserInfo.empty() => LoggedInUserInfo(
-        gender: Gender.none,
+        gender: null,
         name: '',
         avatar: '',
         birthday: DateTimeConst.empty(),
@@ -41,7 +41,7 @@ class LoggedInUserInfo with _$LoggedInUserInfo {
 
   LoggedInUserInfoModel get toModel {
     return LoggedInUserInfoModel(
-      genderRaw: gender.value,
+      genderRaw: gender?.value,
       name: name,
       avatar: avatar,
       birthdayRaw: DateTimeUtils.convertToString(birthday),

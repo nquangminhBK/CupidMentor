@@ -27,7 +27,7 @@ class DialogLoveLanguageConcept extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  'What is the "Love language"',
+                  context.l10n.loveLanguagesDialogTitle,
                   style: context.textTheme.titleSmall!.copyWith(fontSize: 20),
                 ),
                 const Spacer(),

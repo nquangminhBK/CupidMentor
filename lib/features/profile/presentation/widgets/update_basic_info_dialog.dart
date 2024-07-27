@@ -79,7 +79,7 @@ class _UpdateBasicInfoDialogState extends ConsumerState<UpdateYourBasicInfoDialo
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Update your basic info',
+              context.l10n.updateBasicInfoTitle,
               style: context.textTheme.headlineSmall,
             ),
             const VerticalSpace(size: 6),
@@ -109,7 +109,7 @@ class _UpdateBasicInfoDialogState extends ConsumerState<UpdateYourBasicInfoDialo
               style: context.textTheme.titleLarge,
             ),
             const VerticalSpace(size: 6),
-            SelectGenderDropdown(
+            SelectGenderWidget(
               onSelectGender: (Gender? gender) => notifier.updateBasicInfo(gender: gender),
               selectedGender: userInfo.gender,
               hint: context.l10n.genderFieldHint,

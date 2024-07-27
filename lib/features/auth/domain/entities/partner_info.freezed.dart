@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PartnerInfo {
-  Gender get gender => throw _privateConstructorUsedError;
+  Gender? get gender => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get birthday => throw _privateConstructorUsedError;
   String get job => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ abstract class $PartnerInfoCopyWith<$Res> {
       _$PartnerInfoCopyWithImpl<$Res, PartnerInfo>;
   @useResult
   $Res call(
-      {Gender gender,
+      {Gender? gender,
       String name,
       DateTime birthday,
       String job,
@@ -54,17 +54,17 @@ class _$PartnerInfoCopyWithImpl<$Res, $Val extends PartnerInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gender = null,
+    Object? gender = freezed,
     Object? name = null,
     Object? birthday = null,
     Object? job = null,
     Object? hobbies = null,
   }) {
     return _then(_value.copyWith(
-      gender: null == gender
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender,
+              as Gender?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$$PartnerInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Gender gender,
+      {Gender? gender,
       String name,
       DateTime birthday,
       String job,
@@ -112,17 +112,17 @@ class __$$PartnerInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gender = null,
+    Object? gender = freezed,
     Object? name = null,
     Object? birthday = null,
     Object? job = null,
     Object? hobbies = null,
   }) {
     return _then(_$PartnerInfoImpl(
-      gender: null == gender
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender,
+              as Gender?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ class _$PartnerInfoImpl extends _PartnerInfo {
         super._();
 
   @override
-  final Gender gender;
+  final Gender? gender;
   @override
   final String name;
   @override
@@ -202,7 +202,7 @@ class _$PartnerInfoImpl extends _PartnerInfo {
 
 abstract class _PartnerInfo extends PartnerInfo {
   const factory _PartnerInfo(
-      {required final Gender gender,
+      {required final Gender? gender,
       required final String name,
       required final DateTime birthday,
       required final String job,
@@ -210,7 +210,7 @@ abstract class _PartnerInfo extends PartnerInfo {
   const _PartnerInfo._() : super._();
 
   @override
-  Gender get gender;
+  Gender? get gender;
   @override
   String get name;
   @override

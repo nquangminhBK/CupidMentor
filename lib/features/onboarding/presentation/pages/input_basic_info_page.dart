@@ -85,7 +85,7 @@ class _InputBasicInfoPageState extends ConsumerState<InputBasicInfoPage> {
           style: context.textTheme.titleLarge,
         ),
         const VerticalSpace(size: 6),
-        SelectGenderDropdown(
+        SelectGenderWidget(
           onSelectGender: (Gender? gender) => onboardingNotifier.updateBasicInfo(gender: gender),
           selectedGender: userInfo.gender,
           hint: context.l10n.genderFieldHint,

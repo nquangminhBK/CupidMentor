@@ -18,7 +18,7 @@ class AIContext {
   final LoggedInUserInfo userInfo;
   final BuildContext context;
 
-  String get userGenderDisplay => userInfo.gender.displayText.value(context);
+  String get userGenderDisplay => userInfo.gender?.displayText.value(context) ?? '';
 
   List<String> get userPersonalitiesDisplay => userInfo.personalities.map((e) {
         final personality = Personalities.personalities.firstWhereOrNull((p) => p.id == e);
@@ -38,7 +38,7 @@ class AIContext {
   String? get relationshipDisplay =>
       RelationshipType.tryParse(userInfo.relationship)?.displayText.value(context);
 
-  String? get partnerGenderDisplay => userInfo.partnerInfo?.gender.displayText.value(context);
+  String? get partnerGenderDisplay => userInfo.partnerInfo?.gender?.displayText.value(context);
 
   List<String>? get partnerHobbiesDisplay => userInfo.partnerInfo?.hobbies.map((e) {
         final hobby = Hobbies.hobbies.firstWhereOrNull((p) => p.id == e);
@@ -67,7 +67,7 @@ class AIContext {
     if (userInfo.name.isNotEmpty) {
       result = "$result I'm ${userInfo.name}";
     }
-    if (userInfo.gender != Gender.other) {
+    if (userInfo.gender != Gender.other && userInfo.gender != null) {
       result = '$result, $userGenderDisplay';
     }
     if (currentAge > 0) {
@@ -106,7 +106,7 @@ class AIContext {
       if (partnerInfo.name.isNotEmpty) {
         result = '$result. ${userInfo.name}';
       }
-      if (partnerInfo.gender != Gender.other && partnerInfo.gender != Gender.none) {
+      if (partnerInfo.gender != Gender.other && partnerInfo.gender != null) {
         result = '$result, $partnerGenderDisplay';
       }
       if (!partnerInfo.birthday.isSameDate(DateTimeConst.empty())) {
@@ -148,7 +148,7 @@ class AIContext {
     if (userInfo.name.isNotEmpty) {
       result = '$result Tôi là ${userInfo.name}';
     }
-    if (userInfo.gender != Gender.other) {
+    if (userInfo.gender != Gender.other && userInfo.gender != null) {
       result = '$result, $userGenderDisplay';
     }
     if (currentAge > 0) {
@@ -187,7 +187,7 @@ class AIContext {
       if (partnerInfo.name.isNotEmpty) {
         result = '$result. ${partnerInfo.name}';
       }
-      if (partnerInfo.gender != Gender.other && partnerInfo.gender != Gender.none) {
+      if (partnerInfo.gender != Gender.other && partnerInfo.gender != null) {
         result = '$result, $partnerGenderDisplay';
       }
       if (!partnerInfo.birthday.isSameDate(DateTimeConst.empty())) {
@@ -229,7 +229,7 @@ class AIContext {
     if (userInfo.name.isNotEmpty) {
       result = '$result 私は${userInfo.name}です';
     }
-    if (userInfo.gender != Gender.other) {
+    if (userInfo.gender != Gender.other && userInfo.gender != null) {
       result = '$result, $userGenderDisplay';
     }
     if (currentAge > 0) {
@@ -268,7 +268,7 @@ class AIContext {
       if (partnerInfo.name.isNotEmpty) {
         result = '$result. ${partnerInfo.name}';
       }
-      if (partnerInfo.gender != Gender.other && partnerInfo.gender != Gender.none) {
+      if (partnerInfo.gender != Gender.other && partnerInfo.gender != null) {
         result = '$result, $partnerGenderDisplay';
       }
       if (!partnerInfo.birthday.isSameDate(DateTimeConst.empty())) {

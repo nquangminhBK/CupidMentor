@@ -21,11 +21,17 @@ class LoveLanguagesWidget extends ConsumerWidget {
         Row(
           children: [
             Text(
-              'Love languages',
+              context.l10n.loveLanguages,
               style: context.textTheme.headlineSmall!.copyWith(fontSize: 16),
             ),
             const Spacer(),
-            AnimatedButton(onPress: onTapEdit, child: const Text('Edit')),
+            AnimatedButton(
+              onPress: onTapEdit,
+              child: Text(
+                context.l10n.edit,
+                style: context.textTheme.bodyLarge,
+              ),
+            ),
           ],
         ),
         const VerticalSpace(size: 16),

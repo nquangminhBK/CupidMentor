@@ -32,8 +32,7 @@ enum Gender {
         LocalizationEnum.japanese: '他の性別',
       },
     ),
-  ),
-  none('none', LocalizationContent(content: {}));
+  );
 
   final String value;
 

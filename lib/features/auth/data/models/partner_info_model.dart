@@ -4,6 +4,7 @@ import 'package:cupid_mentor/features/auth/domain/entities/partner_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'partner_info_model.freezed.dart';
+
 part 'partner_info_model.g.dart';
 
 @freezed
@@ -11,7 +12,7 @@ class PartnerInfoModel with _$PartnerInfoModel {
   const PartnerInfoModel._();
 
   const factory PartnerInfoModel({
-    @JsonKey(name: 'gender') required String genderRaw,
+    @JsonKey(name: 'gender') required String? genderRaw,
     required String name,
     @JsonKey(name: 'birthday') required String birthdayRaw,
     required String job,
@@ -22,7 +23,7 @@ class PartnerInfoModel with _$PartnerInfoModel {
 
   PartnerInfo get toEntity {
     return PartnerInfo(
-      gender: Gender.tryParse(genderRaw) ?? Gender.none,
+      gender: Gender.tryParse(genderRaw ?? ''),
       name: name,
       birthday: DateTimeUtils.convertToDateTime(birthdayRaw),
       job: job,

@@ -9,7 +9,7 @@ part of 'partner_info_model.dart';
 _$PartnerInfoModelImpl _$$PartnerInfoModelImplFromJson(
         Map<String, dynamic> json) =>
     _$PartnerInfoModelImpl(
-      genderRaw: json['gender'] as String,
+      genderRaw: json['gender'] as String?,
       name: json['name'] as String,
       birthdayRaw: json['birthday'] as String,
       job: json['job'] as String,

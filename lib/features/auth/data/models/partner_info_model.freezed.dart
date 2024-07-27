@@ -21,7 +21,7 @@ PartnerInfoModel _$PartnerInfoModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PartnerInfoModel {
   @JsonKey(name: 'gender')
-  String get genderRaw => throw _privateConstructorUsedError;
+  String? get genderRaw => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'birthday')
   String get birthdayRaw => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $PartnerInfoModelCopyWith<$Res> {
       _$PartnerInfoModelCopyWithImpl<$Res, PartnerInfoModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'gender') String genderRaw,
+      {@JsonKey(name: 'gender') String? genderRaw,
       String name,
       @JsonKey(name: 'birthday') String birthdayRaw,
       String job,
@@ -61,17 +61,17 @@ class _$PartnerInfoModelCopyWithImpl<$Res, $Val extends PartnerInfoModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? genderRaw = null,
+    Object? genderRaw = freezed,
     Object? name = null,
     Object? birthdayRaw = null,
     Object? job = null,
     Object? hobbies = null,
   }) {
     return _then(_value.copyWith(
-      genderRaw: null == genderRaw
+      genderRaw: freezed == genderRaw
           ? _value.genderRaw
           : genderRaw // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -101,7 +101,7 @@ abstract class _$$PartnerInfoModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'gender') String genderRaw,
+      {@JsonKey(name: 'gender') String? genderRaw,
       String name,
       @JsonKey(name: 'birthday') String birthdayRaw,
       String job,
@@ -119,17 +119,17 @@ class __$$PartnerInfoModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? genderRaw = null,
+    Object? genderRaw = freezed,
     Object? name = null,
     Object? birthdayRaw = null,
     Object? job = null,
     Object? hobbies = null,
   }) {
     return _then(_$PartnerInfoModelImpl(
-      genderRaw: null == genderRaw
+      genderRaw: freezed == genderRaw
           ? _value.genderRaw
           : genderRaw // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -167,7 +167,7 @@ class _$PartnerInfoModelImpl extends _PartnerInfoModel {
 
   @override
   @JsonKey(name: 'gender')
-  final String genderRaw;
+  final String? genderRaw;
   @override
   final String name;
   @override
@@ -224,7 +224,7 @@ class _$PartnerInfoModelImpl extends _PartnerInfoModel {
 
 abstract class _PartnerInfoModel extends PartnerInfoModel {
   const factory _PartnerInfoModel(
-      {@JsonKey(name: 'gender') required final String genderRaw,
+      {@JsonKey(name: 'gender') required final String? genderRaw,
       required final String name,
       @JsonKey(name: 'birthday') required final String birthdayRaw,
       required final String job,
@@ -236,7 +236,7 @@ abstract class _PartnerInfoModel extends PartnerInfoModel {
 
   @override
   @JsonKey(name: 'gender')
-  String get genderRaw;
+  String? get genderRaw;
   @override
   String get name;
   @override

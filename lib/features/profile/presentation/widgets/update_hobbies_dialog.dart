@@ -68,7 +68,7 @@ class _UpdateHobbiesDialogState extends ConsumerState<UpdateHobbiesDialog> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Update your hobbies',
+                context.l10n.updateHobbies,
                 style: context.textTheme.headlineSmall,
               ),
               const VerticalSpace(size: 12),

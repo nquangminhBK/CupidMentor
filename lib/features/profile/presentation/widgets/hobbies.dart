@@ -22,11 +22,17 @@ class HobbiesWidget extends ConsumerWidget {
         Row(
           children: [
             Text(
-              'Hobbies',
+              context.l10n.hobbies,
               style: context.textTheme.headlineSmall!.copyWith(fontSize: 16),
             ),
             const Spacer(),
-            AnimatedButton(onPress: onTapEdit, child: const Text('Edit')),
+            AnimatedButton(
+              onPress: onTapEdit,
+              child: Text(
+                context.l10n.edit,
+                style: context.textTheme.bodyLarge,
+              ),
+            ),
           ],
         ),
         const VerticalSpace(size: 16),
@@ -50,8 +56,11 @@ class HobbiesWidget extends ConsumerWidget {
                       .toList(),
                 ),
               )
-            : const Center(
-                child: Text('No data'),
+            : Center(
+                child: Text(
+                  context.l10n.noData,
+                  style: context.textTheme.bodyLarge,
+                ),
               ),
         const VerticalSpace(size: 16),
         if (hobbies.isNotEmpty)

@@ -10,6 +10,7 @@ import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_us
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_state.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'onboarding_notifier.g.dart';
@@ -28,11 +29,24 @@ class OnboardingNotifier extends _$OnboardingNotifier {
   SaveUserInfo get saveUserInfo => ref.read(saveUserInfoUserUseCaseProvider);
 
   Future<void> initializeUserInfo() async {
-    final currentUser = await getUserInfo(NoParams());
-    currentUser.fold((failed) {}, (user) {
-      state = state.copyWith(
-        userInfo: user ?? LoggedInUserInfo.empty(),
-      );
+    final response = await Future.wait([getUserInfo(NoParams()), getCurrentUser(NoParams())]);
+    response[0].fold((failed) {}, (user) {
+      if (user != null) {
+        state = state.copyWith(
+          userInfo: (user as LoggedInUserInfo),
+        );
+      } else {
+        response[1].fold((failed) {}, (googleUser) {
+          if (googleUser != null) {
+            state = state.copyWith(
+              userInfo: LoggedInUserInfo.empty().copyWith(
+                name: (googleUser as User).displayName ?? '',
+                avatar: googleUser.photoURL ?? '',
+              ),
+            );
+          }
+        });
+      }
     });
   }
 
@@ -45,7 +59,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
             state = state.copyWith(canGoNext: false, error: OnboardingMissingNameError());
             return;
           }
-          if (state.userInfo.gender == Gender.none) {
+          if (state.userInfo.gender == null) {
             state = state.copyWith(canGoNext: false, error: OnboardingMissingGenderError());
             return;
           }
