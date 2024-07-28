@@ -129,5 +129,8 @@
   "getUserInfoFailedMsg": "Get user information failed, please try again!",
   "deleteConversationDialogTitle": "Are you sure you want to delete this conversation?",
   "delete": "Delete",
-  "deletePartnerInfoDialogTitle" : "Are you sure you want to delete the partner's information?"
+  "deletePartnerInfoDialogTitle": "Are you sure you want to delete the partner's information?",
+  "deleteAccount": "Delete account",
+  "deleteAccountDialogTitle": "Are you sure you want to delete your account?",
+  "logoutDialogTitle" : "Are you sure you want to log out?"
 }

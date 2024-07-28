@@ -128,6 +128,9 @@
   "saveInfoFailedMsg": "Lưu thông tin không thành công, vui lòng thử lại sau!",
   "getUserInfoFailedMsg": "Không thể lấy thông tin, vui lòng thử lại sau!",
   "deleteConversationDialogTitle": "Bạn có chắc chắn muốn xóa cuộc trò chuyện này không?",
-  "delete" : "Xóa",
-  "deletePartnerInfoDialogTitle" : "Bạn có chắc chắn muốn xóa thông tin của đối phương không?"
+  "delete": "Xóa",
+  "deletePartnerInfoDialogTitle": "Bạn có chắc chắn muốn xóa thông tin của đối phương không?",
+  "deleteAccount": "Xóa tài khoản",
+  "deleteAccountDialogTitle": "Bạn có chắc chắn muốn xóa tài khoản của mình không?",
+  "logoutDialogTitle": "Bạn có chắc chắn muốn đăng xuất không?"
 }

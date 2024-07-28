@@ -129,5 +129,8 @@
   "getUserInfoFailedMsg": "ユーザー情報の取得に失敗しました。もう一度お試しください!",
   "deleteConversationDialogTitle": "この会話を削除してもよろしいですか？",
   "delete": "削除",
-  "deletePartnerInfoDialogTitle": "パートナーの情報を削除してもよろしいですか？"
+  "deletePartnerInfoDialogTitle": "パートナーの情報を削除してもよろしいですか？",
+  "deleteAccount": "アカウントを削除",
+  "deleteAccountDialogTitle": "アカウントを削除してもよろしいですか？",
+  "logoutDialogTitle": "ログアウトしてもよろしいですか？"
 }

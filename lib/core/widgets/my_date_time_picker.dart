@@ -50,7 +50,7 @@ class MyDateTimePicker extends ConsumerStatefulWidget {
 }
 
 class _MyDateTimePickerState extends ConsumerState<MyDateTimePicker> {
-  DateTime selectedDateTime = DateTime.now();
+  DateTime selectedDateTime = DateTime.now().subtract(const Duration(days: 8 * 365));
 
   @override
   Widget build(BuildContext context) => CupertinoTheme(

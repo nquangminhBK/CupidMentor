@@ -1,5 +1,8 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
+import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/reset_all_app.dart';
 import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
@@ -67,26 +70,84 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 ItemSetting(
                   leftIcon: Icons.logout,
                   title: context.l10n.logout,
-                  onTap: () async {
-                    final result = await ref.read(settingNotifierProvider.notifier).signOut();
-                    if (result && context.mounted) {
-                      ResetAllApp.restartApp(context);
-                    }
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return DialogConfirm(
+                          onPositiveButtonExecute: () async {
+                            final result =
+                                await ref.read(settingNotifierProvider.notifier).signOut();
+                            if (result && context.mounted) {
+                              ResetAllApp.restartApp(context);
+                            }
+                          },
+                          message: context.l10n.logoutDialogTitle,
+                          titlePositiveButton: context.l10n.logout,
+                          icon: Container(
+                            width: 60,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: ref.currentAppColor.buttonBackgroundColor,
+                            ),
+                            child: const Icon(
+                              Icons.logout,
+                              color: Colors.red,
+                              size: 30,
+                            ),
+                          ),
+                        );
+                      },
+                    );
                   },
                 ),
-                ItemSetting(
-                  leftIcon: Icons.logout,
-                  title: 'Delete account',
-                  onTap: () async {
-                    LoadingUtils.showLoading();
-                    final result = await ref.read(settingNotifierProvider.notifier).deleteAccount();
-                    if (result) {
-                      await ref.read(settingNotifierProvider.notifier).signOut();
-                      LoadingUtils.hideLoading();
-                      if (context.mounted) ResetAllApp.restartApp(context);
-                    }
-                    LoadingUtils.hideLoading();
-                  },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    AnimatedButton(
+                      onPress: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return DialogConfirm(
+                              onPositiveButtonExecute: () async {
+                                LoadingUtils.showLoading();
+                                final result = await ref
+                                    .read(settingNotifierProvider.notifier)
+                                    .deleteAccount();
+                                if (result) {
+                                  await ref.read(settingNotifierProvider.notifier).signOut();
+                                  LoadingUtils.hideLoading();
+                                  if (context.mounted) ResetAllApp.restartApp(context);
+                                }
+                                LoadingUtils.hideLoading();
+                              },
+                              message: context.l10n.deleteAccountDialogTitle,
+                              titlePositiveButton: context.l10n.delete,
+                              icon: Container(
+                                width: 60,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: ref.currentAppColor.buttonBackgroundColor,
+                                ),
+                                child: const Icon(
+                                  Icons.delete_outline_rounded,
+                                  color: Colors.red,
+                                  size: 30,
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: Text(
+                        context.l10n.deleteAccount,
+                        style: context.textTheme.bodyLarge!.copyWith(color: Colors.red),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
