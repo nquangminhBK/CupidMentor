@@ -173,13 +173,13 @@ class _UpdateLoveLanguagesDialogState extends ConsumerState<UpdateLoveLanguagesD
                 onPress: () {
                   if (loveLanguages.isEmpty) {
                     setState(() {
-                      errorMsg = 'please select a hobbies';
+                      errorMsg = context.l10n.onboardingMissingLoveLanguagesError;
                     });
                   }
                   if (loveLanguages.isNotEmpty) {
                     ref.read(profileNotifierProvider.notifier).updateUserInfo();
                     SnackBarService.instance
-                        .showSuccessSnackBar(message: 'Update success', context: context);
+                        .showSuccessSnackBar(message: context.l10n.updateSuccess, context: context);
                     NavigationService.instance.pop();
                   }
                 },
@@ -194,7 +194,7 @@ class _UpdateLoveLanguagesDialogState extends ConsumerState<UpdateLoveLanguagesD
                   height: 48,
                   child: Center(
                     child: Text(
-                      'Update',
+                      context.l10n.update,
                       style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                     ),
                   ),

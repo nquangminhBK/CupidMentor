@@ -141,13 +141,13 @@ class _UpdateHobbiesDialogState extends ConsumerState<UpdateHobbiesDialog> {
                 onPress: () {
                   if (hobbies.isEmpty) {
                     setState(() {
-                      errorMsg = 'please select a hobbies';
+                      errorMsg = context.l10n.onboardingMissingHobbiesError;
                     });
                   }
                   if (hobbies.isNotEmpty) {
                     ref.read(profileNotifierProvider.notifier).updateUserInfo();
                     SnackBarService.instance
-                        .showSuccessSnackBar(message: 'Update success', context: context);
+                        .showSuccessSnackBar(message: context.l10n.updateSuccess, context: context);
                     NavigationService.instance.pop();
                   }
                 },
@@ -162,7 +162,7 @@ class _UpdateHobbiesDialogState extends ConsumerState<UpdateHobbiesDialog> {
                   height: 48,
                   child: Center(
                     child: Text(
-                      'Update',
+                      context.l10n.update,
                       style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                     ),
                   ),

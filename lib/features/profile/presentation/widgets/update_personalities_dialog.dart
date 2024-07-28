@@ -145,7 +145,7 @@ class _UpdatePersonalitiesDialogState extends ConsumerState<UpdatePersonalitiesD
                   if (personalities.isNotEmpty) {
                     ref.read(profileNotifierProvider.notifier).updateUserInfo();
                     SnackBarService.instance
-                        .showSuccessSnackBar(message: 'Update success', context: context);
+                        .showSuccessSnackBar(message: context.l10n.updateSuccess, context: context);
                     NavigationService.instance.pop();
                   }
                 },
@@ -160,7 +160,7 @@ class _UpdatePersonalitiesDialogState extends ConsumerState<UpdatePersonalitiesD
                   height: 48,
                   child: Center(
                     child: Text(
-                      'Update',
+                      context.l10n.update,
                       style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                     ),
                   ),

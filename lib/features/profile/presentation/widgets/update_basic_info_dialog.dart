@@ -154,18 +154,18 @@ class _UpdateBasicInfoDialogState extends ConsumerState<UpdateYourBasicInfoDialo
               onPress: () {
                 if (nameController.text.isEmpty) {
                   setState(() {
-                    nameError = 'name cannot be empty';
+                    nameError = context.l10n.onboardingMissingNameError;
                   });
                 }
                 if (jobController.text.isEmpty) {
                   setState(() {
-                    jobError = 'name cannot be empty';
+                    jobError = context.l10n.onboardingMissingJobError;
                   });
                 }
                 if (jobController.text.isNotEmpty && nameController.text.isNotEmpty) {
                   ref.read(profileNotifierProvider.notifier).updateUserInfo();
                   SnackBarService.instance
-                      .showSuccessSnackBar(message: 'Update success', context: context);
+                      .showSuccessSnackBar(message: context.l10n.updateSuccess, context: context);
                   NavigationService.instance.pop();
                 }
               },
@@ -180,7 +180,7 @@ class _UpdateBasicInfoDialogState extends ConsumerState<UpdateYourBasicInfoDialo
                 height: 48,
                 child: Center(
                   child: Text(
-                    'Update',
+                    context.l10n.update,
                     style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
                   ),
                 ),

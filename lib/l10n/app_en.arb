@@ -121,5 +121,7 @@
   "updateLoveLanguages": "Update your love languages",
   "relationship" : "Relationship",
   "updatePartnerInfoTitle" : "Update partner's information",
-  "updatePartnerHobbies" : "Update partner's hobbies"
+  "updatePartnerHobbies" : "Update partner's hobbies",
+  "update": "Update",
+  "updateSuccess" : "Update successful"
 }

@@ -121,5 +121,7 @@
   "updateLoveLanguages": "愛の言語を更新する",
   "relationship": "関係",
   "updatePartnerInfoTitle": "相手の情報を更新する",
-  "updatePartnerHobbies": "相手の趣味を更新する"
+  "updatePartnerHobbies": "相手の趣味を更新する",
+  "update": "更新",
+  "updateSuccess": "更新が成功しました"
 }

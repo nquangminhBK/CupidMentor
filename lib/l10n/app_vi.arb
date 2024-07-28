@@ -121,5 +121,7 @@
   "updateLoveLanguages": "Cập nhật ngôn ngữ tình yêu của bạn",
   "relationship" : "Mối quan hệ",
   "updatePartnerInfoTitle" : "Cập nhật thông tin đối phương",
-  "updatePartnerHobbies" : "Cập nhật sở thích đối phương"
+  "updatePartnerHobbies" : "Cập nhật sở thích đối phương",
+  "update": "Cập nhật",
+  "updateSuccess" : "Cập nhật thành công"
 }
