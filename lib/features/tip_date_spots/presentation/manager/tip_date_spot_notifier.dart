@@ -1,6 +1,7 @@
 import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/core_entity/content_response.dart';
 import 'package:cupid_mentor/core/core_use_cases/generate_ai_content.dart';
+import 'package:cupid_mentor/core/errors/ui_failures.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
@@ -8,6 +9,7 @@ import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dar
 import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/add_tips_date_spot.dart';
 import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/get_tips_date_spot.dart';
 import 'package:cupid_mentor/features/tip_date_spots/presentation/manager/tip_date_spot_state.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -35,7 +37,7 @@ class TipsDateSpotNotifier extends _$TipsDateSpotNotifier {
     final data = response.getOrElse(() => []);
     final currentContent = Map<String, List<ContentResponse>>.from(state.content);
     currentContent[occasion.title.id ?? ''] = data;
-    state = state.copyWith(content: currentContent, error: null);
+    state = state.copyWith(content: currentContent, errorOrSuccess: null);
     return data;
   }
 
@@ -54,14 +56,14 @@ class TipsDateSpotNotifier extends _$TipsDateSpotNotifier {
         currentContentsOfOccasion.add(newContent);
         final currentContents = Map<String, List<ContentResponse>>.from(state.content);
         currentContents[occasion.title.id ?? ''] = currentContentsOfOccasion;
-        state = state.copyWith(content: currentContents, error: null);
+        state = state.copyWith(content: currentContents, errorOrSuccess: null);
         await addTipsDateSpot(
           AddTipsDateSpotParam(occasionId: occasion.title.id ?? '', content: newContent),
         );
         return newContent;
       } else {
         if (context.mounted) {
-          state = state.copyWith(error: context.l10n.generateFailed);
+          state = state.copyWith(errorOrSuccess: Left(AIGeneratedFailedError()));
         }
       }
     }

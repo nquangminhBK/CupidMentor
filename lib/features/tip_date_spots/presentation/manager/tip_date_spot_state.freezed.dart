@@ -19,7 +19,8 @@ mixin _$TipsDateSpotState {
   Map<String, List<ContentResponse>> get content =>
       throw _privateConstructorUsedError;
   LoggedInUserInfo get userInfo => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  Either<UIError, UISuccess>? get errorOrSuccess =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TipsDateSpotStateCopyWith<TipsDateSpotState> get copyWith =>
@@ -35,7 +36,7 @@ abstract class $TipsDateSpotStateCopyWith<$Res> {
   $Res call(
       {Map<String, List<ContentResponse>> content,
       LoggedInUserInfo userInfo,
-      String? error});
+      Either<UIError, UISuccess>? errorOrSuccess});
 
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
 }
@@ -55,7 +56,7 @@ class _$TipsDateSpotStateCopyWithImpl<$Res, $Val extends TipsDateSpotState>
   $Res call({
     Object? content = null,
     Object? userInfo = null,
-    Object? error = freezed,
+    Object? errorOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       content: null == content
@@ -66,10 +67,10 @@ class _$TipsDateSpotStateCopyWithImpl<$Res, $Val extends TipsDateSpotState>
           ? _value.userInfo
           : userInfo // ignore: cast_nullable_to_non_nullable
               as LoggedInUserInfo,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+      errorOrSuccess: freezed == errorOrSuccess
+          ? _value.errorOrSuccess
+          : errorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<UIError, UISuccess>?,
     ) as $Val);
   }
 
@@ -93,7 +94,7 @@ abstract class _$$TipsDateSpotStateImplCopyWith<$Res>
   $Res call(
       {Map<String, List<ContentResponse>> content,
       LoggedInUserInfo userInfo,
-      String? error});
+      Either<UIError, UISuccess>? errorOrSuccess});
 
   @override
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
@@ -112,7 +113,7 @@ class __$$TipsDateSpotStateImplCopyWithImpl<$Res>
   $Res call({
     Object? content = null,
     Object? userInfo = null,
-    Object? error = freezed,
+    Object? errorOrSuccess = freezed,
   }) {
     return _then(_$TipsDateSpotStateImpl(
       content: null == content
@@ -123,10 +124,10 @@ class __$$TipsDateSpotStateImplCopyWithImpl<$Res>
           ? _value.userInfo
           : userInfo // ignore: cast_nullable_to_non_nullable
               as LoggedInUserInfo,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+      errorOrSuccess: freezed == errorOrSuccess
+          ? _value.errorOrSuccess
+          : errorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<UIError, UISuccess>?,
     ));
   }
 }
@@ -137,7 +138,7 @@ class _$TipsDateSpotStateImpl extends _TipsDateSpotState {
   const _$TipsDateSpotStateImpl(
       {required final Map<String, List<ContentResponse>> content,
       required this.userInfo,
-      this.error})
+      required this.errorOrSuccess})
       : _content = content,
         super._();
 
@@ -152,11 +153,11 @@ class _$TipsDateSpotStateImpl extends _TipsDateSpotState {
   @override
   final LoggedInUserInfo userInfo;
   @override
-  final String? error;
+  final Either<UIError, UISuccess>? errorOrSuccess;
 
   @override
   String toString() {
-    return 'TipsDateSpotState(content: $content, userInfo: $userInfo, error: $error)';
+    return 'TipsDateSpotState(content: $content, userInfo: $userInfo, errorOrSuccess: $errorOrSuccess)';
   }
 
   @override
@@ -167,12 +168,13 @@ class _$TipsDateSpotStateImpl extends _TipsDateSpotState {
             const DeepCollectionEquality().equals(other._content, _content) &&
             (identical(other.userInfo, userInfo) ||
                 other.userInfo == userInfo) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.errorOrSuccess, errorOrSuccess) ||
+                other.errorOrSuccess == errorOrSuccess));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_content), userInfo, error);
+      const DeepCollectionEquality().hash(_content), userInfo, errorOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -184,9 +186,10 @@ class _$TipsDateSpotStateImpl extends _TipsDateSpotState {
 
 abstract class _TipsDateSpotState extends TipsDateSpotState {
   const factory _TipsDateSpotState(
-      {required final Map<String, List<ContentResponse>> content,
-      required final LoggedInUserInfo userInfo,
-      final String? error}) = _$TipsDateSpotStateImpl;
+          {required final Map<String, List<ContentResponse>> content,
+          required final LoggedInUserInfo userInfo,
+          required final Either<UIError, UISuccess>? errorOrSuccess}) =
+      _$TipsDateSpotStateImpl;
   const _TipsDateSpotState._() : super._();
 
   @override
@@ -194,7 +197,7 @@ abstract class _TipsDateSpotState extends TipsDateSpotState {
   @override
   LoggedInUserInfo get userInfo;
   @override
-  String? get error;
+  Either<UIError, UISuccess>? get errorOrSuccess;
   @override
   @JsonKey(ignore: true)
   _$$TipsDateSpotStateImplCopyWith<_$TipsDateSpotStateImpl> get copyWith =>

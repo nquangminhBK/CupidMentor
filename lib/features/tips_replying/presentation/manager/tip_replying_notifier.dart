@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cupid_mentor/core/core_use_cases/generate_ai_content.dart';
+import 'package:cupid_mentor/core/errors/ui_failures.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
@@ -9,6 +10,7 @@ import 'package:cupid_mentor/features/tips_replying/domain/use_cases/add_message
 import 'package:cupid_mentor/features/tips_replying/domain/use_cases/delete_conversation.dart';
 import 'package:cupid_mentor/features/tips_replying/domain/use_cases/get_message.dart';
 import 'package:cupid_mentor/features/tips_replying/presentation/manager/tip_replying_state.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -104,7 +106,7 @@ class TipsReplyingNotifier extends _$TipsReplyingNotifier {
         );
       } else {
         if (context.mounted) {
-          state = state.copyWith(error: context.l10n.generateFailed);
+          state = state.copyWith(errorOrSuccess: Left(AIGeneratedFailedError()));
         }
       }
     }

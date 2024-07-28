@@ -19,7 +19,8 @@ mixin _$TipsSelfImprovementState {
   Map<String, List<ContentResponse>> get content =>
       throw _privateConstructorUsedError;
   LoggedInUserInfo get userInfo => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  Either<UIError, UISuccess>? get errorOrSuccess =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TipsSelfImprovementStateCopyWith<TipsSelfImprovementState> get copyWith =>
@@ -35,7 +36,7 @@ abstract class $TipsSelfImprovementStateCopyWith<$Res> {
   $Res call(
       {Map<String, List<ContentResponse>> content,
       LoggedInUserInfo userInfo,
-      String? error});
+      Either<UIError, UISuccess>? errorOrSuccess});
 
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
 }
@@ -56,7 +57,7 @@ class _$TipsSelfImprovementStateCopyWithImpl<$Res,
   $Res call({
     Object? content = null,
     Object? userInfo = null,
-    Object? error = freezed,
+    Object? errorOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       content: null == content
@@ -67,10 +68,10 @@ class _$TipsSelfImprovementStateCopyWithImpl<$Res,
           ? _value.userInfo
           : userInfo // ignore: cast_nullable_to_non_nullable
               as LoggedInUserInfo,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+      errorOrSuccess: freezed == errorOrSuccess
+          ? _value.errorOrSuccess
+          : errorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<UIError, UISuccess>?,
     ) as $Val);
   }
 
@@ -95,7 +96,7 @@ abstract class _$$TipsSelfImprovementStateImplCopyWith<$Res>
   $Res call(
       {Map<String, List<ContentResponse>> content,
       LoggedInUserInfo userInfo,
-      String? error});
+      Either<UIError, UISuccess>? errorOrSuccess});
 
   @override
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
@@ -116,7 +117,7 @@ class __$$TipsSelfImprovementStateImplCopyWithImpl<$Res>
   $Res call({
     Object? content = null,
     Object? userInfo = null,
-    Object? error = freezed,
+    Object? errorOrSuccess = freezed,
   }) {
     return _then(_$TipsSelfImprovementStateImpl(
       content: null == content
@@ -127,10 +128,10 @@ class __$$TipsSelfImprovementStateImplCopyWithImpl<$Res>
           ? _value.userInfo
           : userInfo // ignore: cast_nullable_to_non_nullable
               as LoggedInUserInfo,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+      errorOrSuccess: freezed == errorOrSuccess
+          ? _value.errorOrSuccess
+          : errorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<UIError, UISuccess>?,
     ));
   }
 }
@@ -141,7 +142,7 @@ class _$TipsSelfImprovementStateImpl extends _TipsSelfImprovementState {
   const _$TipsSelfImprovementStateImpl(
       {required final Map<String, List<ContentResponse>> content,
       required this.userInfo,
-      this.error})
+      required this.errorOrSuccess})
       : _content = content,
         super._();
 
@@ -156,11 +157,11 @@ class _$TipsSelfImprovementStateImpl extends _TipsSelfImprovementState {
   @override
   final LoggedInUserInfo userInfo;
   @override
-  final String? error;
+  final Either<UIError, UISuccess>? errorOrSuccess;
 
   @override
   String toString() {
-    return 'TipsSelfImprovementState(content: $content, userInfo: $userInfo, error: $error)';
+    return 'TipsSelfImprovementState(content: $content, userInfo: $userInfo, errorOrSuccess: $errorOrSuccess)';
   }
 
   @override
@@ -171,12 +172,13 @@ class _$TipsSelfImprovementStateImpl extends _TipsSelfImprovementState {
             const DeepCollectionEquality().equals(other._content, _content) &&
             (identical(other.userInfo, userInfo) ||
                 other.userInfo == userInfo) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.errorOrSuccess, errorOrSuccess) ||
+                other.errorOrSuccess == errorOrSuccess));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_content), userInfo, error);
+      const DeepCollectionEquality().hash(_content), userInfo, errorOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -188,9 +190,10 @@ class _$TipsSelfImprovementStateImpl extends _TipsSelfImprovementState {
 
 abstract class _TipsSelfImprovementState extends TipsSelfImprovementState {
   const factory _TipsSelfImprovementState(
-      {required final Map<String, List<ContentResponse>> content,
-      required final LoggedInUserInfo userInfo,
-      final String? error}) = _$TipsSelfImprovementStateImpl;
+          {required final Map<String, List<ContentResponse>> content,
+          required final LoggedInUserInfo userInfo,
+          required final Either<UIError, UISuccess>? errorOrSuccess}) =
+      _$TipsSelfImprovementStateImpl;
   const _TipsSelfImprovementState._() : super._();
 
   @override
@@ -198,7 +201,7 @@ abstract class _TipsSelfImprovementState extends TipsSelfImprovementState {
   @override
   LoggedInUserInfo get userInfo;
   @override
-  String? get error;
+  Either<UIError, UISuccess>? get errorOrSuccess;
   @override
   @JsonKey(ignore: true)
   _$$TipsSelfImprovementStateImplCopyWith<_$TipsSelfImprovementStateImpl>

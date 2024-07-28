@@ -23,12 +23,12 @@ class ProfileNotifier extends _$ProfileNotifier {
 
   Future<void> getData() async {
     final response = await getUserInfo(NoParams());
+    state = state.copyWith(isLoading: false);
     response.fold((error) {
-      state = state.copyWith(isLoading: false, error: GetUserInformationFailedError());
+      state = state.copyWith(error: GetUserInformationFailedError());
     }, (userInfo) {
       if (userInfo != null) {
         state = state.copyWith(
-          isLoading: false,
           userInfo: userInfo,
           tempUserInfo: userInfo,
           error: null,
@@ -40,10 +40,11 @@ class ProfileNotifier extends _$ProfileNotifier {
   Future<bool> updateUserInfo() async {
     if (state.tempUserInfo == null) return false;
     state = state.copyWith(
-      isLoading: false,
+      isLoading: true,
       userInfo: state.tempUserInfo,
     );
     final result = await saveUserInfo(SaveUserInfoParam(userInfo: state.tempUserInfo!));
+    state = state.copyWith(isLoading: false);
     return result.getOrElse(() => false);
   }
 

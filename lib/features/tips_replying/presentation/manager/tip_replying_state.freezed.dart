@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TipsReplyingState {
   List<Message> get content => throw _privateConstructorUsedError;
   bool? get loading => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  Either<UIError, UISuccess>? get errorOrSuccess =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TipsReplyingStateCopyWith<TipsReplyingState> get copyWith =>
@@ -31,7 +32,10 @@ abstract class $TipsReplyingStateCopyWith<$Res> {
           TipsReplyingState value, $Res Function(TipsReplyingState) then) =
       _$TipsReplyingStateCopyWithImpl<$Res, TipsReplyingState>;
   @useResult
-  $Res call({List<Message> content, bool? loading, String? error});
+  $Res call(
+      {List<Message> content,
+      bool? loading,
+      Either<UIError, UISuccess>? errorOrSuccess});
 }
 
 /// @nodoc
@@ -49,7 +53,7 @@ class _$TipsReplyingStateCopyWithImpl<$Res, $Val extends TipsReplyingState>
   $Res call({
     Object? content = null,
     Object? loading = freezed,
-    Object? error = freezed,
+    Object? errorOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       content: null == content
@@ -60,10 +64,10 @@ class _$TipsReplyingStateCopyWithImpl<$Res, $Val extends TipsReplyingState>
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+      errorOrSuccess: freezed == errorOrSuccess
+          ? _value.errorOrSuccess
+          : errorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<UIError, UISuccess>?,
     ) as $Val);
   }
 }
@@ -76,7 +80,10 @@ abstract class _$$TipsReplyingStateImplCopyWith<$Res>
       __$$TipsReplyingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Message> content, bool? loading, String? error});
+  $Res call(
+      {List<Message> content,
+      bool? loading,
+      Either<UIError, UISuccess>? errorOrSuccess});
 }
 
 /// @nodoc
@@ -92,7 +99,7 @@ class __$$TipsReplyingStateImplCopyWithImpl<$Res>
   $Res call({
     Object? content = null,
     Object? loading = freezed,
-    Object? error = freezed,
+    Object? errorOrSuccess = freezed,
   }) {
     return _then(_$TipsReplyingStateImpl(
       content: null == content
@@ -103,10 +110,10 @@ class __$$TipsReplyingStateImplCopyWithImpl<$Res>
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+      errorOrSuccess: freezed == errorOrSuccess
+          ? _value.errorOrSuccess
+          : errorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<UIError, UISuccess>?,
     ));
   }
 }
@@ -115,7 +122,9 @@ class __$$TipsReplyingStateImplCopyWithImpl<$Res>
 
 class _$TipsReplyingStateImpl extends _TipsReplyingState {
   const _$TipsReplyingStateImpl(
-      {required final List<Message> content, this.loading, this.error})
+      {required final List<Message> content,
+      this.loading,
+      required this.errorOrSuccess})
       : _content = content,
         super._();
 
@@ -130,11 +139,11 @@ class _$TipsReplyingStateImpl extends _TipsReplyingState {
   @override
   final bool? loading;
   @override
-  final String? error;
+  final Either<UIError, UISuccess>? errorOrSuccess;
 
   @override
   String toString() {
-    return 'TipsReplyingState(content: $content, loading: $loading, error: $error)';
+    return 'TipsReplyingState(content: $content, loading: $loading, errorOrSuccess: $errorOrSuccess)';
   }
 
   @override
@@ -144,12 +153,13 @@ class _$TipsReplyingStateImpl extends _TipsReplyingState {
             other is _$TipsReplyingStateImpl &&
             const DeepCollectionEquality().equals(other._content, _content) &&
             (identical(other.loading, loading) || other.loading == loading) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.errorOrSuccess, errorOrSuccess) ||
+                other.errorOrSuccess == errorOrSuccess));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_content), loading, error);
+      const DeepCollectionEquality().hash(_content), loading, errorOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -161,9 +171,10 @@ class _$TipsReplyingStateImpl extends _TipsReplyingState {
 
 abstract class _TipsReplyingState extends TipsReplyingState {
   const factory _TipsReplyingState(
-      {required final List<Message> content,
-      final bool? loading,
-      final String? error}) = _$TipsReplyingStateImpl;
+          {required final List<Message> content,
+          final bool? loading,
+          required final Either<UIError, UISuccess>? errorOrSuccess}) =
+      _$TipsReplyingStateImpl;
   const _TipsReplyingState._() : super._();
 
   @override
@@ -171,7 +182,7 @@ abstract class _TipsReplyingState extends TipsReplyingState {
   @override
   bool? get loading;
   @override
-  String? get error;
+  Either<UIError, UISuccess>? get errorOrSuccess;
   @override
   @JsonKey(ignore: true)
   _$$TipsReplyingStateImplCopyWith<_$TipsReplyingStateImpl> get copyWith =>

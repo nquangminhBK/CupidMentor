@@ -3,6 +3,7 @@ import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
+import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
@@ -161,6 +162,18 @@ class _TipsReplyingMessageScreenState extends ConsumerState<TipsReplyingMessageS
       } else {
         LoadingUtils.hideLoading();
       }
+      if (next.errorOrSuccess != null) {
+        next.errorOrSuccess!.fold(
+          (error) {
+            SnackBarService.instance.showErrorSnackBar(
+              message: error.getDisplayMessage(context),
+              context: context,
+              icon: Icons.warning_amber_rounded,
+            );
+          },
+          (success) {},
+        );
+      }
     });
     return Container(
       color: context.theme.scaffoldBackgroundColor,
@@ -179,9 +192,8 @@ class _TipsReplyingMessageScreenState extends ConsumerState<TipsReplyingMessageS
                       ref.read(tipsReplyingNotifierProvider.notifier).deleteMessage();
                       NavigationService.instance.pop();
                     },
-                    message: 'Are you sure you want to delete this conversation?',
-                    titlePositiveButton: 'Yes',
-                    title: 'Dialog Confirmation',
+                    message: context.l10n.deleteConversationDialogTitle,
+                    titlePositiveButton: context.l10n.delete,
                     icon: Container(
                       width: 60,
                       height: 60,

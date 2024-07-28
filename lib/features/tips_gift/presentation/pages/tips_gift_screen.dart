@@ -19,8 +19,17 @@ class TipsGiftsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(tipsGiftNotifierProvider, (previous, next) {
-      if (next.error?.isNotEmpty ?? false) {
-        SnackBarService.instance.showErrorSnackBar(message: next.error!, context: context);
+      if (next.errorOrSuccess != null) {
+        next.errorOrSuccess!.fold(
+          (error) {
+            SnackBarService.instance.showErrorSnackBar(
+              message: error.getDisplayMessage(context),
+              context: context,
+              icon: Icons.warning_amber_rounded,
+            );
+          },
+          (success) {},
+        );
       }
     });
     return Container(

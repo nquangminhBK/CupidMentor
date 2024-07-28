@@ -83,3 +83,10 @@ class OnboardingSaveInfoFailedError implements UIError {
     return context.l10n.saveInfoFailedMsg;
   }
 }
+
+class AIGeneratedFailedError implements UIError {
+  @override
+  String getDisplayMessage(BuildContext context) {
+    return context.l10n.generateFailed;
+  }
+}

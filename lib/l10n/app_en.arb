@@ -126,5 +126,8 @@
   "updateSuccess": "Update successful",
   "loginFailedMsg": "Login failed, please try again later!",
   "saveInfoFailedMsg": "Saving information failed, please try again!",
-  "getUserInfoFailedMsg": "Get user information failed, please try again!"
+  "getUserInfoFailedMsg": "Get user information failed, please try again!",
+  "deleteConversationDialogTitle": "Are you sure you want to delete this conversation?",
+  "delete": "Delete",
+  "deletePartnerInfoDialogTitle" : "Are you sure you want to delete the partner's information?"
 }
