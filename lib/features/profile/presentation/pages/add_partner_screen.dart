@@ -35,12 +35,17 @@ class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(onboardingNotifierProvider, (previous, next) {
-      if (next.error != null) {
-        SnackBarService.instance.showErrorSnackBar(
-          message: next.error!.getDisplayMessage(context),
-          context: context,
-          icon: Icons.warning_amber_rounded,
-        );
+      if (next.errorOrSuccess != null) {
+        next.errorOrSuccess!.fold((error) {
+          SnackBarService.instance.showErrorSnackBar(
+            message: error.getDisplayMessage(context),
+            context: context,
+            icon: Icons.warning_amber_rounded,
+          );
+        }, (success) async {
+          NavigationService.instance.pop();
+          await ref.read(profileNotifierProvider.notifier).getData();
+        });
       }
       if (!(previous?.canGoNext ?? false) && next.canGoNext) {
         pageController.animateToPage(
@@ -130,18 +135,7 @@ class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
                 },
                 onPressNext: () async {
                   if (currentPage == 2) {
-                    final result = await ref.read(onboardingNotifierProvider.notifier).saveUser();
-                    if (result) {
-                      NavigationService.instance.pop();
-                      await ref.read(profileNotifierProvider.notifier).getData();
-                    } else {
-                      if (context.mounted) {
-                        SnackBarService.instance.showErrorSnackBar(
-                          message: 'Cannot save information, please try again later!',
-                          context: context,
-                        );
-                      }
-                    }
+                    await ref.read(onboardingNotifierProvider.notifier).saveUser();
                   } else {
                     await ref
                         .read(onboardingNotifierProvider.notifier)

@@ -1,5 +1,6 @@
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
+import 'package:cupid_mentor/core/errors/ui_failures.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/partner_info.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
@@ -23,10 +24,15 @@ class ProfileNotifier extends _$ProfileNotifier {
   Future<void> getData() async {
     final response = await getUserInfo(NoParams());
     response.fold((error) {
-      state = state.copyWith(isLoading: false, error: error.message);
+      state = state.copyWith(isLoading: false, error: GetUserInformationFailedError());
     }, (userInfo) {
       if (userInfo != null) {
-        state = state.copyWith(isLoading: false, userInfo: userInfo, tempUserInfo: userInfo);
+        state = state.copyWith(
+          isLoading: false,
+          userInfo: userInfo,
+          tempUserInfo: userInfo,
+          error: null,
+        );
       }
     });
   }
@@ -66,7 +72,7 @@ class ProfileNotifier extends _$ProfileNotifier {
     );
     state = state.copyWith(
       tempUserInfo: currentUserInfo?.copyWith(partnerInfo: updatedPartnerInfo),
-      error: '',
+      error: null,
     );
   }
 
@@ -94,7 +100,8 @@ class ProfileNotifier extends _$ProfileNotifier {
     state = state.copyWith(
       isLoading: false,
       userInfo: state.userInfo!.copyWith(hasPartner: false, partnerInfo: null, relationship: ''),
-      tempUserInfo: state.userInfo!.copyWith(hasPartner: false, partnerInfo: null, relationship: ''),
+      tempUserInfo:
+          state.userInfo!.copyWith(hasPartner: false, partnerInfo: null, relationship: ''),
     );
   }
 
@@ -128,9 +135,10 @@ class ProfileNotifier extends _$ProfileNotifier {
 
   void updateRelationship(RelationshipType type) {
     final currentUserInfo = state.tempUserInfo;
-
-    state =
-        state.copyWith(tempUserInfo: currentUserInfo?.copyWith(relationship: type.value), error: null);
+    state = state.copyWith(
+      tempUserInfo: currentUserInfo?.copyWith(relationship: type.value),
+      error: null,
+    );
   }
 
   void updateBasicInfo({String? name, Gender? gender, DateTime? birthDay, String? job}) {
@@ -159,7 +167,7 @@ class ProfileNotifier extends _$ProfileNotifier {
       tempUserInfo: currentUserInfo?.copyWith(
         partnerInfo: updatedPartnerInfo,
       ),
-      error: '',
+      error: null,
     );
   }
 }

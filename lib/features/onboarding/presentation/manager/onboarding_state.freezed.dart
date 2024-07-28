@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OnboardingState {
   LoggedInUserInfo get userInfo => throw _privateConstructorUsedError;
   bool get canGoNext => throw _privateConstructorUsedError;
-  UIError? get error => throw _privateConstructorUsedError;
+  Either<UIError, UISuccess>? get errorOrSuccess =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OnboardingStateCopyWith<OnboardingState> get copyWith =>
@@ -31,7 +32,10 @@ abstract class $OnboardingStateCopyWith<$Res> {
           OnboardingState value, $Res Function(OnboardingState) then) =
       _$OnboardingStateCopyWithImpl<$Res, OnboardingState>;
   @useResult
-  $Res call({LoggedInUserInfo userInfo, bool canGoNext, UIError? error});
+  $Res call(
+      {LoggedInUserInfo userInfo,
+      bool canGoNext,
+      Either<UIError, UISuccess>? errorOrSuccess});
 
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
 }
@@ -51,7 +55,7 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
   $Res call({
     Object? userInfo = null,
     Object? canGoNext = null,
-    Object? error = freezed,
+    Object? errorOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       userInfo: null == userInfo
@@ -62,10 +66,10 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
           ? _value.canGoNext
           : canGoNext // ignore: cast_nullable_to_non_nullable
               as bool,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as UIError?,
+      errorOrSuccess: freezed == errorOrSuccess
+          ? _value.errorOrSuccess
+          : errorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<UIError, UISuccess>?,
     ) as $Val);
   }
 
@@ -86,7 +90,10 @@ abstract class _$$OnboardingStateImplCopyWith<$Res>
       __$$OnboardingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LoggedInUserInfo userInfo, bool canGoNext, UIError? error});
+  $Res call(
+      {LoggedInUserInfo userInfo,
+      bool canGoNext,
+      Either<UIError, UISuccess>? errorOrSuccess});
 
   @override
   $LoggedInUserInfoCopyWith<$Res> get userInfo;
@@ -105,7 +112,7 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
   $Res call({
     Object? userInfo = null,
     Object? canGoNext = null,
-    Object? error = freezed,
+    Object? errorOrSuccess = freezed,
   }) {
     return _then(_$OnboardingStateImpl(
       userInfo: null == userInfo
@@ -116,10 +123,10 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
           ? _value.canGoNext
           : canGoNext // ignore: cast_nullable_to_non_nullable
               as bool,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as UIError?,
+      errorOrSuccess: freezed == errorOrSuccess
+          ? _value.errorOrSuccess
+          : errorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<UIError, UISuccess>?,
     ));
   }
 }
@@ -128,7 +135,9 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
 
 class _$OnboardingStateImpl extends _OnboardingState {
   const _$OnboardingStateImpl(
-      {required this.userInfo, required this.canGoNext, required this.error})
+      {required this.userInfo,
+      required this.canGoNext,
+      required this.errorOrSuccess})
       : super._();
 
   @override
@@ -136,11 +145,11 @@ class _$OnboardingStateImpl extends _OnboardingState {
   @override
   final bool canGoNext;
   @override
-  final UIError? error;
+  final Either<UIError, UISuccess>? errorOrSuccess;
 
   @override
   String toString() {
-    return 'OnboardingState(userInfo: $userInfo, canGoNext: $canGoNext, error: $error)';
+    return 'OnboardingState(userInfo: $userInfo, canGoNext: $canGoNext, errorOrSuccess: $errorOrSuccess)';
   }
 
   @override
@@ -152,11 +161,13 @@ class _$OnboardingStateImpl extends _OnboardingState {
                 other.userInfo == userInfo) &&
             (identical(other.canGoNext, canGoNext) ||
                 other.canGoNext == canGoNext) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.errorOrSuccess, errorOrSuccess) ||
+                other.errorOrSuccess == errorOrSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userInfo, canGoNext, error);
+  int get hashCode =>
+      Object.hash(runtimeType, userInfo, canGoNext, errorOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -168,9 +179,10 @@ class _$OnboardingStateImpl extends _OnboardingState {
 
 abstract class _OnboardingState extends OnboardingState {
   const factory _OnboardingState(
-      {required final LoggedInUserInfo userInfo,
-      required final bool canGoNext,
-      required final UIError? error}) = _$OnboardingStateImpl;
+          {required final LoggedInUserInfo userInfo,
+          required final bool canGoNext,
+          required final Either<UIError, UISuccess>? errorOrSuccess}) =
+      _$OnboardingStateImpl;
   const _OnboardingState._() : super._();
 
   @override
@@ -178,7 +190,7 @@ abstract class _OnboardingState extends OnboardingState {
   @override
   bool get canGoNext;
   @override
-  UIError? get error;
+  Either<UIError, UISuccess>? get errorOrSuccess;
   @override
   @JsonKey(ignore: true)
   _$$OnboardingStateImplCopyWith<_$OnboardingStateImpl> get copyWith =>

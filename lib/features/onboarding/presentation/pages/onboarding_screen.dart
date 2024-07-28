@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/errors/ui_success.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
@@ -38,12 +39,18 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(onboardingNotifierProvider, (previous, next) {
-      if (next.error != null) {
-        SnackBarService.instance.showErrorSnackBar(
-          message: next.error!.getDisplayMessage(context),
-          context: context,
-          icon: Icons.warning_amber_rounded,
-        );
+      if (next.errorOrSuccess != null) {
+        next.errorOrSuccess!.fold((error) {
+          SnackBarService.instance.showErrorSnackBar(
+            message: error.getDisplayMessage(context),
+            context: context,
+            icon: Icons.warning_amber_rounded,
+          );
+        }, (success) {
+          if (success is OnboardingSaveInfoSuccess) {
+            NavigationService.instance.push(AppRoutes.welcome, replace: true);
+          }
+        });
       }
       if (!(previous?.canGoNext ?? false) && next.canGoNext) {
         pageController.animateToPage(
@@ -128,17 +135,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 },
                 onPressNext: () async {
                   if (currentPage == totalStep - 1) {
-                    final result = await ref.read(onboardingNotifierProvider.notifier).saveUser();
-                    if (result) {
-                      await NavigationService.instance.push(AppRoutes.welcome, replace: true);
-                    } else {
-                      if (context.mounted) {
-                        SnackBarService.instance.showErrorSnackBar(
-                          message: 'Cannot save information, please try again later!',
-                          context: context,
-                        );
-                      }
-                    }
+                    await ref.read(onboardingNotifierProvider.notifier).saveUser();
                   } else {
                     await ref
                         .read(onboardingNotifierProvider.notifier)

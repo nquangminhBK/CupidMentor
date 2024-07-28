@@ -69,3 +69,17 @@ class OnboardingMissingPartnerGenderError implements UIError {
     return context.l10n.onboardingMissingPartnerGenderError;
   }
 }
+
+class GetUserInformationFailedError implements UIError {
+  @override
+  String getDisplayMessage(BuildContext context) {
+    return context.l10n.getUserInfoFailedMsg;
+  }
+}
+
+class OnboardingSaveInfoFailedError implements UIError {
+  @override
+  String getDisplayMessage(BuildContext context) {
+    return context.l10n.saveInfoFailedMsg;
+  }
+}

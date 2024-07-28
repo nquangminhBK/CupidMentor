@@ -4,6 +4,7 @@ import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
+import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/gradient_text.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
@@ -29,6 +30,14 @@ class LoginScreen extends ConsumerWidget {
       }
       if (previous is! AuthGoToHomeState && next is AuthGoToHomeState) {
         NavigationService.instance.push(AppRoutes.home, replace: true);
+      }
+
+      if (previous is! AuthStateLoginFailedState && next is AuthStateLoginFailedState) {
+        SnackBarService.instance.showErrorSnackBar(
+          message: context.l10n.loginFailedMsg,
+          context: context,
+          icon: Icons.warning_amber_rounded,
+        );
       }
     });
     return Scaffold(
@@ -103,6 +112,7 @@ class LoginScreen extends ConsumerWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
                       'By logging in, you agree to our Terms of Conditions. Learn how we use your data in our Privacy Policy',
+                      //TODO this
                       textAlign: TextAlign.center,
                       style: context.textTheme.bodyLarge,
                     ),

@@ -119,9 +119,12 @@
   "updatePersonalities": "Cập nhật tính cách của bạn",
   "updateHobbies": "Cập nhật sở thích của bạn",
   "updateLoveLanguages": "Cập nhật ngôn ngữ tình yêu của bạn",
-  "relationship" : "Mối quan hệ",
-  "updatePartnerInfoTitle" : "Cập nhật thông tin đối phương",
-  "updatePartnerHobbies" : "Cập nhật sở thích đối phương",
+  "relationship": "Mối quan hệ",
+  "updatePartnerInfoTitle": "Cập nhật thông tin đối phương",
+  "updatePartnerHobbies": "Cập nhật sở thích đối phương",
   "update": "Cập nhật",
-  "updateSuccess" : "Cập nhật thành công"
+  "updateSuccess": "Cập nhật thành công",
+  "loginFailedMsg": "Đăng nhập thất bại, vui lòng thử lại sau!",
+  "saveInfoFailedMsg": "Lưu thông tin không thành công, vui lòng thử lại sau!",
+  "getUserInfoFailedMsg": "Không thể lấy thông tin, vui lòng thử lại sau!"
 }

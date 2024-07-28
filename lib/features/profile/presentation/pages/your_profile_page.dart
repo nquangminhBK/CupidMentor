@@ -2,6 +2,7 @@ import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
+import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/features/profile/presentation/manager/profile_notifier.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/basic_info.dart';
@@ -35,6 +36,15 @@ class _YourProfilePagesState extends ConsumerState<YourProfilePages> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(profileNotifierProvider);
+    ref.listen(profileNotifierProvider, (previous, next) {
+      if (next.error != null) {
+        SnackBarService.instance.showErrorSnackBar(
+          message: next.error!.getDisplayMessage(context),
+          context: context,
+          icon: Icons.warning_amber_rounded,
+        );
+      }
+    });
     return Container(
       color: context.theme.scaffoldBackgroundColor,
       child: SafeArea(

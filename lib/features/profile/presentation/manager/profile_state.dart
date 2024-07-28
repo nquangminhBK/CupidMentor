@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/errors/ui_failures.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,7 +11,7 @@ abstract class ProfileState with _$ProfileState {
   const factory ProfileState({
     LoggedInUserInfo? userInfo,
     LoggedInUserInfo? tempUserInfo,
-    String? error,
+    UIError? error,
     bool? isLoading,
   }) = _ProfileState;
 

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileState {
   LoggedInUserInfo? get userInfo => throw _privateConstructorUsedError;
   LoggedInUserInfo? get tempUserInfo => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  UIError? get error => throw _privateConstructorUsedError;
   bool? get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $ProfileStateCopyWith<$Res> {
   $Res call(
       {LoggedInUserInfo? userInfo,
       LoggedInUserInfo? tempUserInfo,
-      String? error,
+      UIError? error,
       bool? isLoading});
 
   $LoggedInUserInfoCopyWith<$Res>? get userInfo;
@@ -72,7 +72,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UIError?,
       isLoading: freezed == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -116,7 +116,7 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
   $Res call(
       {LoggedInUserInfo? userInfo,
       LoggedInUserInfo? tempUserInfo,
-      String? error,
+      UIError? error,
       bool? isLoading});
 
   @override
@@ -153,7 +153,7 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UIError?,
       isLoading: freezed == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ class _$ProfileStateImpl extends _ProfileState {
   @override
   final LoggedInUserInfo? tempUserInfo;
   @override
-  final String? error;
+  final UIError? error;
   @override
   final bool? isLoading;
 
@@ -212,7 +212,7 @@ abstract class _ProfileState extends ProfileState {
   const factory _ProfileState(
       {final LoggedInUserInfo? userInfo,
       final LoggedInUserInfo? tempUserInfo,
-      final String? error,
+      final UIError? error,
       final bool? isLoading}) = _$ProfileStateImpl;
   const _ProfileState._() : super._();
 
@@ -221,7 +221,7 @@ abstract class _ProfileState extends ProfileState {
   @override
   LoggedInUserInfo? get tempUserInfo;
   @override
-  String? get error;
+  UIError? get error;
   @override
   bool? get isLoading;
   @override

@@ -2,6 +2,7 @@ import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/errors/ui_failures.dart';
+import 'package:cupid_mentor/core/errors/ui_success.dart';
 import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/partner_info.dart';
@@ -10,8 +11,11 @@ import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_us
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_state.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../../core/errors/api_failure.dart';
 
 part 'onboarding_notifier.g.dart';
 
@@ -28,62 +32,91 @@ class OnboardingNotifier extends _$OnboardingNotifier {
 
   SaveUserInfo get saveUserInfo => ref.read(saveUserInfoUserUseCaseProvider);
 
+  Future<void> _initializeEmptyUserInfo(Either<Failure, User> response) async {
+    response.fold((failed) {
+      state = state.copyWith(
+        userInfo: LoggedInUserInfo.empty(),
+      );
+    }, (googleUser) {
+      state = state.copyWith(
+        userInfo: LoggedInUserInfo.empty().copyWith(
+          name: googleUser.displayName ?? '',
+          avatar: googleUser.photoURL ?? '',
+        ),
+      );
+    });
+  }
+
   Future<void> initializeUserInfo() async {
     final response = await Future.wait([getUserInfo(NoParams()), getCurrentUser(NoParams())]);
-    response[0].fold((failed) {}, (user) {
+    response[0].fold((failed) {
+      _initializeEmptyUserInfo(response[1] as Either<Failure, User>);
+    }, (user) {
       if (user != null) {
         state = state.copyWith(
           userInfo: (user as LoggedInUserInfo),
         );
       } else {
-        response[1].fold((failed) {}, (googleUser) {
-          if (googleUser != null) {
-            state = state.copyWith(
-              userInfo: LoggedInUserInfo.empty().copyWith(
-                name: (googleUser as User).displayName ?? '',
-                avatar: googleUser.photoURL ?? '',
-              ),
-            );
-          }
-        });
+        _initializeEmptyUserInfo(response[1] as Either<Failure, User>);
       }
     });
   }
 
   Future<void> goNextPage(int currentPage, bool isOnboarding) async {
-    state = state.copyWith(error: null, canGoNext: false);
+    state = state.copyWith(errorOrSuccess: null, canGoNext: false);
     if (isOnboarding) {
       switch (currentPage) {
         case 0:
           if (state.userInfo.name.isEmpty) {
-            state = state.copyWith(canGoNext: false, error: OnboardingMissingNameError());
+            state = state.copyWith(
+              canGoNext: false,
+              errorOrSuccess: Left(OnboardingMissingNameError()),
+            );
             return;
           }
           if (state.userInfo.gender == null) {
-            state = state.copyWith(canGoNext: false, error: OnboardingMissingGenderError());
+            state = state.copyWith(
+              canGoNext: false,
+              errorOrSuccess: Left(OnboardingMissingGenderError()),
+            );
             return;
           }
           if (state.userInfo.birthday.isSameDate(DateTimeConst.empty())) {
-            state = state.copyWith(canGoNext: false, error: OnboardingMissingBirthdayError());
+            state = state.copyWith(
+              canGoNext: false,
+              errorOrSuccess: Left(OnboardingMissingBirthdayError()),
+            );
             return;
           }
           if (state.userInfo.job.isEmpty) {
-            state = state.copyWith(canGoNext: false, error: OnboardingMissingJobError());
+            state =
+                state.copyWith(canGoNext: false, errorOrSuccess: Left(OnboardingMissingJobError()));
             return;
           }
         case 1:
           if (state.userInfo.personalities.isEmpty) {
-            state = state.copyWith(canGoNext: false, error: OnboardingMissingPersonalitiesError());
+            state = state.copyWith(
+              canGoNext: false,
+              errorOrSuccess: Left(
+                OnboardingMissingPersonalitiesError(),
+              ),
+            );
             return;
           }
         case 2:
           if (state.userInfo.hobbies.isEmpty) {
-            state = state.copyWith(canGoNext: false, error: OnboardingMissingHobbiesError());
+            state = state.copyWith(
+              canGoNext: false,
+              errorOrSuccess: Left(OnboardingMissingHobbiesError()),
+            );
             return;
           }
         case 3:
           if (state.userInfo.loveLanguages.isEmpty) {
-            state = state.copyWith(canGoNext: false, error: OnboardingMissingLoveLanguageError());
+            state = state.copyWith(
+              canGoNext: false,
+              errorOrSuccess: Left(OnboardingMissingLoveLanguageError()),
+            );
             return;
           }
       }
@@ -91,19 +124,24 @@ class OnboardingNotifier extends _$OnboardingNotifier {
       switch (currentPage) {
         case 0:
           if (state.userInfo.hasPartner == false) {
-            state =
-                state.copyWith(canGoNext: false, error: OnboardingMissingRelationshipTypeError());
+            state = state.copyWith(
+              canGoNext: false,
+              errorOrSuccess: Left(OnboardingMissingRelationshipTypeError()),
+            );
             return;
           }
         case 1:
           if (state.userInfo.partnerInfo?.gender == null) {
-            state = state.copyWith(canGoNext: false, error: OnboardingMissingPartnerGenderError());
+            state = state.copyWith(
+              canGoNext: false,
+              errorOrSuccess: Left(OnboardingMissingPartnerGenderError()),
+            );
             return;
           }
       }
     }
 
-    state = state.copyWith(error: null, canGoNext: true);
+    state = state.copyWith(errorOrSuccess: null, canGoNext: true);
   }
 
   void updateBasicInfo({String? name, Gender? gender, DateTime? birthDay, String? job}) {
@@ -115,7 +153,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
         job: job ?? currentUserInfo.job,
         gender: gender ?? currentUserInfo.gender,
       ),
-      error: null,
+      errorOrSuccess: null,
       canGoNext: false,
     );
   }
@@ -133,7 +171,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
       userInfo: currentUserInfo.copyWith(
         partnerInfo: updatedPartnerInfo,
       ),
-      error: null,
+      errorOrSuccess: null,
       canGoNext: false,
     );
   }
@@ -148,7 +186,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     }
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(personalities: personalities),
-      error: null,
+      errorOrSuccess: null,
     );
   }
 
@@ -160,7 +198,8 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     } else {
       hobbies.add(hobby);
     }
-    state = state.copyWith(userInfo: currentUserInfo.copyWith(hobbies: hobbies), error: null);
+    state =
+        state.copyWith(userInfo: currentUserInfo.copyWith(hobbies: hobbies), errorOrSuccess: null);
   }
 
   void updatePartnerHobbies(String hobby, bool isRemove) {
@@ -177,7 +216,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     );
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(partnerInfo: updatedPartnerInfo),
-      error: null,
+      errorOrSuccess: null,
     );
   }
 
@@ -191,7 +230,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     }
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(loveLanguages: loveLanguages),
-      error: null,
+      errorOrSuccess: null,
     );
   }
 
@@ -205,7 +244,7 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     loveLanguages.insert(newIndex, item);
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(loveLanguages: loveLanguages),
-      error: null,
+      errorOrSuccess: null,
     );
   }
 
@@ -214,10 +253,13 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     if (!status) {
       state = state.copyWith(
         userInfo: currentUserInfo.copyWith(hasPartner: status, relationship: ''),
-        error: null,
+        errorOrSuccess: null,
       );
     } else {
-      state = state.copyWith(userInfo: currentUserInfo.copyWith(hasPartner: status), error: null);
+      state = state.copyWith(
+        userInfo: currentUserInfo.copyWith(hasPartner: status),
+        errorOrSuccess: null,
+      );
     }
   }
 
@@ -226,12 +268,16 @@ class OnboardingNotifier extends _$OnboardingNotifier {
 
     state = state.copyWith(
       userInfo: currentUserInfo.copyWith(relationship: type.value, hasPartner: true),
-      error: null,
+      errorOrSuccess: null,
     );
   }
 
-  Future<bool> saveUser() async {
+  Future<void> saveUser() async {
     final result = await saveUserInfo(SaveUserInfoParam(userInfo: state.userInfo));
-    return result.getOrElse(() => false);
+    result.fold((failed) {
+      state = state.copyWith(errorOrSuccess: Left(OnboardingSaveInfoFailedError()));
+    }, (right) {
+      state = state.copyWith(errorOrSuccess: Right(OnboardingSaveInfoSuccess()));
+    });
   }
 }

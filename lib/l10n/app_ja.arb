@@ -123,5 +123,8 @@
   "updatePartnerInfoTitle": "相手の情報を更新する",
   "updatePartnerHobbies": "相手の趣味を更新する",
   "update": "更新",
-  "updateSuccess": "更新が成功しました"
+  "updateSuccess": "更新が成功しました",
+  "loginFailedMsg": "ログインに失敗しました。後でもう一度お試しください!",
+  "saveInfoFailedMsg": "情報の保存に失敗しました。後でもう一度お試しください!",
+  "getUserInfoFailedMsg": "ユーザー情報の取得に失敗しました。もう一度お試しください!"
 }
