@@ -11,7 +11,7 @@ final cupidMentorDarkColor = DarkChatTheme(
   primaryColor: AppColors.dark.primaryColor,
   secondaryColor: AppColors.dark.secondaryColor.withOpacity(0.1),
   sentMessageBodyTextStyle:
-      GoogleFonts.poppins(fontWeight: FontWeight.w500, color: AppColors.dark.textColor),
+      GoogleFonts.manrope(fontWeight: FontWeight.w500, color: AppColors.dark.textColor),
 );
 final cupidMentorLightColor = DefaultChatTheme(
   backgroundColor: AppColors.light.screenBackgroundColor,
@@ -21,5 +21,5 @@ final cupidMentorLightColor = DefaultChatTheme(
   primaryColor: AppColors.light.primaryColor.withOpacity(0.1),
   secondaryColor: AppColors.dark.secondaryColor.withOpacity(0.1),
   sentMessageBodyTextStyle:
-      GoogleFonts.poppins(fontWeight: FontWeight.w500, color: AppColors.light.textColor),
+      GoogleFonts.manrope(fontWeight: FontWeight.w500, color: AppColors.light.textColor),
 );
