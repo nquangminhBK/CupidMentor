@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:cupid_mentor/core/core_use_cases/generate_ai_content.dart';
 import 'package:cupid_mentor/core/errors/ui_failures.dart';
-import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';

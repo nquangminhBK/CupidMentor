@@ -18,5 +18,8 @@ abstract class TipsSelfImprovementState with _$TipsSelfImprovementState {
   }) = _TipsSelfImprovementState;
 
   factory TipsSelfImprovementState.initial() => TipsSelfImprovementState(
-      content: {}, userInfo: LoggedInUserInfo.empty(), errorOrSuccess: null);
+        content: {},
+        userInfo: LoggedInUserInfo.empty(),
+        errorOrSuccess: null,
+      );
 }

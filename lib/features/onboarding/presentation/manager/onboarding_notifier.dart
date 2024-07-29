@@ -15,11 +15,11 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../../core/errors/api_failure.dart';
+import 'package:cupid_mentor/core/errors/api_failure.dart';
 
 part 'onboarding_notifier.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 class OnboardingNotifier extends _$OnboardingNotifier {
   @override
   OnboardingState build() {

@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:flutter/material.dart';
 
@@ -21,8 +22,8 @@ class ItemSetting extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       height: 48,
-      child: InkWell(
-        onTap: onTap,
+      child: AnimatedButton(
+        onPress: onTap,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

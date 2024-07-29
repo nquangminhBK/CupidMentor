@@ -10,6 +10,7 @@ class AppColors {
   final Gradient mainGradient;
   final Gradient buttonBackgroundColorInGradient;
   final Color homeMenuColor;
+  final Color iconCloseColor;
 
   const AppColors({
     required this.primaryColor,
@@ -21,6 +22,7 @@ class AppColors {
     required this.textColor,
     required this.buttonBackgroundColorInGradient,
     required this.homeMenuColor,
+    required this.iconCloseColor,
   });
 
   static AppColors dark = AppColors(
@@ -31,6 +33,7 @@ class AppColors {
     cardColorWithoutOpacity: const Color(0xff282828),
     textColor: const Color(0xffF9FAFB),
     homeMenuColor: Colors.white.withOpacity(0.05),
+    iconCloseColor: const Color(0xff292727),
     mainGradient: const LinearGradient(
       colors: [
         Color(0xff642ca9),
@@ -52,6 +55,7 @@ class AppColors {
     homeMenuColor: Colors.grey.withOpacity(0.08),
     buttonBackgroundColor: const Color(0xfff1f1f1),
     textColor: const Color(0xff101828),
+    iconCloseColor: const Color(0xffebebeb),
     mainGradient: const LinearGradient(
       colors: [
         Color(0xff642ca9),

@@ -7,7 +7,7 @@ part of 'tips_self_improvement_notifier.dart';
 // **************************************************************************
 
 String _$tipsSelfImprovementNotifierHash() =>
-    r'f9ccdcec99bd95611d0441654bfaffd339b0792a';
+    r'ec45d2dc406e69238e87f6333c3effe2ff2fa1e9';
 
 /// See also [TipsSelfImprovementNotifier].
 @ProviderFor(TipsSelfImprovementNotifier)

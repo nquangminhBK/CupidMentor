@@ -12,6 +12,7 @@ class AnimatedButton extends ConsumerStatefulWidget {
   final double? borderSize;
   final Color? borderColor;
   final Function? onLongPress;
+  final bool isExpanded;
   final bool enable;
 
   const AnimatedButton({
@@ -26,6 +27,7 @@ class AnimatedButton extends ConsumerStatefulWidget {
     this.borderSize,
     this.padding,
     this.enable = true,
+    this.isExpanded = true,
     super.key,
   });
 
@@ -70,9 +72,11 @@ class AnimatedButtonState extends ConsumerState<AnimatedButton>
                   ),
               color: widget.color ?? Colors.transparent,
             ),
-            child: Center(
-              child: widget.child,
-            ),
+            child: widget.isExpanded
+                ? Center(
+                    child: widget.child,
+                  )
+                : widget.child,
           ),
           onTap: () {
             if (!widget.enable) return;

@@ -23,7 +23,7 @@ class IconCloseButton extends ConsumerWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: color ?? ref.currentAppColor.buttonBackgroundColor,
+              color: color ?? ref.currentAppColor.iconCloseColor,
             ),
             child: Center(
               child: Icon(

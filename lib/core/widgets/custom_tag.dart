@@ -1,5 +1,6 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,12 +17,9 @@ class CustomTag extends ConsumerWidget {
   final Function() onTap;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) => InkWell(
-        onTap: onTap,
-        customBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
-        splashColor: Colors.transparent,
+  Widget build(BuildContext context, WidgetRef ref) => AnimatedButton(
+        onPress: onTap,
+        isExpanded: false,
         child: AnimatedContainer(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           decoration: BoxDecoration(
