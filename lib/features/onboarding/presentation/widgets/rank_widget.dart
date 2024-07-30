@@ -1,5 +1,5 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RankWidget extends ConsumerWidget {

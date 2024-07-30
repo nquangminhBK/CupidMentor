@@ -10,7 +10,7 @@ import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/get
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/manager/tips_self_improvement_state.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'tips_self_improvement_notifier.g.dart';

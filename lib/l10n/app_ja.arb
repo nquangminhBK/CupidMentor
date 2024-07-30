@@ -132,5 +132,14 @@
   "deletePartnerInfoDialogTitle": "パートナーの情報を削除してもよろしいですか？",
   "deleteAccount": "アカウントを削除",
   "deleteAccountDialogTitle": "アカウントを削除してもよろしいですか？",
-  "logoutDialogTitle": "ログアウトしてもよろしいですか？"
+  "logoutDialogTitle": "ログアウトしてもよろしいですか？",
+  "tipReplyDialogInstructionTitle": "メッセージへの返信のための提案！",
+  "tipReplyDialogInstructionDescription": "これは私たちの最もエキサイティングな機能の一つです。 「やってみましょう」 ボタンをクリックし、パートナーからのメッセージを送信してください。私たちはそれを分析し、最も魅力的な返信を提供します！",
+  "tipSelfImprovementDialogInstructionTitle": "あなたへのヒント！",
+  "tipSelfImprovementDialogInstructionDescription": "「ヒントを探索する」をクリックすると、自己成長を促進し、パートナーとの関係を強化するための貴重なアドバイスや提案が見つかります。",
+  "tipGiftDialogInstructionTitle": "理想的なギフト",
+  "tipGiftDialogInstructionDescription": "特別な人に何を贈るか決めかねていますか？心配ありません！「すべてのギフトを見る」ボタンを選択し、祝いたい特別な機会を選ぶと、パートナーにぴったりのギフト提案を提供します😋",
+  "tipDateSpotDialogInstructionTitle": "完璧なデートスポット",
+  "tipDateSpotDialogInstructionDescription": "愛する人と完璧なデートスポットを探していますか？「すべてのスポットを見る」を選択して、祝いたい特別な機会を選ぶことで、私たちの素晴らしい提案を探ってください。",
+  "featureIntroduction" : "機能の紹介"
 }

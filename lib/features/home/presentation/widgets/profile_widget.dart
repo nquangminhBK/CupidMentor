@@ -4,7 +4,7 @@ import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,7 +17,6 @@ class ProfileWidget extends ConsumerWidget {
     return IntrinsicHeight(
       child: Row(
         children: [
-          const HorizontalSpace(size: 24),
           Expanded(
             child: ConstrainedBox(
               constraints: const BoxConstraints(minHeight: 50),
@@ -69,7 +68,6 @@ class ProfileWidget extends ConsumerWidget {
               ),
             ),
           ),
-          const HorizontalSpace(size: 24),
         ],
       ),
     );

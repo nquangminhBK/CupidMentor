@@ -219,7 +219,7 @@ class _TipsReplyingMessageScreenState extends ConsumerState<TipsReplyingMessageS
               ? const ChatL10nVi()
               : (currentLanguage == LocalizationEnum.japanese
                   ? const ChatL10nJa()
-                  : const ChatL10nEn()),
+                  : const ChatL10nEnOverride()),
           messages: messages,
           onAttachmentPressed: null,
           onMessageTap: _handleMessageTap,

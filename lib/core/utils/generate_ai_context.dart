@@ -11,7 +11,7 @@ import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AIContext {

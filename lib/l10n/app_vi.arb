@@ -132,5 +132,14 @@
   "deletePartnerInfoDialogTitle": "Bạn có chắc chắn muốn xóa thông tin của đối phương không?",
   "deleteAccount": "Xóa tài khoản",
   "deleteAccountDialogTitle": "Bạn có chắc chắn muốn xóa tài khoản của mình không?",
-  "logoutDialogTitle": "Bạn có chắc chắn muốn đăng xuất không?"
+  "logoutDialogTitle": "Bạn có chắc chắn muốn đăng xuất không?",
+  "tipReplyDialogInstructionTitle": "Gợi ý cách phản hồi tin nhắn!",
+  "tipReplyDialogInstructionDescription": "Đây là một trong những tính năng thú vị nhất của chúng tôi. Chỉ cần nhấp vào nút \"Thử ngay\" và gửi cho chúng tôi tin nhắn từ đối phương, chúng tôi sẽ phân tích và cung cấp cho bạn những câu trả lời tuyệt nhất!",
+  "tipSelfImprovementDialogInstructionTitle": "Một số mẹo dành cho bạn!",
+  "tipSelfImprovementDialogInstructionDescription": "Nhấp vào \"Khám phá Mẹo\", nơi bạn sẽ tìm thấy những lời khuyên và gợi ý giá trị để phát triển cá nhân cũng như cách để xây dựng mối quan hệ vững chắc với đối phương.",
+  "tipGiftDialogInstructionTitle": "Món quà lý tưởng",
+  "tipGiftDialogInstructionDescription": "Bạn chưa biết tặng quà gì cho người ấy? Đừng lo lắng! Chỉ cần chọn \"Xem gợi ý\" và sau đó chọn dịp đặc biệt mà bạn muốn tặng quà, chúng tôi sẽ cung cấp các gợi ý quà tặng hoàn hảo phù hợp với đối phương. 😋",
+  "tipDateSpotDialogInstructionTitle": "Địa điểm hẹn hò lý tưởng",
+  "tipDateSpotDialogInstructionDescription": "Bạn đang tìm kiếm địa điểm hẹn hò lý tưởng với người ấy? Khám phá các gợi ý tuyệt vời của chúng tôi bằng cách chọn \"Khám phá\", sau đó chọn dịp đặc biệt bạn muốn kỷ niệm.",
+  "featureIntroduction": "Giới thiệu tính năng"
 }

@@ -2,7 +2,7 @@ import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SelfImprovementCategory extends Equatable {
   final Widget image;

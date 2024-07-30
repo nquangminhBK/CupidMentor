@@ -4,17 +4,21 @@ import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/themes_colors/app_colors.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
+import 'package:cupid_mentor/features/home/presentation/widgets/base_introduce_widget.dart';
+import 'package:cupid_mentor/features/home/presentation/widgets/tip_replying_introduce_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ChatNowWidget extends ConsumerWidget {
-  const ChatNowWidget({super.key});
+  const ChatNowWidget({super.key, this.showInfoIcon = true});
+
+  final bool showInfoIcon;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24),
       decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
       width: double.infinity,
       height: 150,
@@ -74,6 +78,28 @@ class ChatNowWidget extends ConsumerWidget {
               ),
             ),
           ),
+          if (showInfoIcon)
+            Align(
+              alignment: Alignment.topRight,
+              child: SizedBox(
+                width: 30,
+                height: 30,
+                child: AnimatedButton(
+                  onPress: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) {
+                        return const BaseDialog(child: TipReplyingIntroduceWidget());
+                      },
+                    );
+                  },
+                  child: const Icon(
+                    Icons.more_horiz_rounded,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );

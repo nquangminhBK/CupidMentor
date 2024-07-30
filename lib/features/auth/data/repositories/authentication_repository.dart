@@ -69,6 +69,7 @@ class AuthenticationRepositoryImpl with ConnectivityMixin implements Authenticat
     if (await isInConnection()) {
       try {
         await remoteDatasource.signOut();
+        await sharedPreferences.clear();
         return const Right(true);
       } catch (e, _) {
         debugPrint(e.toString());

@@ -7,6 +7,10 @@ import 'package:cupid_mentor/features/auth/data/repositories/authentication_repo
 import 'package:cupid_mentor/features/auth/domain/repositories/authentication_repository.dart';
 import 'package:cupid_mentor/features/auth/domain/use_cases/signin.dart';
 import 'package:cupid_mentor/features/auth/domain/use_cases/signout.dart';
+import 'package:cupid_mentor/features/home/data/data_sources/home_datasource.dart';
+import 'package:cupid_mentor/features/home/data/repository/home_repositories.dart';
+import 'package:cupid_mentor/features/home/domain/repository/home_repositories.dart';
+import 'package:cupid_mentor/features/home/domain/use_cases/need_show_introduction.dart';
 import 'package:cupid_mentor/features/localization/data/data_sources/localization_datasource.dart';
 import 'package:cupid_mentor/features/localization/data/repository/localization_repository.dart';
 import 'package:cupid_mentor/features/localization/domain/repository/localization_repository.dart';
@@ -105,6 +109,9 @@ void _registerDataSources() {
       firestore: get(),
     ),
   );
+  get.registerLazySingleton<HomeDatasource>(
+    () => HomeDatasourceImpl(sharedPreferences: get()),
+  );
   get.registerLazySingleton<TipsSelfImprovementDatasource>(
     () => TipsSelfImprovementDatasourceImpl(firestore: get(), firebaseAuth: get()),
   );
@@ -138,6 +145,9 @@ void _registerRepositories() {
   get.registerLazySingleton<OnboardingRepository>(
     () => OnboardingRepositoryImpl(datasource: get(), connectivity: get()),
   );
+  get.registerLazySingleton<HomeRepositories>(
+    () => HomeRepositoriesImpl(homeDatasource: get()),
+  );
   get.registerLazySingleton<TipsSelfImprovementRepository>(
     () => TipsSelfImprovementRepositoryImpl(datasource: get(), connectivity: get()),
   );
@@ -162,6 +172,7 @@ void _registerUseCases() {
   get.registerLazySingleton(() => SetLanguage(repository: get()));
   get.registerLazySingleton(() => LoginUseCase(repository: get()));
   get.registerLazySingleton(() => LogoutUseCase(repository: get()));
+  get.registerLazySingleton(() => CheckNeedShowIntroduction(repository: get()));
   get.registerLazySingleton(() => GetCurrentUser(repository: get()));
   get.registerLazySingleton(() => SaveUserInfo(repository: get()));
   get.registerLazySingleton(() => GetUserInfo(repository: get()));

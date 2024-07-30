@@ -132,5 +132,14 @@
   "deletePartnerInfoDialogTitle": "Are you sure you want to delete the partner's information?",
   "deleteAccount": "Delete account",
   "deleteAccountDialogTitle": "Are you sure you want to delete your account?",
-  "logoutDialogTitle" : "Are you sure you want to log out?"
+  "logoutDialogTitle": "Are you sure you want to log out?",
+  "tipReplyDialogInstructionTitle": "Suggestions for how to respond to messages!",
+  "tipReplyDialogInstructionDescription": "This is one of our most exciting features. Just click the \"Let's try\" button, send us a message from your partner, and we'll analyze and offer you the most charming replies!",
+  "tipSelfImprovementDialogInstructionTitle": "Some Tips For You!",
+  "tipSelfImprovementDialogInstructionDescription": "Click on \"Explore tips,\" where you'll find valuable advice and suggestions to enhance your personal growth and strengthen your relationship with your partner.",
+  "tipGiftDialogInstructionTitle": "The Ideal Gifts",
+  "tipGiftDialogInstructionDescription": "Unsure about what gift to give your special someone? No worries! Just select \"See All Gifts\" button then choose the special occasion you want to celebrate, and we'll provide the perfect gift suggestions tailored for your partner. \uD83D\uDE0B",
+  "tipDateSpotDialogInstructionTitle": "The Perfect Date Spots",
+  "tipDateSpotDialogInstructionDescription": "Looking for the perfect date spot with your loved one? Explore our fantastic suggestions by selecting \"View All Spots,\" and then choose the special occasion you'd like to celebrate.",
+  "featureIntroduction": "Feature introduction"
 }
