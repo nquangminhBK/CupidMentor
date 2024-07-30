@@ -1,5 +1,7 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';
@@ -64,8 +66,10 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 ),
                 ItemSetting(
                   leftIcon: Icons.info_outline_rounded,
-                  title: context.l10n.aboutTheAuthor,
-                  onTap: () {},
+                  title: context.l10n.aboutUs,
+                  onTap: () {
+                    NavigationService.instance.push(AppRoutes.aboutTheAuthor);
+                  },
                 ),
                 ItemSetting(
                   leftIcon: Icons.logout,

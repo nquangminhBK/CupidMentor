@@ -35,7 +35,7 @@ class WelcomeScreen extends ConsumerWidget {
                   Assets.png.appIcon.image(width: 60, height: 60),
                   GradientText(
                     'Cupid Mentor',
-                    style: context.textTheme.titleLarge?.copyWith(
+                    style: context.textTheme.headlineSmall?.copyWith(
                       fontSize: 40,
                     ),
                     gradient: ref.currentAppColor.mainGradient,

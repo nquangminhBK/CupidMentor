@@ -28,4 +28,6 @@ class AppRoutes {
   static const String partnerProfile = '/partner-profile';
 
   static const String addPartnerProfile = '/add-partner-profile';
+
+  static const String aboutTheAuthor = '/about-the-author';
 }

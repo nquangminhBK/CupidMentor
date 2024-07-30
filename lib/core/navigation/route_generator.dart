@@ -8,6 +8,7 @@ import 'package:cupid_mentor/features/onboarding/presentation/pages/welcome_scre
 import 'package:cupid_mentor/features/profile/presentation/pages/add_partner_screen.dart';
 import 'package:cupid_mentor/features/profile/presentation/pages/partner_profile_page.dart';
 import 'package:cupid_mentor/features/profile/presentation/pages/your_profile_page.dart';
+import 'package:cupid_mentor/features/setting/presentation/pages/about_the_author_screen.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/setting_screen.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/showcase_screen.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/pages/splash_screen.dart';
@@ -96,6 +97,11 @@ Route<Object>? generateRoute(RouteSettings settings) {
       return _buildRoute(
         settings: settings,
         screen: const AddPartnerScreen(),
+      );
+    case AppRoutes.aboutTheAuthor:
+      return _buildRoute(
+        settings: settings,
+        screen: const AboutTheAuthorScreen(),
       );
     default:
       return _errorRoute();

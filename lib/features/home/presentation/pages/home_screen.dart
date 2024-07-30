@@ -61,7 +61,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     Assets.png.appIcon.image(width: 30, height: 30),
                     GradientText(
                       'Cupid Mentor',
-                      style: context.textTheme.titleLarge?.copyWith(
+                      style: context.textTheme.headlineSmall?.copyWith(
                         fontSize: 20,
                       ),
                       gradient: ref.currentAppColor.mainGradient,
