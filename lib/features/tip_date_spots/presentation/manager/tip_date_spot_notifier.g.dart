@@ -7,7 +7,7 @@ part of 'tip_date_spot_notifier.dart';
 // **************************************************************************
 
 String _$tipsDateSpotNotifierHash() =>
-    r'bc07d1133f67d436ac55c6e6c733f166b5676bab';
+    r'ea3008c7f79657fa342469173023a5f07cb38234';
 
 /// See also [TipsDateSpotNotifier].
 @ProviderFor(TipsDateSpotNotifier)

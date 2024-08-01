@@ -7,7 +7,7 @@ part of 'tip_replying_notifier.dart';
 // **************************************************************************
 
 String _$tipsReplyingNotifierHash() =>
-    r'53a87357ecf6e49e8974d2e936258c26a4160284';
+    r'f2548e36948a530f0c66e0fbba7af2c7801768d7';
 
 /// See also [TipsReplyingNotifier].
 @ProviderFor(TipsReplyingNotifier)

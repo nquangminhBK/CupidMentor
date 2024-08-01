@@ -24,7 +24,7 @@ class ImageNetwork extends ConsumerWidget {
               imageUrl,
               fit: fit,
               errorBuilder: (_, __, ___) => Container(
-                color: Colors.white,
+                color: Colors.transparent,
                 child: Align(
                   alignment: Alignment.center,
                   child: Assets.png.appIcon.image(color: Colors.grey),
@@ -32,13 +32,11 @@ class ImageNetwork extends ConsumerWidget {
               ),
               loadingBuilder: (_, Widget child, ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) return child;
-                return DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [ref.currentAppColor.primaryColor, Colors.black],
-                    ),
+                return Container(
+                  color: Colors.transparent,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Assets.png.appIcon.image(color: Colors.grey),
                   ),
                 );
               },
@@ -46,17 +44,15 @@ class ImageNetwork extends ConsumerWidget {
           : CachedNetworkImage(
               imageUrl: imageUrl,
               fit: fit,
-              progressIndicatorBuilder: (_, __, ___) => DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [ref.currentAppColor.primaryColor, Colors.black],
-                  ),
+              progressIndicatorBuilder: (_, __, ___) => Container(
+                color: Colors.transparent,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Assets.png.appIcon.image(color: Colors.grey),
                 ),
               ),
               errorWidget: (_, __, ___) => Container(
-                color: Colors.white,
+                color: Colors.transparent,
                 child: Align(
                   alignment: Alignment.center,
                   child: Assets.png.appIcon.image(color: Colors.grey),

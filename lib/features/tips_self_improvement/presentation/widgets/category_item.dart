@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/constants/image_url.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/image_network.dart';
@@ -74,7 +75,8 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                       child: Padding(
                         padding: const EdgeInsets.all(20),
                         child: ImageNetwork(
-                          imageUrl: widget.selfImprovementEntity.category.image,
+                          imageUrl:
+                              ImageUrl.getImageUrl(widget.selfImprovementEntity.category.image),
                         ),
                       ),
                     ),
@@ -85,7 +87,8 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                       child: Padding(
                         padding: const EdgeInsets.all(20),
                         child: ImageNetwork(
-                          imageUrl: widget.selfImprovementEntity.category.image,
+                          imageUrl:
+                              ImageUrl.getImageUrl(widget.selfImprovementEntity.category.image),
                         ),
                       ),
                     ),

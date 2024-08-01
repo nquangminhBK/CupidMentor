@@ -22,7 +22,6 @@ abstract class PreloadDataState with _$PreloadDataState {
     LocalizationContent? termOfService,
     required List<SelfImprovementEntity> selfImprovements,
     required List<ContentWithImage> specialOccasions,
-    required String? cloudImageBase
   }) = _PreloadDataState;
 
   factory PreloadDataState.initial() => const PreloadDataState(
