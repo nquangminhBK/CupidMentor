@@ -18,7 +18,7 @@ class SplashScreen extends ConsumerStatefulWidget {
 class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
-    ref.read(splashNotifierProvider.notifier).checkInitialCondition();
+    ref.read(splashNotifierProvider.notifier).checkPreloadDataAndInitialCondition();
     super.initState();
   }
 

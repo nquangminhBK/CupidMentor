@@ -51,6 +51,7 @@ class PreloadDataNotifier extends _$PreloadDataNotifier {
 
   Future<void> initializeAndFetchRemoteConfig() async {
     await initializeRemoteConfig(NoParams());
+    state = state.copyWith(isInitializing: true);
   }
 
   Future<void> preloadData() async {
