@@ -1,19 +1,19 @@
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'love_language.freezed.dart';
+part 'content_with_description.freezed.dart';
 
 @freezed
-class LoveLanguage with _$LoveLanguage {
-  const LoveLanguage._();
+class ContentWithDescription with _$ContentWithDescription {
+  const ContentWithDescription._();
 
-  const factory LoveLanguage({
+  const factory ContentWithDescription({
     required String id,
     required LocalizationContent title,
     required LocalizationContent description,
-  }) = _LoveLanguage;
+  }) = _ContentWithDescription;
 
-  factory LoveLanguage.empty() => LoveLanguage(
+  factory ContentWithDescription.empty() => ContentWithDescription(
         id: '',
         title: LocalizationContent.empty(),
         description: LocalizationContent.empty(),

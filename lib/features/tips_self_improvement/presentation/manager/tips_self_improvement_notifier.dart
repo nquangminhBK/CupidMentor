@@ -1,9 +1,10 @@
-import 'package:cupid_mentor/core/constants/self_improvement.dart';
 import 'package:cupid_mentor/core/core_entity/content_response.dart';
 import 'package:cupid_mentor/core/core_use_cases/generate_ai_content.dart';
 import 'package:cupid_mentor/core/errors/ui_failures.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
+import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_description.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/add_tips_self_improvement.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/get_tips_self_improvement.dart';
@@ -32,7 +33,7 @@ class TipsSelfImprovementNotifier extends _$TipsSelfImprovementNotifier {
 
   GenerateAIContent get generateAIContent => ref.read(generateAIContentUseCaseProvider);
 
-  Future<List<ContentResponse>> getTips(SelfImprovement selfImprovement) async {
+  Future<List<ContentResponse>> getTips(ContentWithDescription selfImprovement) async {
     final response = await getTipsSelfImprovement(
       GetTipsSelfImprovementParam(selfImprovementId: selfImprovement.id),
     );
@@ -44,13 +45,16 @@ class TipsSelfImprovementNotifier extends _$TipsSelfImprovementNotifier {
   }
 
   Future<ContentResponse?> generateAiContent(
-    SelfImprovement selfImprovement,
+    ContentWithDescription selfImprovement,
     BuildContext context,
   ) async {
     final userInfo = (await getUserInfo(NoParams())).getOrElse(() => null);
     if (userInfo != null && context.mounted) {
-      final aiContent =
-          AIContext(userInfo: userInfo, context: context).tipsSelfImprovement(selfImprovement);
+      final aiContent = AIContext(
+        userInfo: userInfo,
+        context: context,
+        preloadData: ref.preloadData,
+      ).tipsSelfImprovement(selfImprovement);
       debugPrint(aiContent);
       final aiMDText =
           (await generateAIContent(GenerateAIContentParam(contents: [Content.text(aiContent)])))

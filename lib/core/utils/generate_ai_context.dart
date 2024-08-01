@@ -1,38 +1,38 @@
 import 'package:collection/collection.dart';
 import 'package:cupid_mentor/core/constants/datetime.dart';
 import 'package:cupid_mentor/core/constants/gender.dart';
-import 'package:cupid_mentor/core/constants/hobbies.dart';
 import 'package:cupid_mentor/core/constants/localization_const.dart';
-import 'package:cupid_mentor/core/constants/love_language.dart';
-import 'package:cupid_mentor/core/constants/personalities.dart';
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
-import 'package:cupid_mentor/core/constants/self_improvement.dart';
-import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
+import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_description.dart';
+import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_image.dart';
+import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AIContext {
   final LoggedInUserInfo userInfo;
   final BuildContext context;
+  final PreloadDataState preloadData;
 
   String get userGenderDisplay => userInfo.gender?.displayText.value(context) ?? '';
 
   List<String> get userPersonalitiesDisplay => userInfo.personalities.map((e) {
-        final personality = Personalities.personalities.firstWhereOrNull((p) => p.id == e);
+        final personality = preloadData.personalities.firstWhereOrNull((p) => p.id == e);
         return personality?.value(context) ?? '';
       }).toList();
 
   List<String> get userHobbiesDisplay => userInfo.hobbies.map((e) {
-        final hobby = Hobbies.hobbies.firstWhereOrNull((p) => p.id == e);
+        final hobby = preloadData.hobbies.firstWhereOrNull((p) => p.id == e);
         return hobby?.value(context) ?? '';
       }).toList();
 
-  List<String> get userLoveLanguagesDisplay => userInfo.loveLanguages.map((e) {
-        final loveLanguage = LoveLanguage.loveLanguages[e]?.$1;
-        return loveLanguage?.value(context) ?? '';
+  List<String> get userLoveLanguagesDisplay => userInfo.loveLanguages.map((id) {
+        final loveLanguage = preloadData.loveLanguages.firstWhereOrNull((e) => e.id == id);
+        return loveLanguage?.title.value(context) ?? '';
       }).toList();
 
   String? get relationshipDisplay =>
@@ -41,11 +41,11 @@ class AIContext {
   String? get partnerGenderDisplay => userInfo.partnerInfo?.gender?.displayText.value(context);
 
   List<String>? get partnerHobbiesDisplay => userInfo.partnerInfo?.hobbies.map((e) {
-        final hobby = Hobbies.hobbies.firstWhereOrNull((p) => p.id == e);
+        final hobby = preloadData.hobbies.firstWhereOrNull((p) => p.id == e);
         return hobby?.value(context) ?? '';
       }).toList();
 
-  const AIContext({required this.userInfo, required this.context});
+  const AIContext({required this.userInfo, required this.context, required this.preloadData});
 
   String get _generateAIContext {
     final currentLang = ProviderScope.containerOf(context).read(localizationNotifierProvider).lang;
@@ -304,7 +304,7 @@ class AIContext {
     return result;
   }
 
-  String tipsGiftCommand(SpecialOccasion occasion) {
+  String tipsGiftCommand(ContentWithImage occasion) {
     final relationship =
         (RelationshipType.tryParse(userInfo.relationship) ?? RelationshipType.crush)
             .displayText
@@ -322,7 +322,7 @@ class AIContext {
     }
   }
 
-  String tipsDateSpotCommand(SpecialOccasion occasion) {
+  String tipsDateSpotCommand(ContentWithImage occasion) {
     final currentLang = ProviderScope.containerOf(context).read(localizationNotifierProvider).lang;
     switch (currentLang) {
       case LocalizationEnum.english:
@@ -336,7 +336,7 @@ class AIContext {
     }
   }
 
-  String tipsSelfImprovement(SelfImprovement tips) {
+  String tipsSelfImprovement(ContentWithDescription tips) {
     final currentLang = ProviderScope.containerOf(context).read(localizationNotifierProvider).lang;
     switch (currentLang) {
       case LocalizationEnum.english:

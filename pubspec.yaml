@@ -78,6 +78,8 @@ dependencies:
   uuid: ^4.4.2
   file_picker: ^8.0.3
   firebase_vertexai: ^0.2.2+2
+  firebase_remote_config: ^5.0.4
+  firebase_storage: ^12.1.2
 
 
 dev_dependencies:

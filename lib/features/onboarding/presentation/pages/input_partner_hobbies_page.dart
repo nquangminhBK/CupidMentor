@@ -1,4 +1,3 @@
-import 'package:cupid_mentor/core/constants/hobbies.dart';
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
@@ -7,6 +6,7 @@ import 'package:cupid_mentor/core/widgets/text_field.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/page_skeleton_widget.dart';
+import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,24 +19,12 @@ class InputPartnerHobbiesPage extends ConsumerStatefulWidget {
 
 class _InputPartnerHobbiesPageState extends ConsumerState<InputPartnerHobbiesPage> {
   List<LocalizationContent> searchedList = [];
-  List<LocalizationContent> unSearchedList = Hobbies.hobbies;
+  List<LocalizationContent> unSearchedList = [];
 
-  void _executeSearch(String searchKey) {
-    if (searchKey.isNotEmpty) {
-      searchedList = Hobbies.hobbies
-          .where(
-            (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
-          )
-          .toList();
-      unSearchedList = Hobbies.hobbies
-          .where(
-            (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
-          )
-          .toList();
-    } else {
-      searchedList = [];
-      unSearchedList = Hobbies.hobbies;
-    }
+  @override
+  void initState() {
+    unSearchedList = ref.read(preloadDataNotifierProvider).hobbies;
+    super.initState();
   }
 
   @override
@@ -44,6 +32,25 @@ class _InputPartnerHobbiesPageState extends ConsumerState<InputPartnerHobbiesPag
     final partnerHobbies =
         ref.watch(onboardingNotifierProvider).userInfo.partnerInfo?.hobbies ?? <String>[];
     final notifier = ref.read(onboardingNotifierProvider.notifier);
+    final allHobbies = ref.read(preloadDataNotifierProvider).hobbies;
+    void executeSearch(String searchKey) {
+      if (searchKey.isNotEmpty) {
+        searchedList = allHobbies
+            .where(
+              (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+            )
+            .toList();
+        unSearchedList = allHobbies
+            .where(
+              (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+            )
+            .toList();
+      } else {
+        searchedList = [];
+        unSearchedList = allHobbies;
+      }
+    }
+
     return PageSkeletonWidget(
       title: context.l10n.inputPartnerHobbiesTitle,
       description: context.l10n.inputPartnerBasicInfoDesc,
@@ -51,7 +58,7 @@ class _InputPartnerHobbiesPageState extends ConsumerState<InputPartnerHobbiesPag
         MyTextField(
           onChanged: (text) {
             setState(() {
-              _executeSearch(text);
+              executeSearch(text);
             });
           },
           hintText: context.l10n.searchHobbies,

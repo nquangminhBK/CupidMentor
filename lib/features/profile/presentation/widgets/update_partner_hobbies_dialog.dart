@@ -1,4 +1,3 @@
-import 'package:cupid_mentor/core/constants/hobbies.dart';
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
@@ -22,8 +21,14 @@ class UpdatePartnerHobbiesDialog extends ConsumerStatefulWidget {
 
 class _UpdatePartnerHobbiesDialogState extends ConsumerState<UpdatePartnerHobbiesDialog> {
   List<LocalizationContent> searchedList = [];
-  List<LocalizationContent> unSearchedList = Hobbies.hobbies;
+  List<LocalizationContent> unSearchedList = [];
   var errorMsg = '';
+
+  @override
+  void initState() {
+    unSearchedList = ref.preloadData.hobbies;
+    super.initState();
+  }
 
   void _clearError() {
     setState(() {
@@ -31,30 +36,29 @@ class _UpdatePartnerHobbiesDialogState extends ConsumerState<UpdatePartnerHobbie
     });
   }
 
-  void _executeSearch(String searchKey) {
-    if (searchKey.isNotEmpty) {
-      searchedList = Hobbies.hobbies
-          .where(
-            (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
-          )
-          .toList();
-      unSearchedList = Hobbies.hobbies
-          .where(
-            (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
-          )
-          .toList();
-    } else {
-      searchedList = [];
-      unSearchedList = Hobbies.hobbies;
-    }
-  }
-
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  Widget build(BuildContext context) {
     final hobbies = ref.watch(profileNotifierProvider).tempUserInfo?.partnerInfo?.hobbies ?? [];
     final notifier = ref.read(profileNotifierProvider.notifier);
+
+    void executeSearch(String searchKey) {
+      if (searchKey.isNotEmpty) {
+        searchedList = ref.preloadData.hobbies
+            .where(
+              (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+            )
+            .toList();
+        unSearchedList = ref.preloadData.hobbies
+            .where(
+              (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+            )
+            .toList();
+      } else {
+        searchedList = [];
+        unSearchedList = ref.preloadData.hobbies;
+      }
+    }
+
     return BaseDialog(
       child: SingleChildScrollView(
         child: Column(
@@ -68,7 +72,7 @@ class _UpdatePartnerHobbiesDialogState extends ConsumerState<UpdatePartnerHobbie
             MyTextField(
               onChanged: (text) {
                 setState(() {
-                  _executeSearch(text);
+                  executeSearch(text);
                 });
               },
               hintText: context.l10n.searchHobbies,

@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:cupid_mentor/core/constants/self_improvement.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/dialog_list_generated_content.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
+import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_description.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/manager/tips_self_improvement_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,7 +13,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class TipsSelfImprovementItem extends ConsumerWidget {
   const TipsSelfImprovementItem({super.key, required this.item});
 
-  final SelfImprovement item;
+  final ContentWithDescription item;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

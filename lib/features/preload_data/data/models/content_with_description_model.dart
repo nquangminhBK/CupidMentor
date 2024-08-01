@@ -7,20 +7,20 @@ part 'content_with_description_model.freezed.dart';
 part 'content_with_description_model.g.dart';
 
 @freezed
-class ContextWithDescriptionModel with _$ContextWithDescriptionModel {
-  const ContextWithDescriptionModel._();
+class ContentWithDescriptionModel with _$ContentWithDescriptionModel {
+  const ContentWithDescriptionModel._();
 
-  const factory ContextWithDescriptionModel({
+  const factory ContentWithDescriptionModel({
     required String id,
     required LocalizationContent title,
     required LocalizationContent description,
-  }) = _ContextWithDescriptionModel;
+  }) = _ContentWithDescriptionModel;
 
-  factory ContextWithDescriptionModel.fromJson(Map<String, dynamic> json) =>
-      _$ContextWithDescriptionModelFromJson(json);
+  factory ContentWithDescriptionModel.fromJson(Map<String, dynamic> json) =>
+      _$ContentWithDescriptionModelFromJson(json);
 
-  ContextWithDescription get toEntity {
-    return ContextWithDescription(
+  ContentWithDescription get toEntity {
+    return ContentWithDescription(
       id: id,
       title: title,
       description: description,

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cupid_mentor/core/core_use_cases/generate_ai_content.dart';
 import 'package:cupid_mentor/core/errors/ui_failures.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
@@ -87,7 +88,11 @@ class TipsReplyingNotifier extends _$TipsReplyingNotifier {
     );
     final userInfo = (await getUserInfo(NoParams())).getOrElse(() => null);
     if (userInfo != null && context.mounted) {
-      final aiContent = AIContext(userInfo: userInfo, context: context).tipsReplying(message);
+      final aiContent = AIContext(
+        userInfo: userInfo,
+        context: context,
+        preloadData: ref.preloadData,
+      ).tipsReplying(message);
       debugPrint(aiContent);
       state = state.copyWith(loading: true);
       final aiMDText =

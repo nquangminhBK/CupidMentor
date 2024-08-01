@@ -1,4 +1,5 @@
-import 'package:cupid_mentor/core/constants/love_language.dart';
+import 'package:collection/collection.dart';
+import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
@@ -15,6 +16,10 @@ class LoveLanguagesWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    LocalizationContent? getLoveLanguageTitle(String id) {
+      return ref.preloadData.loveLanguages.firstWhereOrNull((e) => e.id == id)?.title;
+    }
+
     return Column(
       children: [
         const VerticalSpace(size: 16),
@@ -44,7 +49,7 @@ class LoveLanguagesWidget extends ConsumerWidget {
                 .map(
                   (e) => CustomTag(
                     title:
-                        '${loveLanguages.indexOf(e) + 1} • ${LoveLanguage.loveLanguages[e]?.$1.value(context) ?? ''}',
+                        '${loveLanguages.indexOf(e) + 1} • ${getLoveLanguageTitle(e)?.value(context) ?? ''}',
                     isSelected: false,
                     onTap: () {},
                   ),

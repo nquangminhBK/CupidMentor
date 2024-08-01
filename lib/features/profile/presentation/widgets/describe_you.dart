@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:cupid_mentor/core/constants/personalities.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
@@ -44,7 +43,7 @@ class DescribeYouWidget extends ConsumerWidget {
             children: personalities
                 .map(
                   (e) => CustomTag(
-                    title: Personalities.personalities
+                    title: ref.preloadData.personalities
                             .firstWhereOrNull((personality) => personality.id == e)
                             ?.value(context) ??
                         '',

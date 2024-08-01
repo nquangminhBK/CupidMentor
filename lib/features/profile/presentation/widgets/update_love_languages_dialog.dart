@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:cupid_mentor/core/constants/love_language.dart';
+import 'package:collection/collection.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
@@ -40,6 +40,9 @@ class _UpdateLoveLanguagesDialogState extends ConsumerState<UpdateLoveLanguagesD
     final loveLanguages = ref.watch(profileNotifierProvider).tempUserInfo?.loveLanguages ?? [];
     final notifier = ref.read(profileNotifierProvider.notifier);
     Widget proxyDecorator(Widget child, int index, Animation<double> animation) {
+      final itemLoveLanguage = ref.preloadData.loveLanguages
+          .firstWhereOrNull((e) => e.id == loveLanguages[index])
+          ?.title;
       return AnimatedBuilder(
         animation: animation,
         builder: (BuildContext context, Widget? child) {
@@ -48,7 +51,7 @@ class _UpdateLoveLanguagesDialogState extends ConsumerState<UpdateLoveLanguagesD
           return Transform.scale(
             scale: scale,
             child: ItemLoveLanguage(
-              title: (LoveLanguage.loveLanguages[loveLanguages[index]]?.$1)?.value(context) ?? '',
+              title: itemLoveLanguage?.value(context) ?? '',
               index: index,
               onTap: () {},
             ),
@@ -67,7 +70,7 @@ class _UpdateLoveLanguagesDialogState extends ConsumerState<UpdateLoveLanguagesD
               context.l10n.updateLoveLanguages,
               style: context.textTheme.headlineSmall,
             ),
-            if (loveLanguages.length < LoveLanguage.loveLanguages.length)
+            if (loveLanguages.length < ref.preloadData.loveLanguages.length)
               RichText(
                 text: TextSpan(
                   children: [
@@ -100,16 +103,15 @@ class _UpdateLoveLanguagesDialogState extends ConsumerState<UpdateLoveLanguagesD
             Wrap(
               spacing: 12,
               runSpacing: 12,
-              children: LoveLanguage.loveLanguages.keys
-                  .where((element) => !loveLanguages.contains(element))
+              children: ref.preloadData.loveLanguages
+                  .where((element) => !loveLanguages.contains(element.id))
                   .map(
                     (e) => CustomTag(
-                      title: (LoveLanguage.loveLanguages[e]?.$1)?.value(context) ?? '',
+                      title: e.title.value(context),
                       isSelected: false,
                       onTap: () {
-                        _clearError();
                         notifier.updateLoveLanguages(
-                          e,
+                          e.id,
                           false,
                         );
                       },
@@ -117,7 +119,7 @@ class _UpdateLoveLanguagesDialogState extends ConsumerState<UpdateLoveLanguagesD
                   )
                   .toList(),
             ),
-            if (loveLanguages.length < LoveLanguage.loveLanguages.length)
+            if (loveLanguages.length < ref.preloadData.loveLanguages.length)
               const VerticalSpace(size: 24),
             Row(
               children: [
@@ -139,9 +141,11 @@ class _UpdateLoveLanguagesDialogState extends ConsumerState<UpdateLoveLanguagesD
                     children: [
                       for (int i = 0; i < loveLanguages.length; i++)
                         ItemLoveLanguage(
-                          title:
-                              (LoveLanguage.loveLanguages[loveLanguages[i]]?.$1)?.value(context) ??
-                                  '',
+                          title: ref.preloadData.loveLanguages
+                                  .firstWhereOrNull((e) => e.id == loveLanguages[i])
+                                  ?.title
+                                  .value(context) ??
+                              '',
                           index: i,
                           key: ValueKey(loveLanguages[i]),
                           onTap: () {

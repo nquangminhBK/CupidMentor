@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:cupid_mentor/core/constants/love_language.dart';
+import 'package:collection/collection.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';
@@ -11,6 +11,7 @@ import 'package:cupid_mentor/features/onboarding/presentation/widgets/dialog_lov
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/item_love_languages.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/page_skeleton_widget.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/rank_widget.dart';
+import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,9 +26,12 @@ class InputLoveLanguagesPage extends ConsumerStatefulWidget {
 class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage> {
   @override
   Widget build(BuildContext context) {
-    final loveLanguages = ref.watch(onboardingNotifierProvider).userInfo.loveLanguages;
+    final allLoveLanguages = ref.watch(preloadDataNotifierProvider).loveLanguages;
+    final userLoveLanguages = ref.watch(onboardingNotifierProvider).userInfo.loveLanguages;
     final notifier = ref.read(onboardingNotifierProvider.notifier);
     Widget proxyDecorator(Widget child, int index, Animation<double> animation) {
+      final itemLoveLanguage =
+          allLoveLanguages.firstWhereOrNull((e) => e.id == userLoveLanguages[index])?.title;
       return AnimatedBuilder(
         animation: animation,
         builder: (BuildContext context, Widget? child) {
@@ -36,7 +40,7 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
           return Transform.scale(
             scale: scale,
             child: ItemLoveLanguage(
-              title: (LoveLanguage.loveLanguages[loveLanguages[index]]?.$1)?.value(context) ?? '',
+              title: itemLoveLanguage?.value(context) ?? '',
               index: index,
               onTap: () {},
             ),
@@ -50,7 +54,7 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
       title: context.l10n.inputLoveLanguageTitle,
       description: context.l10n.inputLoveLanguageDesc,
       children: [
-        if (loveLanguages.length < LoveLanguage.loveLanguages.length)
+        if (userLoveLanguages.length < allLoveLanguages.length)
           RichText(
             text: TextSpan(
               children: [
@@ -83,15 +87,15 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
         Wrap(
           spacing: 12,
           runSpacing: 12,
-          children: LoveLanguage.loveLanguages.keys
-              .where((element) => !loveLanguages.contains(element))
+          children: allLoveLanguages
+              .where((element) => !userLoveLanguages.contains(element.id))
               .map(
                 (e) => CustomTag(
-                  title: (LoveLanguage.loveLanguages[e]?.$1)?.value(context) ?? '',
+                  title: e.title.value(context),
                   isSelected: false,
                   onTap: () {
                     notifier.updateLoveLanguages(
-                      e,
+                      e.id,
                       false,
                     );
                   },
@@ -99,11 +103,11 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
               )
               .toList(),
         ),
-        if (loveLanguages.length < LoveLanguage.loveLanguages.length) const VerticalSpace(size: 24),
+        if (userLoveLanguages.length < allLoveLanguages.length) const VerticalSpace(size: 24),
         Row(
           children: [
             Column(
-              children: List<int>.generate(loveLanguages.length, (i) => i)
+              children: List<int>.generate(userLoveLanguages.length, (i) => i)
                   .map((e) => RankWidget(title: 'No ${e + 1}'))
                   .toList(),
             ),
@@ -118,15 +122,18 @@ class _InputLoveLanguagesPageState extends ConsumerState<InputLoveLanguagesPage>
                   notifier.reorderLoveLanguages(oldIndex, newIndex);
                 },
                 children: [
-                  for (int i = 0; i < loveLanguages.length; i++)
+                  for (int i = 0; i < userLoveLanguages.length; i++)
                     ItemLoveLanguage(
-                      title:
-                          (LoveLanguage.loveLanguages[loveLanguages[i]]?.$1)?.value(context) ?? '',
+                      title: allLoveLanguages
+                              .firstWhereOrNull((e) => e.id == userLoveLanguages[i])
+                              ?.title
+                              .value(context) ??
+                          '',
                       index: i,
-                      key: ValueKey(loveLanguages[i]),
+                      key: ValueKey(userLoveLanguages[i]),
                       onTap: () {
                         notifier.updateLoveLanguages(
-                          loveLanguages[i],
+                          userLoveLanguages[i],
                           true,
                         );
                       },

@@ -1,4 +1,3 @@
-import 'package:cupid_mentor/core/constants/personalities.dart';
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
@@ -22,8 +21,14 @@ class UpdatePersonalitiesDialog extends ConsumerStatefulWidget {
 
 class _UpdatePersonalitiesDialogState extends ConsumerState<UpdatePersonalitiesDialog> {
   List<LocalizationContent> searchedList = [];
-  List<LocalizationContent> unSearchedList = Personalities.personalities;
+  List<LocalizationContent> unSearchedList = [];
   var errorMsg = '';
+
+  @override
+  void initState() {
+    unSearchedList = ref.preloadData.personalities;
+    super.initState();
+  }
 
   void _clearError() {
     setState(() {
@@ -31,28 +36,29 @@ class _UpdatePersonalitiesDialogState extends ConsumerState<UpdatePersonalitiesD
     });
   }
 
-  void _executeSearch(String searchKey) {
-    if (searchKey.isNotEmpty) {
-      searchedList = Personalities.personalities
-          .where(
-            (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
-          )
-          .toList();
-      unSearchedList = Personalities.personalities
-          .where(
-            (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
-          )
-          .toList();
-    } else {
-      searchedList = [];
-      unSearchedList = Personalities.personalities;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final personalities = ref.watch(profileNotifierProvider).tempUserInfo?.personalities ?? [];
     final notifier = ref.read(profileNotifierProvider.notifier);
+
+    void executeSearch(String searchKey) {
+      if (searchKey.isNotEmpty) {
+        searchedList = ref.preloadData.personalities
+            .where(
+              (element) => element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+            )
+            .toList();
+        unSearchedList = ref.preloadData.personalities
+            .where(
+              (element) => !element.value(context).toLowerCase().contains(searchKey.toLowerCase()),
+            )
+            .toList();
+      } else {
+        searchedList = [];
+        unSearchedList = ref.preloadData.personalities;
+      }
+    }
+
     return BaseDialog(
       child: SingleChildScrollView(
         child: Column(
@@ -66,7 +72,7 @@ class _UpdatePersonalitiesDialogState extends ConsumerState<UpdatePersonalitiesD
             MyTextField(
               onChanged: (text) {
                 setState(() {
-                  _executeSearch(text);
+                  executeSearch(text);
                 });
               },
               hintText: context.l10n.searchPersonalities,

@@ -1,9 +1,7 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
-import 'package:cupid_mentor/core/constants/about_author.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/gradient_text.dart';
-import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +42,7 @@ class _AboutTheAuthorScreenState extends ConsumerState<AboutTheAuthorScreen> {
                   ),
                   const VerticalSpace(size: 12),
                   Text(
-                    AboutAuthor.aboutAuthor.value(context),
+                    ref.preloadData.aboutUs?.value(context) ?? '',
                     style: context.textTheme.bodyLarge!.copyWith(height: 1.5),
                   ),
                 ],

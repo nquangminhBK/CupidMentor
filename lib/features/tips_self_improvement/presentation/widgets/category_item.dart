@@ -1,6 +1,7 @@
-import 'package:cupid_mentor/core/constants/self_improvement.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
+import 'package:cupid_mentor/core/widgets/image_network.dart';
+import 'package:cupid_mentor/features/preload_data/domain/entities/self_improvement_entity.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/widgets/tips_self_improvement_items.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +10,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CategoryItem extends ConsumerStatefulWidget {
   const CategoryItem({
     super.key,
-    required this.category,
+    required this.selfImprovementEntity,
     required this.isLeftToRight,
   });
 
-  final SelfImprovementCategory category;
+  final SelfImprovementEntity selfImprovementEntity;
   final bool isLeftToRight;
 
   @override
@@ -60,7 +61,7 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                       child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: Text(
-                          widget.category.title.value(context),
+                          widget.selfImprovementEntity.category.title.value(context),
                           style: context.textTheme.headlineMedium!.copyWith(
                             fontSize: 14,
                           ),
@@ -70,22 +71,30 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                     ),
                     Expanded(
                       flex: 1,
-                      child:
-                          Padding(padding: const EdgeInsets.all(20), child: widget.category.image),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: ImageNetwork(
+                          imageUrl: widget.selfImprovementEntity.category.image,
+                        ),
+                      ),
                     ),
                   ]
                 : [
                     Expanded(
                       flex: 1,
-                      child:
-                          Padding(padding: const EdgeInsets.all(20), child: widget.category.image),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: ImageNetwork(
+                          imageUrl: widget.selfImprovementEntity.category.image,
+                        ),
+                      ),
                     ),
                     Expanded(
                       flex: 3,
                       child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: Text(
-                          widget.category.title.value(context),
+                          widget.selfImprovementEntity.category.title.value(context),
                           style: context.textTheme.headlineMedium!.copyWith(
                             fontSize: 14,
                           ),
@@ -107,8 +116,8 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                   height: 0.5,
                   color: ref.currentAppColor.textColor,
                 ),
-                ...SelfImprovement.selfImprovements[widget.category.title.id ?? '']
-                        ?.map((e) => TipsSelfImprovementItem(item: e))
+                ...widget.selfImprovementEntity.tips
+                        .map((e) => TipsSelfImprovementItem(item: e))
                         .toList() ??
                     [],
               ],

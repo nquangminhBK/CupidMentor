@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
@@ -52,25 +51,25 @@ class TipsGiftsScreen extends ConsumerWidget {
                 mainAxisSpacing: 16,
                 childAspectRatio: 0.9,
               ),
-              itemCount: SpecialOccasion.specialOccasions.length,
+              itemCount: ref.preloadData.specialOccasions.length,
               itemBuilder: (context, index) {
                 return AnimatedButton(
                   onPress: () async {
                     LoadingUtils.showLoading();
                     var contents =
                         await ref.read(tipsGiftNotifierProvider.notifier).getTipsGiftByOccasion(
-                              SpecialOccasion.specialOccasions[index],
+                              ref.preloadData.specialOccasions[index],
                             );
                     if (contents.isEmpty && context.mounted) {
                       await ref.read(tipsGiftNotifierProvider.notifier).generateAiContent(
-                            SpecialOccasion.specialOccasions[index],
+                            ref.preloadData.specialOccasions[index],
                             context,
                           );
                     }
                     LoadingUtils.hideLoading();
                     contents =
                         await ref.read(tipsGiftNotifierProvider.notifier).getTipsGiftByOccasion(
-                              SpecialOccasion.specialOccasions[index],
+                              ref.preloadData.specialOccasions[index],
                             );
                     if (context.mounted) {
                       unawaited(
@@ -84,7 +83,7 @@ class TipsGiftsScreen extends ConsumerWidget {
                                 final result = await ref
                                     .read(tipsGiftNotifierProvider.notifier)
                                     .generateAiContent(
-                                      SpecialOccasion.specialOccasions[index],
+                                      ref.preloadData.specialOccasions[index],
                                       context,
                                     );
                                 LoadingUtils.hideLoading();
@@ -104,13 +103,13 @@ class TipsGiftsScreen extends ConsumerWidget {
                       SizedBox(
                         width: 100,
                         height: 100,
-                        child: SpecialOccasion.specialOccasions[index].image,
+                        child: Container(),
                       ),
                       const VerticalSpace(size: 24),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Text(
-                          SpecialOccasion.specialOccasions[index].title.value(context),
+                          ref.preloadData.specialOccasions[index].title.value(context),
                           style: context.textTheme.titleSmall!.copyWith(
                             fontSize: 18,
                           ),

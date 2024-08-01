@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:cupid_mentor/core/core_use_cases/generate_ai_content.dart';
+import 'package:cupid_mentor/core/remote_config/remote_config.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_local_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/data_sources/authentication_remote_datasource.dart';
 import 'package:cupid_mentor/features/auth/data/repositories/authentication_repository.dart';
@@ -22,6 +23,20 @@ import 'package:cupid_mentor/features/onboarding/data/repository/onboarding_repo
 import 'package:cupid_mentor/features/onboarding/domain/repository/onboarding_repository.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/get_current_user.dart';
 import 'package:cupid_mentor/features/onboarding/domain/use_cases/save_user_info.dart';
+import 'package:cupid_mentor/features/preload_data/data/data_sources/preload_datasource.dart';
+import 'package:cupid_mentor/features/preload_data/data/repositories/preload_data_repository.dart';
+import 'package:cupid_mentor/features/preload_data/domain/repositories/preload_data_repository.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_about_us.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_hobbies.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_love_language_concepts.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_love_language_overall_info.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_love_languages.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_personalities.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_privacy_policy.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_self_improvement.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_special_occasions.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_term_of_service.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/initialize.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/delete_user.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
 import 'package:cupid_mentor/features/splash_screen/data/data_sources/splash_datasource.dart';
@@ -52,6 +67,7 @@ import 'package:cupid_mentor/features/tips_self_improvement/domain/repository/ti
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/add_tips_self_improvement.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/get_tips_self_improvement.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
@@ -64,8 +80,14 @@ Future<void> _registerCore() async {
   get.registerLazySingleton<GenerativeModel>(
     () => FirebaseVertexAI.instance.generativeModel(model: 'gemini-1.5-flash'),
   );
+  get.registerLazySingleton<FirebaseRemoteConfig>(
+    () => FirebaseRemoteConfig.instance,
+  );
   get.registerLazySingleton<Connectivity>(() => Connectivity());
   get.registerLazySingleton<GoogleAuthProvider>(() => GoogleAuthProvider());
+  get.registerLazySingleton<RemoteConfigService>(
+    () => RemoteConfigService(get()),
+  );
   // get.registerFactoryParam<OAuthCredential, String, String>((accessToken, idToken) =>
   //     GoogleAuthProvider.credential(accessToken: accessToken, idToken: idToken));
   get.registerLazySingleton<GoogleSignIn>(
@@ -101,6 +123,7 @@ void _registerDataSources() {
   );
 
   get.registerLazySingleton<SplashDatasource>(() => SplashDatasourceImpl(sharedPreferences: get()));
+  get.registerLazySingleton<PreloadDatasource>(() => PreloadDatasourceImpl(remoteConfig: get()));
   get.registerLazySingleton<OnboardingDatasource>(
     () => OnboardingDatasourceImpl(
       googleSignIn: get(),
@@ -108,6 +131,9 @@ void _registerDataSources() {
       googleAuthProvider: get(),
       firestore: get(),
     ),
+  );
+  get.registerLazySingleton<PreloadDataRepository>(
+    () => PreloadDataRepositoryImpl(datasource: get(), connectivity: get()),
   );
   get.registerLazySingleton<HomeDatasource>(
     () => HomeDatasourceImpl(sharedPreferences: get()),
@@ -167,6 +193,7 @@ void _registerUseCases() {
   get.registerLazySingleton(() => CheckNeedOnboarding(repository: get()));
   get.registerLazySingleton(() => CheckNeedShowCase(repository: get()));
   get.registerLazySingleton(() => CheckNeedLogin(repository: get()));
+  get.registerLazySingleton(() => InitializeRemoteConfig(repository: get()));
   get.registerLazySingleton(() => ClearLanguageData(repository: get()));
   get.registerLazySingleton(() => GetLanguage(repository: get()));
   get.registerLazySingleton(() => SetLanguage(repository: get()));
@@ -177,6 +204,18 @@ void _registerUseCases() {
   get.registerLazySingleton(() => SaveUserInfo(repository: get()));
   get.registerLazySingleton(() => GetUserInfo(repository: get()));
   get.registerLazySingleton(() => GenerateAIContent(generativeModel: get()));
+
+  get.registerLazySingleton(() => GetAboutUs(repository: get()));
+  get.registerLazySingleton(() => GetHobbies(repository: get()));
+  get.registerLazySingleton(() => GetLoveLanguageConcepts(repository: get()));
+  get.registerLazySingleton(() => GetLoveLanguageOverallInfo(repository: get()));
+  get.registerLazySingleton(() => GetLoveLanguages(repository: get()));
+  get.registerLazySingleton(() => GetPersonalities(repository: get()));
+  get.registerLazySingleton(() => GetPrivacyPolicy(repository: get()));
+  get.registerLazySingleton(() => GetSelfImprovements(repository: get()));
+  get.registerLazySingleton(() => GetSpecialOccasions(repository: get()));
+  get.registerLazySingleton(() => GetTermOfService(repository: get()));
+
   get.registerLazySingleton(() => AddTipsSelfImprovement(repository: get()));
   get.registerLazySingleton(() => GetTipsSelfImprovement(repository: get()));
   get.registerLazySingleton(() => AddTipsGift(repository: get()));

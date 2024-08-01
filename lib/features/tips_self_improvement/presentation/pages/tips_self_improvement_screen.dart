@@ -1,5 +1,5 @@
-import 'package:cupid_mentor/core/constants/self_improvement.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/manager/tips_self_improvement_notifier.dart';
@@ -38,11 +38,11 @@ class TipsSelfImprovementScreen extends ConsumerWidget {
           body: ListView.builder(
             itemBuilder: (context, index) {
               return CategoryItem(
-                category: SelfImprovementCategory.categories[index],
+                selfImprovementEntity: ref.preloadData.selfImprovements[index],
                 isLeftToRight: index % 2 == 0,
               );
             },
-            itemCount: SelfImprovementCategory.categories.length,
+            itemCount: ref.preloadData.selfImprovements.length,
           ),
         ),
       ),

@@ -11,13 +11,13 @@ import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/home/presentation/manager/home_notifier.dart';
 import 'package:cupid_mentor/features/home/presentation/manager/home_state.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/chat_now_widget.dart';
-import 'package:cupid_mentor/features/home/presentation/widgets/base_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/dialog_introduction_overall.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/menu_item.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/profile_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/tip_date_spot_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/tip_gift_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/tip_self_improvement_introduce_widget.dart';
+import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,6 +37,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (ref.watch(preloadDataNotifierProvider).aboutUs != null) {}
     ref.listen(homeNotifierProvider, (previous, next) {
       if (next is HomeShowIntroductionPopupState) {
         showDialog(

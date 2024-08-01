@@ -1,9 +1,10 @@
-import 'package:cupid_mentor/core/constants/special_occasion.dart';
 import 'package:cupid_mentor/core/core_entity/content_response.dart';
 import 'package:cupid_mentor/core/core_use_cases/generate_ai_content.dart';
 import 'package:cupid_mentor/core/errors/ui_failures.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
+import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_image.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
 import 'package:cupid_mentor/features/tips_gift/domain/use_cases/add_tips_gift.dart';
 import 'package:cupid_mentor/features/tips_gift/domain/use_cases/get_tips_gift.dart';
@@ -30,7 +31,7 @@ class TipsGiftNotifier extends _$TipsGiftNotifier {
 
   GenerateAIContent get generateAIContent => ref.read(generateAIContentUseCaseProvider);
 
-  Future<List<ContentResponse>> getTipsGiftByOccasion(SpecialOccasion occasion) async {
+  Future<List<ContentResponse>> getTipsGiftByOccasion(ContentWithImage occasion) async {
     final response = await getTipsGift(GetTipsGiftParam(occasionId: occasion.title.id ?? ''));
     final data = response.getOrElse(() => []);
     final currentContent = Map<String, List<ContentResponse>>.from(state.content);
@@ -39,10 +40,15 @@ class TipsGiftNotifier extends _$TipsGiftNotifier {
     return data;
   }
 
-  Future<ContentResponse?> generateAiContent(SpecialOccasion occasion, BuildContext context) async {
+  Future<ContentResponse?> generateAiContent(
+      ContentWithImage occasion, BuildContext context) async {
     final userInfo = (await getUserInfo(NoParams())).getOrElse(() => null);
     if (userInfo != null && context.mounted) {
-      final aiContent = AIContext(userInfo: userInfo, context: context).tipsGiftCommand(occasion);
+      final aiContent = AIContext(
+        userInfo: userInfo,
+        context: context,
+        preloadData: ref.preloadData,
+      ).tipsGiftCommand(occasion);
       debugPrint(aiContent);
       final aiMDText =
           (await generateAIContent(GenerateAIContentParam(contents: [Content.text(aiContent)])))
