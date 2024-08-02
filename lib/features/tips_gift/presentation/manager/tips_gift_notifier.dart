@@ -41,7 +41,9 @@ class TipsGiftNotifier extends _$TipsGiftNotifier {
   }
 
   Future<ContentResponse?> generateAiContent(
-      ContentWithImage occasion, BuildContext context) async {
+    ContentWithImage occasion,
+    BuildContext context,
+  ) async {
     final userInfo = (await getUserInfo(NoParams())).getOrElse(() => null);
     if (userInfo != null && context.mounted) {
       final aiContent = AIContext(

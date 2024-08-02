@@ -5,7 +5,6 @@ import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
 import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_image.dart';
-import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
 import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/add_tips_date_spot.dart';
 import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/get_tips_date_spot.dart';
@@ -43,7 +42,9 @@ class TipsDateSpotNotifier extends _$TipsDateSpotNotifier {
   }
 
   Future<ContentResponse?> generateAiContent(
-      ContentWithImage occasion, BuildContext context) async {
+    ContentWithImage occasion,
+    BuildContext context,
+  ) async {
     final userInfo = (await getUserInfo(NoParams())).getOrElse(() => null);
     if (userInfo != null && context.mounted) {
       final aiContent = AIContext(

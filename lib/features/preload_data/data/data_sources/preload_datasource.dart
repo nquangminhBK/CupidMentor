@@ -106,7 +106,6 @@ class PreloadDatasourceImpl implements PreloadDatasource {
     } catch (e) {
       rethrow;
     }
-    return [];
   }
 
   @override

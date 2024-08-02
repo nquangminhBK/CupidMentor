@@ -1,13 +1,12 @@
 import 'dart:async';
 
-import 'package:cupid_mentor/core/constants/image_url.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/could_image.dart';
 import 'package:cupid_mentor/core/widgets/dialog_list_generated_content.dart';
-import 'package:cupid_mentor/core/widgets/image_network.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/tip_date_spots/presentation/manager/tip_date_spot_notifier.dart';
@@ -110,9 +109,8 @@ class TipsDateSpotsScreen extends ConsumerWidget {
                         child: SizedBox(
                           width: 100,
                           height: 100,
-                          child: ImageNetwork(
-                            imageUrl:
-                                ImageUrl.getImageUrl(ref.preloadData.specialOccasions[index].image),
+                          child: CouldImage(
+                            imageName: ref.preloadData.specialOccasions[index].image,
                           ),
                         ),
                       ),

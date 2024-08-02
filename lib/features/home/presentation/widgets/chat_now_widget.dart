@@ -6,7 +6,6 @@ import 'package:cupid_mentor/core/themes_colors/app_colors.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
-import 'package:cupid_mentor/features/home/presentation/widgets/base_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/tip_replying_introduce_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

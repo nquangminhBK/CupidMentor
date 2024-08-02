@@ -1,7 +1,6 @@
-import 'package:cupid_mentor/core/constants/image_url.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/widgets/image_network.dart';
+import 'package:cupid_mentor/core/widgets/could_image.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/self_improvement_entity.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/widgets/tips_self_improvement_items.dart';
 import 'package:expandable/expandable.dart';
@@ -74,9 +73,8 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                       flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.all(20),
-                        child: ImageNetwork(
-                          imageUrl:
-                              ImageUrl.getImageUrl(widget.selfImprovementEntity.category.image),
+                        child: CouldImage(
+                          imageName: widget.selfImprovementEntity.category.image,
                         ),
                       ),
                     ),
@@ -86,9 +84,8 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                       flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.all(20),
-                        child: ImageNetwork(
-                          imageUrl:
-                              ImageUrl.getImageUrl(widget.selfImprovementEntity.category.image),
+                        child: CouldImage(
+                          imageName: widget.selfImprovementEntity.category.image,
                         ),
                       ),
                     ),
@@ -119,10 +116,7 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                   height: 0.5,
                   color: ref.currentAppColor.textColor,
                 ),
-                ...widget.selfImprovementEntity.tips
-                        .map((e) => TipsSelfImprovementItem(item: e))
-                        .toList() ??
-                    [],
+                ...widget.selfImprovementEntity.tips.map((e) => TipsSelfImprovementItem(item: e)),
               ],
             ),
           ),

@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
-import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -51,13 +50,15 @@ class ImageNetwork extends ConsumerWidget {
                   child: Assets.png.appIcon.image(color: Colors.grey),
                 ),
               ),
-              errorWidget: (_, __, ___) => Container(
-                color: Colors.transparent,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Assets.png.appIcon.image(color: Colors.grey),
-                ),
-              ),
+              errorWidget: (_, __, error) {
+                return Container(
+                  color: Colors.transparent,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Assets.png.appIcon.image(color: Colors.grey),
+                  ),
+                );
+              },
             ),
     );
   }

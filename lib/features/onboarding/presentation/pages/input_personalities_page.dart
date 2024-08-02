@@ -32,7 +32,7 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
     final personalities = ref.watch(onboardingNotifierProvider).userInfo.personalities;
     final notifier = ref.read(onboardingNotifierProvider.notifier);
     final allPersonalities = ref.read(preloadDataNotifierProvider).personalities;
-    void _executeSearch(String searchKey) {
+    void executeSearch(String searchKey) {
       if (searchKey.isNotEmpty) {
         searchedList = allPersonalities
             .where(
@@ -57,7 +57,7 @@ class _InputPersonalitiesPageState extends ConsumerState<InputPersonalitiesPage>
         MyTextField(
           onChanged: (text) {
             setState(() {
-              _executeSearch(text);
+              executeSearch(text);
             });
           },
           hintText: context.l10n.searchPersonalities,

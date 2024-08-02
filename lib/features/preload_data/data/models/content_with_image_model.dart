@@ -1,5 +1,4 @@
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
-import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_description.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
