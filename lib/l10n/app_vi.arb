@@ -142,5 +142,6 @@
   "tipDateSpotDialogInstructionTitle": "Địa điểm hẹn hò lý tưởng",
   "tipDateSpotDialogInstructionDescription": "Bạn đang tìm kiếm địa điểm hẹn hò lý tưởng với người ấy? Khám phá các gợi ý tuyệt vời của chúng tôi bằng cách chọn \"Khám phá\", sau đó chọn dịp đặc biệt bạn muốn kỷ niệm.",
   "featureIntroduction": "Giới thiệu tính năng",
-  "aboutUs": "Về chúng tôi"
+  "aboutUs": "Về chúng tôi",
+  "couldNotLoadData": "Không thể tải dữ liệu, vui lòng thử lại!"
 }

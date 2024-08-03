@@ -142,5 +142,6 @@
   "tipDateSpotDialogInstructionTitle": "The Perfect Date Spots",
   "tipDateSpotDialogInstructionDescription": "Looking for the perfect date spot with your loved one? Explore our fantastic suggestions by selecting \"View All Spots,\" and then choose the special occasion you'd like to celebrate.",
   "featureIntroduction": "Feature introduction",
-  "aboutUs" : "About us"
+  "aboutUs": "About us",
+  "couldNotLoadData": "Could not load data, please try again!"
 }

@@ -21,6 +21,9 @@ part 'tip_replying_notifier.g.dart';
 
 @riverpod
 class TipsReplyingNotifier extends _$TipsReplyingNotifier {
+  bool _isRequesting = false;
+  bool _isFinish = false;
+
   @override
   TipsReplyingState build() {
     return TipsReplyingState.initial();
@@ -46,10 +49,29 @@ class TipsReplyingNotifier extends _$TipsReplyingNotifier {
   }
 
   Future<void> _loadMessage({required String lastMsgId}) async {
+    if (_isRequesting || _isFinish) return;
+    _isRequesting = true;
+    state = state.copyWith(loading: true, errorOrSuccess: null);
     final response = await getTipsReplying(GetTipsReplyingParam(lastMsgId: lastMsgId));
-    response.fold((error) {}, (messages) {
+    _isRequesting = false;
+
+    response.fold((error) {
+      state = state.copyWith(
+        loading: false,
+        errorOrSuccess: Left(CouldNotLoadData()),
+        showReload: true,
+      );
+    }, (messages) {
       final currentMsg = state.content;
-      state = state.copyWith(content: [...currentMsg, ...messages]);
+      if (messages.isEmpty) {
+        _isFinish = true;
+      }
+      state = state.copyWith(
+        content: [...currentMsg, ...messages],
+        loading: false,
+        errorOrSuccess: null,
+        showReload: false,
+      );
     });
   }
 
@@ -60,17 +82,18 @@ class TipsReplyingNotifier extends _$TipsReplyingNotifier {
         message,
         ...currentMsg,
       ],
+      errorOrSuccess: null,
     );
     unawaited(addTipsReplying(AddTipsReplyingParam(message: message)));
   }
 
   Future<void> deleteMessage() async {
-    state = state.copyWith(loading: true);
+    state = state.copyWith(loading: true, errorOrSuccess: null);
     final response = await deleteConversation(NoParams());
     response.fold((error) {
       state = state.copyWith(loading: false);
     }, (result) {
-      state = state.copyWith(content: [], loading: false);
+      state = state.copyWith(content: [], loading: false, errorOrSuccess: null);
     });
   }
 
@@ -94,11 +117,11 @@ class TipsReplyingNotifier extends _$TipsReplyingNotifier {
         preloadData: ref.preloadData,
       ).tipsReplying(message);
       debugPrint(aiContent);
-      state = state.copyWith(loading: true);
+      state = state.copyWith(loading: true, errorOrSuccess: null);
       final aiMDText =
           (await generateAIContent(GenerateAIContentParam(contents: [Content.text(aiContent)])))
               .getOrElse(() => '');
-      state = state.copyWith(loading: false);
+      state = state.copyWith(loading: false, errorOrSuccess: null);
       if (aiMDText.isNotEmpty) {
         await addMessage(
           message: types.TextMessage(

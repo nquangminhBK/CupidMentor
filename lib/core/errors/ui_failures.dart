@@ -90,3 +90,10 @@ class AIGeneratedFailedError implements UIError {
     return context.l10n.generateFailed;
   }
 }
+
+class CouldNotLoadData implements UIError {
+  @override
+  String getDisplayMessage(BuildContext context) {
+    return context.l10n.couldNotLoadData;
+  }
+}

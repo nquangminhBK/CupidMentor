@@ -13,6 +13,7 @@ abstract class TipsReplyingState with _$TipsReplyingState {
   const factory TipsReplyingState({
     required List<Message> content,
     bool? loading,
+    bool? showReload,
     required Either<UIError, UISuccess>? errorOrSuccess,
   }) = _TipsReplyingState;
 

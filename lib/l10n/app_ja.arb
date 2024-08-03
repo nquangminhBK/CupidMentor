@@ -142,5 +142,6 @@
   "tipDateSpotDialogInstructionTitle": "完璧なデートスポット",
   "tipDateSpotDialogInstructionDescription": "愛する人と完璧なデートスポットを探していますか？「すべてのスポットを見る」を選択して、祝いたい特別な機会を選ぶことで、私たちの素晴らしい提案を探ってください。",
   "featureIntroduction": "機能の紹介",
-  "aboutUs": "私たちについて"
+  "aboutUs": "私たちについて",
+  "couldNotLoadData": "データを読み込めませんでした。もう一度お試しください！"
 }
