@@ -9,7 +9,9 @@ import 'package:cupid_mentor/features/profile/presentation/pages/add_partner_scr
 import 'package:cupid_mentor/features/profile/presentation/pages/partner_profile_page.dart';
 import 'package:cupid_mentor/features/profile/presentation/pages/your_profile_page.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/about_the_author_screen.dart';
+import 'package:cupid_mentor/features/setting/presentation/pages/privacy_policy_page.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/setting_screen.dart';
+import 'package:cupid_mentor/features/setting/presentation/pages/term_of_service_page.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/showcase_screen.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/pages/splash_screen.dart';
 import 'package:cupid_mentor/features/tip_date_spots/presentation/pages/tips_date_spot_screen.dart';
@@ -102,6 +104,16 @@ Route<Object>? generateRoute(RouteSettings settings) {
       return _buildRoute(
         settings: settings,
         screen: const AboutTheAuthorScreen(),
+      );
+    case AppRoutes.termOfService:
+      return _buildRoute(
+        settings: settings,
+        screen: const TermOfServicePage(),
+      );
+    case AppRoutes.privacyPolicy:
+      return _buildRoute(
+        settings: settings,
+        screen: const PrivacyPolicyPage(),
       );
     default:
       return _errorRoute();

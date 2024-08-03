@@ -60,9 +60,18 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                   },
                 ),
                 ItemSetting(
-                  leftIcon: Icons.help_outline_rounded,
-                  title: context.l10n.helpCenter,
-                  onTap: () {},
+                  leftIcon: Icons.menu_book_rounded,
+                  title: context.l10n.termOfService,
+                  onTap: () {
+                    NavigationService.instance.push(AppRoutes.termOfService);
+                  },
+                ),
+                ItemSetting(
+                  leftIcon: Icons.privacy_tip_outlined,
+                  title: context.l10n.privacyPolicy,
+                  onTap: () {
+                    NavigationService.instance.push(AppRoutes.privacyPolicy);
+                  },
                 ),
                 ItemSetting(
                   leftIcon: Icons.info_outline_rounded,

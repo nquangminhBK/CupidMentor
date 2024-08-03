@@ -6,12 +6,14 @@ import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
+import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/gradient_text.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/auth/presentation/manager/auth_notifier.dart';
 import 'package:cupid_mentor/features/auth/presentation/manager/auth_state.dart';
 import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -112,11 +114,61 @@ class LoginScreen extends ConsumerWidget {
                   const VerticalSpace(size: 20),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Text(
-                      'By logging in, you agree to our Terms of Conditions. Learn how we use your data in our Privacy Policy',
-                      //TODO this
-                      textAlign: TextAlign.center,
-                      style: context.textTheme.bodyLarge,
+                    child: RichText(
+                      text: TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: context.l10n.termAndPrivacyMsg1,
+                            style: context.textTheme.bodyLarge,
+                          ),
+                          TextSpan(
+                            text: context.l10n.termOfService,
+                            style: context.textTheme.bodyLarge!.copyWith(color: Colors.blueAccent),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    return BaseDialog(
+                                      child: SingleChildScrollView(
+                                        child: Text(
+                                          ref.preloadData.termOfService?.value(context) ?? '',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                          ),
+                          TextSpan(
+                            text: context.l10n.termAndPrivacyMsg2,
+                            style: context.textTheme.bodyLarge,
+                          ),
+                          TextSpan(
+                            text: context.l10n.privacyPolicy,
+                            style: context.textTheme.bodyLarge!.copyWith(color: Colors.blueAccent),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    return BaseDialog(
+                                      child: SingleChildScrollView(
+                                        child: Text(
+                                          ref.preloadData.privacyPolicy?.value(context) ?? '',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                          ),
+                          TextSpan(
+                            text: context.l10n.termAndPrivacyMsg3,
+                            style: context.textTheme.bodyLarge,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const VerticalSpace(size: 10),

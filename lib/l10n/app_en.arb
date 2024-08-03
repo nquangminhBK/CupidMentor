@@ -143,5 +143,11 @@
   "tipDateSpotDialogInstructionDescription": "Looking for the perfect date spot with your loved one? Explore our fantastic suggestions by selecting \"View All Spots,\" and then choose the special occasion you'd like to celebrate.",
   "featureIntroduction": "Feature introduction",
   "aboutUs": "About us",
-  "couldNotLoadData": "Could not load data, please try again!"
+  "couldNotLoadData": "Could not load data, please try again!",
+  "processSuccess": "Operation successful!",
+  "termOfService": "Term of service",
+  "privacyPolicy": "Privacy policy",
+  "termAndPrivacyMsg1": "By logging in, you agree to our ",
+  "termAndPrivacyMsg2": ". Learn how we use your data in our ",
+  "termAndPrivacyMsg3": "."
 }

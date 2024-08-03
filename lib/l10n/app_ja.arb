@@ -143,5 +143,11 @@
   "tipDateSpotDialogInstructionDescription": "愛する人と完璧なデートスポットを探していますか？「すべてのスポットを見る」を選択して、祝いたい特別な機会を選ぶことで、私たちの素晴らしい提案を探ってください。",
   "featureIntroduction": "機能の紹介",
   "aboutUs": "私たちについて",
-  "couldNotLoadData": "データを読み込めませんでした。もう一度お試しください！"
+  "couldNotLoadData": "データを読み込めませんでした。もう一度お試しください！",
+  "processSuccess": "操作が成功しました!",
+  "termOfService": "利用規約",
+  "privacyPolicy": "プライバシーポリシー",
+  "termAndPrivacyMsg1": "ログインすることで、私たちの ",
+  "termAndPrivacyMsg2": " に同意したことになります。私たちの ",
+  "termAndPrivacyMsg3": " であなたのデータの使用方法について学んでください。"
 }
