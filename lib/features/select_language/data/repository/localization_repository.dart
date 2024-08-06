@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/errors/api_failure.dart';
-import 'package:cupid_mentor/features/localization/data/data_sources/localization_datasource.dart';
-import 'package:cupid_mentor/features/localization/domain/repository/localization_repository.dart';
+import 'package:cupid_mentor/features/select_language/data/data_sources/localization_datasource.dart';
+import 'package:cupid_mentor/features/select_language/domain/repository/localization_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 

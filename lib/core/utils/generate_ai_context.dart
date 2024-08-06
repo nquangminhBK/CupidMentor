@@ -5,7 +5,7 @@ import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/extensions/datetime_extension.dart';
 import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
-import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
+import 'package:cupid_mentor/features/select_language/presentation/manager/localization_notifier.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_description.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_image.dart';
 import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_state.dart';

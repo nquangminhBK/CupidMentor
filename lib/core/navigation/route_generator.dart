@@ -2,7 +2,7 @@ import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/adaptive_screen.dart';
 import 'package:cupid_mentor/features/auth/presentation/pages/login_screen.dart';
 import 'package:cupid_mentor/features/home/presentation/pages/home_screen.dart';
-import 'package:cupid_mentor/features/localization/presentation/pages/select_language_page.dart';
+import 'package:cupid_mentor/features/select_language/presentation/pages/select_language_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/welcome_screen.dart';
 import 'package:cupid_mentor/features/profile/presentation/pages/add_partner_screen.dart';
@@ -137,7 +137,7 @@ Route<T>? _buildRoute<T extends Object>({
   required RouteSettings settings,
   required Widget screen,
 }) =>
-    MaterialPageRoute<T>(
+    NoAnimationMaterialPageRoute<T>(
       settings: settings,
       builder: (context) => AdaptiveScreen(
         child: screen,
@@ -158,8 +158,9 @@ class NoAnimationMaterialPageRoute<T> extends MaterialPageRoute<T> {
     Animation<double> animation,
     Animation<double> secondaryAnimation,
     Widget child,
-  ) =>
-      child;
+  ) {
+    return FadeTransition(opacity: animation, child: child);
+  }
 }
 
 class FadePageRoute<T> extends PageRoute<T> {
@@ -177,7 +178,7 @@ class FadePageRoute<T> extends PageRoute<T> {
   bool get maintainState => true;
 
   @override
-  Duration get transitionDuration => const Duration(milliseconds: 700);
+  Duration get transitionDuration => const Duration(milliseconds: 300);
 
   @override
   Widget buildPage(

@@ -1,9 +1,9 @@
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
-import 'package:cupid_mentor/features/localization/domain/use_cases/clear_language_data.dart';
-import 'package:cupid_mentor/features/localization/domain/use_cases/get_language.dart';
-import 'package:cupid_mentor/features/localization/domain/use_cases/set_language.dart';
-import 'package:cupid_mentor/features/localization/presentation/manager/localization_state.dart';
+import 'package:cupid_mentor/features/select_language/domain/use_cases/clear_language_data.dart';
+import 'package:cupid_mentor/features/select_language/domain/use_cases/get_language.dart';
+import 'package:cupid_mentor/features/select_language/domain/use_cases/set_language.dart';
+import 'package:cupid_mentor/features/select_language/presentation/manager/localization_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

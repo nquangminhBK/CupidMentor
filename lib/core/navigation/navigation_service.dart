@@ -85,35 +85,4 @@ class NavigationService {
   }
 
   bool get isContextExisted => globalNavigatorKey.currentState?.overlay?.context != null;
-
-// Future<bool> showPermissionDeniedDialog({String? title, String? desc}) async {
-//   final context = globalNavigatorKey.currentState?.overlay?.context;
-//   if (!isContextExisted) {
-//     return false;
-//   }
-//   return await showDialog(
-//     context: context!,
-//     builder: (context) {
-//       return AlertDialog(
-//         title: title != null ? Text(title) : null,
-//         content: desc != null ? Text(desc) : null,
-//         actions: [
-//           TextButton(
-//             onPressed: () {
-//               Navigator.pop(context, true);
-//               openAppSettings();
-//             },
-//             child: const Text('Open Settings'),
-//           ),
-//           TextButton(
-//             onPressed: () {
-//               Navigator.pop(context, true);
-//             },
-//             child: const Text('Maybe later'),
-//           ),
-//         ],
-//       );
-//     },
-//   );
-// }
 }

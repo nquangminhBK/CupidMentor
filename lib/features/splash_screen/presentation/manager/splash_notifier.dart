@@ -1,5 +1,5 @@
 import 'package:cupid_mentor/core/usecases/usecase.dart';
-import 'package:cupid_mentor/features/localization/domain/use_cases/get_language.dart';
+import 'package:cupid_mentor/features/select_language/domain/use_cases/get_language.dart';
 import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_is_logged_in.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_onboarding.dart';

@@ -1,6 +1,6 @@
 import 'package:cupid_mentor/core/errors/api_failure.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
-import 'package:cupid_mentor/features/localization/domain/repository/localization_repository.dart';
+import 'package:cupid_mentor/features/select_language/domain/repository/localization_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';

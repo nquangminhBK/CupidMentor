@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const String localizationDBKey = 'localization';
+const String localizationDBKey = 'select_language';
 
 abstract class LocalizationDatasource {
   Future<LocalizationEnum?> getLanguage();

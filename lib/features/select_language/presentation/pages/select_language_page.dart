@@ -5,9 +5,9 @@ import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/reset_all_app.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
-import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
+import 'package:cupid_mentor/features/select_language/presentation/manager/localization_notifier.dart';
 import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';
-import 'package:cupid_mentor/features/localization/presentation/widgets/item_language.dart';
+import 'package:cupid_mentor/features/select_language/presentation/widgets/item_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

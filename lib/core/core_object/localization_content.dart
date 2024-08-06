@@ -1,5 +1,5 @@
 import 'package:cupid_mentor/core/constants/localization_const.dart';
-import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
+import 'package:cupid_mentor/features/select_language/presentation/manager/localization_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

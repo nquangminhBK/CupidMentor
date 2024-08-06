@@ -7,7 +7,7 @@ import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
 import 'package:cupid_mentor/core/widgets/reset_all_app.dart';
-import 'package:cupid_mentor/features/localization/presentation/manager/localization_notifier.dart';
+import 'package:cupid_mentor/features/select_language/presentation/manager/localization_notifier.dart';
 import 'package:cupid_mentor/features/setting/presentation/manager/setting_notifier.dart';
 import 'package:cupid_mentor/features/setting/presentation/widgets/dialog_change_language.dart';
 import 'package:cupid_mentor/features/setting/presentation/widgets/item_setting.dart';
