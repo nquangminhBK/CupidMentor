@@ -28,41 +28,41 @@ class PageGeneralWidget extends ConsumerWidget {
             child: image,
           ),
         ),
-        SizedBox(
-          height: 86,
-          child: Stack(
-            children: [
-              Align(alignment: Alignment.topCenter, child: textBg),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: ref.currentTheme == ThemeMode.dark
-                      ? Text(
-                          title,
-                          style: context.textTheme.titleLarge?.copyWith(
-                            fontSize: 24,
-                          ),
-                        )
-                      : GradientText(
-                          title,
-                          style: context.textTheme.titleLarge?.copyWith(
-                            fontSize: 24,
-                          ),
-                          gradient: ref.currentAppColor.mainGradient,
-                        ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
-          child: Text(
-            description,
-            style: context.textTheme.bodyLarge,
-          ),
-        ),
+        // SizedBox(
+        //   height: 86,
+        //   child: Stack(
+        //     children: [
+        //       Align(alignment: Alignment.topCenter, child: textBg),
+        //       Align(
+        //         alignment: Alignment.bottomLeft,
+        //         child: Padding(
+        //           padding: const EdgeInsets.symmetric(horizontal: 24),
+        //           child: ref.currentTheme == ThemeMode.dark
+        //               ? Text(
+        //                   title,
+        //                   style: context.textTheme.titleLarge?.copyWith(
+        //                     fontSize: 24,
+        //                   ),
+        //                 )
+        //               : GradientText(
+        //                   title,
+        //                   style: context.textTheme.titleLarge?.copyWith(
+        //                     fontSize: 24,
+        //                   ),
+        //                   gradient: ref.currentAppColor.mainGradient,
+        //                 ),
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
+        // Padding(
+        //   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
+        //   child: Text(
+        //     description,
+        //     style: context.textTheme.bodyLarge,
+        //   ),
+        // ),
       ],
     );
   }

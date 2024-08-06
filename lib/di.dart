@@ -45,6 +45,7 @@ import 'package:cupid_mentor/features/splash_screen/domain/repositories/splash_r
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_is_logged_in.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_onboarding.dart';
 import 'package:cupid_mentor/features/splash_screen/domain/use_cases/check_need_showcase.dart';
+import 'package:cupid_mentor/features/splash_screen/domain/use_cases/update_show_case.dart';
 import 'package:cupid_mentor/features/tip_date_spots/data/data_sources/tips_date_spot_datasource.dart';
 import 'package:cupid_mentor/features/tip_date_spots/data/repository/tip_date_spot_repository.dart';
 import 'package:cupid_mentor/features/tip_date_spots/domain/repository/tip_date_spot_repository.dart';
@@ -192,6 +193,7 @@ void _registerRepositories() {
 void _registerUseCases() {
   get.registerLazySingleton(() => CheckNeedOnboarding(repository: get()));
   get.registerLazySingleton(() => CheckNeedShowCase(repository: get()));
+  get.registerLazySingleton(() => UpdateShowCase(repository: get()));
   get.registerLazySingleton(() => CheckNeedLogin(repository: get()));
   get.registerLazySingleton(() => InitializeRemoteConfig(repository: get()));
   get.registerLazySingleton(() => ClearLanguageData(repository: get()));

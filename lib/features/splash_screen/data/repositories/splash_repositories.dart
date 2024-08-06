@@ -17,7 +17,6 @@ class SplashRepositoriesImpl implements SplashRepositories {
   Either<Failure, bool> needShowShowcase() {
     final isFirstTime = splashDatasource.isFirstTime();
     if (isFirstTime) {
-      splashDatasource.updateFirstTime();
       return const Right(true);
     } else {
       return const Right(false);
@@ -29,5 +28,11 @@ class SplashRepositoriesImpl implements SplashRepositories {
     final userInfo = await authenticationRemoteDatasource.getUserInfo();
     if (userInfo == null) return const Right(true);
     return const Right(false);
+  }
+
+  @override
+  Either<Failure, bool> updateShowCase() {
+    splashDatasource.updateFirstTime();
+    return const Right(true);
   }
 }

@@ -1,12 +1,19 @@
+import 'package:cupid_mentor/core/assets/assets.gen.dart';
+import 'package:cupid_mentor/core/extensions/context_extensions.dart';
+import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
+import 'package:cupid_mentor/core/widgets/gradient_text.dart';
+import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/navigate_button.dart';
 import 'package:cupid_mentor/core/widgets/page_indicator.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
+import 'package:cupid_mentor/features/showcase/presentation/manager/showcase_notifier.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/dating_delights_page.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/profile_prowess_page.dart';
 import 'package:cupid_mentor/features/showcase/presentation/pages/self_enhancement_page.dart';
 import 'package:cupid_mentor/features/showcase/presentation/widgets/skip_button.dart';
+import 'package:cupid_mentor/features/showcase/presentation/widgets/text_animation_widget.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_notifier.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_state.dart';
 import 'package:flutter/material.dart';
@@ -45,22 +52,24 @@ class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
           height: double.infinity,
           child: Column(
             children: [
-              SkipButton(
-                visible: currentIndex != 2,
-                onPress: () {
-                  pageController.animateToPage(
-                    2,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
-                  );
-                  setState(() {
-                    currentIndex = 2;
-                  });
-                },
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  const HorizontalSpace(size: 24),
+                  Assets.png.appIcon.image(width: 40, height: 40),
+                  GradientText(
+                    'Cupid Mentor',
+                    style: context.textTheme.headlineSmall?.copyWith(
+                      fontSize: 30,
+                    ),
+                    gradient: ref.currentAppColor.mainGradient,
+                  ),
+                ],
               ),
               Expanded(
                 child: PageView(
                   controller: pageController,
+                  physics: const NeverScrollableScrollPhysics(),
                   children: const [
                     ProfileProwessPage(),
                     SelfEnhancementPage(),
@@ -73,6 +82,7 @@ class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
                   },
                 ),
               ),
+              const TextAnimationWidget(),
               const VerticalSpace(size: 17),
               PageIndicator(
                 totalCount: 3,
@@ -80,7 +90,7 @@ class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
               ),
               const VerticalSpace(size: 22),
               NavigateButton(
-                showBackButton: currentIndex != 0,
+                showBackButton: false,
                 showLastButton: currentIndex == 2,
                 onPressBack: () {
                   pageController.animateToPage(
@@ -93,17 +103,21 @@ class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
                   });
                 },
                 onPressNext: () {
-                  pageController.animateToPage(
-                    currentIndex + 1,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
-                  );
-                  setState(() {
-                    currentIndex = currentIndex + 1;
+                  ref.read(showcaseNotifierProvider.notifier).nextPage(currentIndex);
+                  Future.delayed(const Duration(milliseconds: 300), () {
+                    pageController.animateToPage(
+                      currentIndex + 1,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
+                    setState(() {
+                      currentIndex = currentIndex + 1;
+                    });
                   });
                 },
-                onPressLastButton: () {
-                  ref.read(splashNotifierProvider.notifier).checkInitialCondition();
+                onPressLastButton: () async {
+                  await ref.read(showcaseNotifierProvider.notifier).updateShowCaseFinish();
+                  await ref.read(splashNotifierProvider.notifier).checkInitialCondition();
                 },
                 lastButtonTitle: '',
               ),

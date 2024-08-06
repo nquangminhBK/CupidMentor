@@ -12,8 +12,8 @@ class DatingDelightPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return PageGeneralWidget(
       image: ref.currentTheme == ThemeMode.dark
-          ? Assets.png.profileProwessImage.image()
-          : Assets.png.profileProwessImageLight.image(),
+          ? Assets.png.datingDelightImage.image()
+          : Assets.png.datingDelightImage.image(),
       textBg: Assets.svg.datingDelightBgText.svg(fit: BoxFit.fitWidth, width: double.infinity),
       title: 'Dating Delights',
       description: context.l10n.datingDelightDescription,
