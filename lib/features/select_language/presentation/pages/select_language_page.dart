@@ -4,6 +4,7 @@ import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/reset_all_app.dart';
+import 'package:cupid_mentor/core/widgets/showup_animation.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/select_language/presentation/manager/localization_notifier.dart';
 import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';
@@ -55,87 +56,106 @@ class _SelectLanguagePageState extends ConsumerState<SelectLanguagePage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                'Pick your language',
-                style: context.textTheme.titleLarge!.copyWith(
-                  color: ref.currentAppColor.textColor,
+              ShowUpAnimation(
+                child: Column(
+                  children: [
+                    Text(
+                      'Pick your language',
+                      style: context.textTheme.titleLarge!.copyWith(
+                        color: ref.currentAppColor.textColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      '言語を選んでください',
+                      style: context.textTheme.titleLarge!.copyWith(
+                        color: ref.currentAppColor.textColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      'Chọn ngôn ngữ',
+                      style: context.textTheme.titleLarge!.copyWith(
+                        color: ref.currentAppColor.textColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                '言語を選んでください',
-                style: context.textTheme.titleLarge!.copyWith(
-                  color: ref.currentAppColor.textColor,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                'Chọn ngôn ngữ',
-                style: context.textTheme.titleLarge!.copyWith(
-                  color: ref.currentAppColor.textColor,
-                ),
-                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 40,
               ),
-              ItemLanguage(
-                isSelected: currentLanguage == LocalizationEnum.english,
-                title: LocalizationEnum.english.displayText,
-                icon: Assets.png.english.image(width: 60, height: 60),
-                onTap: () => setState(() {
-                  currentLanguage = LocalizationEnum.english;
-                }),
+              ShowUpAnimation(
+                delay: 100,
+                child: ItemLanguage(
+                  isSelected: currentLanguage == LocalizationEnum.english,
+                  title: LocalizationEnum.english.displayText,
+                  icon: Assets.png.english.image(width: 60, height: 60),
+                  onTap: () => setState(() {
+                    currentLanguage = LocalizationEnum.english;
+                  }),
+                ),
               ),
               const VerticalSpace(size: 16),
-              ItemLanguage(
-                isSelected: currentLanguage == LocalizationEnum.japanese,
-                title: LocalizationEnum.japanese.displayText,
-                icon: Assets.png.japanese.image(width: 60, height: 60),
-                onTap: () => setState(() {
-                  currentLanguage = LocalizationEnum.japanese;
-                }),
+              ShowUpAnimation(
+                delay: 200,
+                child: ItemLanguage(
+                  isSelected: currentLanguage == LocalizationEnum.japanese,
+                  title: LocalizationEnum.japanese.displayText,
+                  icon: Assets.png.japanese.image(width: 60, height: 60),
+                  onTap: () => setState(() {
+                    currentLanguage = LocalizationEnum.japanese;
+                  }),
+                ),
               ),
               const VerticalSpace(size: 16),
-              ItemLanguage(
-                isSelected: currentLanguage == LocalizationEnum.vietnamese,
-                title: LocalizationEnum.vietnamese.displayText,
-                icon: Assets.png.vietnamese.image(width: 60, height: 60),
-                onTap: () => setState(() {
-                  currentLanguage = LocalizationEnum.vietnamese;
-                }),
+              ShowUpAnimation(
+                delay: 300,
+                child: ItemLanguage(
+                  isSelected: currentLanguage == LocalizationEnum.vietnamese,
+                  title: LocalizationEnum.vietnamese.displayText,
+                  icon: Assets.png.vietnamese.image(width: 60, height: 60),
+                  onTap: () => setState(() {
+                    currentLanguage = LocalizationEnum.vietnamese;
+                  }),
+                ),
               ),
               const VerticalSpace(size: 24),
-              AnimatedButton(
-                enable: currentLanguage != null,
-                onPress: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return DialogConfirm(
-                        onPositiveButtonExecute: () async {
-                          await localizationNotifier.updateLanguage(currentLanguage!);
-                          if (context.mounted) ResetAllApp.restartApp(context);
-                        },
-                        message: getContent().$4,
-                        titleNegativeButton: getContent().$2,
-                        titlePositiveButton: getContent().$3,
-                      );
-                    },
-                  );
-                },
-                borderRadius: BorderRadius.circular(8),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: currentLanguage == null ? Colors.grey : ref.currentAppColor.primaryColor,
-                  ),
-                  width: double.infinity,
-                  height: 48,
-                  child: Center(
-                    child: Text(
-                      getContent().$1,
-                      style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
+              ShowUpAnimation(
+                delay: 300,
+                child: AnimatedButton(
+                  enable: currentLanguage != null,
+                  onPress: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return DialogConfirm(
+                          onPositiveButtonExecute: () async {
+                            await localizationNotifier.updateLanguage(currentLanguage!);
+                            if (context.mounted) ResetAllApp.restartApp(context);
+                          },
+                          message: getContent().$4,
+                          titleNegativeButton: getContent().$2,
+                          titlePositiveButton: getContent().$3,
+                        );
+                      },
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(8),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color:
+                          currentLanguage == null ? Colors.grey : ref.currentAppColor.primaryColor,
+                    ),
+                    width: double.infinity,
+                    height: 48,
+                    child: Center(
+                      child: Text(
+                        getContent().$1,
+                        style: context.textTheme.titleMedium!.copyWith(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),

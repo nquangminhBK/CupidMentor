@@ -137,15 +137,15 @@ Route<T>? _buildRoute<T extends Object>({
   required RouteSettings settings,
   required Widget screen,
 }) =>
-    NoAnimationMaterialPageRoute<T>(
+    FadeMaterialPageRoute<T>(
       settings: settings,
       builder: (context) => AdaptiveScreen(
         child: screen,
       ),
     );
 
-class NoAnimationMaterialPageRoute<T> extends MaterialPageRoute<T> {
-  NoAnimationMaterialPageRoute({
+class FadeMaterialPageRoute<T> extends MaterialPageRoute<T> {
+  FadeMaterialPageRoute({
     required super.builder,
     required RouteSettings super.settings,
     super.maintainState,
@@ -161,33 +161,4 @@ class NoAnimationMaterialPageRoute<T> extends MaterialPageRoute<T> {
   ) {
     return FadeTransition(opacity: animation, child: child);
   }
-}
-
-class FadePageRoute<T> extends PageRoute<T> {
-  FadePageRoute(this.child);
-
-  final Widget child;
-
-  @override
-  Color get barrierColor => Colors.black;
-
-  @override
-  String get barrierLabel => '';
-
-  @override
-  bool get maintainState => true;
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 300);
-
-  @override
-  Widget buildPage(
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-  ) =>
-      FadeTransition(
-        opacity: animation,
-        child: child,
-      );
 }
