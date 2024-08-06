@@ -44,7 +44,6 @@ class TipsGiftsScreen extends ConsumerWidget {
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: GridView.builder(
-              key: UniqueKey(),
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

@@ -14,63 +14,76 @@ class ImageNetwork extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (imageUrl.isEmpty) {
-      return Container(
-        width: width,
-        height: height,
-        color: Colors.transparent,
-        child: Align(
-          alignment: Alignment.center,
-          child: Assets.png.appIcon.image(color: Colors.grey),
-        ),
-      );
-    }
-
     return SizedBox(
       width: width,
       height: height,
-      child: kIsWeb
-          ? Image.network(
-              imageUrl,
-              fit: fit,
-              errorBuilder: (_, __, ___) => Container(
-                color: Colors.transparent,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Assets.png.appIcon.image(color: Colors.grey),
-                ),
+      child: AnimatedCrossFade(
+        layoutBuilder: (Widget topChild, Key topChildKey, Widget bottomChild, Key bottomChildKey) {
+          return Stack(
+            clipBehavior: Clip.none,
+            children: <Widget>[
+              Align(
+                alignment: Alignment.center,
+                key: bottomChildKey,
+                child: bottomChild,
               ),
-              loadingBuilder: (_, Widget child, ImageChunkEvent? loadingProgress) {
-                if (loadingProgress == null) return child;
-                return Container(
-                  color: Colors.transparent,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Assets.png.appIcon.image(color: Colors.grey),
-                  ),
-                );
-              },
-            )
-          : CachedNetworkImage(
-              imageUrl: imageUrl,
-              fit: fit,
-              progressIndicatorBuilder: (_, __, ___) => Container(
-                color: Colors.transparent,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Assets.png.appIcon.image(color: Colors.grey),
-                ),
+              Align(
+                alignment: Alignment.center,
+                key: topChildKey,
+                child: topChild,
               ),
-              errorWidget: (_, __, error) {
-                return Container(
-                  color: Colors.transparent,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Assets.png.appIcon.image(color: Colors.grey),
+            ],
+          );
+        },
+        alignment: Alignment.center,
+        duration: const Duration(milliseconds: 200),
+        firstChild: Assets.png.appIcon.image(color: Colors.grey),
+        secondChild: imageUrl.isEmpty
+            ? Assets.png.appIcon.image(color: Colors.grey)
+            : kIsWeb
+                ? Image.network(
+                    imageUrl,
+                    fit: fit,
+                    errorBuilder: (_, __, ___) => Container(
+                      color: Colors.transparent,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Assets.png.appIcon.image(color: Colors.grey),
+                      ),
+                    ),
+                    loadingBuilder: (_, Widget child, ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Container(
+                        color: Colors.transparent,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Assets.png.appIcon.image(color: Colors.grey),
+                        ),
+                      );
+                    },
+                  )
+                : CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    fit: fit,
+                    progressIndicatorBuilder: (_, __, ___) => Container(
+                      color: Colors.transparent,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Assets.png.appIcon.image(color: Colors.grey),
+                      ),
+                    ),
+                    errorWidget: (_, __, error) {
+                      return Container(
+                        color: Colors.transparent,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Assets.png.appIcon.image(color: Colors.grey),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
+        crossFadeState: imageUrl.isEmpty ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+      ),
     );
   }
 }

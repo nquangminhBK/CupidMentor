@@ -5,6 +5,7 @@ import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/base_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/menu_item.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/presentation/pages/tips_self_improvement_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,6 +26,7 @@ class TipSelfImprovementIntroduceWidget extends ConsumerWidget {
         image: ref.currentTheme == ThemeMode.dark
             ? Assets.png.tipMenuImage.image(width: 140, height: 140)
             : Assets.png.tipMenuImageLight.image(width: 140, height: 140),
+        targetPage: const TipsSelfImprovementScreen(),
       ),
       title: context.l10n.tipSelfImprovementDialogInstructionTitle,
       description: context.l10n.tipSelfImprovementDialogInstructionDescription,

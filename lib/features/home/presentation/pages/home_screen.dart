@@ -18,6 +18,9 @@ import 'package:cupid_mentor/features/home/presentation/widgets/tip_date_spot_in
 import 'package:cupid_mentor/features/home/presentation/widgets/tip_gift_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/tip_self_improvement_introduce_widget.dart';
 import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
+import 'package:cupid_mentor/features/tip_date_spots/presentation/pages/tips_date_spot_screen.dart';
+import 'package:cupid_mentor/features/tips_gift/presentation/pages/tips_gift_screen.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/presentation/pages/tips_self_improvement_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -107,7 +110,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             return const BaseDialog(child: TipSelfImprovementIntroduceWidget());
                           },
                         );
-                      },
+                      }, targetPage: const TipsSelfImprovementScreen(),
                     ),
                     const VerticalSpace(size: 16),
                     MenuItem(
@@ -126,7 +129,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             return const BaseDialog(child: TipGiftIntroduceWidget());
                           },
                         );
-                      },
+                      }, targetPage: const TipsGiftsScreen(),
                     ),
                     const VerticalSpace(size: 16),
                     MenuItem(
@@ -145,7 +148,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             return const BaseDialog(child: TipDateSpotIntroduceWidget());
                           },
                         );
-                      },
+                      }, targetPage: const TipsDateSpotsScreen(),
                     ),
                     const VerticalSpace(size: 24),
                   ],

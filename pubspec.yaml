@@ -80,6 +80,8 @@ dependencies:
   firebase_vertexai: ^0.2.2+2
   firebase_remote_config: ^5.0.4
   firebase_storage: ^12.1.2
+  animations: ^2.0.11
+  loading_animation_widget: ^1.2.1
 
 
 dev_dependencies:
