@@ -2,6 +2,7 @@ import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
+import 'package:cupid_mentor/core/widgets/showup_animation.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/manager/tips_self_improvement_notifier.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/widgets/category_item.dart';
 import 'package:flutter/material.dart';
@@ -37,9 +38,12 @@ class TipsSelfImprovementScreen extends ConsumerWidget {
           ),
           body: ListView.builder(
             itemBuilder: (context, index) {
-              return CategoryItem(
-                selfImprovementEntity: ref.preloadData.selfImprovements[index],
-                isLeftToRight: index % 2 == 0,
+              return ShowUpAnimation(
+                delay: index * 100,
+                child: CategoryItem(
+                  selfImprovementEntity: ref.preloadData.selfImprovements[index],
+                  isLeftToRight: index % 2 == 0,
+                ),
               );
             },
             itemCount: ref.preloadData.selfImprovements.length,

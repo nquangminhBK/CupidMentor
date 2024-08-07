@@ -4,6 +4,7 @@ import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
+import 'package:cupid_mentor/core/widgets/showup_animation.dart';
 import 'package:cupid_mentor/features/profile/presentation/manager/profile_notifier.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/basic_info.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/describe_you.dart';
@@ -59,60 +60,75 @@ class _YourProfilePagesState extends ConsumerState<YourProfilePages> {
                   padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
                   child: Column(
                     children: [
-                      BasicInfoWidget(
-                        name: state.userInfo!.name,
-                        job: state.userInfo!.job,
-                        birthday: state.userInfo!.birthday,
-                        gender: state.userInfo!.gender,
-                        onTapEditBasicInfo: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const UpdateYourBasicInfoDialog();
-                            },
-                          );
-                        },
+                      ShowUpAnimation(
+                        delay: 50,
+                        child: BasicInfoWidget(
+                          name: state.userInfo!.name,
+                          job: state.userInfo!.job,
+                          birthday: state.userInfo!.birthday,
+                          gender: state.userInfo!.gender,
+                          onTapEditBasicInfo: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const UpdateYourBasicInfoDialog();
+                              },
+                            );
+                          },
+                        ),
                       ),
-                      DescribeYouWidget(
-                        personalities: state.userInfo!.personalities,
-                        onTapEdit: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const UpdatePersonalitiesDialog();
-                            },
-                          );
-                        },
+                      ShowUpAnimation(
+                        delay: 100,
+                        child: DescribeYouWidget(
+                          personalities: state.userInfo!.personalities,
+                          onTapEdit: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const UpdatePersonalitiesDialog();
+                              },
+                            );
+                          },
+                        ),
                       ),
-                      HobbiesWidget(
-                        hobbies: state.userInfo!.hobbies,
-                        onTapEdit: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const UpdateHobbiesDialog();
-                            },
-                          );
-                        },
+                      ShowUpAnimation(
+                        delay: 200,
+                        child: HobbiesWidget(
+                          hobbies: state.userInfo!.hobbies,
+                          onTapEdit: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const UpdateHobbiesDialog();
+                              },
+                            );
+                          },
+                        ),
                       ),
-                      LoveLanguagesWidget(
-                        loveLanguages: state.userInfo!.loveLanguages,
-                        onTapEdit: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const UpdateLoveLanguagesDialog();
-                            },
-                          );
-                        },
+                      ShowUpAnimation(
+                        delay: 300,
+                        child: LoveLanguagesWidget(
+                          loveLanguages: state.userInfo!.loveLanguages,
+                          onTapEdit: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const UpdateLoveLanguagesDialog();
+                              },
+                            );
+                          },
+                        ),
                       ),
-                      RelationshipStatus(
-                        status: state.userInfo!.hasPartner
-                            ? '${context.l10n.alreadyHave},\n${RelationshipType.tryParse(state.userInfo!.relationship)?.displayText.value(context) ?? ''}'
-                            : context.l10n.notHaveYet,
-                        onTapEditPartnerProfile: () {
-                          NavigationService.instance.push(AppRoutes.partnerProfile);
-                        },
+                      ShowUpAnimation(
+                        delay: 400,
+                        child: RelationshipStatus(
+                          status: state.userInfo!.hasPartner
+                              ? '${context.l10n.alreadyHave},\n${RelationshipType.tryParse(state.userInfo!.relationship)?.displayText.value(context) ?? ''}'
+                              : context.l10n.notHaveYet,
+                          onTapEditPartnerProfile: () {
+                            NavigationService.instance.push(AppRoutes.partnerProfile);
+                          },
+                        ),
                       ),
                     ],
                   ),

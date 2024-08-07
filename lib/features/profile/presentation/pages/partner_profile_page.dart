@@ -7,6 +7,7 @@ import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
+import 'package:cupid_mentor/core/widgets/showup_animation.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/profile/presentation/manager/profile_notifier.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/basic_info.dart';
@@ -128,45 +129,54 @@ class _PartnerProfilePageState extends ConsumerState<PartnerProfilePage> {
                       )
                     : Column(
                         children: [
-                          ItemInfo(
-                            title: context.l10n.relationship,
-                            value: RelationshipType.tryParse(relationship ?? '')
-                                    ?.displayText
-                                    .value(context) ??
-                                context.l10n.noData,
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return const UpdatePartnerBasicInfoDialog();
-                                },
-                              );
-                            },
+                          ShowUpAnimation(
+                            delay: 100,
+                            child: ItemInfo(
+                              title: context.l10n.relationship,
+                              value: RelationshipType.tryParse(relationship ?? '')
+                                      ?.displayText
+                                      .value(context) ??
+                                  context.l10n.noData,
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return const UpdatePartnerBasicInfoDialog();
+                                  },
+                                );
+                              },
+                            ),
                           ),
-                          BasicInfoWidget(
-                            name: partnerInfo.name,
-                            job: partnerInfo.job,
-                            birthday: partnerInfo.birthday,
-                            gender: partnerInfo.gender,
-                            onTapEditBasicInfo: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return const UpdatePartnerBasicInfoDialog();
-                                },
-                              );
-                            },
+                          ShowUpAnimation(
+                            delay: 200,
+                            child: BasicInfoWidget(
+                              name: partnerInfo.name,
+                              job: partnerInfo.job,
+                              birthday: partnerInfo.birthday,
+                              gender: partnerInfo.gender,
+                              onTapEditBasicInfo: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return const UpdatePartnerBasicInfoDialog();
+                                  },
+                                );
+                              },
+                            ),
                           ),
-                          HobbiesWidget(
-                            hobbies: partnerInfo.hobbies,
-                            onTapEdit: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return const UpdatePartnerHobbiesDialog();
-                                },
-                              );
-                            },
+                          ShowUpAnimation(
+                            delay: 300,
+                            child: HobbiesWidget(
+                              hobbies: partnerInfo.hobbies,
+                              onTapEdit: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return const UpdatePartnerHobbiesDialog();
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ],
                       ),

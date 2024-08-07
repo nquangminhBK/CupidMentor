@@ -8,6 +8,7 @@ import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/could_image.dart';
 import 'package:cupid_mentor/core/widgets/dialog_list_generated_content.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
+import 'package:cupid_mentor/core/widgets/showup_animation.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/tip_date_spots/presentation/manager/tip_date_spot_notifier.dart';
 import 'package:flutter/material.dart';
@@ -53,78 +54,81 @@ class TipsDateSpotsScreen extends ConsumerWidget {
               ),
               itemCount: ref.preloadData.specialOccasions.length,
               itemBuilder: (context, index) {
-                return AnimatedButton(
-                  onPress: () async {
-                    LoadingUtils.showLoading();
-                    var contents = await ref
-                        .read(tipsDateSpotNotifierProvider.notifier)
-                        .getTipsDateSpotByOccasion(
-                          ref.preloadData.specialOccasions[index],
-                        );
-                    if (contents.isEmpty && context.mounted) {
-                      await ref.read(tipsDateSpotNotifierProvider.notifier).generateAiContent(
+                return ShowUpAnimation(
+                  delay: (index ~/ 2) * 100,
+                  child: AnimatedButton(
+                    onPress: () async {
+                      LoadingUtils.showLoading();
+                      var contents = await ref
+                          .read(tipsDateSpotNotifierProvider.notifier)
+                          .getTipsDateSpotByOccasion(
                             ref.preloadData.specialOccasions[index],
-                            context,
                           );
-                    }
-                    LoadingUtils.hideLoading();
-                    contents = await ref
-                        .read(tipsDateSpotNotifierProvider.notifier)
-                        .getTipsDateSpotByOccasion(
-                          ref.preloadData.specialOccasions[index],
-                        );
-                    if (context.mounted) {
-                      unawaited(
-                        showDialog(
-                          context: context,
-                          builder: (_) {
-                            return DialogListGeneratedContent(
-                              contents: contents,
-                              onTapCreateNewOne: () async {
-                                LoadingUtils.showLoading();
-                                final result = await ref
-                                    .read(tipsDateSpotNotifierProvider.notifier)
-                                    .generateAiContent(
-                                      ref.preloadData.specialOccasions[index],
-                                      context,
-                                    );
-                                LoadingUtils.hideLoading();
-                                return result;
-                              },
+                      if (contents.isEmpty && context.mounted) {
+                        await ref.read(tipsDateSpotNotifierProvider.notifier).generateAiContent(
+                              ref.preloadData.specialOccasions[index],
+                              context,
                             );
-                          },
-                        ),
-                      );
-                    }
-                  },
-                  borderRadius: BorderRadius.circular(8),
-                  color: ref.currentAppColor.homeMenuColor,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: SizedBox(
+                      }
+                      LoadingUtils.hideLoading();
+                      contents = await ref
+                          .read(tipsDateSpotNotifierProvider.notifier)
+                          .getTipsDateSpotByOccasion(
+                            ref.preloadData.specialOccasions[index],
+                          );
+                      if (context.mounted) {
+                        unawaited(
+                          showDialog(
+                            context: context,
+                            builder: (_) {
+                              return DialogListGeneratedContent(
+                                contents: contents,
+                                onTapCreateNewOne: () async {
+                                  LoadingUtils.showLoading();
+                                  final result = await ref
+                                      .read(tipsDateSpotNotifierProvider.notifier)
+                                      .generateAiContent(
+                                        ref.preloadData.specialOccasions[index],
+                                        context,
+                                      );
+                                  LoadingUtils.hideLoading();
+                                  return result;
+                                },
+                              );
+                            },
+                          ),
+                        );
+                      }
+                    },
+                    borderRadius: BorderRadius.circular(8),
+                    color: ref.currentAppColor.homeMenuColor,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
                           width: 100,
                           height: 100,
-                          child: CouldImage(
-                            imageName: ref.preloadData.specialOccasions[index].image,
+                          child: SizedBox(
+                            width: 100,
+                            height: 100,
+                            child: CouldImage(
+                              imageName: ref.preloadData.specialOccasions[index].image,
+                            ),
                           ),
                         ),
-                      ),
-                      const VerticalSpace(size: 24),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Text(
-                          ref.preloadData.specialOccasions[index].title.value(context),
-                          style: context.textTheme.titleSmall!.copyWith(
-                            fontSize: 18,
+                        const VerticalSpace(size: 24),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text(
+                            ref.preloadData.specialOccasions[index].title.value(context),
+                            style: context.textTheme.titleSmall!.copyWith(
+                              fontSize: 18,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

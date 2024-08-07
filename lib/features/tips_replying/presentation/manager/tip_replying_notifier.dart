@@ -40,7 +40,9 @@ class TipsReplyingNotifier extends _$TipsReplyingNotifier {
   DeleteConversation get deleteConversation => ref.read(deleteConversationUseCaseProvider);
 
   Future<void> loadFirstPage() async {
-    await _loadMessage(lastMsgId: '');
+    await Future.delayed(const Duration(milliseconds: 200), () async {
+      await _loadMessage(lastMsgId: '');
+    });
   }
 
   Future<void> loadNextPage() async {

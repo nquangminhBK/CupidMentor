@@ -74,6 +74,8 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                       child: Padding(
                         padding: const EdgeInsets.all(20),
                         child: CouldImage(
+                          width: 80,
+                          height: 80,
                           imageName: widget.selfImprovementEntity.category.image,
                         ),
                       ),
@@ -85,6 +87,8 @@ class _CategoryItemState extends ConsumerState<CategoryItem> {
                       child: Padding(
                         padding: const EdgeInsets.all(20),
                         child: CouldImage(
+                          width: 80,
+                          height: 80,
                           imageName: widget.selfImprovementEntity.category.image,
                         ),
                       ),
