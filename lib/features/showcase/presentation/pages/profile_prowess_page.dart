@@ -1,7 +1,5 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
-import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/features/showcase/presentation/widgets/page_general_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,13 +8,11 @@ class ProfileProwessPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return PageGeneralWidget(
-      image: ref.currentTheme == ThemeMode.dark
+    return Padding(
+      padding: const EdgeInsets.all(24),
+      child: ref.currentTheme == ThemeMode.dark
           ? Assets.png.profileProwessImage.image()
           : Assets.png.profileProwessImageLight.image(),
-      textBg: Assets.svg.profileProwessBgText.svg(fit: BoxFit.fitWidth, width: double.infinity),
-      title: 'Profile Prowess',
-      description: context.l10n.profileProwessDescription,
     );
   }
 }

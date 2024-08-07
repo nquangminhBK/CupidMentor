@@ -5,7 +5,6 @@ import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/base_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/menu_item.dart';
-import 'package:cupid_mentor/features/tips_gift/presentation/pages/tips_gift_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,7 +25,6 @@ class TipGiftIntroduceWidget extends ConsumerWidget {
         image: ref.currentTheme == ThemeMode.dark
             ? Assets.png.giftMenuImage.image(width: 140, height: 140)
             : Assets.png.giftMenuImageLight.image(width: 140, height: 140),
-        targetPage: const TipsGiftsScreen(),
       ),
       title: context.l10n.tipGiftDialogInstructionTitle,
       description: context.l10n.tipGiftDialogInstructionDescription,

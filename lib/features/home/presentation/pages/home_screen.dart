@@ -7,6 +7,7 @@ import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/gradient_text.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
+import 'package:cupid_mentor/core/widgets/showup_animation.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/home/presentation/manager/home_notifier.dart';
 import 'package:cupid_mentor/features/home/presentation/manager/home_state.dart';
@@ -18,9 +19,6 @@ import 'package:cupid_mentor/features/home/presentation/widgets/tip_date_spot_in
 import 'package:cupid_mentor/features/home/presentation/widgets/tip_gift_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/tip_self_improvement_introduce_widget.dart';
 import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
-import 'package:cupid_mentor/features/tip_date_spots/presentation/pages/tips_date_spot_screen.dart';
-import 'package:cupid_mentor/features/tips_gift/presentation/pages/tips_gift_screen.dart';
-import 'package:cupid_mentor/features/tips_self_improvement/presentation/pages/tips_self_improvement_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -90,65 +88,74 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const ProfileWidget(),
+                    const ShowUpAnimation(delay: 100, child: ProfileWidget()),
                     const VerticalSpace(size: 16),
-                    const ChatNowWidget(),
+                    const ShowUpAnimation(delay: 200, child: ChatNowWidget()),
                     const VerticalSpace(size: 16),
-                    MenuItem(
-                      isLeftToRight: true,
-                      title: context.l10n.tipSelfImprovementTitle,
-                      description: context.l10n.tipSelfImprovementDesc,
-                      buttonText: context.l10n.tipSelfImprovementButton,
-                      onTap: () => NavigationService.instance.push(AppRoutes.tipSelfImprovement),
-                      image: ref.currentTheme == ThemeMode.dark
-                          ? Assets.png.tipMenuImage.image(width: 140, height: 140)
-                          : Assets.png.tipMenuImageLight.image(width: 140, height: 140),
-                      onTapInfo: () {
-                        showDialog(
-                          context: context,
-                          builder: (_) {
-                            return const BaseDialog(child: TipSelfImprovementIntroduceWidget());
-                          },
-                        );
-                      }, targetPage: const TipsSelfImprovementScreen(),
+                    ShowUpAnimation(
+                      delay: 300,
+                      child: MenuItem(
+                        isLeftToRight: true,
+                        title: context.l10n.tipSelfImprovementTitle,
+                        description: context.l10n.tipSelfImprovementDesc,
+                        buttonText: context.l10n.tipSelfImprovementButton,
+                        onTap: () => NavigationService.instance.push(AppRoutes.tipSelfImprovement),
+                        image: ref.currentTheme == ThemeMode.dark
+                            ? Assets.png.tipMenuImage.image(width: 140, height: 140)
+                            : Assets.png.tipMenuImageLight.image(width: 140, height: 140),
+                        onTapInfo: () {
+                          showDialog(
+                            context: context,
+                            builder: (_) {
+                              return const BaseDialog(child: TipSelfImprovementIntroduceWidget());
+                            },
+                          );
+                        },
+                      ),
                     ),
                     const VerticalSpace(size: 16),
-                    MenuItem(
-                      isLeftToRight: false,
-                      title: context.l10n.tipGiftTitle,
-                      description: context.l10n.tipGiftDesc,
-                      buttonText: context.l10n.tipGiftButton,
-                      onTap: () => NavigationService.instance.push(AppRoutes.tipGift),
-                      image: ref.currentTheme == ThemeMode.dark
-                          ? Assets.png.giftMenuImage.image(width: 140, height: 140)
-                          : Assets.png.giftMenuImageLight.image(width: 140, height: 140),
-                      onTapInfo: () {
-                        showDialog(
-                          context: context,
-                          builder: (_) {
-                            return const BaseDialog(child: TipGiftIntroduceWidget());
-                          },
-                        );
-                      }, targetPage: const TipsGiftsScreen(),
+                    ShowUpAnimation(
+                      delay: 400,
+                      child: MenuItem(
+                        isLeftToRight: false,
+                        title: context.l10n.tipGiftTitle,
+                        description: context.l10n.tipGiftDesc,
+                        buttonText: context.l10n.tipGiftButton,
+                        onTap: () => NavigationService.instance.push(AppRoutes.tipGift),
+                        image: ref.currentTheme == ThemeMode.dark
+                            ? Assets.png.giftMenuImage.image(width: 140, height: 140)
+                            : Assets.png.giftMenuImageLight.image(width: 140, height: 140),
+                        onTapInfo: () {
+                          showDialog(
+                            context: context,
+                            builder: (_) {
+                              return const BaseDialog(child: TipGiftIntroduceWidget());
+                            },
+                          );
+                        },
+                      ),
                     ),
                     const VerticalSpace(size: 16),
-                    MenuItem(
-                      isLeftToRight: true,
-                      title: context.l10n.tipDateSpotTitle,
-                      description: context.l10n.tipDateSpotDesc,
-                      buttonText: context.l10n.tipDateSpotButton,
-                      onTap: () => NavigationService.instance.push(AppRoutes.tipDateSpot),
-                      image: ref.currentTheme == ThemeMode.dark
-                          ? Assets.png.spotMenuImage.image(width: 140, height: 140)
-                          : Assets.png.spotMenuImageLight.image(width: 140, height: 140),
-                      onTapInfo: () {
-                        showDialog(
-                          context: context,
-                          builder: (_) {
-                            return const BaseDialog(child: TipDateSpotIntroduceWidget());
-                          },
-                        );
-                      }, targetPage: const TipsDateSpotsScreen(),
+                    ShowUpAnimation(
+                      delay: 500,
+                      child: MenuItem(
+                        isLeftToRight: true,
+                        title: context.l10n.tipDateSpotTitle,
+                        description: context.l10n.tipDateSpotDesc,
+                        buttonText: context.l10n.tipDateSpotButton,
+                        onTap: () => NavigationService.instance.push(AppRoutes.tipDateSpot),
+                        image: ref.currentTheme == ThemeMode.dark
+                            ? Assets.png.spotMenuImage.image(width: 140, height: 140)
+                            : Assets.png.spotMenuImageLight.image(width: 140, height: 140),
+                        onTapInfo: () {
+                          showDialog(
+                            context: context,
+                            builder: (_) {
+                              return const BaseDialog(child: TipDateSpotIntroduceWidget());
+                            },
+                          );
+                        },
+                      ),
                     ),
                     const VerticalSpace(size: 24),
                   ],

@@ -16,7 +16,7 @@ class HomeNotifier extends _$HomeNotifier {
       ref.read(checkNeedShowIntroductionUseCaseProvider);
 
   Future<void> checkNeedShowIntroductionPopup() async {
-    await Future.delayed(const Duration(seconds: 1), () async {
+    await Future.delayed(const Duration(milliseconds: 1500), () async {
       final result = await checkNeedShowIntroduction(NoParams());
       result.fold((failed) {}, (success) {
         if (success) {

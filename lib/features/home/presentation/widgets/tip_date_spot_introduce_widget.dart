@@ -4,7 +4,6 @@ import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/base_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/menu_item.dart';
-import 'package:cupid_mentor/features/tip_date_spots/presentation/pages/tips_date_spot_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,7 +26,6 @@ class TipDateSpotIntroduceWidget extends ConsumerWidget {
         image: ref.currentTheme == ThemeMode.dark
             ? Assets.png.spotMenuImage.image(width: 140, height: 140)
             : Assets.png.spotMenuImageLight.image(width: 140, height: 140),
-        targetPage: const TipsDateSpotsScreen(),
       ),
       title: context.l10n.tipDateSpotDialogInstructionTitle,
       description: context.l10n.tipDateSpotDialogInstructionDescription,

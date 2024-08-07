@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
@@ -15,7 +14,6 @@ class MenuItem extends ConsumerWidget {
     required this.description,
     required this.buttonText,
     required this.onTap,
-    required this.targetPage,
     this.onTapInfo,
   });
 
@@ -26,7 +24,6 @@ class MenuItem extends ConsumerWidget {
   final String buttonText;
   final Function onTap;
   final Function? onTapInfo;
-  final Widget targetPage;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -68,34 +65,17 @@ class MenuItem extends ConsumerWidget {
                               margin: const EdgeInsets.only(right: 45),
                               height: 44,
                               width: 170,
-                              child: ClipRRect(
+                              child: AnimatedButton(
+                                onPress: onTap,
                                 borderRadius: BorderRadius.circular(8),
-                                child: OpenContainer<bool>(
-                                  transitionDuration: const Duration(milliseconds: 500),
-                                  closedColor: ref.currentAppColor.primaryColor,
-                                  openColor: ref.currentAppColor.primaryColor,
-                                  closedElevation: 0,
-                                  transitionType: ContainerTransitionType.fade,
-                                  openBuilder: (BuildContext _, VoidCallback closeContainer) {
-                                    return targetPage;
-                                  },
-                                  closedBuilder: (BuildContext _, VoidCallback openContainer) {
-                                    return AnimatedButton(
-                                      onPress: () {
-                                        openContainer();
-                                      },
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: ref.currentAppColor.primaryColor,
-                                      child: Center(
-                                        child: Text(
-                                          buttonText,
-                                          textAlign: TextAlign.center,
-                                          style: context.textTheme.titleMedium!
-                                              .copyWith(color: Colors.white),
-                                        ),
-                                      ),
-                                    );
-                                  },
+                                color: ref.currentAppColor.primaryColor,
+                                child: Center(
+                                  child: Text(
+                                    buttonText,
+                                    textAlign: TextAlign.center,
+                                    style: context.textTheme.titleMedium!
+                                        .copyWith(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
@@ -134,34 +114,17 @@ class MenuItem extends ConsumerWidget {
                               margin: const EdgeInsets.only(left: 45),
                               height: 44,
                               width: 170,
-                              child: ClipRRect(
+                              child: AnimatedButton(
+                                onPress: onTap,
                                 borderRadius: BorderRadius.circular(8),
-                                child: OpenContainer<bool>(
-                                  closedElevation: 0,
-                                  transitionDuration: const Duration(milliseconds: 500),
-                                  closedColor: ref.currentAppColor.primaryColor,
-                                  openColor: ref.currentAppColor.primaryColor,
-                                  transitionType: ContainerTransitionType.fade,
-                                  openBuilder: (BuildContext _, VoidCallback closeContainer) {
-                                    return targetPage;
-                                  },
-                                  closedBuilder: (BuildContext _, VoidCallback openContainer) {
-                                    return AnimatedButton(
-                                      onPress: () {
-                                        openContainer();
-                                      },
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: ref.currentAppColor.primaryColor,
-                                      child: Center(
-                                        child: Text(
-                                          buttonText,
-                                          textAlign: TextAlign.center,
-                                          style: context.textTheme.titleMedium!
-                                              .copyWith(color: Colors.white),
-                                        ),
-                                      ),
-                                    );
-                                  },
+                                color: ref.currentAppColor.primaryColor,
+                                child: Center(
+                                  child: Text(
+                                    buttonText,
+                                    textAlign: TextAlign.center,
+                                    style: context.textTheme.titleMedium!
+                                        .copyWith(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),

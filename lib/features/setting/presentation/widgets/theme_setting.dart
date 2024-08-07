@@ -2,6 +2,7 @@ import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
 import 'package:cupid_mentor/features/setting/presentation/widgets/item_setting.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -39,7 +40,7 @@ class _ThemeSettingState extends ConsumerState<ThemeSetting> with SingleTickerPr
       leftIcon: Icons.remove_red_eye_outlined,
       rightWidget: Row(
         children: [
-          Assets.lottie.darkLightMode.lottie(controller: _controller, repeat: false),
+          if (!kIsWeb) Assets.lottie.darkLightMode.lottie(controller: _controller, repeat: false),
           Text(
             themeMode == ThemeMode.dark ? context.l10n.dark : context.l10n.light,
             style: context.textTheme.titleMedium,

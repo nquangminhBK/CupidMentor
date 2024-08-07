@@ -293,6 +293,10 @@ class _TextAnimationWidgetState extends ConsumerState<TextAnimationWidget>
             ),
           ],
         ),
+        const Positioned(
+          right: -500,
+          child: SizedBox(),
+        ),
       ],
     );
   }
