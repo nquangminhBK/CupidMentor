@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/constants/screen_size.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
@@ -31,6 +32,7 @@ class MyDateTimePicker extends ConsumerStatefulWidget {
       showCupertinoModalPopup<void>(
         context: context,
         builder: (BuildContext context) => Container(
+          constraints: BoxConstraints(maxWidth: ScreenSize.maxWidth),
           height: 330,
           margin: const EdgeInsets.only(left: 10, right: 10, bottom: 24),
           decoration: BoxDecoration(

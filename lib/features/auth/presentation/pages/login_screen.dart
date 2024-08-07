@@ -35,8 +35,6 @@ class LoginScreen extends ConsumerWidget {
           context: context,
           icon: Icons.warning_amber_rounded,
         );
-      } else {
-        ref.read(preloadDataNotifierProvider.notifier).preloadData();
       }
       if (previous is! AuthGoToOnboardingState && next is AuthGoToOnboardingState) {
         NavigationService.instance.push(AppRoutes.onboarding, replace: true);
@@ -135,7 +133,8 @@ class LoginScreen extends ConsumerWidget {
                             ),
                             TextSpan(
                               text: context.l10n.termOfService,
-                              style: context.textTheme.bodyLarge!.copyWith(color: Colors.blueAccent),
+                              style:
+                                  context.textTheme.bodyLarge!.copyWith(color: Colors.blueAccent),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   showDialog(
@@ -158,7 +157,8 @@ class LoginScreen extends ConsumerWidget {
                             ),
                             TextSpan(
                               text: context.l10n.privacyPolicy,
-                              style: context.textTheme.bodyLarge!.copyWith(color: Colors.blueAccent),
+                              style:
+                                  context.textTheme.bodyLarge!.copyWith(color: Colors.blueAccent),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   showDialog(

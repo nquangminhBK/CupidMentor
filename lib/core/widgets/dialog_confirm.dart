@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/constants/screen_size.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
@@ -33,6 +34,7 @@ class DialogConfirm extends ConsumerWidget {
     return Align(
       alignment: Alignment.center,
       child: Container(
+        constraints: BoxConstraints(maxWidth: ScreenSize.maxWidth),
         margin: const EdgeInsets.only(left: 24, right: 24),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),

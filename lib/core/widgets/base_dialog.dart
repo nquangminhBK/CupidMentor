@@ -1,3 +1,4 @@
+import 'package:cupid_mentor/core/constants/screen_size.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/widgets/icon_close_button.dart';
@@ -12,7 +13,8 @@ class BaseDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
-      child: SizedBox(
+      child: Container(
+        constraints: BoxConstraints(maxWidth: ScreenSize.maxWidth),
         width: double.infinity,
         child: Center(
           child: Stack(

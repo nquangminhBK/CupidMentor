@@ -37,7 +37,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         if (previous is! SplashGoToLoginState && next is SplashGoToLoginState) {
           NavigationService.instance.push(AppRoutes.login, replace: true);
         }
-        ref.read(preloadDataNotifierProvider.notifier).preloadData();
         if (previous is! SplashGoToOnboardingState && next is SplashGoToOnboardingState) {
           NavigationService.instance.push(AppRoutes.onboarding, replace: true);
         }

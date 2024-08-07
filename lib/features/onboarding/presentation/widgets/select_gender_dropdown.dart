@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/constants/gender.dart';
+import 'package:cupid_mentor/core/constants/screen_size.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
@@ -40,6 +41,7 @@ class _SelectGenderWidgetState extends ConsumerState<SelectGenderWidget> {
           useRootNavigator: true,
           context: context,
           isScrollControlled: true,
+          constraints: BoxConstraints(maxWidth: ScreenSize.maxWidth),
           backgroundColor: Colors.transparent,
           builder: (context) => BottomSheetGender(
             initialValue: widget.selectedGender,

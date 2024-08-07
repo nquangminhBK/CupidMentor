@@ -27,6 +27,7 @@ class _AppState extends ConsumerState<App> {
   void initState() {
     ref.read(themeNotifierProvider.notifier).checkInitialTheme();
     ref.read(preloadDataNotifierProvider.notifier).initializeAndFetchRemoteConfig();
+    ref.read(preloadDataNotifierProvider.notifier).preloadData();
     ref.read(localizationNotifierProvider.notifier).checkInitialLanguage();
     super.initState();
   }

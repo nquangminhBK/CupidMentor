@@ -1,5 +1,6 @@
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/adaptive_screen.dart';
+import 'package:cupid_mentor/core/widgets/constraint_size_screen.dart';
 import 'package:cupid_mentor/features/auth/presentation/pages/login_screen.dart';
 import 'package:cupid_mentor/features/home/presentation/pages/home_screen.dart';
 import 'package:cupid_mentor/features/select_language/presentation/pages/select_language_page.dart';
@@ -159,6 +160,11 @@ class FadeMaterialPageRoute<T> extends MaterialPageRoute<T> {
     Animation<double> secondaryAnimation,
     Widget child,
   ) {
-    return FadeTransition(opacity: animation, child: child);
+    return FadeTransition(
+      opacity: animation,
+      child: ConstraintSizeScreen(
+        child: child,
+      ),
+    );
   }
 }

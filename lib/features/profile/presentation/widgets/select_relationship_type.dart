@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
+import 'package:cupid_mentor/core/constants/screen_size.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
 import 'package:cupid_mentor/core/navigation/navigation_service.dart';
@@ -41,6 +42,7 @@ class _SelectRelationshipTypeState extends ConsumerState<SelectRelationshipType>
           context: context,
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
+          constraints: BoxConstraints(maxWidth: ScreenSize.maxWidth),
           builder: (context) => BottomSheetSelectRelationshipType(
             initialValue: widget.selectedType ?? RelationshipType.crush,
             onTap: widget.onTypeSelected,
