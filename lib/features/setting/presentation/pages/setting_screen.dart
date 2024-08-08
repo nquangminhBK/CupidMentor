@@ -1,6 +1,6 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
@@ -15,6 +15,7 @@ import 'package:cupid_mentor/features/setting/presentation/widgets/profile_secti
 import 'package:cupid_mentor/features/setting/presentation/widgets/theme_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingScreen extends ConsumerStatefulWidget {
   const SettingScreen({super.key});
@@ -63,21 +64,21 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                   leftIcon: Icons.menu_book_rounded,
                   title: context.l10n.termOfService,
                   onTap: () {
-                    NavigationService.instance.push(AppRoutes.termOfService);
+                    context.go(AppRoutes.termOfService);
                   },
                 ),
                 ItemSetting(
                   leftIcon: Icons.privacy_tip_outlined,
                   title: context.l10n.privacyPolicy,
                   onTap: () {
-                    NavigationService.instance.push(AppRoutes.privacyPolicy);
+                    context.go(AppRoutes.privacyPolicy);
                   },
                 ),
                 ItemSetting(
                   leftIcon: Icons.info_outline_rounded,
                   title: context.l10n.aboutUs,
                   onTap: () {
-                    NavigationService.instance.push(AppRoutes.aboutTheAuthor);
+                    context.go(AppRoutes.aboutTheAuthor);
                   },
                 ),
                 ItemSetting(

@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/utils/mixin/after_layout_mixin.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
@@ -83,7 +83,7 @@ class _TipsReplyingMessageScreenState extends ConsumerState<TipsReplyingMessageS
                         return DialogConfirm(
                           onPositiveButtonExecute: () {
                             ref.read(tipsReplyingNotifierProvider.notifier).deleteMessage();
-                            NavigationService.instance.pop();
+                            Navigator.of(context).pop();
                           },
                           message: context.l10n.deleteConversationDialogTitle,
                           titlePositiveButton: context.l10n.delete,

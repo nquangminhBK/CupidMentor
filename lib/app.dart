@@ -1,7 +1,5 @@
 import 'package:cupid_mentor/core/constants/localization_const.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/route_generator.dart';
-import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/themes_colors/themes.dart';
 import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
 import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
@@ -34,7 +32,8 @@ class _AppState extends ConsumerState<App> {
   @override
   Widget build(BuildContext context) {
     final currentLocale = ref.watch(localizationNotifierProvider).lang;
-    return MaterialApp(
+    final routeConfig = ref.watch(routeProvider);
+    return MaterialApp.router(
       title: 'Cupid Mentor',
       scrollBehavior: const MaterialScrollBehavior().copyWith(
         dragDevices: {
@@ -45,12 +44,10 @@ class _AppState extends ConsumerState<App> {
         },
       ),
       debugShowCheckedModeBanner: false,
-      navigatorKey: NavigationService.instance.globalNavigatorKey,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       themeMode: ref.watch(themeNotifierProvider).currentTheme,
-      onGenerateRoute: generateRoute,
-      initialRoute: AppRoutes.splash,
+      routerConfig: routeConfig,
       builder: (context, myWidget) {
         myWidget = EasyLoading.init()(context, myWidget);
         return myWidget;

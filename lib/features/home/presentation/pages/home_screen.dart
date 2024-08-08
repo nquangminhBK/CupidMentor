@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/gradient_text.dart';
@@ -21,6 +21,7 @@ import 'package:cupid_mentor/features/home/presentation/widgets/tip_self_improve
 import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -77,7 +78,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             hasBackIcon: false,
             actionButton: {
               Icons.settings_rounded: () {
-                NavigationService.instance.push(AppRoutes.setting);
+                context.go(AppRoutes.setting);
               },
             },
           ),
@@ -99,7 +100,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         title: context.l10n.tipSelfImprovementTitle,
                         description: context.l10n.tipSelfImprovementDesc,
                         buttonText: context.l10n.tipSelfImprovementButton,
-                        onTap: () => NavigationService.instance.push(AppRoutes.tipSelfImprovement),
+                        onTap: () => context.go(AppRoutes.tipSelfImprovement),
                         image: ref.currentTheme == ThemeMode.dark
                             ? Assets.png.tipMenuImage.image(width: 140, height: 140)
                             : Assets.png.tipMenuImageLight.image(width: 140, height: 140),
@@ -121,7 +122,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         title: context.l10n.tipGiftTitle,
                         description: context.l10n.tipGiftDesc,
                         buttonText: context.l10n.tipGiftButton,
-                        onTap: () => NavigationService.instance.push(AppRoutes.tipGift),
+                        onTap: () => context.go(AppRoutes.tipGift),
                         image: ref.currentTheme == ThemeMode.dark
                             ? Assets.png.giftMenuImage.image(width: 140, height: 140)
                             : Assets.png.giftMenuImageLight.image(width: 140, height: 140),
@@ -143,7 +144,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         title: context.l10n.tipDateSpotTitle,
                         description: context.l10n.tipDateSpotDesc,
                         buttonText: context.l10n.tipDateSpotButton,
-                        onTap: () => NavigationService.instance.push(AppRoutes.tipDateSpot),
+                        onTap: () => context.go(AppRoutes.tipDateSpot),
                         image: ref.currentTheme == ThemeMode.dark
                             ? Assets.png.spotMenuImage.image(width: 140, height: 140)
                             : Assets.png.spotMenuImageLight.image(width: 140, height: 140),

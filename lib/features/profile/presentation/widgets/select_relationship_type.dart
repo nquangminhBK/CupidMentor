@@ -2,7 +2,7 @@ import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/constants/screen_size.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/gradient_box_border.dart';
 import 'package:flutter/material.dart';
@@ -101,7 +101,7 @@ class BottomSheetSelectRelationshipType extends ConsumerWidget {
               (type) => AnimatedButton(
                 onPress: () {
                   onTap(type);
-                  NavigationService.instance.pop();
+                  Navigator.of(context).pop();
                 },
                 child: Container(
                   width: double.infinity,

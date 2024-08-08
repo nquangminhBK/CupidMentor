@@ -1,6 +1,6 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
@@ -42,7 +42,7 @@ class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
             context: context,
           );
         }, (success) async {
-          NavigationService.instance.pop();
+          Navigator.of(context).pop();
           await ref.read(profileNotifierProvider.notifier).getData();
         });
       }
@@ -69,7 +69,7 @@ class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
                 children: [
                   AnimatedButton(
                     onPress: () {
-                      NavigationService.instance.pop();
+                      Navigator.of(context).pop();
                     },
                     child: const Padding(
                       padding: EdgeInsets.all(12),

@@ -5,8 +5,10 @@ import 'package:cupid_mentor/di.dart';
 import 'package:cupid_mentor/firebase_options/prod_firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() async {
+  usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   LoadingUtils.configLoading();
   await Firebase.initializeApp(

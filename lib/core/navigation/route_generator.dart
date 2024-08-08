@@ -1,5 +1,5 @@
+import 'package:cupid_mentor/core/navigation/navigation_service.dart';
 import 'package:cupid_mentor/core/navigation/routes.dart';
-import 'package:cupid_mentor/core/widgets/adaptive_screen.dart';
 import 'package:cupid_mentor/core/widgets/constraint_size_screen.dart';
 import 'package:cupid_mentor/features/auth/presentation/pages/login_screen.dart';
 import 'package:cupid_mentor/features/home/presentation/pages/home_screen.dart';
@@ -19,152 +19,173 @@ import 'package:cupid_mentor/features/tip_date_spots/presentation/pages/tips_dat
 import 'package:cupid_mentor/features/tips_gift/presentation/pages/tips_gift_screen.dart';
 import 'package:cupid_mentor/features/tips_replying/presentation/pages/tips_replying_screen.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/pages/tips_self_improvement_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-Route<Object>? generateRoute(RouteSettings settings) {
-  debugPrint('\n=============== >> Navigating to: ${settings.name}\n');
-  //final args = settings.arguments;
-  switch (settings.name) {
-    case AppRoutes.splash:
-      return _buildRoute(
-        settings: settings,
-        screen: const SplashScreen(),
-      );
-    case AppRoutes.selectLanguage:
-      return _buildRoute(
-        settings: settings,
-        screen: const SelectLanguagePage(),
-      );
-    case AppRoutes.showcase:
-      return _buildRoute(
-        settings: settings,
-        screen: const ShowcaseScreen(),
-      );
-    case AppRoutes.login:
-      return _buildRoute(
-        settings: settings,
-        screen: const LoginScreen(),
-      );
-    case AppRoutes.onboarding:
-      return _buildRoute(
-        settings: settings,
-        screen: const OnboardingScreen(),
-      );
-    case AppRoutes.welcome:
-      return _buildRoute(
-        settings: settings,
-        screen: const WelcomeScreen(),
-      );
-    case AppRoutes.home:
-      return _buildRoute(
-        settings: settings,
-        screen: const HomeScreen(),
-      );
-    case AppRoutes.tipGift:
-      return _buildRoute(
-        settings: settings,
-        screen: const TipsGiftsScreen(),
-      );
-    case AppRoutes.tipDateSpot:
-      return _buildRoute(
-        settings: settings,
-        screen: const TipsDateSpotsScreen(),
-      );
-    case AppRoutes.tipSelfImprovement:
-      return _buildRoute(
-        settings: settings,
-        screen: const TipsSelfImprovementScreen(),
-      );
-    case AppRoutes.tipReplying:
-      return _buildRoute(
-        settings: settings,
-        screen: const TipsReplyingMessageScreen(),
-      );
-    case AppRoutes.setting:
-      return _buildRoute(
-        settings: settings,
-        screen: const SettingScreen(),
-      );
-
-    case AppRoutes.profile:
-      return _buildRoute(
-        settings: settings,
-        screen: const YourProfilePages(),
-      );
-    case AppRoutes.partnerProfile:
-      return _buildRoute(
-        settings: settings,
-        screen: const PartnerProfilePage(),
-      );
-    case AppRoutes.addPartnerProfile:
-      return _buildRoute(
-        settings: settings,
-        screen: const AddPartnerScreen(),
-      );
-    case AppRoutes.aboutTheAuthor:
-      return _buildRoute(
-        settings: settings,
-        screen: const AboutTheAuthorScreen(),
-      );
-    case AppRoutes.termOfService:
-      return _buildRoute(
-        settings: settings,
-        screen: const TermOfServicePage(),
-      );
-    case AppRoutes.privacyPolicy:
-      return _buildRoute(
-        settings: settings,
-        screen: const PrivacyPolicyPage(),
-      );
-    default:
-      return _errorRoute();
-  }
-}
-
-Route<Object>? _errorRoute() => MaterialPageRoute(
-      builder: (_) => AdaptiveScreen(
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Error'),
-          ),
-          body: const Center(
-            child: Text('ERROR'),
-          ),
+final routeProvider = Provider<GoRouter>((ref) {
+  final router = GoRouter(
+    redirect: (context, state) {
+      if (state.matchedLocation != AppRoutes.splash &&
+          state.matchedLocation != AppRoutes.showcase &&
+          state.matchedLocation != AppRoutes.selectLanguage &&
+          state.matchedLocation != AppRoutes.login &&
+          FirebaseAuth.instance.currentUser == null) {
+        return AppRoutes.splash;
+      }
+      return null;
+    },
+    navigatorKey: NavigationService.instance.globalNavigatorKey,
+    redirectLimit: 1,
+    initialLocation: AppRoutes.splash,
+    routes: [
+      GoRoute(
+        path: AppRoutes.splash,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const SplashScreen(),
         ),
       ),
-    );
+      GoRoute(
+        path: AppRoutes.selectLanguage,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const SelectLanguagePage(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.showcase,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const ShowcaseScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.login,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const LoginScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.onboarding,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const OnboardingScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.welcome,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const WelcomeScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.home,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const HomeScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.tipGift,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const TipsGiftsScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.tipDateSpot,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const TipsDateSpotsScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.tipSelfImprovement,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const TipsSelfImprovementScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.tipReplying,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const TipsReplyingMessageScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.setting,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const SettingScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.profile,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const YourProfilePages(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.partnerProfile,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const PartnerProfilePage(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.addPartnerProfile,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const AddPartnerScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.aboutTheAuthor,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const AboutTheAuthorScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.termOfService,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const TermOfServicePage(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.privacyPolicy,
+        pageBuilder: (context, state) => _buildFadeTransitionPage(
+          settings: state,
+          screen: const PrivacyPolicyPage(),
+        ),
+      ),
+    ],
+  );
+  return router;
+});
 
-Route<T>? _buildRoute<T extends Object>({
-  required RouteSettings settings,
+Page<T> _buildFadeTransitionPage<T extends Object>({
+  required GoRouterState settings,
   required Widget screen,
-}) =>
-    FadeMaterialPageRoute<T>(
-      settings: settings,
-      builder: (context) => AdaptiveScreen(
-        child: screen,
-      ),
-    );
-
-class FadeMaterialPageRoute<T> extends MaterialPageRoute<T> {
-  FadeMaterialPageRoute({
-    required super.builder,
-    required RouteSettings super.settings,
-    super.maintainState,
-    super.fullscreenDialog,
-  });
-
-  @override
-  Widget buildTransitions(
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-    Widget child,
-  ) {
-    return FadeTransition(
-      opacity: animation,
-      child: ConstraintSizeScreen(
-        child: child,
-      ),
-    );
-  }
+}) {
+  return CustomTransitionPage<T>(
+    key: settings.pageKey,
+    child: screen,
+    transitionDuration: const Duration(milliseconds: 300),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return FadeTransition(
+        opacity: animation,
+        child: ConstraintSizeScreen(
+          child: child,
+        ),
+      );
+    },
+  );
 }

@@ -1,4 +1,4 @@
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:flutter/material.dart';
 
 class ResetAllApp extends StatefulWidget {
@@ -7,7 +7,7 @@ class ResetAllApp extends StatefulWidget {
   final Widget child;
 
   static void restartApp(BuildContext context) {
-    NavigationService.instance.resetNavigatorKey();
+    //NavigationService.instance.resetNavigatorKey();
     context.findAncestorStateOfType<_ResetAllAppState>()?.restartApp();
   }
 

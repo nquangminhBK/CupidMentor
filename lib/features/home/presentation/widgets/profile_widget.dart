@@ -1,12 +1,13 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileWidget extends ConsumerWidget {
   const ProfileWidget({super.key});
@@ -21,7 +22,7 @@ class ProfileWidget extends ConsumerWidget {
               constraints: const BoxConstraints(minHeight: 50),
               child: AnimatedButton(
                 onPress: () {
-                  NavigationService.instance.push(AppRoutes.profile);
+                  context.go(AppRoutes.profile);
                 },
                 child: Container(
                   width: double.infinity,
@@ -47,7 +48,7 @@ class ProfileWidget extends ConsumerWidget {
               constraints: const BoxConstraints(minHeight: 50),
               child: AnimatedButton(
                 onPress: () {
-                  NavigationService.instance.push(AppRoutes.partnerProfile);
+                  context.go(AppRoutes.partnerProfile);
                 },
                 child: Container(
                   width: double.infinity,

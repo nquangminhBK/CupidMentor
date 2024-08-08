@@ -1,6 +1,6 @@
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/my_app_bar.dart';
@@ -17,6 +17,7 @@ import 'package:cupid_mentor/features/profile/presentation/widgets/update_love_l
 import 'package:cupid_mentor/features/profile/presentation/widgets/update_personalities_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class YourProfilePages extends ConsumerStatefulWidget {
   const YourProfilePages({super.key});
@@ -125,7 +126,7 @@ class _YourProfilePagesState extends ConsumerState<YourProfilePages> {
                               ? '${context.l10n.alreadyHave},\n${RelationshipType.tryParse(state.userInfo!.relationship)?.displayText.value(context) ?? ''}'
                               : context.l10n.notHaveYet,
                           onTapEditPartnerProfile: () {
-                            NavigationService.instance.push(AppRoutes.partnerProfile);
+                            context.go(AppRoutes.partnerProfile);
                           },
                         ),
                       ),

@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
@@ -16,6 +16,7 @@ import 'package:cupid_mentor/features/auth/presentation/manager/auth_state.dart'
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
@@ -35,10 +36,10 @@ class LoginScreen extends ConsumerWidget {
         );
       }
       if (previous is! AuthGoToOnboardingState && next is AuthGoToOnboardingState) {
-        NavigationService.instance.push(AppRoutes.onboarding, replace: true);
+        context.pushReplacement(AppRoutes.onboarding);
       }
       if (previous is! AuthGoToHomeState && next is AuthGoToHomeState) {
-        NavigationService.instance.push(AppRoutes.home, replace: true);
+        context.pushReplacement(AppRoutes.home);
       }
     });
     return Scaffold(

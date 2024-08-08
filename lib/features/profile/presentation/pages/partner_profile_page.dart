@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/constants/relationship_type.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
@@ -17,6 +17,7 @@ import 'package:cupid_mentor/features/profile/presentation/widgets/update_partne
 import 'package:cupid_mentor/features/profile/presentation/widgets/update_partner_hobbies_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class PartnerProfilePage extends ConsumerStatefulWidget {
   const PartnerProfilePage({super.key});
@@ -64,7 +65,7 @@ class _PartnerProfilePageState extends ConsumerState<PartnerProfilePage> {
                       return DialogConfirm(
                         onPositiveButtonExecute: () {
                           notifier.deletePartnerProfile();
-                          NavigationService.instance.pop();
+                          Navigator.of(context).pop();
                         },
                         message: context.l10n.deletePartnerInfoDialogTitle,
                         titlePositiveButton: context.l10n.delete,
@@ -104,7 +105,7 @@ class _PartnerProfilePageState extends ConsumerState<PartnerProfilePage> {
                             const VerticalSpace(size: 24),
                             AnimatedButton(
                               onPress: () {
-                                NavigationService.instance.push(AppRoutes.addPartnerProfile);
+                                context.go(AppRoutes.addPartnerProfile);
                               },
                               borderRadius: BorderRadius.circular(8),
                               child: Container(

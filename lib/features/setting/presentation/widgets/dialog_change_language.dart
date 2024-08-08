@@ -2,7 +2,7 @@ import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/reset_all_app.dart';
@@ -74,7 +74,7 @@ class _DialogChangeLanguageState extends ConsumerState<DialogChangeLanguage> {
             enable: currentLanguage != null,
             onPress: () async {
               if (currentLanguage == ref.read(localizationNotifierProvider).lang) {
-                NavigationService.instance.pop();
+                Navigator.of(context).pop();
                 return;
               }
               await localizationNotifier.updateLanguage(currentLanguage!);

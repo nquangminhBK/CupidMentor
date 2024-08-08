@@ -57,11 +57,12 @@ class SnackBarService {
         currentTheme == ThemeMode.dark ? const Color(0x702C2C2E) : const Color(0xffFEF3F2);
     ScaffoldMessenger.of(context).showSnackBar(
       _snackBarContent(
-          context: context,
-          message: message,
-          bgColor: bgColor,
-          icon: Icons.warning_amber_rounded,
-          contentColor: const Color(0xffF04438)),
+        context: context,
+        message: message,
+        bgColor: bgColor,
+        icon: Icons.warning_amber_rounded,
+        contentColor: const Color(0xffF04438),
+      ),
     );
   }
 

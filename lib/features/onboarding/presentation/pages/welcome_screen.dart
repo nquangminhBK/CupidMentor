@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/gradient_text.dart';
@@ -9,6 +9,7 @@ import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends ConsumerWidget {
   const WelcomeScreen({super.key});
@@ -66,7 +67,7 @@ class WelcomeScreen extends ConsumerWidget {
               const VerticalSpace(size: 20),
               AnimatedButton(
                 onPress: () {
-                  NavigationService.instance.push(AppRoutes.home, replace: true);
+                  context.pushReplacement(AppRoutes.home);
                   ref.invalidate(onboardingNotifierProvider);
                 },
                 borderRadius: BorderRadius.circular(8),

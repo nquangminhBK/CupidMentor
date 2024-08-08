@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/errors/ui_success.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
@@ -18,6 +18,7 @@ import 'package:cupid_mentor/features/onboarding/presentation/pages/input_person
 import 'package:cupid_mentor/features/onboarding/presentation/pages/input_relationship_status_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
@@ -47,7 +48,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           );
         }, (success) {
           if (success is OnboardingSaveInfoSuccess) {
-            NavigationService.instance.push(AppRoutes.welcome, replace: true);
+            context.pushReplacement(AppRoutes.welcome);
           }
         });
       }

@@ -1,11 +1,12 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_notifier.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -26,22 +27,22 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     ref.listen(splashNotifierProvider, (previous, next) {
       Future.delayed(const Duration(milliseconds: 200), () {
         if (previous is! SplashGoToSelectLanguageState && next is SplashGoToSelectLanguageState) {
-          NavigationService.instance.push(AppRoutes.selectLanguage, replace: true);
+          context.pushReplacement(AppRoutes.selectLanguage);
         }
 
         if (previous is! SplashGoToShowCaseState && next is SplashGoToShowCaseState) {
-          NavigationService.instance.push(AppRoutes.showcase, replace: true);
+          context.pushReplacement(AppRoutes.showcase);
         }
 
         if (previous is! SplashGoToLoginState && next is SplashGoToLoginState) {
-          NavigationService.instance.push(AppRoutes.login, replace: true);
+          context.pushReplacement(AppRoutes.login);
         }
         if (previous is! SplashGoToOnboardingState && next is SplashGoToOnboardingState) {
-          NavigationService.instance.push(AppRoutes.onboarding, replace: true);
+          context.pushReplacement(AppRoutes.onboarding);
         }
 
         if (previous is! SplashGoToHomeState && next is SplashGoToHomeState) {
-          NavigationService.instance.push(AppRoutes.home, replace: true);
+          context.pushReplacement(AppRoutes.home);
         }
       });
     });

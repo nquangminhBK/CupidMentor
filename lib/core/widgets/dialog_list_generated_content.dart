@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cupid_mentor/core/core_entity/content_response.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';
@@ -86,10 +86,10 @@ class _DialogListGeneratedContentState extends ConsumerState<DialogListGenerated
                                     onPositiveButtonExecute: () async {
                                       final result = await widget.onTapDelete(e.id);
                                       if (result) {
-                                        NavigationService.instance.pop(data: true);
+                                        if (context.mounted) Navigator.of(context).pop(true);
                                         setState(() {});
                                       } else {
-                                        NavigationService.instance.pop(data: false);
+                                        if (context.mounted) Navigator.of(context).pop(false);
                                       }
                                     },
                                     message: context.l10n.deleteTipsConfirmTitle,
@@ -111,7 +111,7 @@ class _DialogListGeneratedContentState extends ConsumerState<DialogListGenerated
                                 },
                               );
                               if (result != null && !(result as bool)) {
-                                NavigationService.instance.pop();
+                                if (context.mounted) Navigator.of(context).pop();
                               }
                             },
                           ),
@@ -135,7 +135,7 @@ class _DialogListGeneratedContentState extends ConsumerState<DialogListGenerated
                         if (newSuggestion != null) {
                           setState(() {});
                         } else {
-                          NavigationService.instance.pop();
+                          if (context.mounted) Navigator.of(context).pop();
                         }
                       },
                     ),

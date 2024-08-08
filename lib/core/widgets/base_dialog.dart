@@ -1,6 +1,6 @@
 import 'package:cupid_mentor/core/constants/screen_size.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-import 'package:cupid_mentor/core/navigation/navigation_service.dart';
+ 
 import 'package:cupid_mentor/core/widgets/icon_close_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,7 +33,7 @@ class BaseDialog extends ConsumerWidget {
                 top: 8.0,
                 child: IconCloseButton(
                   onPress: () {
-                    NavigationService.instance.pop();
+                    Navigator.of(context).pop();
                   },
                 ),
               ),
