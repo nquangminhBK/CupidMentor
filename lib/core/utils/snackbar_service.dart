@@ -15,62 +15,74 @@ class SnackBarService {
   SnackBar _snackBarContent({
     required BuildContext context,
     required String message,
-    required Color color,
-    IconData? icon,
-  }) =>
-      SnackBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        duration: const Duration(seconds: 2),
-        content: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: color),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (icon != null)
-                Icon(
-                  icon,
-                  color: Colors.white,
-                  size: 18,
-                ),
-              if (icon != null) const HorizontalSpace(size: 12),
-              Expanded(
-                child: Text(
-                  message,
-                  style: context.textTheme.bodyLarge!.copyWith(color: Colors.white),
-                ),
+    required Color contentColor,
+    required Color bgColor,
+    required IconData icon,
+  }) {
+    return SnackBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      duration: const Duration(seconds: 2),
+      content: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: bgColor),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              color: contentColor,
+              size: 18,
+            ),
+            const HorizontalSpace(size: 12),
+            Expanded(
+              child: Text(
+                message,
+                style: context.textTheme.bodyLarge!.copyWith(color: contentColor),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 
   void showErrorSnackBar({
     required String message,
-    IconData? icon,
     required BuildContext context,
-  }) =>
-      ScaffoldMessenger.of(context).showSnackBar(
-        _snackBarContent(context: context, message: message, icon: icon, color: Colors.redAccent),
-      );
+  }) {
+    final currentTheme =
+        ProviderScope.containerOf(context).read(themeNotifierProvider).currentTheme;
+    final bgColor =
+        currentTheme == ThemeMode.dark ? const Color(0x702C2C2E) : const Color(0xffFEF3F2);
+    ScaffoldMessenger.of(context).showSnackBar(
+      _snackBarContent(
+          context: context,
+          message: message,
+          bgColor: bgColor,
+          icon: Icons.warning_amber_rounded,
+          contentColor: const Color(0xffF04438)),
+    );
+  }
 
   void showSuccessSnackBar({
     required String message,
-    IconData? icon,
     required BuildContext context,
-  }) =>
-      ScaffoldMessenger.of(context).showSnackBar(
-        _snackBarContent(
-          context: context,
-          message: message,
-          icon: icon,
-          color: ProviderScope.containerOf(context)
-              .read(themeNotifierProvider)
-              .currentAppColor
-              .primaryColor,
-        ),
-      );
+  }) {
+    final currentTheme =
+        ProviderScope.containerOf(context).read(themeNotifierProvider).currentTheme;
+    final bgColor =
+        currentTheme == ThemeMode.dark ? const Color(0x702C2C2E) : const Color(0xffECFDF3);
+    ScaffoldMessenger.of(context).showSnackBar(
+      _snackBarContent(
+        context: context,
+        message: message,
+        bgColor: bgColor,
+        icon: Icons.check_rounded,
+        contentColor: const Color(0xff039855),
+      ),
+    );
+  }
 
   void removeSnackBar(BuildContext context) =>
       ScaffoldMessenger.of(context).removeCurrentSnackBar();

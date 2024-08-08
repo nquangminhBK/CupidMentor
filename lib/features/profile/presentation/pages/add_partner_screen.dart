@@ -40,7 +40,6 @@ class _AddPartnerScreenState extends ConsumerState<AddPartnerScreen> {
           SnackBarService.instance.showErrorSnackBar(
             message: error.getDisplayMessage(context),
             context: context,
-            icon: Icons.warning_amber_rounded,
           );
         }, (success) async {
           NavigationService.instance.pop();

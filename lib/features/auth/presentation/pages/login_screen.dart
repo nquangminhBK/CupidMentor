@@ -32,7 +32,6 @@ class LoginScreen extends ConsumerWidget {
         SnackBarService.instance.showErrorSnackBar(
           message: context.l10n.loginFailedMsg,
           context: context,
-          icon: Icons.warning_amber_rounded,
         );
       }
       if (previous is! AuthGoToOnboardingState && next is AuthGoToOnboardingState) {

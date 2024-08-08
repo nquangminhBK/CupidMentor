@@ -55,7 +55,6 @@ class _TipsReplyingMessageScreenState extends ConsumerState<TipsReplyingMessageS
             SnackBarService.instance.showErrorSnackBar(
               message: error.getDisplayMessage(context),
               context: context,
-              icon: Icons.warning_amber_rounded,
             );
           },
           (success) {},

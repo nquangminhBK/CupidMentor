@@ -26,7 +26,6 @@ class TipsGiftsScreen extends ConsumerWidget {
             SnackBarService.instance.showErrorSnackBar(
               message: error.getDisplayMessage(context),
               context: context,
-              icon: Icons.warning_amber_rounded,
             );
           },
           (success) {},

@@ -42,7 +42,6 @@ class _YourProfilePagesState extends ConsumerState<YourProfilePages> {
         SnackBarService.instance.showErrorSnackBar(
           message: next.error!.getDisplayMessage(context),
           context: context,
-          icon: Icons.warning_amber_rounded,
         );
       }
     });
