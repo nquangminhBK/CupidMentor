@@ -4,7 +4,6 @@ import 'package:cupid_mentor/features/preload_data/domain/entities/self_improvem
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'self_improvement_model.freezed.dart';
-
 part 'self_improvement_model.g.dart';
 
 @freezed

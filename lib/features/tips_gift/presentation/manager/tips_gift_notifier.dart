@@ -11,8 +11,8 @@ import 'package:cupid_mentor/features/tips_gift/domain/use_cases/delete_tips_gif
 import 'package:cupid_mentor/features/tips_gift/domain/use_cases/get_tips_gift.dart';
 import 'package:cupid_mentor/features/tips_gift/presentation/manager/tips_gift_state.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 

@@ -11,10 +11,10 @@ import 'package:cupid_mentor/features/tips_replying/domain/use_cases/delete_conv
 import 'package:cupid_mentor/features/tips_replying/domain/use_cases/get_message.dart';
 import 'package:cupid_mentor/features/tips_replying/presentation/manager/tip_replying_state.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
 part 'tip_replying_notifier.g.dart';

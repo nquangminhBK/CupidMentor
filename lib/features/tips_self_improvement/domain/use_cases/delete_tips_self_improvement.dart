@@ -17,7 +17,9 @@ class DeleteTipsSelfImprovement implements UseCase<bool, DeleteTipsSelfImproveme
   @override
   Future<Either<Failure, bool>> call(DeleteTipsSelfImprovementParam params) async {
     return await repository.deleteTipsSelfImprovement(
-        selfImprovementId: params.selfImprovementId, contentId: params.contentId,);
+      selfImprovementId: params.selfImprovementId,
+      contentId: params.contentId,
+    );
   }
 }
 

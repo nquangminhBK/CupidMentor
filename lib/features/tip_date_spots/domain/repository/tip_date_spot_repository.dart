@@ -7,9 +7,11 @@ abstract class TipsDateSpotRepository {
     required String occasionId,
     required ContentResponse content,
   });
+
   Future<Either<Failure, bool>> deleteTipDateSpot({
     required String occasionId,
     required String contentId,
   });
+
   Future<Either<Failure, List<ContentResponse>>> getListTipsDateSpot({required String occasionId});
 }

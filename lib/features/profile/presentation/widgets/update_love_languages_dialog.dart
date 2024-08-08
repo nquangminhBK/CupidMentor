@@ -10,14 +10,13 @@ import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/custom_tag.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
+import 'package:cupid_mentor/features/onboarding/presentation/widgets/dialog_love_language_concepts.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/item_love_languages.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/widgets/rank_widget.dart';
 import 'package:cupid_mentor/features/profile/presentation/manager/profile_notifier.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:cupid_mentor/features/onboarding/presentation/widgets/dialog_love_language_concepts.dart';
 
 class UpdateLoveLanguagesDialog extends ConsumerStatefulWidget {
   const UpdateLoveLanguagesDialog({super.key});

@@ -17,7 +17,9 @@ class DeleteTipsDateSpot implements UseCase<bool, DeleteTipsDateSpotParam> {
   @override
   Future<Either<Failure, bool>> call(DeleteTipsDateSpotParam params) async {
     return await repository.deleteTipDateSpot(
-        occasionId: params.occasionId, contentId: params.contentId,);
+      occasionId: params.occasionId,
+      contentId: params.contentId,
+    );
   }
 }
 

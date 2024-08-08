@@ -3,7 +3,6 @@ import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'content_with_description_model.freezed.dart';
-
 part 'content_with_description_model.g.dart';
 
 @freezed

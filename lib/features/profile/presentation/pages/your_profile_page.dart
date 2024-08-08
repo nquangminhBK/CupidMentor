@@ -11,10 +11,10 @@ import 'package:cupid_mentor/features/profile/presentation/widgets/describe_you.
 import 'package:cupid_mentor/features/profile/presentation/widgets/hobbies.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/love_languages.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/relationship_status.dart';
+import 'package:cupid_mentor/features/profile/presentation/widgets/update_basic_info_dialog.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/update_hobbies_dialog.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/update_love_languages_dialog.dart';
 import 'package:cupid_mentor/features/profile/presentation/widgets/update_personalities_dialog.dart';
-import 'package:cupid_mentor/features/profile/presentation/widgets/update_basic_info_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

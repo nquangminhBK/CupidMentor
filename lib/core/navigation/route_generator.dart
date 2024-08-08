@@ -3,12 +3,12 @@ import 'package:cupid_mentor/core/widgets/adaptive_screen.dart';
 import 'package:cupid_mentor/core/widgets/constraint_size_screen.dart';
 import 'package:cupid_mentor/features/auth/presentation/pages/login_screen.dart';
 import 'package:cupid_mentor/features/home/presentation/pages/home_screen.dart';
-import 'package:cupid_mentor/features/select_language/presentation/pages/select_language_page.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'package:cupid_mentor/features/onboarding/presentation/pages/welcome_screen.dart';
 import 'package:cupid_mentor/features/profile/presentation/pages/add_partner_screen.dart';
 import 'package:cupid_mentor/features/profile/presentation/pages/partner_profile_page.dart';
 import 'package:cupid_mentor/features/profile/presentation/pages/your_profile_page.dart';
+import 'package:cupid_mentor/features/select_language/presentation/pages/select_language_page.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/about_the_author_screen.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/privacy_policy_page.dart';
 import 'package:cupid_mentor/features/setting/presentation/pages/setting_screen.dart';
@@ -22,7 +22,6 @@ import 'package:cupid_mentor/features/tips_self_improvement/presentation/pages/t
 import 'package:flutter/material.dart';
 
 Route<Object>? generateRoute(RouteSettings settings) {
-
   debugPrint('\n=============== >> Navigating to: ${settings.name}\n');
   //final args = settings.arguments;
   switch (settings.name) {

@@ -5,7 +5,6 @@ import 'package:cupid_mentor/features/auth/domain/entities/user_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_info_model.freezed.dart';
-
 part 'user_info_model.g.dart';
 
 @freezed

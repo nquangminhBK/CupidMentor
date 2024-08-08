@@ -55,8 +55,10 @@ class TipsDateSpotRepositoryImpl with ConnectivityMixin implements TipsDateSpotR
   }
 
   @override
-  Future<Either<Failure, bool>> deleteTipDateSpot(
-      {required String occasionId, required String contentId,}) async {
+  Future<Either<Failure, bool>> deleteTipDateSpot({
+    required String occasionId,
+    required String contentId,
+  }) async {
     if (await isInConnection()) {
       try {
         final result = await datasource.deleteTipsDateSpot(

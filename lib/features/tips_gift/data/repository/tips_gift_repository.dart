@@ -55,8 +55,10 @@ class TipsGiftRepositoryImpl with ConnectivityMixin implements TipsGiftRepositor
   }
 
   @override
-  Future<Either<Failure, bool>> deleteTipGift(
-      {required String occasionId, required String contentId,}) async {
+  Future<Either<Failure, bool>> deleteTipGift({
+    required String occasionId,
+    required String contentId,
+  }) async {
     if (await isInConnection()) {
       try {
         final result = await datasource.deleteTipGift(

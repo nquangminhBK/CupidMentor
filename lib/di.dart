@@ -12,12 +12,6 @@ import 'package:cupid_mentor/features/home/data/data_sources/home_datasource.dar
 import 'package:cupid_mentor/features/home/data/repository/home_repositories.dart';
 import 'package:cupid_mentor/features/home/domain/repository/home_repositories.dart';
 import 'package:cupid_mentor/features/home/domain/use_cases/need_show_introduction.dart';
-import 'package:cupid_mentor/features/select_language/data/data_sources/localization_datasource.dart';
-import 'package:cupid_mentor/features/select_language/data/repository/localization_repository.dart';
-import 'package:cupid_mentor/features/select_language/domain/repository/localization_repository.dart';
-import 'package:cupid_mentor/features/select_language/domain/use_cases/clear_language_data.dart';
-import 'package:cupid_mentor/features/select_language/domain/use_cases/get_language.dart';
-import 'package:cupid_mentor/features/select_language/domain/use_cases/set_language.dart';
 import 'package:cupid_mentor/features/onboarding/data/data_sources/onboarding_datasource.dart';
 import 'package:cupid_mentor/features/onboarding/data/repository/onboarding_repository.dart';
 import 'package:cupid_mentor/features/onboarding/domain/repository/onboarding_repository.dart';
@@ -37,6 +31,12 @@ import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_self_imp
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_special_occasions.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_term_of_service.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/initialize.dart';
+import 'package:cupid_mentor/features/select_language/data/data_sources/localization_datasource.dart';
+import 'package:cupid_mentor/features/select_language/data/repository/localization_repository.dart';
+import 'package:cupid_mentor/features/select_language/domain/repository/localization_repository.dart';
+import 'package:cupid_mentor/features/select_language/domain/use_cases/clear_language_data.dart';
+import 'package:cupid_mentor/features/select_language/domain/use_cases/get_language.dart';
+import 'package:cupid_mentor/features/select_language/domain/use_cases/set_language.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/delete_user.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
 import 'package:cupid_mentor/features/splash_screen/data/data_sources/splash_datasource.dart';
