@@ -13,23 +13,24 @@ class RemoteConfigService {
     try {
       await remoteConfig.setConfigSettings(
         RemoteConfigSettings(
-          fetchTimeout: const Duration(seconds: 3),
+          fetchTimeout: const Duration(seconds: 10),
           minimumFetchInterval: const Duration(hours: 6),
         ),
       );
-      await remoteConfig.setDefaults({
-        'aboutUs': jsonEncode(DefaultValue.aboutUs),
-        'hobbies': jsonEncode(DefaultValue.hobbies),
-        'loveLanguageConcepts': jsonEncode(DefaultValue.loveLanguageConcepts),
-        'loveLanguageOverallInfo': jsonEncode(DefaultValue.loveLanguageOverallInfo),
-        'loveLanguages': jsonEncode(DefaultValue.loveLanguages),
-        'personalities': jsonEncode(DefaultValue.personalities),
-        'privacyPolicy': jsonEncode(DefaultValue.privacyPolicy),
-        'selfImprovements': jsonEncode(DefaultValue.selfImprovements),
-        'specialOccasions': jsonEncode(DefaultValue.specialOccasions),
-        'termOfService': jsonEncode(DefaultValue.termOfService),
-      });
-      await remoteConfig.fetchAndActivate();
+
+    await remoteConfig.setDefaults(<String, dynamic>{
+      'aboutUs': jsonEncode(DefaultValue.aboutUs),
+      'hobbies': jsonEncode(DefaultValue.hobbies),
+      'loveLanguageConcepts': jsonEncode(DefaultValue.loveLanguageConcepts),
+      'loveLanguageOverallInfo': jsonEncode(DefaultValue.loveLanguageOverallInfo),
+      'loveLanguages': jsonEncode(DefaultValue.loveLanguages),
+      'personalities': jsonEncode(DefaultValue.personalities),
+      'privacyPolicy': jsonEncode(DefaultValue.privacyPolicy),
+      'selfImprovements': jsonEncode(DefaultValue.selfImprovements),
+      'specialOccasions': jsonEncode(DefaultValue.specialOccasions),
+      'termOfService': jsonEncode(DefaultValue.termOfService),
+    });
+    await remoteConfig.fetchAndActivate();
     } catch (e) {
       debugPrint('Remote config fetch throttled: $e');
     }

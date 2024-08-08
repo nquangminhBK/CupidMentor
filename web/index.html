@@ -21,11 +21,11 @@
     <meta name="description"
           content="An app that uses Gemini AI to provide personalized flirting tips, message replies, gift ideas, and date location recommendations.">
 
+
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="cupid_mentor">
-
     <link rel="apple-touch-icon" href="icons/icon-192.png">
 
     <!-- Favicon -->
@@ -33,50 +33,8 @@
 
     <title>Cupid Mentor</title>
     <link rel="manifest" href="manifest.json">
-
-    <script>
-        // The value below is injected by flutter build, do not touch.
-        const serviceWorkerVersion = null;
-    </script>
-    <!-- This script adds the flutter initialization JS code -->
-    <script src="flutter.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
-    <script>
-        // paste the code copied
-        // from Firebase SDK below.
-        const firebaseConfig = {
-          apiKey: "AIzaSyA0B6MRNOXQ2gvzgLSq-Uxbrkte-TgOW8Q",
-          authDomain: "cupid-mentor.firebaseapp.com",
-          projectId: "cupid-mentor",
-          storageBucket: "cupid-mentor.appspot.com",
-          messagingSenderId: "979013705313",
-          appId: "1:979013705313:web:18e7a966b77e19a4f25420",
-          measurementId: "G-WC7MKVWHQJ"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-
-    </script>
 </head>
 <body>
-<script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine({
-            useColorEmoji: true,
-          }).then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
-      });
-    });
-</script>
+<script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

@@ -19,17 +19,10 @@ import 'package:cupid_mentor/features/tip_date_spots/presentation/pages/tips_dat
 import 'package:cupid_mentor/features/tips_gift/presentation/pages/tips_gift_screen.dart';
 import 'package:cupid_mentor/features/tips_replying/presentation/pages/tips_replying_screen.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/presentation/pages/tips_self_improvement_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 Route<Object>? generateRoute(RouteSettings settings) {
-  if (FirebaseAuth.instance.currentUser == null) {
-    debugPrint('\n=============== >> require login');
-    return _buildRoute(
-      settings: settings,
-      screen: const SplashScreen(),
-    );
-  }
+
   debugPrint('\n=============== >> Navigating to: ${settings.name}\n');
   //final args = settings.arguments;
   switch (settings.name) {
