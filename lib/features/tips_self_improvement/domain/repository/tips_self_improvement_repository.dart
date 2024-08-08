@@ -8,6 +8,11 @@ abstract class TipsSelfImprovementRepository {
     required ContentResponse content,
   });
 
+  Future<Either<Failure, bool>> deleteTipsSelfImprovement({
+    required String selfImprovementId,
+    required String contentId,
+  });
+
   Future<Either<Failure, List<ContentResponse>>> getListTipsSelfImprovement({
     required String selfImprovementId,
   });

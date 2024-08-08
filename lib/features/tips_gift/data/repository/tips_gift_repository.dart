@@ -53,4 +53,23 @@ class TipsGiftRepositoryImpl with ConnectivityMixin implements TipsGiftRepositor
     }
     return const Left(NoConnection());
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteTipGift(
+      {required String occasionId, required String contentId,}) async {
+    if (await isInConnection()) {
+      try {
+        final result = await datasource.deleteTipGift(
+          occasionId: occasionId,
+          contentId: contentId,
+        );
+
+        return Right(result);
+      } catch (e, _) {
+        debugPrint(e.toString());
+        return Left(Failure(e.toString()));
+      }
+    }
+    return const Left(NoConnection());
+  }
 }

@@ -22,6 +22,7 @@ ContentResponseModel _$ContentResponseModelFromJson(Map<String, dynamic> json) {
 mixin _$ContentResponseModel {
   String get content => throw _privateConstructorUsedError;
   String get createdDate => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $ContentResponseModelCopyWith<$Res> {
           $Res Function(ContentResponseModel) then) =
       _$ContentResponseModelCopyWithImpl<$Res, ContentResponseModel>;
   @useResult
-  $Res call({String content, String createdDate});
+  $Res call({String content, String createdDate, String id});
 }
 
 /// @nodoc
@@ -54,6 +55,7 @@ class _$ContentResponseModelCopyWithImpl<$Res,
   $Res call({
     Object? content = null,
     Object? createdDate = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       content: null == content
@@ -63,6 +65,10 @@ class _$ContentResponseModelCopyWithImpl<$Res,
       createdDate: null == createdDate
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -76,7 +82,7 @@ abstract class _$$ContentResponseModelImplCopyWith<$Res>
       __$$ContentResponseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, String createdDate});
+  $Res call({String content, String createdDate, String id});
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ class __$$ContentResponseModelImplCopyWithImpl<$Res>
   $Res call({
     Object? content = null,
     Object? createdDate = null,
+    Object? id = null,
   }) {
     return _then(_$ContentResponseModelImpl(
       content: null == content
@@ -102,6 +109,10 @@ class __$$ContentResponseModelImplCopyWithImpl<$Res>
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -110,7 +121,7 @@ class __$$ContentResponseModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ContentResponseModelImpl extends _ContentResponseModel {
   const _$ContentResponseModelImpl(
-      {required this.content, required this.createdDate})
+      {required this.content, required this.createdDate, required this.id})
       : super._();
 
   factory _$ContentResponseModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -120,10 +131,12 @@ class _$ContentResponseModelImpl extends _ContentResponseModel {
   final String content;
   @override
   final String createdDate;
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'ContentResponseModel(content: $content, createdDate: $createdDate)';
+    return 'ContentResponseModel(content: $content, createdDate: $createdDate, id: $id)';
   }
 
   @override
@@ -133,12 +146,13 @@ class _$ContentResponseModelImpl extends _ContentResponseModel {
             other is _$ContentResponseModelImpl &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate));
+                other.createdDate == createdDate) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, content, createdDate);
+  int get hashCode => Object.hash(runtimeType, content, createdDate, id);
 
   @JsonKey(ignore: true)
   @override
@@ -159,7 +173,8 @@ class _$ContentResponseModelImpl extends _ContentResponseModel {
 abstract class _ContentResponseModel extends ContentResponseModel {
   const factory _ContentResponseModel(
       {required final String content,
-      required final String createdDate}) = _$ContentResponseModelImpl;
+      required final String createdDate,
+      required final String id}) = _$ContentResponseModelImpl;
   const _ContentResponseModel._() : super._();
 
   factory _ContentResponseModel.fromJson(Map<String, dynamic> json) =
@@ -169,6 +184,8 @@ abstract class _ContentResponseModel extends ContentResponseModel {
   String get content;
   @override
   String get createdDate;
+  @override
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$$ContentResponseModelImplCopyWith<_$ContentResponseModelImpl>

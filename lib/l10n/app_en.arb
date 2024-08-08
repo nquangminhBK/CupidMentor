@@ -149,5 +149,7 @@
   "privacyPolicy": "Privacy policy",
   "termAndPrivacyMsg1": "By logging in, you agree to our ",
   "termAndPrivacyMsg2": ". Learn how we use your data in our ",
-  "termAndPrivacyMsg3": "."
+  "termAndPrivacyMsg3": ".",
+  "deleteTipsConfirmTitle": "Are you sure you want to delete this tip?",
+  "actionFailed": "Could not complete the action. Please try again."
 }

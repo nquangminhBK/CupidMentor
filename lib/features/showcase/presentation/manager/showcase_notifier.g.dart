@@ -6,7 +6,7 @@ part of 'showcase_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$showcaseNotifierHash() => r'c4de62552cb99729ca043aac2eb997ea94cd23a7';
+String _$showcaseNotifierHash() => r'0f16ae576ccf3c6d6b91eb3215476670c4b7f42e';
 
 /// See also [ShowcaseNotifier].
 @ProviderFor(ShowcaseNotifier)

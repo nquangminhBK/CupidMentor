@@ -50,6 +50,16 @@ class TipsSelfImprovementItem extends ConsumerWidget {
                       LoadingUtils.hideLoading();
                       return result;
                     },
+                    onTapDelete: (contentId) async {
+                      LoadingUtils.showLoading();
+                      final result =
+                          await ref.read(tipsSelfImprovementNotifierProvider.notifier).deleteTips(
+                                item.id,
+                                contentId,
+                              );
+                      LoadingUtils.hideLoading();
+                      return result;
+                    },
                   );
                 },
               ),

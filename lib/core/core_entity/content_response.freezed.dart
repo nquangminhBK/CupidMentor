@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ContentResponse {
   String get content => throw _privateConstructorUsedError;
   DateTime get createdDate => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ContentResponseCopyWith<ContentResponse> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $ContentResponseCopyWith<$Res> {
           ContentResponse value, $Res Function(ContentResponse) then) =
       _$ContentResponseCopyWithImpl<$Res, ContentResponse>;
   @useResult
-  $Res call({String content, DateTime createdDate});
+  $Res call({String content, DateTime createdDate, String id});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$ContentResponseCopyWithImpl<$Res, $Val extends ContentResponse>
   $Res call({
     Object? content = null,
     Object? createdDate = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       content: null == content
@@ -58,6 +60,10 @@ class _$ContentResponseCopyWithImpl<$Res, $Val extends ContentResponse>
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -70,7 +76,7 @@ abstract class _$$ContentResponseImplCopyWith<$Res>
       __$$ContentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, DateTime createdDate});
+  $Res call({String content, DateTime createdDate, String id});
 }
 
 /// @nodoc
@@ -86,6 +92,7 @@ class __$$ContentResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? content = null,
     Object? createdDate = null,
+    Object? id = null,
   }) {
     return _then(_$ContentResponseImpl(
       content: null == content
@@ -96,6 +103,10 @@ class __$$ContentResponseImplCopyWithImpl<$Res>
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -104,17 +115,19 @@ class __$$ContentResponseImplCopyWithImpl<$Res>
 
 class _$ContentResponseImpl extends _ContentResponse {
   const _$ContentResponseImpl(
-      {required this.content, required this.createdDate})
+      {required this.content, required this.createdDate, required this.id})
       : super._();
 
   @override
   final String content;
   @override
   final DateTime createdDate;
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'ContentResponse(content: $content, createdDate: $createdDate)';
+    return 'ContentResponse(content: $content, createdDate: $createdDate, id: $id)';
   }
 
   @override
@@ -124,11 +137,12 @@ class _$ContentResponseImpl extends _ContentResponse {
             other is _$ContentResponseImpl &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate));
+                other.createdDate == createdDate) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, content, createdDate);
+  int get hashCode => Object.hash(runtimeType, content, createdDate, id);
 
   @JsonKey(ignore: true)
   @override
@@ -141,13 +155,16 @@ class _$ContentResponseImpl extends _ContentResponse {
 abstract class _ContentResponse extends ContentResponse {
   const factory _ContentResponse(
       {required final String content,
-      required final DateTime createdDate}) = _$ContentResponseImpl;
+      required final DateTime createdDate,
+      required final String id}) = _$ContentResponseImpl;
   const _ContentResponse._() : super._();
 
   @override
   String get content;
   @override
   DateTime get createdDate;
+  @override
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$$ContentResponseImplCopyWith<_$ContentResponseImpl> get copyWith =>

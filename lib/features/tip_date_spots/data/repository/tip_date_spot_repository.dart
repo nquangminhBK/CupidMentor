@@ -53,4 +53,23 @@ class TipsDateSpotRepositoryImpl with ConnectivityMixin implements TipsDateSpotR
     }
     return const Left(NoConnection());
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteTipDateSpot(
+      {required String occasionId, required String contentId,}) async {
+    if (await isInConnection()) {
+      try {
+        final result = await datasource.deleteTipsDateSpot(
+          occasionId: occasionId,
+          contentId: contentId,
+        );
+
+        return Right(result);
+      } catch (e, _) {
+        debugPrint(e.toString());
+        return Left(Failure(e.toString()));
+      }
+    }
+    return const Left(NoConnection());
+  }
 }

@@ -8,5 +8,10 @@ abstract class TipsGiftRepository {
     required ContentResponse content,
   });
 
+  Future<Either<Failure, bool>> deleteTipGift({
+    required String occasionId,
+    required String contentId,
+  });
+
   Future<Either<Failure, List<ContentResponse>>> getListTipsGift({required String occasionId});
 }

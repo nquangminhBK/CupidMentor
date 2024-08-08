@@ -11,17 +11,17 @@ class ContentResponse with _$ContentResponse {
   const factory ContentResponse({
     required String content,
     required DateTime createdDate,
+    required String id,
   }) = _ContentResponse;
 
-  factory ContentResponse.empty() => ContentResponse(
-        content: '',
-        createdDate: DateTime.now(),
-      );
+  factory ContentResponse.empty() =>
+      ContentResponse(content: '', createdDate: DateTime.now(), id: '');
 
   ContentResponseModel get toModel {
     return ContentResponseModel(
       content: content,
       createdDate: DateTimeUtils.convertToString(createdDate),
+      id: id,
     );
   }
 }

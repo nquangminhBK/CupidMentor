@@ -94,6 +94,16 @@ class TipsDateSpotsScreen extends ConsumerWidget {
                                   LoadingUtils.hideLoading();
                                   return result;
                                 },
+                                onTapDelete: (contentId) async {
+                                  LoadingUtils.showLoading();
+                                  final result =
+                                      await ref.read(tipsDateSpotNotifierProvider.notifier).deleteTips(
+                                            ref.preloadData.specialOccasions[index].id,
+                                            contentId,
+                                          );
+                                  LoadingUtils.hideLoading();
+                                  return result;
+                                },
                               );
                             },
                           ),

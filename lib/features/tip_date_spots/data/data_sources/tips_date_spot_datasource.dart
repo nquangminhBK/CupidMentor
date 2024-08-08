@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 abstract class TipsDateSpotDatasource {
   Future<List<ContentResponseModel>> getListTipsDateSpot({required String occasionId});
 
+  Future<bool> deleteTipsDateSpot({required String occasionId, required String contentId});
+
   Future<bool> addTipsDateSpot({required String occasionId, required ContentResponseModel content});
 }
 
@@ -27,7 +29,8 @@ class TipsDateSpotDatasourceImpl implements TipsDateSpotDatasource {
           .collection('ai_suggestions')
           .doc('date_spot_recommendations')
           .collection(occasionId)
-          .add(content.toJson());
+          .doc(content.id)
+          .set(content.toJson());
       return true;
     } catch (_) {
       rethrow;
@@ -49,5 +52,19 @@ class TipsDateSpotDatasourceImpl implements TipsDateSpotDatasource {
     } catch (e) {
       rethrow;
     }
+  }
+
+  @override
+  Future<bool> deleteTipsDateSpot({required String occasionId, required String contentId}) async {
+    final currentUser = firebaseAuth.currentUser;
+    await firestore
+        .collection('users_info')
+        .doc(currentUser!.uid)
+        .collection('ai_suggestions')
+        .doc('date_spot_recommendations')
+        .collection(occasionId)
+        .doc(contentId)
+        .delete();
+    return true;
   }
 }

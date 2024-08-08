@@ -50,11 +50,13 @@ import 'package:cupid_mentor/features/tip_date_spots/data/data_sources/tips_date
 import 'package:cupid_mentor/features/tip_date_spots/data/repository/tip_date_spot_repository.dart';
 import 'package:cupid_mentor/features/tip_date_spots/domain/repository/tip_date_spot_repository.dart';
 import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/add_tips_date_spot.dart';
+import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/delete_tips_date_spot.dart';
 import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/get_tips_date_spot.dart';
 import 'package:cupid_mentor/features/tips_gift/data/data_sources/tips_gift_datasource.dart';
 import 'package:cupid_mentor/features/tips_gift/data/repository/tips_gift_repository.dart';
 import 'package:cupid_mentor/features/tips_gift/domain/repository/tips_gift_repository.dart';
 import 'package:cupid_mentor/features/tips_gift/domain/use_cases/add_tips_gift.dart';
+import 'package:cupid_mentor/features/tips_gift/domain/use_cases/delete_tips_gift.dart';
 import 'package:cupid_mentor/features/tips_gift/domain/use_cases/get_tips_gift.dart';
 import 'package:cupid_mentor/features/tips_replying/data/data_sources/tip_replying_datasource.dart';
 import 'package:cupid_mentor/features/tips_replying/data/repository/tip_replying_repository.dart';
@@ -66,6 +68,7 @@ import 'package:cupid_mentor/features/tips_self_improvement/data/data_sources/ti
 import 'package:cupid_mentor/features/tips_self_improvement/data/repository/tips_self_improvement_repository.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/domain/repository/tips_self_improvement_repository.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/add_tips_self_improvement.dart';
+import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/delete_tips_self_improvement.dart';
 import 'package:cupid_mentor/features/tips_self_improvement/domain/use_cases/get_tips_self_improvement.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -228,6 +231,10 @@ void _registerUseCases() {
   get.registerLazySingleton(() => GetTipsReplying(repository: get()));
   get.registerLazySingleton(() => DeleteConversation(repository: get()));
   get.registerLazySingleton(() => DeleteUser(repository: get()));
+
+  get.registerLazySingleton(() => DeleteTipsDateSpot(repository: get()));
+  get.registerLazySingleton(() => DeleteTipsSelfImprovement(repository: get()));
+  get.registerLazySingleton(() => DeleteTipsGift(repository: get()));
 }
 
 Future<void> setupLocator() async {

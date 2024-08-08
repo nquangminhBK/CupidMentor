@@ -11,6 +11,7 @@ _$ContentResponseModelImpl _$$ContentResponseModelImplFromJson(
     _$ContentResponseModelImpl(
       content: json['content'] as String,
       createdDate: json['createdDate'] as String,
+      id: json['id'] as String,
     );
 
 Map<String, dynamic> _$$ContentResponseModelImplToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$ContentResponseModelImplToJson(
     <String, dynamic>{
       'content': instance.content,
       'createdDate': instance.createdDate,
+      'id': instance.id,
     };

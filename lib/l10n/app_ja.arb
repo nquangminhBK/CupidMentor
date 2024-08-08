@@ -149,5 +149,7 @@
   "privacyPolicy": "プライバシーポリシー",
   "termAndPrivacyMsg1": "ログインすることで、私たちの ",
   "termAndPrivacyMsg2": " に同意したことになります。私たちの ",
-  "termAndPrivacyMsg3": " であなたのデータの使用方法について学んでください。"
+  "termAndPrivacyMsg3": " であなたのデータの使用方法について学んでください。",
+  "deleteTipsConfirmTitle": "このヒントを削除してもよろしいですか?",
+  "actionFailed": "アクションを完了できませんでした。もう一度お試しください" 
 }

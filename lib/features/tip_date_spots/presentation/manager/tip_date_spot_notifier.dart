@@ -7,12 +7,14 @@ import 'package:cupid_mentor/core/utils/generate_ai_context.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_image.dart';
 import 'package:cupid_mentor/features/setting/domain/use_cases/get_user_info.dart';
 import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/add_tips_date_spot.dart';
+import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/delete_tips_date_spot.dart';
 import 'package:cupid_mentor/features/tip_date_spots/domain/use_cases/get_tips_date_spot.dart';
 import 'package:cupid_mentor/features/tip_date_spots/presentation/manager/tip_date_spot_state.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 part 'tip_date_spot_notifier.g.dart';
 
@@ -31,6 +33,8 @@ class TipsDateSpotNotifier extends _$TipsDateSpotNotifier {
 
   GenerateAIContent get generateAIContent => ref.read(generateAIContentUseCaseProvider);
 
+  DeleteTipsDateSpot get deleteTipsDateSpot => ref.read(deleteTipsDateSpotUseCaseProvider);
+
   Future<List<ContentResponse>> getTipsDateSpotByOccasion(ContentWithImage occasion) async {
     final response =
         await getTipsDateSpot(GetTipsDateSpotParam(occasionId: occasion.title.id ?? ''));
@@ -39,6 +43,29 @@ class TipsDateSpotNotifier extends _$TipsDateSpotNotifier {
     currentContent[occasion.title.id ?? ''] = data;
     state = state.copyWith(content: currentContent, errorOrSuccess: null);
     return data;
+  }
+
+  Future<bool> deleteTips(String occasionId, String contentId) async {
+    var result = false;
+    final response = await deleteTipsDateSpot(
+      DeleteTipsDateSpotParam(occasionId: occasionId, contentId: contentId),
+    );
+    response.fold((error) {
+      state = state.copyWith(errorOrSuccess: Left(CannotDeleteTips()));
+    }, (deleteResult) {
+      if (deleteResult) {
+        result = true;
+        final currentContentsOfOccasion = state.content[occasionId] ?? [];
+        currentContentsOfOccasion.removeWhere((e) => e.id == contentId);
+        final currentContents = Map<String, List<ContentResponse>>.from(state.content);
+        currentContents[occasionId] = currentContentsOfOccasion;
+        state = state.copyWith(content: currentContents, errorOrSuccess: null);
+        return result;
+      } else {
+        state = state.copyWith(errorOrSuccess: Left(CannotDeleteTips()));
+      }
+    });
+    return result;
   }
 
   Future<ContentResponse?> generateAiContent(
@@ -57,7 +84,8 @@ class TipsDateSpotNotifier extends _$TipsDateSpotNotifier {
           (await generateAIContent(GenerateAIContentParam(contents: [Content.text(aiContent)])))
               .getOrElse(() => '');
       if (aiMDText.isNotEmpty) {
-        final newContent = ContentResponse(content: aiMDText, createdDate: DateTime.now());
+        final id = const Uuid().v4();
+        final newContent = ContentResponse(content: aiMDText, createdDate: DateTime.now(), id: id);
         final currentContentsOfOccasion = state.content[occasion.title.id ?? ''] ?? [];
         currentContentsOfOccasion.add(newContent);
         final currentContents = Map<String, List<ContentResponse>>.from(state.content);

@@ -7,6 +7,11 @@ abstract class TipsSelfImprovementDatasource {
     required String selfImprovementId,
   });
 
+  Future<bool> deleteTipSelfImprovement({
+    required String selfImprovementId,
+    required String contentId,
+  });
+
   Future<bool> addTipsSelfImprovement({
     required String selfImprovementId,
     required ContentResponseModel content,
@@ -25,18 +30,15 @@ class TipsSelfImprovementDatasourceImpl implements TipsSelfImprovementDatasource
     required ContentResponseModel content,
   }) async {
     final currentUser = firebaseAuth.currentUser;
-    try {
-      await firestore
-          .collection('users_info')
-          .doc(currentUser!.uid)
-          .collection('ai_suggestions')
-          .doc('self_improvement_recommendations')
-          .collection(selfImprovementId)
-          .add(content.toJson());
-      return true;
-    } catch (_) {
-      rethrow;
-    }
+    await firestore
+        .collection('users_info')
+        .doc(currentUser!.uid)
+        .collection('ai_suggestions')
+        .doc('self_improvement_recommendations')
+        .collection(selfImprovementId)
+        .doc(content.id)
+        .set(content.toJson());
+    return true;
   }
 
   @override
@@ -44,17 +46,30 @@ class TipsSelfImprovementDatasourceImpl implements TipsSelfImprovementDatasource
     required String selfImprovementId,
   }) async {
     final currentUser = firebaseAuth.currentUser;
-    try {
-      final data = await firestore
-          .collection('users_info')
-          .doc(currentUser!.uid)
-          .collection('ai_suggestions')
-          .doc('self_improvement_recommendations')
-          .collection(selfImprovementId)
-          .get();
-      return data.docs.map((e) => ContentResponseModel.fromJson(e.data())).toList();
-    } catch (e) {
-      rethrow;
-    }
+    final data = await firestore
+        .collection('users_info')
+        .doc(currentUser!.uid)
+        .collection('ai_suggestions')
+        .doc('self_improvement_recommendations')
+        .collection(selfImprovementId)
+        .get();
+    return data.docs.map((e) => ContentResponseModel.fromJson(e.data())).toList();
+  }
+
+  @override
+  Future<bool> deleteTipSelfImprovement({
+    required String selfImprovementId,
+    required String contentId,
+  }) async {
+    final currentUser = firebaseAuth.currentUser;
+    await firestore
+        .collection('users_info')
+        .doc(currentUser!.uid)
+        .collection('ai_suggestions')
+        .doc('self_improvement_recommendations')
+        .collection(selfImprovementId)
+        .doc(contentId)
+        .delete();
+    return true;
   }
 }

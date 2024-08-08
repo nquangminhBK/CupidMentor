@@ -91,6 +91,13 @@ class AIGeneratedFailedError implements UIError {
   }
 }
 
+class CannotDeleteTips implements UIError {
+  @override
+  String getDisplayMessage(BuildContext context) {
+    return context.l10n.actionFailed;
+  }
+}
+
 class CouldNotLoadData implements UIError {
   @override
   String getDisplayMessage(BuildContext context) {
