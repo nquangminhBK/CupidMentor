@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
- 
+
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/utils/snackbar_service.dart';
@@ -13,6 +13,8 @@ import 'package:cupid_mentor/core/widgets/showup_animation.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
 import 'package:cupid_mentor/features/auth/presentation/manager/auth_notifier.dart';
 import 'package:cupid_mentor/features/auth/presentation/manager/auth_state.dart';
+import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_notifier.dart';
+import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_state.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,11 +37,18 @@ class LoginScreen extends ConsumerWidget {
           context: context,
         );
       }
-      if (previous is! AuthGoToOnboardingState && next is AuthGoToOnboardingState) {
-        context.pushReplacement(AppRoutes.onboarding);
+    });
+    ref.listen(splashNotifierProvider, (previous, next) {
+      if (previous is! SplashGoToLoginState && next is SplashGoToLoginState) {
+        context.replace('/${AppRoutes.login}');
       }
-      if (previous is! AuthGoToHomeState && next is AuthGoToHomeState) {
-        context.pushReplacement(AppRoutes.home);
+
+      if (previous is! SplashGoToOnboardingState && next is SplashGoToOnboardingState) {
+        context.replace('/${AppRoutes.onboarding}');
+      }
+
+      if (previous is! SplashGoToHomeState && next is SplashGoToHomeState) {
+        context.replace('/${AppRoutes.home}');
       }
     });
     return Scaffold(

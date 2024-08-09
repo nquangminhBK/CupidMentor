@@ -1,6 +1,6 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
- 
+
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_notifier.dart';
 import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_state.dart';
@@ -18,7 +18,6 @@ class SplashScreen extends ConsumerStatefulWidget {
 class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
-    ref.read(splashNotifierProvider.notifier).checkPreloadDataAndInitialCondition();
     super.initState();
   }
 
@@ -27,22 +26,22 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     ref.listen(splashNotifierProvider, (previous, next) {
       Future.delayed(const Duration(milliseconds: 200), () {
         if (previous is! SplashGoToSelectLanguageState && next is SplashGoToSelectLanguageState) {
-          context.pushReplacement(AppRoutes.selectLanguage);
+          context.replace('/${AppRoutes.selectLanguage}');
         }
 
         if (previous is! SplashGoToShowCaseState && next is SplashGoToShowCaseState) {
-          context.pushReplacement(AppRoutes.showcase);
+          context.replace('/${AppRoutes.showcase}');
         }
 
         if (previous is! SplashGoToLoginState && next is SplashGoToLoginState) {
-          context.pushReplacement(AppRoutes.login);
+          context.replace('/${AppRoutes.login}');
         }
         if (previous is! SplashGoToOnboardingState && next is SplashGoToOnboardingState) {
-          context.pushReplacement(AppRoutes.onboarding);
+          context.replace('/${AppRoutes.onboarding}');
         }
 
         if (previous is! SplashGoToHomeState && next is SplashGoToHomeState) {
-          context.pushReplacement(AppRoutes.home);
+          context.replace('/${AppRoutes.home}');
         }
       });
     });

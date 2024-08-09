@@ -22,8 +22,6 @@ mixin _$AuthState {
     required TResult Function() loading,
     required TResult Function() loginSuccess,
     required TResult Function() loginFailed,
-    required TResult Function() goToOnboarding,
-    required TResult Function() goToHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,8 +30,6 @@ mixin _$AuthState {
     TResult? Function()? loading,
     TResult? Function()? loginSuccess,
     TResult? Function()? loginFailed,
-    TResult? Function()? goToOnboarding,
-    TResult? Function()? goToHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,8 +38,6 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function()? loginSuccess,
     TResult Function()? loginFailed,
-    TResult Function()? goToOnboarding,
-    TResult Function()? goToHome,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -53,8 +47,6 @@ mixin _$AuthState {
     required TResult Function(AuthLoadingState value) loading,
     required TResult Function(AuthLoginSuccessState value) loginSuccess,
     required TResult Function(AuthStateLoginFailedState value) loginFailed,
-    required TResult Function(AuthGoToOnboardingState value) goToOnboarding,
-    required TResult Function(AuthGoToHomeState value) goToHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,8 +55,6 @@ mixin _$AuthState {
     TResult? Function(AuthLoadingState value)? loading,
     TResult? Function(AuthLoginSuccessState value)? loginSuccess,
     TResult? Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult? Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult? Function(AuthGoToHomeState value)? goToHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,8 +63,6 @@ mixin _$AuthState {
     TResult Function(AuthLoadingState value)? loading,
     TResult Function(AuthLoginSuccessState value)? loginSuccess,
     TResult Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult Function(AuthGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,8 +128,6 @@ class _$AuthInitializedStateImpl implements AuthInitializedState {
     required TResult Function() loading,
     required TResult Function() loginSuccess,
     required TResult Function() loginFailed,
-    required TResult Function() goToOnboarding,
-    required TResult Function() goToHome,
   }) {
     return initialized();
   }
@@ -153,8 +139,6 @@ class _$AuthInitializedStateImpl implements AuthInitializedState {
     TResult? Function()? loading,
     TResult? Function()? loginSuccess,
     TResult? Function()? loginFailed,
-    TResult? Function()? goToOnboarding,
-    TResult? Function()? goToHome,
   }) {
     return initialized?.call();
   }
@@ -166,8 +150,6 @@ class _$AuthInitializedStateImpl implements AuthInitializedState {
     TResult Function()? loading,
     TResult Function()? loginSuccess,
     TResult Function()? loginFailed,
-    TResult Function()? goToOnboarding,
-    TResult Function()? goToHome,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -183,8 +165,6 @@ class _$AuthInitializedStateImpl implements AuthInitializedState {
     required TResult Function(AuthLoadingState value) loading,
     required TResult Function(AuthLoginSuccessState value) loginSuccess,
     required TResult Function(AuthStateLoginFailedState value) loginFailed,
-    required TResult Function(AuthGoToOnboardingState value) goToOnboarding,
-    required TResult Function(AuthGoToHomeState value) goToHome,
   }) {
     return initialized(this);
   }
@@ -196,8 +176,6 @@ class _$AuthInitializedStateImpl implements AuthInitializedState {
     TResult? Function(AuthLoadingState value)? loading,
     TResult? Function(AuthLoginSuccessState value)? loginSuccess,
     TResult? Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult? Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult? Function(AuthGoToHomeState value)? goToHome,
   }) {
     return initialized?.call(this);
   }
@@ -209,8 +187,6 @@ class _$AuthInitializedStateImpl implements AuthInitializedState {
     TResult Function(AuthLoadingState value)? loading,
     TResult Function(AuthLoginSuccessState value)? loginSuccess,
     TResult Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult Function(AuthGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -266,8 +242,6 @@ class _$AuthLoadingStateImpl implements AuthLoadingState {
     required TResult Function() loading,
     required TResult Function() loginSuccess,
     required TResult Function() loginFailed,
-    required TResult Function() goToOnboarding,
-    required TResult Function() goToHome,
   }) {
     return loading();
   }
@@ -279,8 +253,6 @@ class _$AuthLoadingStateImpl implements AuthLoadingState {
     TResult? Function()? loading,
     TResult? Function()? loginSuccess,
     TResult? Function()? loginFailed,
-    TResult? Function()? goToOnboarding,
-    TResult? Function()? goToHome,
   }) {
     return loading?.call();
   }
@@ -292,8 +264,6 @@ class _$AuthLoadingStateImpl implements AuthLoadingState {
     TResult Function()? loading,
     TResult Function()? loginSuccess,
     TResult Function()? loginFailed,
-    TResult Function()? goToOnboarding,
-    TResult Function()? goToHome,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -309,8 +279,6 @@ class _$AuthLoadingStateImpl implements AuthLoadingState {
     required TResult Function(AuthLoadingState value) loading,
     required TResult Function(AuthLoginSuccessState value) loginSuccess,
     required TResult Function(AuthStateLoginFailedState value) loginFailed,
-    required TResult Function(AuthGoToOnboardingState value) goToOnboarding,
-    required TResult Function(AuthGoToHomeState value) goToHome,
   }) {
     return loading(this);
   }
@@ -322,8 +290,6 @@ class _$AuthLoadingStateImpl implements AuthLoadingState {
     TResult? Function(AuthLoadingState value)? loading,
     TResult? Function(AuthLoginSuccessState value)? loginSuccess,
     TResult? Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult? Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult? Function(AuthGoToHomeState value)? goToHome,
   }) {
     return loading?.call(this);
   }
@@ -335,8 +301,6 @@ class _$AuthLoadingStateImpl implements AuthLoadingState {
     TResult Function(AuthLoadingState value)? loading,
     TResult Function(AuthLoginSuccessState value)? loginSuccess,
     TResult Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult Function(AuthGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -394,8 +358,6 @@ class _$AuthLoginSuccessStateImpl implements AuthLoginSuccessState {
     required TResult Function() loading,
     required TResult Function() loginSuccess,
     required TResult Function() loginFailed,
-    required TResult Function() goToOnboarding,
-    required TResult Function() goToHome,
   }) {
     return loginSuccess();
   }
@@ -407,8 +369,6 @@ class _$AuthLoginSuccessStateImpl implements AuthLoginSuccessState {
     TResult? Function()? loading,
     TResult? Function()? loginSuccess,
     TResult? Function()? loginFailed,
-    TResult? Function()? goToOnboarding,
-    TResult? Function()? goToHome,
   }) {
     return loginSuccess?.call();
   }
@@ -420,8 +380,6 @@ class _$AuthLoginSuccessStateImpl implements AuthLoginSuccessState {
     TResult Function()? loading,
     TResult Function()? loginSuccess,
     TResult Function()? loginFailed,
-    TResult Function()? goToOnboarding,
-    TResult Function()? goToHome,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -437,8 +395,6 @@ class _$AuthLoginSuccessStateImpl implements AuthLoginSuccessState {
     required TResult Function(AuthLoadingState value) loading,
     required TResult Function(AuthLoginSuccessState value) loginSuccess,
     required TResult Function(AuthStateLoginFailedState value) loginFailed,
-    required TResult Function(AuthGoToOnboardingState value) goToOnboarding,
-    required TResult Function(AuthGoToHomeState value) goToHome,
   }) {
     return loginSuccess(this);
   }
@@ -450,8 +406,6 @@ class _$AuthLoginSuccessStateImpl implements AuthLoginSuccessState {
     TResult? Function(AuthLoadingState value)? loading,
     TResult? Function(AuthLoginSuccessState value)? loginSuccess,
     TResult? Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult? Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult? Function(AuthGoToHomeState value)? goToHome,
   }) {
     return loginSuccess?.call(this);
   }
@@ -463,8 +417,6 @@ class _$AuthLoginSuccessStateImpl implements AuthLoginSuccessState {
     TResult Function(AuthLoadingState value)? loading,
     TResult Function(AuthLoginSuccessState value)? loginSuccess,
     TResult Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult Function(AuthGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -523,8 +475,6 @@ class _$AuthStateLoginFailedStateImpl implements AuthStateLoginFailedState {
     required TResult Function() loading,
     required TResult Function() loginSuccess,
     required TResult Function() loginFailed,
-    required TResult Function() goToOnboarding,
-    required TResult Function() goToHome,
   }) {
     return loginFailed();
   }
@@ -536,8 +486,6 @@ class _$AuthStateLoginFailedStateImpl implements AuthStateLoginFailedState {
     TResult? Function()? loading,
     TResult? Function()? loginSuccess,
     TResult? Function()? loginFailed,
-    TResult? Function()? goToOnboarding,
-    TResult? Function()? goToHome,
   }) {
     return loginFailed?.call();
   }
@@ -549,8 +497,6 @@ class _$AuthStateLoginFailedStateImpl implements AuthStateLoginFailedState {
     TResult Function()? loading,
     TResult Function()? loginSuccess,
     TResult Function()? loginFailed,
-    TResult Function()? goToOnboarding,
-    TResult Function()? goToHome,
     required TResult orElse(),
   }) {
     if (loginFailed != null) {
@@ -566,8 +512,6 @@ class _$AuthStateLoginFailedStateImpl implements AuthStateLoginFailedState {
     required TResult Function(AuthLoadingState value) loading,
     required TResult Function(AuthLoginSuccessState value) loginSuccess,
     required TResult Function(AuthStateLoginFailedState value) loginFailed,
-    required TResult Function(AuthGoToOnboardingState value) goToOnboarding,
-    required TResult Function(AuthGoToHomeState value) goToHome,
   }) {
     return loginFailed(this);
   }
@@ -579,8 +523,6 @@ class _$AuthStateLoginFailedStateImpl implements AuthStateLoginFailedState {
     TResult? Function(AuthLoadingState value)? loading,
     TResult? Function(AuthLoginSuccessState value)? loginSuccess,
     TResult? Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult? Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult? Function(AuthGoToHomeState value)? goToHome,
   }) {
     return loginFailed?.call(this);
   }
@@ -592,8 +534,6 @@ class _$AuthStateLoginFailedStateImpl implements AuthStateLoginFailedState {
     TResult Function(AuthLoadingState value)? loading,
     TResult Function(AuthLoginSuccessState value)? loginSuccess,
     TResult Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult Function(AuthGoToHomeState value)? goToHome,
     required TResult orElse(),
   }) {
     if (loginFailed != null) {
@@ -605,259 +545,4 @@ class _$AuthStateLoginFailedStateImpl implements AuthStateLoginFailedState {
 
 abstract class AuthStateLoginFailedState implements AuthState {
   const factory AuthStateLoginFailedState() = _$AuthStateLoginFailedStateImpl;
-}
-
-/// @nodoc
-abstract class _$$AuthGoToOnboardingStateImplCopyWith<$Res> {
-  factory _$$AuthGoToOnboardingStateImplCopyWith(
-          _$AuthGoToOnboardingStateImpl value,
-          $Res Function(_$AuthGoToOnboardingStateImpl) then) =
-      __$$AuthGoToOnboardingStateImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuthGoToOnboardingStateImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthGoToOnboardingStateImpl>
-    implements _$$AuthGoToOnboardingStateImplCopyWith<$Res> {
-  __$$AuthGoToOnboardingStateImplCopyWithImpl(
-      _$AuthGoToOnboardingStateImpl _value,
-      $Res Function(_$AuthGoToOnboardingStateImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AuthGoToOnboardingStateImpl implements AuthGoToOnboardingState {
-  const _$AuthGoToOnboardingStateImpl();
-
-  @override
-  String toString() {
-    return 'AuthState.goToOnboarding()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthGoToOnboardingStateImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialized,
-    required TResult Function() loading,
-    required TResult Function() loginSuccess,
-    required TResult Function() loginFailed,
-    required TResult Function() goToOnboarding,
-    required TResult Function() goToHome,
-  }) {
-    return goToOnboarding();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialized,
-    TResult? Function()? loading,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? loginFailed,
-    TResult? Function()? goToOnboarding,
-    TResult? Function()? goToHome,
-  }) {
-    return goToOnboarding?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialized,
-    TResult Function()? loading,
-    TResult Function()? loginSuccess,
-    TResult Function()? loginFailed,
-    TResult Function()? goToOnboarding,
-    TResult Function()? goToHome,
-    required TResult orElse(),
-  }) {
-    if (goToOnboarding != null) {
-      return goToOnboarding();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AuthInitializedState value) initialized,
-    required TResult Function(AuthLoadingState value) loading,
-    required TResult Function(AuthLoginSuccessState value) loginSuccess,
-    required TResult Function(AuthStateLoginFailedState value) loginFailed,
-    required TResult Function(AuthGoToOnboardingState value) goToOnboarding,
-    required TResult Function(AuthGoToHomeState value) goToHome,
-  }) {
-    return goToOnboarding(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AuthInitializedState value)? initialized,
-    TResult? Function(AuthLoadingState value)? loading,
-    TResult? Function(AuthLoginSuccessState value)? loginSuccess,
-    TResult? Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult? Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult? Function(AuthGoToHomeState value)? goToHome,
-  }) {
-    return goToOnboarding?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthInitializedState value)? initialized,
-    TResult Function(AuthLoadingState value)? loading,
-    TResult Function(AuthLoginSuccessState value)? loginSuccess,
-    TResult Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult Function(AuthGoToHomeState value)? goToHome,
-    required TResult orElse(),
-  }) {
-    if (goToOnboarding != null) {
-      return goToOnboarding(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuthGoToOnboardingState implements AuthState {
-  const factory AuthGoToOnboardingState() = _$AuthGoToOnboardingStateImpl;
-}
-
-/// @nodoc
-abstract class _$$AuthGoToHomeStateImplCopyWith<$Res> {
-  factory _$$AuthGoToHomeStateImplCopyWith(_$AuthGoToHomeStateImpl value,
-          $Res Function(_$AuthGoToHomeStateImpl) then) =
-      __$$AuthGoToHomeStateImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuthGoToHomeStateImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthGoToHomeStateImpl>
-    implements _$$AuthGoToHomeStateImplCopyWith<$Res> {
-  __$$AuthGoToHomeStateImplCopyWithImpl(_$AuthGoToHomeStateImpl _value,
-      $Res Function(_$AuthGoToHomeStateImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AuthGoToHomeStateImpl implements AuthGoToHomeState {
-  const _$AuthGoToHomeStateImpl();
-
-  @override
-  String toString() {
-    return 'AuthState.goToHome()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthGoToHomeStateImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialized,
-    required TResult Function() loading,
-    required TResult Function() loginSuccess,
-    required TResult Function() loginFailed,
-    required TResult Function() goToOnboarding,
-    required TResult Function() goToHome,
-  }) {
-    return goToHome();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialized,
-    TResult? Function()? loading,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? loginFailed,
-    TResult? Function()? goToOnboarding,
-    TResult? Function()? goToHome,
-  }) {
-    return goToHome?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialized,
-    TResult Function()? loading,
-    TResult Function()? loginSuccess,
-    TResult Function()? loginFailed,
-    TResult Function()? goToOnboarding,
-    TResult Function()? goToHome,
-    required TResult orElse(),
-  }) {
-    if (goToHome != null) {
-      return goToHome();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AuthInitializedState value) initialized,
-    required TResult Function(AuthLoadingState value) loading,
-    required TResult Function(AuthLoginSuccessState value) loginSuccess,
-    required TResult Function(AuthStateLoginFailedState value) loginFailed,
-    required TResult Function(AuthGoToOnboardingState value) goToOnboarding,
-    required TResult Function(AuthGoToHomeState value) goToHome,
-  }) {
-    return goToHome(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AuthInitializedState value)? initialized,
-    TResult? Function(AuthLoadingState value)? loading,
-    TResult? Function(AuthLoginSuccessState value)? loginSuccess,
-    TResult? Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult? Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult? Function(AuthGoToHomeState value)? goToHome,
-  }) {
-    return goToHome?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthInitializedState value)? initialized,
-    TResult Function(AuthLoadingState value)? loading,
-    TResult Function(AuthLoginSuccessState value)? loginSuccess,
-    TResult Function(AuthStateLoginFailedState value)? loginFailed,
-    TResult Function(AuthGoToOnboardingState value)? goToOnboarding,
-    TResult Function(AuthGoToHomeState value)? goToHome,
-    required TResult orElse(),
-  }) {
-    if (goToHome != null) {
-      return goToHome(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuthGoToHomeState implements AuthState {
-  const factory AuthGoToHomeState() = _$AuthGoToHomeStateImpl;
 }

@@ -1,6 +1,6 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
- 
+
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
@@ -22,7 +22,7 @@ class ProfileWidget extends ConsumerWidget {
               constraints: const BoxConstraints(minHeight: 50),
               child: AnimatedButton(
                 onPress: () {
-                  context.go(AppRoutes.profile);
+                  context.push('/${AppRoutes.home}/${AppRoutes.profile}');
                 },
                 child: Container(
                   width: double.infinity,
@@ -48,7 +48,7 @@ class ProfileWidget extends ConsumerWidget {
               constraints: const BoxConstraints(minHeight: 50),
               child: AnimatedButton(
                 onPress: () {
-                  context.go(AppRoutes.partnerProfile);
+                  context.push('/${AppRoutes.home}/${AppRoutes.partnerProfile}');
                 },
                 child: Container(
                   width: double.infinity,

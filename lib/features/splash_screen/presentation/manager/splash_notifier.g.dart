@@ -6,12 +6,12 @@ part of 'splash_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$splashNotifierHash() => r'db19cbf5712b56cd26e14c2434983577e39ff5b2';
+String _$splashNotifierHash() => r'87dbd8a84fbcdf205b20a5f37d666a058d638b9c';
 
 /// See also [SplashNotifier].
 @ProviderFor(SplashNotifier)
 final splashNotifierProvider =
-    AutoDisposeNotifierProvider<SplashNotifier, SplashState>.internal(
+    NotifierProvider<SplashNotifier, SplashState>.internal(
   SplashNotifier.new,
   name: r'splashNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,6 @@ final splashNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$SplashNotifier = AutoDisposeNotifier<SplashState>;
+typedef _$SplashNotifier = Notifier<SplashState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

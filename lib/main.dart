@@ -6,9 +6,11 @@ import 'package:cupid_mentor/firebase_options/prod_firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:go_router/go_router.dart';
 
 void main() async {
   usePathUrlStrategy();
+  GoRouter.optionURLReflectsImperativeAPIs = true;
   WidgetsFlutterBinding.ensureInitialized();
   LoadingUtils.configLoading();
   await Firebase.initializeApp(

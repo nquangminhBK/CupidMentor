@@ -1,6 +1,6 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
- 
+
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/themes_colors/app_colors.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
@@ -56,7 +56,7 @@ class ChatNowWidget extends ConsumerWidget {
                 color: Colors.white.withOpacity(0.20),
                 borderRadius: BorderRadius.circular(8),
                 onPress: () {
-                  context.go(AppRoutes.tipReplying);
+                  context.push('/${AppRoutes.home}/${AppRoutes.tipReplying}');
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

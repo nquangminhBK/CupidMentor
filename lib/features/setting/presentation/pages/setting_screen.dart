@@ -1,6 +1,6 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
- 
+
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
@@ -64,21 +64,21 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                   leftIcon: Icons.menu_book_rounded,
                   title: context.l10n.termOfService,
                   onTap: () {
-                    context.go(AppRoutes.termOfService);
+                    context.push('/${AppRoutes.home}/${AppRoutes.termOfService}');
                   },
                 ),
                 ItemSetting(
                   leftIcon: Icons.privacy_tip_outlined,
                   title: context.l10n.privacyPolicy,
                   onTap: () {
-                    context.go(AppRoutes.privacyPolicy);
+                    context.push('/${AppRoutes.home}/${AppRoutes.privacyPolicy}');
                   },
                 ),
                 ItemSetting(
                   leftIcon: Icons.info_outline_rounded,
                   title: context.l10n.aboutUs,
                   onTap: () {
-                    context.go(AppRoutes.aboutTheAuthor);
+                    context.push('/${AppRoutes.home}/${AppRoutes.aboutTheAuthor}');
                   },
                 ),
                 ItemSetting(

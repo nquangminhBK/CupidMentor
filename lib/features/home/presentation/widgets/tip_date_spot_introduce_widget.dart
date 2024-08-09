@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
- 
+
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/base_introduce_widget.dart';
 import 'package:cupid_mentor/features/home/presentation/widgets/menu_item.dart';
@@ -22,7 +22,7 @@ class TipDateSpotIntroduceWidget extends ConsumerWidget {
         title: context.l10n.tipDateSpotTitle,
         description: context.l10n.tipDateSpotDesc,
         buttonText: context.l10n.tipDateSpotButton,
-        onTap: () => context.go(AppRoutes.tipDateSpot),
+        onTap: () => context.push('/${AppRoutes.home}/${AppRoutes.tipDateSpot}'),
         image: ref.currentTheme == ThemeMode.dark
             ? Assets.png.spotMenuImage.image(width: 140, height: 140)
             : Assets.png.spotMenuImageLight.image(width: 140, height: 140),

@@ -11,8 +11,4 @@ abstract class AuthState with _$AuthState {
   const factory AuthState.loginSuccess() = AuthLoginSuccessState;
 
   const factory AuthState.loginFailed() = AuthStateLoginFailedState;
-
-  const factory AuthState.goToOnboarding() = AuthGoToOnboardingState;
-
-  const factory AuthState.goToHome() = AuthGoToHomeState;
 }

@@ -22,7 +22,7 @@ class TipGiftIntroduceWidget extends ConsumerWidget {
         title: context.l10n.tipGiftTitle,
         description: context.l10n.tipGiftDesc,
         buttonText: context.l10n.tipGiftButton,
-        onTap: () => context.go(AppRoutes.tipGift),
+        onTap: () => context.push('/${AppRoutes.home}/${AppRoutes.tipGift}'),
         image: ref.currentTheme == ThemeMode.dark
             ? Assets.png.giftMenuImage.image(width: 140, height: 140)
             : Assets.png.giftMenuImageLight.image(width: 140, height: 140),

@@ -1,7 +1,7 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
- 
+
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/gradient_text.dart';
 import 'package:cupid_mentor/core/widgets/horizontal_space.dart';
@@ -34,15 +34,15 @@ class _ShowcasePageState extends ConsumerState<ShowcaseScreen> {
   Widget build(BuildContext context) {
     ref.listen(splashNotifierProvider, (previous, next) {
       if (previous is! SplashGoToLoginState && next is SplashGoToLoginState) {
-        context.pushReplacement(AppRoutes.login);
+        context.replace('/${AppRoutes.login}');
       }
 
       if (previous is! SplashGoToOnboardingState && next is SplashGoToOnboardingState) {
-        context.pushReplacement(AppRoutes.onboarding);
+        context.replace('/${AppRoutes.onboarding}');
       }
 
       if (previous is! SplashGoToHomeState && next is SplashGoToHomeState) {
-        context.pushReplacement(AppRoutes.home);
+        context.replace('/${AppRoutes.home}');
       }
     });
     return Scaffold(

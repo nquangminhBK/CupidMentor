@@ -105,7 +105,7 @@ class _PartnerProfilePageState extends ConsumerState<PartnerProfilePage> {
                             const VerticalSpace(size: 24),
                             AnimatedButton(
                               onPress: () {
-                                context.go(AppRoutes.addPartnerProfile);
+                                context.push('/${AppRoutes.home}/${AppRoutes.addPartnerProfile}');
                               },
                               borderRadius: BorderRadius.circular(8),
                               child: Container(

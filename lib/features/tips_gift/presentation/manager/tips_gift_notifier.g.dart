@@ -6,7 +6,7 @@ part of 'tips_gift_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tipsGiftNotifierHash() => r'83211406bb4e198877494aa84f37898b42b4a050';
+String _$tipsGiftNotifierHash() => r'2448d4ebef2c3b91e949b0ae5a28a463cddc5db7';
 
 /// See also [TipsGiftNotifier].
 @ProviderFor(TipsGiftNotifier)

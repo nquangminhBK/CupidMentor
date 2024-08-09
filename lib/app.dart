@@ -4,6 +4,7 @@ import 'package:cupid_mentor/core/themes_colors/themes.dart';
 import 'package:cupid_mentor/core/themes_colors/themes_provider.dart';
 import 'package:cupid_mentor/features/preload_data/presentation/manager/preload_data_notifier.dart';
 import 'package:cupid_mentor/features/select_language/presentation/manager/localization_notifier.dart';
+import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_notifier.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -26,6 +27,7 @@ class _AppState extends ConsumerState<App> {
     ref.read(themeNotifierProvider.notifier).checkInitialTheme();
     ref.read(preloadDataNotifierProvider.notifier).initializeAndFetchRemoteConfig();
     ref.read(localizationNotifierProvider.notifier).checkInitialLanguage();
+    ref.read(splashNotifierProvider.notifier).checkPreloadDataAndInitialCondition();
     super.initState();
   }
 
