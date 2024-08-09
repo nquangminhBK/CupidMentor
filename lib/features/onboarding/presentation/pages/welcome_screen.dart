@@ -14,7 +14,7 @@ class WelcomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userInfo = ref.watch(onboardingNotifierProvider).userInfo;
+    final userInfo = ref.read(onboardingNotifierProvider).userInfo;
     return Scaffold(
       body: SafeArea(
         child: SizedBox.expand(

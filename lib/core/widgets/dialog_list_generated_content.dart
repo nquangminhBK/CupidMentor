@@ -55,6 +55,7 @@ class _DialogListGeneratedContentState extends ConsumerState<DialogListGenerated
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Expanded(child: Markdown(data: e.content)),
+                      const VerticalSpace(size: 16),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Container(
