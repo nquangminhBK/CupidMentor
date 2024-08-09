@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:cupid_mentor/core/core_entity/content_response.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/dialog_confirm.dart';

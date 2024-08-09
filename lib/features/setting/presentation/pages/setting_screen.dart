@@ -1,6 +1,5 @@
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-
 import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/utils/loading_utils.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';

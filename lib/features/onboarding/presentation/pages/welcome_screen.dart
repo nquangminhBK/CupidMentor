@@ -1,8 +1,6 @@
 import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
-
-import 'package:cupid_mentor/core/navigation/routes.dart';
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/gradient_text.dart';
 import 'package:cupid_mentor/core/widgets/vertical_space.dart';
@@ -10,7 +8,6 @@ import 'package:cupid_mentor/features/onboarding/presentation/manager/onboarding
 import 'package:cupid_mentor/features/splash_screen/presentation/manager/splash_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends ConsumerWidget {
   const WelcomeScreen({super.key});

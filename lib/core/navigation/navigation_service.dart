@@ -9,5 +9,5 @@ class NavigationService {
   static NavigationService get instance => overrideService ?? navigation;
 
   GlobalKey<NavigatorState> globalNavigatorKey =
-  GlobalKey<NavigatorState>(debugLabel: 'global_key');
+      GlobalKey<NavigatorState>(debugLabel: 'global_key');
 }

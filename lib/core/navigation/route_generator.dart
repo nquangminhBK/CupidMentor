@@ -28,7 +28,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 final routeProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
     redirect: (context, state) {
-      print("minh check ${state.matchedLocation}");
       final initialState = ref.watch(splashNotifierProvider);
       if (initialState is SplashGoToSelectLanguageState &&
           !state.matchedLocation.startsWith('/${AppRoutes.selectLanguage}')) {

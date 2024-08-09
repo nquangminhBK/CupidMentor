@@ -54,7 +54,7 @@ class SnackBarService {
     final currentTheme =
         ProviderScope.containerOf(context).read(themeNotifierProvider).currentTheme;
     final bgColor =
-        currentTheme == ThemeMode.dark ? const Color(0x702C2C2E) : const Color(0xffFEF3F2);
+        currentTheme == ThemeMode.dark ? const Color(0xff2C2C2E) : const Color(0xffFEF3F2);
     ScaffoldMessenger.of(context).showSnackBar(
       _snackBarContent(
         context: context,
@@ -73,7 +73,7 @@ class SnackBarService {
     final currentTheme =
         ProviderScope.containerOf(context).read(themeNotifierProvider).currentTheme;
     final bgColor =
-        currentTheme == ThemeMode.dark ? const Color(0x702C2C2E) : const Color(0xffECFDF3);
+        currentTheme == ThemeMode.dark ? const Color(0xff2C2C2E) : const Color(0xffECFDF3);
     ScaffoldMessenger.of(context).showSnackBar(
       _snackBarContent(
         context: context,

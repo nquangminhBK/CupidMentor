@@ -2,7 +2,6 @@ import 'package:cupid_mentor/core/assets/assets.gen.dart';
 import 'package:cupid_mentor/core/constants/localization_const.dart';
 import 'package:cupid_mentor/core/extensions/context_extensions.dart';
 import 'package:cupid_mentor/core/extensions/widget_ref_extensions.dart';
- 
 import 'package:cupid_mentor/core/widgets/animated_button.dart';
 import 'package:cupid_mentor/core/widgets/base_dialog.dart';
 import 'package:cupid_mentor/core/widgets/reset_all_app.dart';
