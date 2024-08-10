@@ -1,16 +1,15 @@
-# cupid_mentor
+# Cupid mentor
 
 An app that uses Gemini AI to provide personalized flirting tips, message replies, gift ideas, and date location recommendations.
 
-## Getting Started
+## Flutter version
 
-This project is a starting point for a Flutter application.
+>Flutter 3.22.3 • channel stable • https://github.com/flutter/flutter.git <br>
+>Tools • Dart 3.4.4 • DevTools 2.34.3
 
-A few resources to get you started if this is your first Flutter project:
+### How to run this project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project can run on Android, iOS, and Web. <br>
+Just simply clone this repo and `flutter run` <br>
+Note: if you're using a Macbook with Apple chip and you cannot `pod install` in the ios, please try  
+`arch -x86_64 pod install --repo-update`
