@@ -3,6 +3,7 @@ import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:cupid_mentor/core/errors/api_failure.dart';
 import 'package:cupid_mentor/core/utils/mixin/connectivity_mixin.dart';
 import 'package:cupid_mentor/features/preload_data/data/data_sources/preload_datasource.dart';
+import 'package:cupid_mentor/features/preload_data/domain/entities/contact_info.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_description.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_image.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/self_improvement_entity.dart';
@@ -176,5 +177,20 @@ class PreloadDataRepositoryImpl with ConnectivityMixin implements PreloadDataRep
       debugPrint(e.toString());
       return Left(Failure(e.toString()));
     }
+  }
+
+  @override
+  Future<Either<Failure, ContactInfo>> getContactInfo() async {
+    if (await isInConnection()) {
+      try {
+        final result = await datasource.getContactInfo();
+
+        return Right(result.toEntity);
+      } catch (e, _) {
+        debugPrint(e.toString());
+        return Left(Failure(e.toString()));
+      }
+    }
+    return const Left(NoConnection());
   }
 }

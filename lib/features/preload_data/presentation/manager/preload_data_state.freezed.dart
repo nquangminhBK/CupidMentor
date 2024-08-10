@@ -33,6 +33,7 @@ mixin _$PreloadDataState {
       throw _privateConstructorUsedError;
   List<ContentWithImage> get specialOccasions =>
       throw _privateConstructorUsedError;
+  ContactInfo get contactInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PreloadDataStateCopyWith<PreloadDataState> get copyWith =>
@@ -56,13 +57,15 @@ abstract class $PreloadDataStateCopyWith<$Res> {
       LocalizationContent? privacyPolicy,
       LocalizationContent? termOfService,
       List<SelfImprovementEntity> selfImprovements,
-      List<ContentWithImage> specialOccasions});
+      List<ContentWithImage> specialOccasions,
+      ContactInfo contactInfo});
 
   $LocalizationContentCopyWith<$Res>? get aboutUs;
   $LocalizationContentCopyWith<$Res>? get loveLanguageConcepts;
   $LocalizationContentCopyWith<$Res>? get loveLanguageOverallInfo;
   $LocalizationContentCopyWith<$Res>? get privacyPolicy;
   $LocalizationContentCopyWith<$Res>? get termOfService;
+  $ContactInfoCopyWith<$Res> get contactInfo;
 }
 
 /// @nodoc
@@ -89,6 +92,7 @@ class _$PreloadDataStateCopyWithImpl<$Res, $Val extends PreloadDataState>
     Object? termOfService = freezed,
     Object? selfImprovements = null,
     Object? specialOccasions = null,
+    Object? contactInfo = null,
   }) {
     return _then(_value.copyWith(
       isInitializing: freezed == isInitializing
@@ -135,6 +139,10 @@ class _$PreloadDataStateCopyWithImpl<$Res, $Val extends PreloadDataState>
           ? _value.specialOccasions
           : specialOccasions // ignore: cast_nullable_to_non_nullable
               as List<ContentWithImage>,
+      contactInfo: null == contactInfo
+          ? _value.contactInfo
+          : contactInfo // ignore: cast_nullable_to_non_nullable
+              as ContactInfo,
     ) as $Val);
   }
 
@@ -199,6 +207,14 @@ class _$PreloadDataStateCopyWithImpl<$Res, $Val extends PreloadDataState>
       return _then(_value.copyWith(termOfService: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ContactInfoCopyWith<$Res> get contactInfo {
+    return $ContactInfoCopyWith<$Res>(_value.contactInfo, (value) {
+      return _then(_value.copyWith(contactInfo: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -220,7 +236,8 @@ abstract class _$$PreloadDataStateImplCopyWith<$Res>
       LocalizationContent? privacyPolicy,
       LocalizationContent? termOfService,
       List<SelfImprovementEntity> selfImprovements,
-      List<ContentWithImage> specialOccasions});
+      List<ContentWithImage> specialOccasions,
+      ContactInfo contactInfo});
 
   @override
   $LocalizationContentCopyWith<$Res>? get aboutUs;
@@ -232,6 +249,8 @@ abstract class _$$PreloadDataStateImplCopyWith<$Res>
   $LocalizationContentCopyWith<$Res>? get privacyPolicy;
   @override
   $LocalizationContentCopyWith<$Res>? get termOfService;
+  @override
+  $ContactInfoCopyWith<$Res> get contactInfo;
 }
 
 /// @nodoc
@@ -256,6 +275,7 @@ class __$$PreloadDataStateImplCopyWithImpl<$Res>
     Object? termOfService = freezed,
     Object? selfImprovements = null,
     Object? specialOccasions = null,
+    Object? contactInfo = null,
   }) {
     return _then(_$PreloadDataStateImpl(
       isInitializing: freezed == isInitializing
@@ -302,6 +322,10 @@ class __$$PreloadDataStateImplCopyWithImpl<$Res>
           ? _value._specialOccasions
           : specialOccasions // ignore: cast_nullable_to_non_nullable
               as List<ContentWithImage>,
+      contactInfo: null == contactInfo
+          ? _value.contactInfo
+          : contactInfo // ignore: cast_nullable_to_non_nullable
+              as ContactInfo,
     ));
   }
 }
@@ -320,7 +344,8 @@ class _$PreloadDataStateImpl extends _PreloadDataState {
       this.privacyPolicy,
       this.termOfService,
       required final List<SelfImprovementEntity> selfImprovements,
-      required final List<ContentWithImage> specialOccasions})
+      required final List<ContentWithImage> specialOccasions,
+      required this.contactInfo})
       : _hobbies = hobbies,
         _loveLanguages = loveLanguages,
         _personalities = personalities,
@@ -383,8 +408,11 @@ class _$PreloadDataStateImpl extends _PreloadDataState {
   }
 
   @override
+  final ContactInfo contactInfo;
+
+  @override
   String toString() {
-    return 'PreloadDataState(isInitializing: $isInitializing, aboutUs: $aboutUs, hobbies: $hobbies, loveLanguageConcepts: $loveLanguageConcepts, loveLanguageOverallInfo: $loveLanguageOverallInfo, loveLanguages: $loveLanguages, personalities: $personalities, privacyPolicy: $privacyPolicy, termOfService: $termOfService, selfImprovements: $selfImprovements, specialOccasions: $specialOccasions)';
+    return 'PreloadDataState(isInitializing: $isInitializing, aboutUs: $aboutUs, hobbies: $hobbies, loveLanguageConcepts: $loveLanguageConcepts, loveLanguageOverallInfo: $loveLanguageOverallInfo, loveLanguages: $loveLanguages, personalities: $personalities, privacyPolicy: $privacyPolicy, termOfService: $termOfService, selfImprovements: $selfImprovements, specialOccasions: $specialOccasions, contactInfo: $contactInfo)';
   }
 
   @override
@@ -412,7 +440,9 @@ class _$PreloadDataStateImpl extends _PreloadDataState {
             const DeepCollectionEquality()
                 .equals(other._selfImprovements, _selfImprovements) &&
             const DeepCollectionEquality()
-                .equals(other._specialOccasions, _specialOccasions));
+                .equals(other._specialOccasions, _specialOccasions) &&
+            (identical(other.contactInfo, contactInfo) ||
+                other.contactInfo == contactInfo));
   }
 
   @override
@@ -428,7 +458,8 @@ class _$PreloadDataStateImpl extends _PreloadDataState {
       privacyPolicy,
       termOfService,
       const DeepCollectionEquality().hash(_selfImprovements),
-      const DeepCollectionEquality().hash(_specialOccasions));
+      const DeepCollectionEquality().hash(_specialOccasions),
+      contactInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -440,18 +471,18 @@ class _$PreloadDataStateImpl extends _PreloadDataState {
 
 abstract class _PreloadDataState extends PreloadDataState {
   const factory _PreloadDataState(
-          {final bool? isInitializing,
-          final LocalizationContent? aboutUs,
-          required final List<LocalizationContent> hobbies,
-          final LocalizationContent? loveLanguageConcepts,
-          final LocalizationContent? loveLanguageOverallInfo,
-          required final List<ContentWithDescription> loveLanguages,
-          required final List<LocalizationContent> personalities,
-          final LocalizationContent? privacyPolicy,
-          final LocalizationContent? termOfService,
-          required final List<SelfImprovementEntity> selfImprovements,
-          required final List<ContentWithImage> specialOccasions}) =
-      _$PreloadDataStateImpl;
+      {final bool? isInitializing,
+      final LocalizationContent? aboutUs,
+      required final List<LocalizationContent> hobbies,
+      final LocalizationContent? loveLanguageConcepts,
+      final LocalizationContent? loveLanguageOverallInfo,
+      required final List<ContentWithDescription> loveLanguages,
+      required final List<LocalizationContent> personalities,
+      final LocalizationContent? privacyPolicy,
+      final LocalizationContent? termOfService,
+      required final List<SelfImprovementEntity> selfImprovements,
+      required final List<ContentWithImage> specialOccasions,
+      required final ContactInfo contactInfo}) = _$PreloadDataStateImpl;
   const _PreloadDataState._() : super._();
 
   @override
@@ -476,6 +507,8 @@ abstract class _PreloadDataState extends PreloadDataState {
   List<SelfImprovementEntity> get selfImprovements;
   @override
   List<ContentWithImage> get specialOccasions;
+  @override
+  ContactInfo get contactInfo;
   @override
   @JsonKey(ignore: true)
   _$$PreloadDataStateImplCopyWith<_$PreloadDataStateImpl> get copyWith =>

@@ -1,9 +1,11 @@
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:cupid_mentor/core/usecases/usecase.dart';
+import 'package:cupid_mentor/features/preload_data/domain/entities/contact_info.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_description.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_image.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/self_improvement_entity.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_about_us.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_contact_info.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_hobbies.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_love_language_concepts.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_love_language_overall_info.dart';
@@ -49,6 +51,8 @@ class PreloadDataNotifier extends _$PreloadDataNotifier {
 
   InitializeRemoteConfig get initializeRemoteConfig => ref.read(initializeRemoteConfigProvider);
 
+  GetContactInfo get getContactInfo => ref.read(getContactInfoProvider);
+
   Future<void> initializeAndFetchRemoteConfig() async {
     await initializeRemoteConfig(NoParams());
     await _preloadData();
@@ -67,6 +71,7 @@ class PreloadDataNotifier extends _$PreloadDataNotifier {
       getSpecialOccasions(NoParams()),
       getTermOfService(NoParams()),
       getPrivacyPolicy(NoParams()),
+      getContactInfo(NoParams()),
     ]);
     response[0].fold((failed) {}, (data) {
       state = state.copyWith(aboutUs: data as LocalizationContent);
@@ -97,6 +102,9 @@ class PreloadDataNotifier extends _$PreloadDataNotifier {
     });
     response[9].fold((failed) {}, (data) {
       state = state.copyWith(privacyPolicy: data as LocalizationContent);
+    });
+    response[10].fold((failed) {}, (data) {
+      state = state.copyWith(contactInfo: data as ContactInfo);
     });
   }
 }

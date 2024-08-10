@@ -1,4 +1,5 @@
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
+import 'package:cupid_mentor/features/preload_data/domain/entities/contact_info.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_description.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/content_with_image.dart';
 import 'package:cupid_mentor/features/preload_data/domain/entities/self_improvement_entity.dart';
@@ -22,13 +23,15 @@ abstract class PreloadDataState with _$PreloadDataState {
     LocalizationContent? termOfService,
     required List<SelfImprovementEntity> selfImprovements,
     required List<ContentWithImage> specialOccasions,
+    required ContactInfo contactInfo,
   }) = _PreloadDataState;
 
-  factory PreloadDataState.initial() => const PreloadDataState(
+  factory PreloadDataState.initial() => PreloadDataState(
         hobbies: [],
         loveLanguages: [],
         personalities: [],
         selfImprovements: [],
         specialOccasions: [],
+        contactInfo: ContactInfo.empty(),
       );
 }

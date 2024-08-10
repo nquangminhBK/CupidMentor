@@ -52,7 +52,7 @@ class DialogConfirm extends ConsumerWidget {
                 style: context.textTheme.headlineSmall!
                     .copyWith(color: ref.currentAppColor.textColor, fontSize: 20),
               ),
-            const VerticalSpace(size: 12),
+            if (title != null || icon != null) const VerticalSpace(size: 12),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(

@@ -3,15 +3,15 @@
 ///  FlutterGen
 /// *****************************************************
 
-import 'package:flutter/services.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lottie/lottie.dart';
 import 'package:vector_graphics/vector_graphics.dart';
+import 'package:lottie/lottie.dart';
 
 class $AssetsLottieGen {
   const $AssetsLottieGen();
@@ -45,12 +45,10 @@ class $AssetsPngGen {
   AssetGenImage get conflictImage => const AssetGenImage('assets/png/conflict_image.png');
 
   /// File path: assets/png/dating_delight_image.png
-  AssetGenImage get datingDelightImage =>
-      const AssetGenImage('assets/png/dating_delight_image.png');
+  AssetGenImage get datingDelightImage => const AssetGenImage('assets/png/dating_delight_image.png');
 
   /// File path: assets/png/dating_delight_image_light.png
-  AssetGenImage get datingDelightImageLight =>
-      const AssetGenImage('assets/png/dating_delight_image_light.png');
+  AssetGenImage get datingDelightImageLight => const AssetGenImage('assets/png/dating_delight_image_light.png');
 
   /// File path: assets/png/english.png
   AssetGenImage get english => const AssetGenImage('assets/png/english.png');
@@ -59,11 +57,13 @@ class $AssetsPngGen {
   AssetGenImage get giftMenuImage => const AssetGenImage('assets/png/gift_menu_image.png');
 
   /// File path: assets/png/gift_menu_image_light.png
-  AssetGenImage get giftMenuImageLight =>
-      const AssetGenImage('assets/png/gift_menu_image_light.png');
+  AssetGenImage get giftMenuImageLight => const AssetGenImage('assets/png/gift_menu_image_light.png');
 
   /// File path: assets/png/japanese.png
   AssetGenImage get japanese => const AssetGenImage('assets/png/japanese.png');
+
+  /// File path: assets/png/linkedin.png
+  AssetGenImage get linkedin => const AssetGenImage('assets/png/linkedin.png');
 
   /// File path: assets/png/login_image.png
   AssetGenImage get loginImage => const AssetGenImage('assets/png/login_image.png');
@@ -75,35 +75,28 @@ class $AssetsPngGen {
   AssetGenImage get mensDayImage => const AssetGenImage('assets/png/mens_day_image.png');
 
   /// File path: assets/png/profile_prowess_image.png
-  AssetGenImage get profileProwessImage =>
-      const AssetGenImage('assets/png/profile_prowess_image.png');
+  AssetGenImage get profileProwessImage => const AssetGenImage('assets/png/profile_prowess_image.png');
 
   /// File path: assets/png/profile_prowess_image_light.png
-  AssetGenImage get profileProwessImageLight =>
-      const AssetGenImage('assets/png/profile_prowess_image_light.png');
+  AssetGenImage get profileProwessImageLight => const AssetGenImage('assets/png/profile_prowess_image_light.png');
 
   /// File path: assets/png/self_enhancement_image.png
-  AssetGenImage get selfEnhancementImage =>
-      const AssetGenImage('assets/png/self_enhancement_image.png');
+  AssetGenImage get selfEnhancementImage => const AssetGenImage('assets/png/self_enhancement_image.png');
 
   /// File path: assets/png/self_enhancement_image_light.png
-  AssetGenImage get selfEnhancementImageLight =>
-      const AssetGenImage('assets/png/self_enhancement_image_light.png');
+  AssetGenImage get selfEnhancementImageLight => const AssetGenImage('assets/png/self_enhancement_image_light.png');
 
   /// File path: assets/png/self_improvement_image.png
-  AssetGenImage get selfImprovementImage =>
-      const AssetGenImage('assets/png/self_improvement_image.png');
+  AssetGenImage get selfImprovementImage => const AssetGenImage('assets/png/self_improvement_image.png');
 
   /// File path: assets/png/spot_menu_image.png
   AssetGenImage get spotMenuImage => const AssetGenImage('assets/png/spot_menu_image.png');
 
   /// File path: assets/png/spot_menu_image_light.png
-  AssetGenImage get spotMenuImageLight =>
-      const AssetGenImage('assets/png/spot_menu_image_light.png');
+  AssetGenImage get spotMenuImageLight => const AssetGenImage('assets/png/spot_menu_image_light.png');
 
   /// File path: assets/png/strong_relationship_image.png
-  AssetGenImage get strongRelationshipImage =>
-      const AssetGenImage('assets/png/strong_relationship_image.png');
+  AssetGenImage get strongRelationshipImage => const AssetGenImage('assets/png/strong_relationship_image.png');
 
   /// File path: assets/png/thanksgiving_image.png
   AssetGenImage get thanksgivingImage => const AssetGenImage('assets/png/thanksgiving_image.png');
@@ -143,6 +136,7 @@ class $AssetsPngGen {
         giftMenuImage,
         giftMenuImageLight,
         japanese,
+        linkedin,
         loginImage,
         loginImageLight,
         mensDayImage,
@@ -184,23 +178,13 @@ class $AssetsSvgGen {
   SvgGenImage get iconValentine => const SvgGenImage('assets/svg/icon_valentine.svg');
 
   /// File path: assets/svg/profile_prowess_bg_text.svg
-  SvgGenImage get profileProwessBgText =>
-      const SvgGenImage('assets/svg/profile_prowess_bg_text.svg');
+  SvgGenImage get profileProwessBgText => const SvgGenImage('assets/svg/profile_prowess_bg_text.svg');
 
   /// File path: assets/svg/self_enhancement_bg_text.svg
-  SvgGenImage get selfEnhancementBgText =>
-      const SvgGenImage('assets/svg/self_enhancement_bg_text.svg');
+  SvgGenImage get selfEnhancementBgText => const SvgGenImage('assets/svg/self_enhancement_bg_text.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [
-        appleIcon,
-        backgroundChatNow,
-        datingDelightBgText,
-        googleIcon,
-        iconValentine,
-        profileProwessBgText,
-        selfEnhancementBgText
-      ];
+  List<SvgGenImage> get values => [appleIcon, backgroundChatNow, datingDelightBgText, googleIcon, iconValentine, profileProwessBgText, selfEnhancementBgText];
 }
 
 class Assets {

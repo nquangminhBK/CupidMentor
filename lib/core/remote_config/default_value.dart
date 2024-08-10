@@ -1,4 +1,9 @@
 class DefaultValue {
+  static const contactInfo = {
+    'email': 'nqming96@gmail.com',
+    'linkedIn': 'https://www.linkedin.com/in/nquangminh9x/',
+  };
+
   static const aboutUs = {
     'content': {
       'english':

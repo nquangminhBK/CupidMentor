@@ -29,6 +29,7 @@ class RemoteConfigService {
         'selfImprovements': jsonEncode(DefaultValue.selfImprovements),
         'specialOccasions': jsonEncode(DefaultValue.specialOccasions),
         'termOfService': jsonEncode(DefaultValue.termOfService),
+        'contactInfo': jsonEncode(DefaultValue.contactInfo),
       });
       await remoteConfig.fetchAndActivate();
     } catch (e) {

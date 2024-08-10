@@ -19,19 +19,4 @@ class ContentWithDescription with _$ContentWithDescription {
         description: LocalizationContent.empty(),
       );
 
-// LoggedInUserInfoModel get toModel {
-//   return LoggedInUserInfoModel(
-//     genderRaw: gender?.value,
-//     name: name,
-//     avatar: avatar,
-//     birthdayRaw: DateTimeUtils.convertToString(birthday),
-//     job: job,
-//     personalities: personalities,
-//     hobbies: hobbies,
-//     loveLanguages: loveLanguages,
-//     relationship: relationship,
-//     hasPartner: hasPartner,
-//     partnerInfoModel: partnerInfo?.toModel,
-//   );
-// }
 }

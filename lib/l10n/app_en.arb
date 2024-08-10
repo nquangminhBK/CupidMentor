@@ -151,5 +151,6 @@
   "termAndPrivacyMsg2": ". Learn how we use your data in our ",
   "termAndPrivacyMsg3": ".",
   "deleteTipsConfirmTitle": "Are you sure you want to delete this tip?",
-  "actionFailed": "Could not complete the action. Please try again."
+  "actionFailed": "Could not complete the action. Please try again.",
+  "getInTouch": "Get in touch"
 }

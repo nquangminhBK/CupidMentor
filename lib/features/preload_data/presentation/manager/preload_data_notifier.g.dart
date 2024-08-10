@@ -7,7 +7,7 @@ part of 'preload_data_notifier.dart';
 // **************************************************************************
 
 String _$preloadDataNotifierHash() =>
-    r'8567776cc0092738ab32797d3b2035576f231a73';
+    r'9b3c0908238732048140ea1758c1dca9f8af83dd';
 
 /// See also [PreloadDataNotifier].
 @ProviderFor(PreloadDataNotifier)

@@ -21,6 +21,7 @@ import 'package:cupid_mentor/features/preload_data/data/data_sources/preload_dat
 import 'package:cupid_mentor/features/preload_data/data/repositories/preload_data_repository.dart';
 import 'package:cupid_mentor/features/preload_data/domain/repositories/preload_data_repository.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_about_us.dart';
+import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_contact_info.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_hobbies.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_love_language_concepts.dart';
 import 'package:cupid_mentor/features/preload_data/domain/use_cases/get_love_language_overall_info.dart';
@@ -211,6 +212,7 @@ void _registerUseCases() {
   get.registerLazySingleton(() => GenerateAIContent(generativeModel: get()));
 
   get.registerLazySingleton(() => GetAboutUs(repository: get()));
+  get.registerLazySingleton(() => GetContactInfo(repository: get()));
   get.registerLazySingleton(() => GetHobbies(repository: get()));
   get.registerLazySingleton(() => GetLoveLanguageConcepts(repository: get()));
   get.registerLazySingleton(() => GetLoveLanguageOverallInfo(repository: get()));

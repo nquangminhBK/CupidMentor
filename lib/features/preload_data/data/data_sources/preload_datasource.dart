@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cupid_mentor/core/core_object/localization_content.dart';
 import 'package:cupid_mentor/core/remote_config/remote_config.dart';
+import 'package:cupid_mentor/features/preload_data/data/models/contact_info_model.dart';
 import 'package:cupid_mentor/features/preload_data/data/models/content_with_description_model.dart';
 import 'package:cupid_mentor/features/preload_data/data/models/content_with_image_model.dart';
 import 'package:cupid_mentor/features/preload_data/data/models/self_improvement_model.dart';
@@ -26,6 +27,8 @@ abstract class PreloadDatasource {
   Future<List<SelfImprovementModel>> getSelfImprovements();
 
   Future<List<ContentWithImageModel>> getSpecialOccasions();
+
+  Future<ContactInfoModel> getContactInfo();
 
   Future<void> initialize();
 }
@@ -143,5 +146,15 @@ class PreloadDatasourceImpl implements PreloadDatasource {
   @override
   Future<void> initialize() async {
     await remoteConfig.initialize();
+  }
+
+  @override
+  Future<ContactInfoModel> getContactInfo() async {
+    try {
+      final result = remoteConfig.remoteConfig.getString('contactInfo').toString();
+      return ContactInfoModel.fromJson(jsonDecode(result));
+    } catch (e) {
+      rethrow;
+    }
   }
 }
