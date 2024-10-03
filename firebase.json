@@ -4,14 +4,14 @@
       "android": {
         "default": {
           "projectId": "cupid-mentor",
-          "appId": "1:979013705313:android:e172879224e97595f25420",
+          "appId": "1:979013705313:android:0f90ffd3c6d4f15ff25420",
           "fileOutput": "android/app/google-services.json"
         }
       },
       "ios": {
         "default": {
           "projectId": "cupid-mentor",
-          "appId": "1:979013705313:ios:fbc70f4f210340e9f25420",
+          "appId": "1:979013705313:ios:481fd87a1462d332f25420",
           "uploadDebugSymbols": false,
           "fileOutput": "ios/Runner/GoogleService-Info.plist"
         }
@@ -20,8 +20,8 @@
         "lib/firebase_options.dart": {
           "projectId": "cupid-mentor",
           "configurations": {
-            "android": "1:979013705313:android:e172879224e97595f25420",
-            "ios": "1:979013705313:ios:fbc70f4f210340e9f25420",
+            "android": "1:979013705313:android:0f90ffd3c6d4f15ff25420",
+            "ios": "1:979013705313:ios:481fd87a1462d332f25420",
             "web": "1:979013705313:web:18e7a966b77e19a4f25420"
           }
         }
@@ -30,7 +30,15 @@
   },
   "hosting": {
     "headers": [
-      { "source":"/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}] }
+      {
+        "source": "/service-worker.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
     ],
     "source": ".",
     "ignore": [

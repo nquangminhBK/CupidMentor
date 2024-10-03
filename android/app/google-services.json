@@ -47,10 +47,62 @@
               "client_type": 3
             },
             {
-              "client_id": "979013705313-tjg14o4tms1lvm3los2umkhl07k0hip0.apps.googleusercontent.com",
+              "client_id": "979013705313-9cvk9vo3hjkkgj2pggmhutq683co28g7.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.quangminh.cupidMentor"
+                "bundle_id": "com.quangminh.cupidmentor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979013705313:android:0f90ffd3c6d4f15ff25420",
+        "android_client_info": {
+          "package_name": "com.quangminh.cupidmentor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979013705313-1v8jovd4e44q8cl4nujm0m0bojnmld51.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quangminh.cupidmentor",
+            "certificate_hash": "c233135b6f7a86f8c5c063a8df452a024326e3e2"
+          }
+        },
+        {
+          "client_id": "979013705313-pn9t5h02638tnieak88u1fq3e96bk0rs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quangminh.cupidmentor",
+            "certificate_hash": "710d91c9cb09816bd81f42517b1702f2bb566797"
+          }
+        },
+        {
+          "client_id": "979013705313-jljburu4tp0aor6gfiqls1711esfb8vg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3lajwWT5evrpQXrVDF7D7Mqq9xl7jrBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979013705313-gm11nj8td84pmscf3r5odjgopq4craj8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "979013705313-9cvk9vo3hjkkgj2pggmhutq683co28g7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.quangminh.cupidmentor"
               }
             }
           ]
